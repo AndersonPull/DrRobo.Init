@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Dashboard.Components.LeftBarComponent"
+    xmlns:enums="clr-namespace:Drrobo.Modules.Dashboard.Enums">
+    <StackLayout
+        WidthRequest="{OnIdiom Phone='60', Default='80'}"
+        VerticalOptions="Center"
+        Spacing="30">
+        <StackLayout
+            VerticalOptions="Center">
+            <Image
+                x:Name="CmdIcon"
+                Source="cmd_icon.png"
+                SemanticProperties.Description="Icon for cmd page"
+                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+            <Image
+                x:Name="CmdIconFull"
+                Source="cmd_full_icon.png"
+                IsVisible="false"
+                SemanticProperties.Description="Icon for cmd page"
+                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="SetIcon"
+                    NumberOfTapsRequired="1"
+                    Command="{Binding SetContentTypeCommand}"
+                    CommandParameter="{x:Static enums:DashboardPageTypeEnum.Cmd}"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
+            VerticalOptions="Center">
+            <Image
+                x:Name="DashboardIcon"
+                Source="dashboard_icon.png"
+                IsVisible="false"
+                SemanticProperties.Description="Icon for dashboard page"
+                HeightRequest="30" />
+            <Image
+                x:Name="DashboardIconFull"
+                Source="dashboard_full_icon.png"
+                IsVisible="true"
+                SemanticProperties.Description="Icon for dashboard page"
+                HeightRequest="30"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="SetIcon"
+                    NumberOfTapsRequired="1"
+                    Command="{Binding SetContentTypeCommand}"
+                    CommandParameter="{x:Static enums:DashboardPageTypeEnum.Dashboard}"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout>
+            <Image
+                x:Name="ProfileIcon"
+                Source="profile_icon.png"
+                SemanticProperties.Description="Icon for profile page"
+                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+            <Image
+                x:Name="ProfileIconFull"
+                Source="profile_full_icon.png"
+                IsVisible="false"
+                SemanticProperties.Description="Icon for profile page"
+                HeightRequest="{OnIdiom Phone='20', Default='30'}"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="SetIcon"
+                    NumberOfTapsRequired="1"
+                    Command="{Binding SetContentTypeCommand}"
+                    CommandParameter="{x:Static enums:DashboardPageTypeEnum.Profile}"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </StackLayout>
+</ContentView>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Dashboard.Views.StartView"
+    xmlns:content="clr-namespace:Drrobo.Modules.Dashboard.Components.Content"
+    xmlns:component="clr-namespace:Drrobo.Modules.Dashboard.Components"
+    NavigationPage.HasNavigationBar="False"
+    NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <component:LeftBarComponent x:Name="LeftBar"/>
+            <StackLayout
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <ContentView
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="ContentBody">
+                    <content:DashBoardContent/>
+                </ContentView>
+                <component:BottomBarComponent
+                    x:Name="BottomBar"
+                    IsVisible="{OnIdiom Desktop=false, Default=true}"
+                    VerticalOptions="End"
+                    HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

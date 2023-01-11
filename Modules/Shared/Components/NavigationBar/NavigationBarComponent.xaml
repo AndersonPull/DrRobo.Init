@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Shared.Components.NavigationBar.NavigationBarComponent"
+    x:Name="NavigationBar">
+    <Grid
+        HeightRequest="60"
+        ColumnDefinitions="75,90*,10*">
+        <Image
+            Grid.Column="0"
+            Margin="15,0"
+            WidthRequest="20"
+            HeightRequest="20"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="StartAndExpand"
+            Source="arrow_icon">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Label
+            Grid.Column="1"
+            Margin="-30,0,0,0"
+            VerticalOptions="Center"
+            Style="{DynamicResource LabelTitleWhite}"
+            Text="{Binding Title, Source={x:Reference NavigationBar}}" />
+        <Image
+            Grid.Column="2"
+            WidthRequest="{OnIdiom Desktop=30, Default=20}"
+            HeightRequest="{OnIdiom Desktop=30, Default=20}"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="StartAndExpand"
+            Source="bluetooth_icon.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
+</ContentView>

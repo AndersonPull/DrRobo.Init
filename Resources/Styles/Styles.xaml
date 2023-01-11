@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!--Labels-->
+    <Style
+        x:Key="LabelTitleWhite"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="22"/>
+    </Style>
+    <Style
+        x:Key="Label12Primary"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    <Style
+        x:Key="Label12White"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+    <Style
+        x:Key="Label14White"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style
+        x:Key="Label14WhiteBold"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+    <Style
+        x:Key="Label14Black"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Black}" />
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style
+        x:Key="Label14BlackBold"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Black}" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <!--Frame-->
+     <Style
+        x:Key="FrameGradient"
+        TargetType="Frame">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="WidthRequest" Value="320"/>
+        <Setter Property="HeightRequest" Value="290" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="IsClippedToBounds" Value="True"/>
+        <Setter Property="Background">
+            <LinearGradientBrush>
+                <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+            </LinearGradientBrush>
+        </Setter>
+    </Style>
+
+    <!--Buttons-->
+     <Style
+        x:Key="PrimaryButton"
+        TargetType="Button">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background">
+            <LinearGradientBrush>
+                <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+            </LinearGradientBrush>
+        </Setter>
+    </Style>
+
+    <!--Page-->
+    <Style TargetType="Page" ApplyToDerivedTypes="True">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+    </Style>
+</ResourceDictionary>
+

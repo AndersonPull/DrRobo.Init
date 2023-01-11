@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Dashboard.Components.Content.DashBoardContent"
+    x:Name="DashboardPage">
+    <Grid
+        RowDefinitions="90,100*">
+        <StackLayout
+            Grid.Row="0"
+            ZIndex="1">
+            <Frame
+                HeightRequest="135"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                CornerRadius="0"
+                Opacity="0.4"
+                BackgroundColor="{DynamicResource BackgroundLeftBar}"
+                HasShadow="False"/>
+            <Image
+                Margin="0,15"
+                WidthRequest="50"
+                HeightRequest="50"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="Start"
+                Source="logo_icon.png"/>
+        </StackLayout>
+        <ScrollView
+            Margin="0,-90,0,0"
+            Grid.Row="1"
+            ZIndex="0">
+            <StackLayout>
+                <Image
+                    HeightRequest="280"
+                    Aspect="AspectFill"
+                    Opacity="0.4"
+                    VerticalOptions="Start"
+                    Source="https://imageio.forbes.com/blogs-images/insertcoin/files/2016/11/watch-dogs8.jpg?"/>
+                <ScrollView
+                    Grid.Row="0"
+                    HeightRequest="320"
+                    Margin="0,-200,0,0"
+                    Orientation="Horizontal"
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Margin="15"
+                        Spacing="40"
+                        BindableLayout.ItemsSource="{Binding CarouselButton}"
+                        x:Name="StackLayoutChat">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Start"
+                                        Style="{DynamicResource FrameGradient}">
+                                        <ContentView
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand">
+                                            <ContentView.Background>
+                                                <LinearGradientBrush EndPoint="0,1">
+                                                    <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
+                                                    <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+                                                </LinearGradientBrush>
+                                            </ContentView.Background>
+                                            <StackLayout Margin="15">
+                                                <Image
+                                                    Margin="15"
+                                                    WidthRequest="185"
+                                                    HeightRequest="185"
+                                                    Aspect="AspectFit"
+                                                    Source="{Binding ImageIcon}"/>
+                                                <Label
+                                                    Style="{DynamicResource LabelTitleWhite}"
+                                                    Text="{Binding Title}"/>
+                                            </StackLayout>
+                                        </ContentView>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"/>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout
+                    Grid.Row="1"
+                    Margin="15,0,15,15">
+                    <Label
+                        Text="Aparelhos conectados"
+                        Style="{DynamicResource Label14WhiteBold}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentView>

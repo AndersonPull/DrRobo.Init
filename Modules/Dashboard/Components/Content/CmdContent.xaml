@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Drrobo.Modules.Dashboard.Components.Content.CmdContent">
+    <StackLayout Margin="15">
+        <Label
+            Style="{DynamicResource Label12Primary}"
+            Text="deviceName ~ % Acão realizada"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+    </StackLayout>
+</ContentView>
