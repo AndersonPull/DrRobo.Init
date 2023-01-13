@@ -25,7 +25,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         public JumperViewModel(INavigationService serviceNavigation)
         {
             _serviceNavigation = serviceNavigation;
-            Model = new JumperModel();
             _bluetooth = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
 

@@ -7,35 +7,36 @@
     <Grid
         HeightRequest="60"
         ColumnDefinitions="75,90*,10*">
-        <Image
+        <ImageButton
             Grid.Column="0"
-            Margin="15,0"
-            WidthRequest="20"
-            HeightRequest="20"
+            Margin="15,0,0,0"
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="StartAndExpand"
-            Source="arrow_icon">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-            </Image.GestureRecognizers>
-        </Image>
+            WidthRequest="40"
+            HeightRequest="40"
+            Padding="10"
+            CornerRadius="20"
+            Opacity="0.4"
+            BackgroundColor="{DynamicResource BackgroundLeftBar}"
+            Source="arrow_icon"
+            Clicked="BackPage"/>
         <Label
             Grid.Column="1"
-            Margin="-30,0,0,0"
             VerticalOptions="Center"
             Style="{DynamicResource LabelTitleWhite}"
             Text="{Binding Title, Source={x:Reference NavigationBar}}" />
-        <Image
+        <ImageButton
             Grid.Column="2"
-            WidthRequest="{OnIdiom Desktop=30, Default=20}"
-            HeightRequest="{OnIdiom Desktop=30, Default=20}"
+            Margin="0,0,15,0"
             VerticalOptions="CenterAndExpand"
-            HorizontalOptions="StartAndExpand"
-            Source="bluetooth_icon.png">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
-            </Image.GestureRecognizers>
-        </Image>
+            HorizontalOptions="EndAndExpand"
+            WidthRequest="40"
+            HeightRequest="40"
+            Padding="10"
+            CornerRadius="20"
+            Opacity="0.4"
+            BackgroundColor="{DynamicResource BackgroundLeftBar}"
+            Source="bluetooth_icon"
+            Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
     </Grid>
 </ContentView>

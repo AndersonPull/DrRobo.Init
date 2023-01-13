@@ -38,21 +38,23 @@
                     Source="https://imageio.forbes.com/blogs-images/insertcoin/files/2016/11/watch-dogs8.jpg?"/>
                 <ScrollView
                     Grid.Row="0"
-                    HeightRequest="320"
                     Margin="0,-200,0,0"
                     Orientation="Horizontal"
                     VerticalScrollBarVisibility="Never"
-                    HorizontalScrollBarVisibility="Never">
+                    HorizontalScrollBarVisibility="Never"
+                    x:Name="ScrollButton">
                     <StackLayout
                         Orientation="Horizontal"
                         Margin="15"
                         Spacing="40"
-                        BindableLayout.ItemsSource="{Binding CarouselButton}"
+                        BindableLayout.ItemsSource="{Binding Model.ListMenu}"
                         x:Name="StackLayoutChat">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
                                     <Frame
+                                        WidthRequest="{Binding NewWidthFrame, Source={x:Reference DashboardPage}}"
+                                        HeightRequest="{Binding NewHeightFrame, Source={x:Reference DashboardPage}}"
                                         VerticalOptions="Center"
                                         HorizontalOptions="Start"
                                         Style="{DynamicResource FrameGradient}">
@@ -68,19 +70,19 @@
                                             <StackLayout Margin="15">
                                                 <Image
                                                     Margin="15"
-                                                    WidthRequest="185"
-                                                    HeightRequest="185"
-                                                    Aspect="AspectFit"
+                                                    WidthRequest="200"
+                                                    HeightRequest="200"
                                                     Source="{Binding ImageIcon}"/>
                                                 <Label
+                                                    Margin="0,-50"
                                                     Style="{DynamicResource LabelTitleWhite}"
                                                     Text="{Binding Title}"/>
                                             </StackLayout>
                                         </ContentView>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"/>
-                                        </Frame.GestureRecognizers>
                                     </Frame>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
