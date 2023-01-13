@@ -1,20 +1,15 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Drrobo.Modules.Shared.ViewModels;
 using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Dashboard.Enums;
 using Drrobo.Modules.Dashboard.Components.Content;
 using Drrobo.Modules.Dashboard.Views;
 using Drrobo.Modules.Dashboard.Models;
-using Drrobo.Modules.Shared.Models;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
-    public class StartViewModel : BaseViewModel<BaseModel>
+    public class StartViewModel : BaseViewModel<StartModel>
     {
-        private List<CarouselButtonModel> _carouselButton;
-        public List<CarouselButtonModel> CarouselButton { get { return _carouselButton; } set { Set("CarouselButton", ref _carouselButton, value); } }
-
         public ICommand SetContentTypeCommand => new Command(async (value) => await SetContentTypeAsync((DashboardPageTypeEnum)value));
         public ICommand RemotelyControlledCommand => new Command(async () => await RemotelyControlledAsync());
 
@@ -33,13 +28,6 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public StartViewModel(INavigationService serviceNavigation)
         {
             _serviceNavigation = serviceNavigation;
-
-            CarouselButton = new List<CarouselButtonModel>()
-            {
-                new CarouselButtonModel(){ Title="Drone", ImageIcon = "drone_icon.png", ImageBack=""},
-                new CarouselButtonModel(){ Title="Jumper", ImageIcon = "jumper_icon.png", ImageBack=""},
-                new CarouselButtonModel(){ Title="Spider", ImageIcon = "spider_icon.png", ImageBack=""}
-            };
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)

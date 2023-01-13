@@ -15,7 +15,7 @@ namespace Drrobo.Modules.Shared.ViewModels
 
     public class BaseViewModel<T> : BaseViewModel
     {
-        private T _model;
+        private T _model = Activator.CreateInstance<T>();
         public T Model { get { return _model; } set { Set("Model", ref _model, value); } }
     }
 }

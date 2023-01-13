@@ -24,7 +24,7 @@ public partial class NavigationBarComponent : ContentView
         set => SetValue(CommandProperty, value);
     }
 
-    void TapGestureRecognizer_Tapped(object sender, EventArgs args)
+    void BackPage(object sender, EventArgs args)
     {
         Application.Current.MainPage.Navigation.PopAsync();
     }
