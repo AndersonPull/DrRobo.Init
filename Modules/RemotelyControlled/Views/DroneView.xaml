@@ -29,10 +29,12 @@
                     IsVisible="False"
                     Source="https://github.com/AndersonPull"
                     x:Name="WebViewCam"/>
+
                 <joystick:JoystickComponent
                     Padding="15"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"/>
+
                 <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
