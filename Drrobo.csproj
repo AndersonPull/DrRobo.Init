@@ -105,7 +105,6 @@
 	  <None Remove="Resources\Images\GreenTheme\TabPageIcons\cmd_full_icon.svg" />
 	  <None Remove="Resources\Images\GreenTheme\TabPageIcons\dashboard_full_icon.svg" />
 	  <None Remove="Resources\Images\GreenTheme\TabPageIcons\profile_full_icon.svg" />
-	  <None Remove="Modules\Dashboard\Models\" />
 	  <None Remove="Resources\Images\Ilustração_Sem_Título 2.png" />
 	  <None Remove="Resources\Images\Ilustração_Sem_Título 3.png" />
 	  <None Remove="Resources\Images\Ilustração_Sem_Título.png" />
@@ -123,6 +122,10 @@
 	  <None Remove="Resources\Images\bluetooth_on_icon.svg" />
 	  <None Remove="Modules\RemotelyControlled\Models\" />
 	  <None Remove="Modules\RemotelyControlled\Components\Popup\" />
+	  <None Remove="Modules\RemotelyControlled\Enums\" />
+	  <None Remove="Resources\Images\device.svg" />
+	  <None Remove="Resources\Images\joystick.svg" />
+	  <None Remove="Resources\Images\not_cam_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -163,7 +166,6 @@
 	  <Folder Include="Modules\Dashboard\Components\" />
 	  <Folder Include="Modules\Dashboard\Components\Content\" />
 	  <Folder Include="Modules\Dashboard\Enums\" />
-	  <Folder Include="Modules\Dashboard\Models\" />
 	  <Folder Include="Modules\RemotelyControlled\" />
 	  <Folder Include="Modules\RemotelyControlled\Views\" />
 	  <Folder Include="Modules\RemotelyControlled\ViewModels\" />
@@ -173,6 +175,7 @@
 	  <Folder Include="Modules\Shared\Components\joystick\" />
 	  <Folder Include="Modules\RemotelyControlled\Models\" />
 	  <Folder Include="Modules\RemotelyControlled\Components\Popup\" />
+	  <Folder Include="Modules\RemotelyControlled\Enums\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
@@ -206,6 +209,12 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Modules\RemotelyControlled\Components\Popup\BluetoothPopup.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Modules\RemotelyControlled\Views\DroneView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Modules\RemotelyControlled\Components\AnimationJoystick.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

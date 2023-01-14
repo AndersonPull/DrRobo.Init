@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.RemotelyControlled.Components.AnimationJoystick">
+    <StackLayout>
+        <Image
+            x:Name="DeviceImage"
+            WidthRequest="80"
+            HeightRequest="80"
+            IsAnimationPlaying="True"
+            Source="device.png"/>
+        <Image
+            x:Name="JoystickImage"
+            WidthRequest="80"
+            HeightRequest="80"
+            IsAnimationPlaying="True"
+            IsVisible="false"
+            Source="joystick.png"/>
+        <Label
+            Style="{DynamicResource Label14White}"
+            Text="Vire o celular para liberar o joystick"/>
+    </StackLayout>
+</ContentView>
+

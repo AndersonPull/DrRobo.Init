@@ -4,13 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.RemotelyControlled.Views.JumperView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
+    xmlns:animationJoystick="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     xmlns:joystick="clr-namespace:Drrobo.Modules.Shared.Components.joystick"
-    NavigationPage.HasNavigationBar="False"
-    Title="DevicesBlue">
-    <Grid RowDefinitions="10*,80*">
+    NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="10,80*">
         <navigation:NavigationBarComponent
             VerticalOptions="Start"
             Grid.Row="0"
+            HasBluetooth="True"
+            ZIndex="1"
             Command="{Binding BluetoothPopupCommand}"/>
         <StackLayout
             Grid.Row="1"
@@ -22,12 +24,10 @@
         </StackLayout>
         <StackLayout
             Grid.Row="1"
-            x:Name="JoystickWarning">
-            <Label
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"
-                Style="{DynamicResource Label14White}"
-                Text="Vire o celular para liberar o joystick"/>
+            x:Name="JoystickWarning"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            <animationJoystick:AnimationJoystick/>
         </StackLayout>
     </Grid>
 </ContentPage>
