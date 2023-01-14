@@ -5,13 +5,16 @@ using Drrobo.Modules.Dashboard.Enums;
 using Drrobo.Modules.Dashboard.Components.Content;
 using Drrobo.Modules.Dashboard.Views;
 using Drrobo.Modules.Dashboard.Models;
+using Drrobo.Modules.RemotelyControlled.Enums;
+using Drrobo.Modules.RemotelyControlled.ViewModels;
+using System.Linq.Expressions;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
     public class StartViewModel : BaseViewModel<StartModel>
     {
         public ICommand SetContentTypeCommand => new Command(async (value) => await SetContentTypeAsync((DashboardPageTypeEnum)value));
-        public ICommand RemotelyControlledCommand => new Command(async () => await RemotelyControlledAsync());
+        public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((RemotelyControlledTypeEnum)value));
 
         private Dictionary<DashboardPageTypeEnum, Lazy<ContentView>> ContentType =
             new Dictionary<DashboardPageTypeEnum, Lazy<ContentView>>
@@ -48,9 +51,20 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             IsBusy = false;
         }
 
-        private async Task RemotelyControlledAsync()
+        private async Task RemotelyControlledAsync(RemotelyControlledTypeEnum type)
         {
-            await _serviceNavigation.NavigateToAsync<RemotelyControlled.ViewModels.JumperViewModel>();
+            switch (type)
+            {
+                case RemotelyControlledTypeEnum.Drone:
+                    await _serviceNavigation.NavigateToAsync<DroneViewModel>();
+                    break;
+                case RemotelyControlledTypeEnum.Jumper:
+                    await _serviceNavigation.NavigateToAsync<JumperViewModel>();
+                    break;
+                case RemotelyControlledTypeEnum.Spider:
+                    await _serviceNavigation.NavigateToAsync<JumperViewModel>();
+                    break;
+            }
         }
     }
 }

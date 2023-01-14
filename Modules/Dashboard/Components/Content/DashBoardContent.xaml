@@ -81,7 +81,9 @@
                                         </ContentView>
                                     </Frame>
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"/>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"
+                                            CommandParameter="{Binding Type}"/>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </DataTemplate>
@@ -92,7 +94,7 @@
                     Grid.Row="1"
                     Margin="15,0,15,15">
                     <Label
-                        Text="Aparelhos conectados"
+                        Text="Aparelhos conectados na redes"
                         Style="{DynamicResource Label14WhiteBold}"/>
                 </StackLayout>
             </StackLayout>

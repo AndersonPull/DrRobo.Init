@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.Shared.Components.joystick.JoystickComponent">
     <Grid
-       ColumnDefinitions="50*,50*">
+        VerticalOptions="EndAndExpand"
+        HorizontalOptions="FillAndExpand"
+        ColumnDefinitions="50*,50*">
         <Grid
             HorizontalOptions="StartAndExpand"
             WidthRequest="200"

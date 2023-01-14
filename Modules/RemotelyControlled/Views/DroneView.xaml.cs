@@ -1,8 +1,8 @@
 ﻿namespace Drrobo.Modules.RemotelyControlled.Views;
 
-public partial class JumperView : ContentPage
+public partial class DroneView : ContentPage
 {
-    public JumperView()
+	public DroneView()
 	{
 		InitializeComponent();
 
@@ -16,7 +16,7 @@ public partial class JumperView : ContentPage
         SetDeviceDisplay();
     }
 
-    private async Task  SetDeviceDisplay()
+    private async Task SetDeviceDisplay()
     {
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
@@ -29,5 +29,11 @@ public partial class JumperView : ContentPage
                 JoystickWarning.IsVisible = true;
                 break;
         }
+    }
+
+    void OpenCam(object sender, EventArgs args)
+    {
+        WebViewCam.IsVisible = true;
+        ImageButtonCam.IsVisible = false;
     }
 }

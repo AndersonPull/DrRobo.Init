@@ -1,8 +1,9 @@
 ﻿using System;
 using Unity;
-using Drrobo.Modules.Dashboard.ViewModels;
 using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Shared.Services.Navigation.Implementations;
+using Drrobo.Modules.Dashboard.ViewModels;
+using Drrobo.Modules.RemotelyControlled.ViewModels;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -24,6 +25,8 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<INavigationService, NavigationService>();
 
             _container.RegisterType<StartViewModel>();
+            _container.RegisterType<JumperViewModel>();
+            _container.RegisterType<DroneViewModel>();
         }
 
         public T Resolve<T>()
