@@ -37,6 +37,7 @@
             Opacity="0.4"
             BackgroundColor="{DynamicResource BackgroundLeftBar}"
             Source="bluetooth_icon"
+            x:Name="ImageButtonBluetooth"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
             Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
     </Grid>
