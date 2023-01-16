@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using Drrobo.Modules.RemotelyControlled.Models;
 using Plugin.BLE.Abstractions.Extensions;
 using Plugin.BLE;
+using Plugin.BLE.Abstractions;
 using System.Windows.Input;
 using Mopups.Services;
 using System.Text;
@@ -78,6 +79,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             try
             {
                 await _adapter.ConnectToDeviceAsync(Model.ConnectedDevice);
+                MessagingCenter.Send<string>("true", "BluetoothConnected");
             }
             catch (DeviceConnectionException ex)
             {
@@ -87,17 +89,18 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         public async Task WriteBluetooth(string write)
         {
-            if (Model.ConnectedDevice == null)
+            if (Model.ConnectedDevice != null &&
+                Model.ConnectedDevice.State != DeviceState.Connected)
+            {
+                MessagingCenter.Send<string>("false", "BluetoothConnected");
                 return;
+            }
 
             var services = await Model.ConnectedDevice.GetServicesAsync();
             var service = services.LastOrDefault();
 
             var characteristics = await service.GetCharacteristicsAsync();
             var characteristic = characteristics.FirstOrDefault();
-
-            if(_bluetooth.State != BluetoothState.On)
-                await App.Current.MainPage.DisplayAlert("AVISO", "Bluetooth desconectado.", "OK");
 
             if (characteristic.CanWrite)
                 await characteristic.WriteAsync(Encoding.ASCII.GetBytes(write));

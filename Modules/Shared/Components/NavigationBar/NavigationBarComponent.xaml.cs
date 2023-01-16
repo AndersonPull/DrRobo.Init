@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Plugin.BLE.Abstractions.Contracts;
 
 namespace Drrobo.Modules.Shared.Components.NavigationBar;
 
@@ -12,6 +13,14 @@ public partial class NavigationBarComponent : ContentView
     public NavigationBarComponent()
     {
         InitializeComponent();
+
+        MessagingCenter.Subscribe<string>(this, "BluetoothConnected", async (value) =>
+        {
+            if (value == "true")
+                ImageButtonBluetooth.Source = "bluetooth_on_icon.png";
+            else
+                ImageButtonBluetooth.Source = "bluetooth_icon.png";
+        });
     }
 
     public string Title

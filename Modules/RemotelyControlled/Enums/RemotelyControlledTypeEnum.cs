@@ -1,5 +1,4 @@
-﻿using System;
-namespace Drrobo.Modules.RemotelyControlled.Enums
+﻿namespace Drrobo.Modules.RemotelyControlled.Enums
 {
 	public enum RemotelyControlledTypeEnum
 	{
@@ -8,4 +7,3 @@ namespace Drrobo.Modules.RemotelyControlled.Enums
         Spider
     }
 }
-
