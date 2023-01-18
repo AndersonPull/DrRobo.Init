@@ -89,7 +89,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         public async Task WriteBluetooth(string write)
         {
-            if (Model.ConnectedDevice != null &&
+            if (Model.ConnectedDevice == null ||
                 Model.ConnectedDevice.State != DeviceState.Connected)
             {
                 MessagingCenter.Send<string>("false", "BluetoothConnected");
