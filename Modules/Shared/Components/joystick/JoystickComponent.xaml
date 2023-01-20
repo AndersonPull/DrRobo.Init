@@ -23,7 +23,7 @@
                 Padding="20"
                 CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="Black"
+                BackgroundColor="{DynamicResource Black}"
                 Pressed="ImageButtonPressedLeft"
                 Released="ButtonReleased"/>
             <ImageButton
@@ -35,7 +35,7 @@
                 Padding="20"
                 CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="Black"
+                BackgroundColor="{DynamicResource Black}"
                 Pressed="ImageButtonPressedUp"
                 Released="ButtonReleased"/>
             <ImageButton
@@ -47,7 +47,7 @@
                 Padding="20"
                 CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="Black"
+                BackgroundColor="{DynamicResource Black}"
                 Pressed="ImageButtonPressedRight"
                 Released="ButtonReleased"/>
             <ImageButton
@@ -59,7 +59,7 @@
                 Padding="20"
                 CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="Black"
+                BackgroundColor="{DynamicResource Black}"
                 Pressed="ImageButtonPressedDown"
                 Released="ButtonReleased"/>
         </Grid>
@@ -80,8 +80,8 @@
                 Text="X"
                 FontSize="18"
                 FontAttributes="Bold"
-                TextColor="White"
-                BackgroundColor="Blue"
+                TextColor="{DynamicResource White}"
+                BackgroundColor="{DynamicResource JoystickBlue}"
                 Pressed="ButtonPressed"
                 Released="ButtonReleased"/>
             <Button
@@ -94,8 +94,8 @@
                 Text="Y"
                 FontSize="18"
                 FontAttributes="Bold"
-                TextColor="White"
-                BackgroundColor="Orange"
+                TextColor="{DynamicResource White}"
+                BackgroundColor="{DynamicResource JoystickYellow}"
                 Pressed="ButtonPressed"
                 Released="ButtonReleased"/>
             <Button
@@ -108,8 +108,8 @@
                 Text="B"
                 FontSize="18"
                 FontAttributes="Bold"
-                TextColor="White"
-                BackgroundColor="Red"
+                TextColor="{DynamicResource White}"
+                BackgroundColor="{DynamicResource JoystickRed}"
                 Pressed="ButtonPressed"
                 Released="ButtonReleased"/>
             <Button
@@ -123,8 +123,8 @@
                 Text="A"
                 FontSize="18"
                 FontAttributes="Bold"
-                TextColor="White"
-                BackgroundColor="Green"
+                TextColor="{DynamicResource White}"
+                BackgroundColor="{DynamicResource JoystickGreen}"
                 Pressed="ButtonPressed"
                 Released="ButtonReleased"/>
         </Grid>

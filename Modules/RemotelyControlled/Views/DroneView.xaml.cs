@@ -18,6 +18,9 @@ public partial class DroneView : ContentPage
 
     private async Task SetDeviceDisplay()
     {
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+            return;
+
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
             case DisplayOrientation.Landscape:

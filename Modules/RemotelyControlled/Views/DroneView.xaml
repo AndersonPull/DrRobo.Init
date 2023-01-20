@@ -17,7 +17,7 @@
             Grid.Row="1"
             Grid.RowSpan="2"
             x:Name="Joystick"
-            IsVisible="false">
+            IsVisible="{OnIdiom Desktop=True,Default=False}">
             <Grid
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
@@ -51,7 +51,8 @@
             Grid.Row="1"
             x:Name="JoystickWarning"
             VerticalOptions="CenterAndExpand"
-            HorizontalOptions="CenterAndExpand">
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{OnIdiom Desktop=False,Default=True}">
             <animationJoystick:AnimationJoystick/>
         </StackLayout>
     </Grid>
