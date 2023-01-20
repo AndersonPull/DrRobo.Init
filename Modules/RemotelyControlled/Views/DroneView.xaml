@@ -32,7 +32,8 @@
                 <joystick:JoystickComponent
                     Padding="15"
                     VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"/>
+                    HorizontalOptions="FillAndExpand"
+                    CommunicationType="Wifi"/>
                 <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
