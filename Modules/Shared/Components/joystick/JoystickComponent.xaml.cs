@@ -1,12 +1,22 @@
-﻿namespace Drrobo.Modules.Shared.Components.joystick;
+﻿using Drrobo.Modules.Shared.Enums;
+
+namespace Drrobo.Modules.Shared.Components.joystick;
 
 public partial class JoystickComponent : ContentView
 {
+    public static readonly BindableProperty CommunicationTypeProperty = BindableProperty.Create(nameof(CommunicationType), typeof(CommunicationTypeEnum), typeof(JoystickComponent));
+
     public JoystickComponent()
 	{
 		InitializeComponent();
     }
-    
+
+    public CommunicationTypeEnum CommunicationType
+    {
+        get => (CommunicationTypeEnum)GetValue(CommunicationTypeProperty);
+        set => SetValue(CommunicationTypeProperty, value);
+    }
+
     void ButtonPressed(object sender, System.EventArgs e)
     {
         var button = (Button)sender;
@@ -40,6 +50,9 @@ public partial class JoystickComponent : ContentView
 
     void SendMessage(string message)
     {
-        MessagingCenter.Send<string>(message, "WriteBluetooth");
+        if(CommunicationType == CommunicationTypeEnum.Bluetooth)
+            MessagingCenter.Send<string>(message, "WriteBluetooth");
+        else
+            MessagingCenter.Send<string>(message, "WriteWifiDrone");
     }
 }
