@@ -6,6 +6,7 @@
     xmlns:animationJoystick="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:joystick="clr-namespace:Drrobo.Modules.Shared.Components.joystick"
+    xmlns:constants="clr-namespace:Drrobo.Utils.Constant"
     NavigationPage.HasNavigationBar="False">
     <Grid>
         <navigation:NavigationBarComponent
@@ -27,12 +28,13 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
-                    Source="https://github.com/AndersonPull"
+                    Source="{x:Static constants:Constants.BaseServeLocal}"
                     x:Name="WebViewCam"/>
                 <joystick:JoystickComponent
                     Padding="15"
                     VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"/>
+                    HorizontalOptions="FillAndExpand"
+                    CommunicationType="Wifi"/>
                 <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"

@@ -20,7 +20,8 @@
             IsVisible="{OnIdiom Desktop=true,Default=false}">
             <joystick:JoystickComponent
                 Margin="15"
-                VerticalOptions="EndAndExpand"/>
+                VerticalOptions="EndAndExpand"
+                CommunicationType="Bluetooth"/>
         </StackLayout>
         <StackLayout
             Grid.Row="1"
