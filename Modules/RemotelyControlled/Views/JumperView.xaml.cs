@@ -30,4 +30,10 @@ public partial class JumperView : ContentPage
                 break;
         }
     }
+
+    void OpenCam(object sender, EventArgs args)
+    {
+        WebViewCam.IsVisible = true;
+        ImageButtonCam.IsVisible = false;
+    }
 }
