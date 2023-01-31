@@ -7,28 +7,54 @@
     xmlns:animationJoystick="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     xmlns:joystick="clr-namespace:Drrobo.Modules.Shared.Components.joystick"
     NavigationPage.HasNavigationBar="False">
-    <Grid RowDefinitions="10,80*">
+    <Grid>
         <navigation:NavigationBarComponent
+            ZIndex="1"
             VerticalOptions="Start"
             Grid.Row="0"
             HasBluetooth="True"
-            ZIndex="1"
             Command="{Binding BluetoothPopupCommand}"/>
         <StackLayout
             Grid.Row="1"
+            Grid.RowSpan="2"
             x:Name="Joystick"
-            IsVisible="{OnIdiom Desktop=true,Default=false}">
-            <joystick:JoystickComponent
-                Margin="15"
-                VerticalOptions="EndAndExpand"
-                CommunicationType="Bluetooth"/>
+            IsVisible="{OnIdiom Desktop=True,Default=False}">
+            <Grid
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                RowDefinitions="100*">
+                <WebView
+                    Margin="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
+                    Source="http://192.168.0.37"
+                    x:Name="WebViewCam"/>
+                <joystick:JoystickComponent
+                    Padding="15"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    CommunicationType="Bluetooth"/>
+                <ImageButton
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    Padding="20"
+                    CornerRadius="30"
+                    Opacity="0.4"
+                    BackgroundColor="{DynamicResource BackgroundLeftBar}"
+                    Source="not_cam_icon"
+                    Clicked="OpenCam"
+                    x:Name="ImageButtonCam"/> 
+            </Grid>
         </StackLayout>
         <StackLayout
             Grid.Row="1"
             x:Name="JoystickWarning"
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
-            IsVisible="{OnIdiom Desktop=false,Default=true}">
+            IsVisible="{OnIdiom Desktop=False,Default=True}">
             <animationJoystick:AnimationJoystick/>
         </StackLayout>
     </Grid>

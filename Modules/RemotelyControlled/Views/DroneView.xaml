@@ -28,7 +28,7 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
-                    Source="{x:Static constants:Constants.BaseServeLocal}"
+                    Source="http://192.168.0.37"
                     x:Name="WebViewCam"/>
                 <joystick:JoystickComponent
                     Padding="15"
