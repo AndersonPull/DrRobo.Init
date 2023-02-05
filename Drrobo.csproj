@@ -32,8 +32,6 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
-	  <CodesignProvision>VS: com.drrobo.drrobo Development</CodesignProvision>
-	  <CodesignKey>Apple Development: Created via API (C3HT4CNSVP)</CodesignKey>
 	  <MtouchLink>None</MtouchLink>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
@@ -48,11 +46,12 @@
 	  <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
 	</PropertyGroup>
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
+	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
+	</ItemGroup>
+	<ItemGroup>
 		<!-- App Icon -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
-		<!-- App splash -->
 		<MauiSplashScreen Include="Resources\Splash\splashdrrobo.svg" Color="#2FC12C" BaseSize="128,128" />
 
 		<!-- Custom Fonts -->
@@ -149,6 +148,8 @@
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </BundleResource>
+	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
