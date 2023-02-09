@@ -5,7 +5,6 @@
     x:Class="Drrobo.Modules.RemotelyControlled.Components.Popup.BluetoothPopup"
     xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:viewModel="clr-namespace:Drrobo.Modules.RemotelyControlled.ViewModels"
     BackgroundClicked="PopupPage_BackgroundClicked">
     <mopups:PopupPage.Animation>
         <animations:MoveAnimation

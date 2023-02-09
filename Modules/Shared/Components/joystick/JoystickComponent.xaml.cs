@@ -17,33 +17,33 @@ public partial class JoystickComponent : ContentView
         set => SetValue(CommunicationTypeProperty, value);
     }
 
-    void ButtonPressed(object sender, System.EventArgs e)
+    void ButtonPressed(object sender, EventArgs e)
     {
         var button = (Button)sender;
         SendMessage(button.Text);
     }
 
-    void ImageButtonPressedLeft(System.Object sender, System.EventArgs e)
+    void ImageButtonPressedLeft(object sender, EventArgs e)
     {
         SendMessage("L");
     }
 
-    void ImageButtonPressedUp(System.Object sender, System.EventArgs e)
+    void ImageButtonPressedUp(object sender, EventArgs e)
     {
         SendMessage("U");
     }
 
-    void ImageButtonPressedRight(System.Object sender, System.EventArgs e)
+    void ImageButtonPressedRight(object sender, EventArgs e)
     {
         SendMessage("R");
     }
 
-    void ImageButtonPressedDown(System.Object sender, System.EventArgs e)
+    void ImageButtonPressedDown(object sender, EventArgs e)
     {
         SendMessage("D");
     }
 
-    void ButtonReleased(object sender, System.EventArgs e)
+    void ButtonReleased(object sender, EventArgs e)
     {
         SendMessage("S");
     }
@@ -51,8 +51,8 @@ public partial class JoystickComponent : ContentView
     void SendMessage(string message)
     {
         if(CommunicationType == CommunicationTypeEnum.Bluetooth)
-            MessagingCenter.Send<string>(message, "WriteBluetooth");
+            MessagingCenter.Send(message, "WriteBluetooth");
         else
-            MessagingCenter.Send<string>(message, "WriteWifiDrone");
+            MessagingCenter.Send(message, "WriteWifiDrone");
     }
 }

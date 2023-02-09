@@ -1,17 +1,14 @@
-﻿using System;
-using Drrobo.Modules.Shared.ViewModels;
+﻿using Drrobo.Modules.Shared.ViewModels;
 using Drrobo.Modules.Shared.Services.Navigation;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
 using System.Collections.ObjectModel;
 using Drrobo.Modules.RemotelyControlled.Models;
-using Plugin.BLE.Abstractions.Extensions;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using System.Windows.Input;
 using Mopups.Services;
 using System.Text;
-using System.Linq;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -34,6 +31,9 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
             MessagingCenter.Subscribe<string>(this, "WriteBluetooth", async (text)
                 => await WriteBluetooth(text));
+
+            MessagingCenter.Subscribe<string>(this, "BluetoothPopup", async (value)
+                => await BluetoothPopupAsync());
         }
 
         private async Task BluetoothPopupAsync()

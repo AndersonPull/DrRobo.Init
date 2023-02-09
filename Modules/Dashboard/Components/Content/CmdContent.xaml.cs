@@ -2,8 +2,13 @@
 
 public partial class CmdContent : ContentView
 {
-	public CmdContent()
+    public CmdContent()
 	{
 		InitializeComponent();
-	}
+    }
+
+    void EntryCMD_Unfocused(object sender, FocusEventArgs e)
+    {
+        EntryCMD.Focus();
+    }
 }
