@@ -32,8 +32,6 @@
                 Text="{Binding Model.CommandText, Mode=TwoWay}"
                 TextColor="{DynamicResource Primary}"
                 Keyboard="Plain"
-                Unfocused="EntryCMD_Unfocused"
-                
                 ReturnCommand="{Binding EnterCommand}"/>
         </StackLayout>
         <StackLayout
@@ -44,8 +42,8 @@
             <Frame
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="EndAndExpand"
-                WidthRequest="400"
-                HeightRequest="250"
+                WidthRequest="{OnIdiom Phone=220, Default=400}"
+                HeightRequest="{OnIdiom Phone=120, Default=250}"
                 IsClippedToBounds="True"
                 CornerRadius="8"
                 IsVisible="{Binding Model.DroneCamOn}"
@@ -61,8 +59,8 @@
             <Frame
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="EndAndExpand"
-                WidthRequest="400"
-                HeightRequest="250"
+                WidthRequest="{OnIdiom Phone=220, Default=400}"
+                HeightRequest="{OnIdiom Phone=120, Default=250}"
                 IsClippedToBounds="True"
                 CornerRadius="8"
                 IsVisible="{Binding Model.JumperCamOn}"
