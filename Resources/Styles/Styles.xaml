@@ -24,6 +24,13 @@
         <Setter Property="FontSize" Value="12"/>
     </Style>
     <Style
+        x:Key="Label12WhiteBold"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+    <Style
         x:Key="Label14White"
         TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource White}" />

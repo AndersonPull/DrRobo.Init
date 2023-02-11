@@ -92,10 +92,52 @@
                 </ScrollView>
                 <StackLayout
                     Grid.Row="1"
-                    Margin="15,0,15,15">
+                    Margin="15"
+                    Spacing="15">
                     <Label
                         Text="Aparelhos conectados na redes"
                         Style="{DynamicResource Label14WhiteBold}"/>
+                    <Frame
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="80"
+                        CornerRadius="15"
+                        HasShadow="False">
+                        <Frame.Background>
+                            <LinearGradientBrush >
+                                <GradientStop Offset="0.0" Color="{DynamicResource Primary}" />
+                                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Grid
+                            ColumnDefinitions="80*, 20*"
+                            Margin="15">
+                            <StackLayout
+                                Spacing="5"
+                                Grid.Column="0">
+                                <Label
+                                    Style="{DynamicResource Label12WhiteBold}"
+                                    Text="Vamos utilizar cartões hoje?"/>
+                                <Label
+                                    Style="{DynamicResource Label12WhiteBold}"
+                                    Text="Salvar e emular cartões e comigo"/>
+                                <Label
+                                    Style="{DynamicResource Label12WhiteBold}"
+                                    Text="mesmo"/>
+                            </StackLayout>
+                            <Image
+                                Grid.Column="1"
+                                VerticalOptions="EndAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                Margin="0,0,-37,-37"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Source="logo_icon.png" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AccessCardsViewCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
