@@ -34,7 +34,8 @@
                     Padding="15"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    CommunicationType="Bluetooth"/>
+                    Command="{Binding MovementJumperCommand}"
+                    CommandParameter="{Binding .}"/>
                 <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"

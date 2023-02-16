@@ -91,22 +91,22 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     Model.CommandsList = new ObservableCollection<string>();
                     break;
                 case "jumper connect":
-                    MessagingCenter.Send("true", "BluetoothPopup");
+                   
                     break;
                 case "jumper left":
-                    MessagingCenter.Send("L", "WriteBluetooth");
+                    
                     break;
                 case "jumper front":
-                    MessagingCenter.Send("A", "WriteBluetooth");
+                  
                     break;
                 case "jumper right":
-                    MessagingCenter.Send("R", "WriteBluetooth");
+                    
                     break;
                 case "jumper back":
-                    MessagingCenter.Send("B", "WriteBluetooth");
+                    
                     break;
                 case "jumper stop":
-                    MessagingCenter.Send("S", "WriteBluetooth");
+                    
                     break;
                 default:
                     break;

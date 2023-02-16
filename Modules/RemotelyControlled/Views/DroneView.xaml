@@ -6,7 +6,6 @@
     xmlns:animationJoystick="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:joystick="clr-namespace:Drrobo.Modules.Shared.Components.joystick"
-    xmlns:constants="clr-namespace:Drrobo.Utils.Constant"
     NavigationPage.HasNavigationBar="False">
     <Grid>
         <navigation:NavigationBarComponent
@@ -34,7 +33,8 @@
                     Padding="15"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    CommunicationType="Wifi"/>
+                    Command="{Binding MovementDroneCommand}"
+                    CommandParameter="{Binding .}"/>
                 <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"

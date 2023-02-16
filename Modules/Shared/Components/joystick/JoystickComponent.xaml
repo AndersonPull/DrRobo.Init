@@ -2,7 +2,8 @@
 <ContentView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Drrobo.Modules.Shared.Components.joystick.JoystickComponent">
+    x:Class="Drrobo.Modules.Shared.Components.joystick.JoystickComponent"
+    x:Name="Joystick">
     <Grid
         VerticalOptions="EndAndExpand"
         HorizontalOptions="FillAndExpand"
@@ -18,50 +19,34 @@
                 Rotation="0"
                 Grid.Column="0"
                 Grid.Row="1"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="20"
-                CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="{DynamicResource Black}"
-                Pressed="ImageButtonPressedLeft"
-                Released="ButtonReleased"/>
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="R"/>
             <ImageButton
                 Rotation="90"
                 Grid.Column="1"
                 Grid.Row="0"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="20"
-                CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="{DynamicResource Black}"
-                Pressed="ImageButtonPressedUp"
-                Released="ButtonReleased"/>
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="U"/>
             <ImageButton
                 Rotation="180"
                 Grid.Column="2"
                 Grid.Row="1"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="20"
-                CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="{DynamicResource Black}"
-                Pressed="ImageButtonPressedRight"
-                Released="ButtonReleased"/>
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="L"/>
             <ImageButton
                 Rotation="-90"
                 Grid.Column="1"
                 Grid.Row="2"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="20"
-                CornerRadius="30"
                 Source="arrow_icon"
-                BackgroundColor="{DynamicResource Black}"
-                Pressed="ImageButtonPressedDown"
-                Released="ButtonReleased"/>
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="D"/>
         </Grid>
         <Grid
             Grid.Column="1"
@@ -73,60 +58,36 @@
             <Button
                 Grid.Column="0"
                 Grid.Row="1"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="15"
-                CornerRadius="30"
                 Text="X"
-                FontSize="18"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource White}"
+                Style="{DynamicResource JoystickButton}"
                 BackgroundColor="{DynamicResource JoystickBlue}"
-                Pressed="ButtonPressed"
-                Released="ButtonReleased"/>
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="X"/>
             <Button
                 Grid.Column="1"
                 Grid.Row="0"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="15"
-                CornerRadius="30"
                 Text="Y"
-                FontSize="18"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource White}"
+                Style="{DynamicResource JoystickButton}"
                 BackgroundColor="{DynamicResource JoystickYellow}"
-                Pressed="ButtonPressed"
-                Released="ButtonReleased"/>
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="Y"/>
             <Button
                 Grid.Column="2"
                 Grid.Row="1"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="15"
-                CornerRadius="30"
                 Text="B"
-                FontSize="18"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource White}"
+                Style="{DynamicResource JoystickButton}"
                 BackgroundColor="{DynamicResource JoystickRed}"
-                Pressed="ButtonPressed"
-                Released="ButtonReleased"/>
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="B"/>
             <Button
                 x:Name="ButtonA"
                 Grid.Column="1"
                 Grid.Row="2"
-                WidthRequest="60"
-                HeightRequest="60"
-                Padding="15"
-                CornerRadius="30"
                 Text="A"
-                FontSize="18"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource White}"
+                Style="{DynamicResource JoystickButton}"
                 BackgroundColor="{DynamicResource JoystickGreen}"
-                Pressed="ButtonPressed"
-                Released="ButtonReleased"/>
+                Command="{Binding Command, Source={x:Reference Joystick}}"
+                CommandParameter="A"/>
         </Grid>
     </Grid>
 </ContentView>

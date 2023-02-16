@@ -1,58 +1,26 @@
-﻿using Drrobo.Modules.Shared.Enums;
+﻿using System.Windows.Input;
 
 namespace Drrobo.Modules.Shared.Components.joystick;
 
 public partial class JoystickComponent : ContentView
 {
-    public static readonly BindableProperty CommunicationTypeProperty = BindableProperty.Create(nameof(CommunicationType), typeof(CommunicationTypeEnum), typeof(JoystickComponent));
+    public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(JoystickComponent));
+    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(JoystickComponent));
 
     public JoystickComponent()
 	{
 		InitializeComponent();
     }
 
-    public CommunicationTypeEnum CommunicationType
+    public ICommand Command
     {
-        get => (CommunicationTypeEnum)GetValue(CommunicationTypeProperty);
-        set => SetValue(CommunicationTypeProperty, value);
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
     }
 
-    void ButtonPressed(object sender, EventArgs e)
+    public object CommandParameter
     {
-        var button = (Button)sender;
-        SendMessage(button.Text);
-    }
-
-    void ImageButtonPressedLeft(object sender, EventArgs e)
-    {
-        SendMessage("L");
-    }
-
-    void ImageButtonPressedUp(object sender, EventArgs e)
-    {
-        SendMessage("U");
-    }
-
-    void ImageButtonPressedRight(object sender, EventArgs e)
-    {
-        SendMessage("R");
-    }
-
-    void ImageButtonPressedDown(object sender, EventArgs e)
-    {
-        SendMessage("D");
-    }
-
-    void ButtonReleased(object sender, EventArgs e)
-    {
-        SendMessage("S");
-    }
-
-    void SendMessage(string message)
-    {
-        if(CommunicationType == CommunicationTypeEnum.Bluetooth)
-            MessagingCenter.Send(message, "WriteBluetooth");
-        else
-            MessagingCenter.Send(message, "WriteWifiDrone");
+        get => GetValue(CommandParameterProperty);
+        set => SetValue(CommandParameterProperty, value);
     }
 }

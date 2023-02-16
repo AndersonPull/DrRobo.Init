@@ -6,25 +6,7 @@ namespace Drrobo.Modules.RemotelyControlled.Services
 {
 	public interface IRemotelyControlledService
 	{
-        [Get("/up")]
-        Task Up();
-
-        [Get("/down")]
-        Task Down();
-
-        [Get("/front")]
-        Task Front();
-
-        [Get("/back")]
-        Task Back();
-
-        [Get("/left")]
-        Task Left();
-
-        [Get("/right")]
-        Task Right();
-
-        [Get("/stop")]
-        Task Stop();
+        [Post("/Movement")]
+        Task<string> Movement(string request);
     }
 }

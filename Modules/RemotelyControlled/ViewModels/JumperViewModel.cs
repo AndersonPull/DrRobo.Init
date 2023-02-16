@@ -15,6 +15,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     public class JumperViewModel : BaseViewModel<JumperModel>
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
+        public ICommand MovementJumperCommand => new Command(async (value) => await MovementJumperAsync((string)value));
 
         IAdapter _adapter;
         IBluetoothLE _bluetooth;
@@ -28,12 +29,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
             MessagingCenter.Subscribe<IDevice>(this, "DeviceSelectedBluetooth", async (selectedDevice)
                 => await DeviceSelected(selectedDevice));
-
-            MessagingCenter.Subscribe<string>(this, "WriteBluetooth", async (text)
-                => await WriteBluetooth(text));
-
-            MessagingCenter.Subscribe<string>(this, "BluetoothPopup", async (value)
-                => await BluetoothPopupAsync());
         }
 
         private async Task BluetoothPopupAsync()
@@ -87,7 +82,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             }
         }
 
-        public async Task WriteBluetooth(string write)
+        public async Task MovementJumperAsync(string value)
         {
             if (Model.ConnectedDevice == null ||
                 Model.ConnectedDevice.State != DeviceState.Connected)
@@ -103,7 +98,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             var characteristic = characteristics.FirstOrDefault();
 
             if (characteristic.CanWrite)
-                await characteristic.WriteAsync(Encoding.ASCII.GetBytes(write));
+                await characteristic.WriteAsync(Encoding.ASCII.GetBytes(value));
         }
     }
 }
