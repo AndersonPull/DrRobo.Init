@@ -7,55 +7,57 @@
     <StackLayout
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand">
-    <Frame
-        Padding="15"
-        BackgroundColor="{DynamicResource White}"
-        WidthRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
-        HeightRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
-        CornerRadius="8"
-        HasShadow="False"
-        VerticalOptions="EndAndExpand"
-        HorizontalOptions="FillAndExpand">
-        <StackLayout>
-            <ListView
-                HasUnevenRows="True"
-                BackgroundColor="Transparent"
-                VerticalOptions="FillAndExpand"
-                SeparatorVisibility="None"
-                SelectionMode="Single"
-                ItemSelected="DevicesListView_ItemSelected"
-                x:Name="DevicesListView">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <HorizontalStackLayout
-                                Spacing="10"
-                                HeightRequest="40"
-                                VerticalOptions="FillAndExpand"
-                                HorizontalOptions="StartAndExpand">
-                                <Image
-                                    Grid.Column="2"
-                                    WidthRequest="{OnIdiom Desktop=30, Default=15}"
-                                    HeightRequest="{OnIdiom Desktop=30, Default=15}"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    Source="bluetooth_on_icon.png"/>
-                                <Label 
-                                    Text="{Binding NativeDevice.Name}"
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="Center"
-                                    Style="{DynamicResource Label14BlackBold}"/>
-                            </HorizontalStackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button
-                VerticalOptions="End"
-                Text="Cancelar"
-                Style="{DynamicResource PrimaryButton}"
-                Clicked="ClosePopup"/>
-        </StackLayout>
-    </Frame>
-        </StackLayout>
+        <Frame
+            Padding="15"
+            BackgroundColor="{DynamicResource White}"
+            WidthRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
+            HeightRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
+            CornerRadius="8"
+            HasShadow="False"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout>
+                <ListView
+                    HasUnevenRows="True"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="FillAndExpand"
+                    SeparatorVisibility="None"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never"
+                    ItemSelected="DevicesListViewItemSelected"
+                    x:Name="DevicesListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <HorizontalStackLayout
+                                    Spacing="10"
+                                    HeightRequest="40"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image
+                                        Grid.Column="2"
+                                        WidthRequest="{OnIdiom Desktop=30, Default=15}"
+                                        HeightRequest="{OnIdiom Desktop=30, Default=15}"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Source="bluetooth_on_icon.png"/>
+                                    <Label 
+                                        Text="{Binding NativeDevice.Name}"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Center"
+                                        Style="{DynamicResource Label14BlackBold}"/>
+                                </HorizontalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button
+                    VerticalOptions="End"
+                    Text="Cancelar"
+                    Style="{DynamicResource PrimaryButton}"
+                    Clicked="ClosePopup"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
 </toolkit:Popup>

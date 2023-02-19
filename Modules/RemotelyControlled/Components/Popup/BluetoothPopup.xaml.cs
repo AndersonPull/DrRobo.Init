@@ -17,9 +17,8 @@ public partial class BluetoothPopup : CommunityToolkit.Maui.Views.Popup
         Close();
     }
 
-    void DevicesListView_ItemSelected(object sender, SelectedItemChangedEventArgs args)
+    void DevicesListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
     {
-        var device = (IDevice)args.SelectedItem;
-        Close(device);
+        Close((IDevice)args.SelectedItem);
     }
 }

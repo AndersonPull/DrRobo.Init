@@ -17,7 +17,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementJumperCommand => new Command(async (value) => await MovementJumperAsync((string)value));
-        public ICommand DeviceSelectedCommand => new Command(async (value) => await DeviceSelectedAsync((IDevice)value));
 
         IAdapter _adapter;
         IBluetoothLE _bluetooth;
