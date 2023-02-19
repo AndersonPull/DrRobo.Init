@@ -39,6 +39,15 @@
             Source="bluetooth_icon"
             x:Name="ImageButtonBluetooth"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
-            Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
+            Command="{Binding Command, Source={x:Reference NavigationBar}}">
+            <ImageButton.Triggers>
+                <DataTrigger
+                    TargetType="ImageButton"
+                    Binding="{Binding BluetoothConnected, Source={x:Reference NavigationBar}}"
+                    Value="True">
+                    <Setter Property="Source" Value="bluetooth_on_icon.png"/>
+                </DataTrigger>
+            </ImageButton.Triggers>
+        </ImageButton>
     </Grid>
 </ContentView>

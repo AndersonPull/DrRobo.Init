@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Mopups.Hosting;
 
 namespace Drrobo;
 
@@ -11,13 +11,13 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureMopups()
+            .UseMauiCommunityToolkit()
+            .UseMauiCompatibility()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
-            .UseMauiCompatibility()
             .ConfigureMauiHandlers((handlers) =>
 			{
 				#if MACCATALYST
@@ -37,6 +37,6 @@ public static class MauiProgram
 				builder.Logging.AddDebug();
 		#endif
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

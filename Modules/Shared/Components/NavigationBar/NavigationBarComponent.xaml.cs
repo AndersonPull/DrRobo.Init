@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using Plugin.BLE.Abstractions.Contracts;
 
 namespace Drrobo.Modules.Shared.Components.NavigationBar;
 
@@ -7,19 +6,17 @@ public partial class NavigationBarComponent : ContentView
 {
     public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(NavigationBarComponent), string.Empty);
     public static readonly BindableProperty HasBluetoothProperty = BindableProperty.Create(nameof(HasBluetooth), typeof(bool), typeof(NavigationBarComponent),false);
+    public static readonly BindableProperty BluetoothConnectedProperty = BindableProperty.Create(nameof(BluetoothConnected), typeof(bool), typeof(NavigationBarComponent), false);
     public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(NavigationBarComponent));
 
     public NavigationBarComponent()
     {
         InitializeComponent();
 
-        MessagingCenter.Subscribe<string>(this, "BluetoothConnected", async (value) =>
+        if (BluetoothConnected)
         {
-            if (value == "true")
-                ImageButtonBluetooth.Source = "bluetooth_on_icon.png";
-            else
-                ImageButtonBluetooth.Source = "bluetooth_icon.png";
-        });
+            var tes = 1;
+        }
     }
 
     public string Title
@@ -32,6 +29,12 @@ public partial class NavigationBarComponent : ContentView
     {
         get => (bool)GetValue(HasBluetoothProperty);
         set => SetValue(HasBluetoothProperty, value);
+    }
+
+    public bool BluetoothConnected
+    {
+        get => (bool)GetValue(BluetoothConnectedProperty);
+        set => SetValue(BluetoothConnectedProperty, value);
     }
 
     public ICommand Command

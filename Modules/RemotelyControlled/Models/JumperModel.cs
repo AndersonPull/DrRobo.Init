@@ -8,5 +8,6 @@ namespace Drrobo.Modules.RemotelyControlled.Models
 	{
         public ObservableCollection<IDevice> Devices { get; set; }
         public IDevice ConnectedDevice { get; set; }
+        public bool BluetoothConnected { get; set; }
     }
 }

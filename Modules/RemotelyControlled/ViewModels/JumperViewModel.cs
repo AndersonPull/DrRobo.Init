@@ -7,8 +7,9 @@ using Drrobo.Modules.RemotelyControlled.Models;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using System.Windows.Input;
-using Mopups.Services;
 using System.Text;
+using CommunityToolkit.Maui.Views;
+using Drrobo.Modules.RemotelyControlled.Components.Popup;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -16,6 +17,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementJumperCommand => new Command(async (value) => await MovementJumperAsync((string)value));
+        public ICommand DeviceSelectedCommand => new Command(async (value) => await DeviceSelectedAsync((IDevice)value));
 
         IAdapter _adapter;
         IBluetoothLE _bluetooth;
@@ -26,16 +28,16 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             _serviceNavigation = serviceNavigation;
             _bluetooth = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
-
-            MessagingCenter.Subscribe<IDevice>(this, "DeviceSelectedBluetooth", async (selectedDevice)
-                => await DeviceSelected(selectedDevice));
         }
 
         private async Task BluetoothPopupAsync()
         {
             await SearchDevicesAsync();
 
-            await MopupService.Instance.PushAsync(new Components.Popup.BluetoothPopup(Model.Devices));
+            var device = (IDevice)await App.Current.MainPage
+                .ShowPopupAsync(new BluetoothPopup(Model.Devices));
+
+            await DeviceSelectedAsync(device);
         }
 
         public async Task SearchDevicesAsync()
@@ -59,7 +61,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             }
         }
 
-        public async Task DeviceSelected(IDevice device)
+        public async Task DeviceSelectedAsync(IDevice device)
         {
             Model.ConnectedDevice = device;
 
@@ -74,7 +76,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             try
             {
                 await _adapter.ConnectToDeviceAsync(Model.ConnectedDevice);
-                MessagingCenter.Send<string>("true", "BluetoothConnected");
+                Model.BluetoothConnected = true;
             }
             catch (DeviceConnectionException ex)
             {
@@ -84,10 +86,9 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         public async Task MovementJumperAsync(string value)
         {
-            if (Model.ConnectedDevice == null ||
-                Model.ConnectedDevice.State != DeviceState.Connected)
+            if (Model.ConnectedDevice == null || Model.ConnectedDevice.State != DeviceState.Connected)
             {
-                MessagingCenter.Send<string>("false", "BluetoothConnected");
+                Model.BluetoothConnected = false;
                 return;
             }
 

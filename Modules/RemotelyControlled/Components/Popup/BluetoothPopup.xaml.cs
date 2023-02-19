@@ -1,11 +1,9 @@
 ﻿using Plugin.BLE.Abstractions.Contracts;
 using System.Collections.ObjectModel;
-using Mopups.Pages;
-using Mopups.Services;
 
 namespace Drrobo.Modules.RemotelyControlled.Components.Popup;
 
-public partial class BluetoothPopup : PopupPage
+public partial class BluetoothPopup : CommunityToolkit.Maui.Views.Popup
 {
     public BluetoothPopup(ObservableCollection<IDevice> devices)
     {
@@ -14,20 +12,14 @@ public partial class BluetoothPopup : PopupPage
         DevicesListView.ItemsSource = devices;
     }
 
-    void Button_Clicked(System.Object sender, System.EventArgs e)
+    void ClosePopup(object sender, EventArgs args)
     {
-        MopupService.Instance.PopAsync();
+        Close();
     }
 
-    void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)
+    void DevicesListView_ItemSelected(object sender, SelectedItemChangedEventArgs args)
     {
-        MopupService.Instance.PopAsync();
-    }
-
-    void DevicesListView_ItemSelected(System.Object sender, Microsoft.Maui.Controls.SelectedItemChangedEventArgs e)
-    {
-        MessagingCenter.Send<IDevice>((IDevice)e.SelectedItem, "DeviceSelectedBluetooth");
-
-        MopupService.Instance.PopAsync();
+        var device = (IDevice)args.SelectedItem;
+        Close(device);
     }
 }

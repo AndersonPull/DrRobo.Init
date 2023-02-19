@@ -22,7 +22,7 @@
                 Source="arrow_icon"
                 Style="{DynamicResource JoystickImageButton}"
                 Command="{Binding Command, Source={x:Reference Joystick}}"
-                CommandParameter="R"/>
+                CommandParameter="L"/>
             <ImageButton
                 Rotation="90"
                 Grid.Column="1"
@@ -38,7 +38,7 @@
                 Source="arrow_icon"
                 Style="{DynamicResource JoystickImageButton}"
                 Command="{Binding Command, Source={x:Reference Joystick}}"
-                CommandParameter="L"/>
+                CommandParameter="R"/>
             <ImageButton
                 Rotation="-90"
                 Grid.Column="1"

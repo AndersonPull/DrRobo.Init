@@ -1,23 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<mopups:PopupPage
+<toolkit:Popup
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.RemotelyControlled.Components.Popup.BluetoothPopup"
-    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
-    xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    BackgroundClicked="PopupPage_BackgroundClicked">
-    <mopups:PopupPage.Animation>
-        <animations:MoveAnimation
-            PositionIn="Bottom"
-            PositionOut="Bottom"
-            DurationIn="300"
-            DurationOut="300"
-            EasingIn="SinOut"
-            EasingOut="SinIn" />
-    </mopups:PopupPage.Animation>
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
     <Frame
         Padding="15"
         BackgroundColor="{DynamicResource White}"
+        WidthRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
         HeightRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
         CornerRadius="8"
         HasShadow="False"
@@ -61,7 +54,8 @@
                 VerticalOptions="End"
                 Text="Cancelar"
                 Style="{DynamicResource PrimaryButton}"
-                Clicked="Button_Clicked"/>
+                Clicked="ClosePopup"/>
         </StackLayout>
     </Frame>
-</mopups:PopupPage>
+        </StackLayout>
+</toolkit:Popup>

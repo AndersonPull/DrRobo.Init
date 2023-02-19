@@ -13,7 +13,8 @@
             VerticalOptions="Start"
             Grid.Row="0"
             HasBluetooth="True"
-            Command="{Binding BluetoothPopupCommand}"/>
+            Command="{Binding BluetoothPopupCommand}"
+            BluetoothConnected="{Binding Model.BluetoothConnected}"/>
         <StackLayout
             Grid.Row="1"
             Grid.RowSpan="2"

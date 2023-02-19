@@ -53,7 +53,7 @@
                         Margin="0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Source="http://192.168.0.37"/>
+                        Source="http://192.168.0.118"/>
                 </StackLayout>
             </Frame>
             <Frame
