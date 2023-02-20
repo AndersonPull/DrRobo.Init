@@ -33,10 +33,11 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         {
             await SearchDevicesAsync();
 
-            var device = (IDevice)await App.Current.MainPage
+            var result = (IDevice)await App.Current.MainPage
                 .ShowPopupAsync(new BluetoothPopup(Model.Devices));
 
-            await DeviceSelectedAsync(device);
+            if(result != null)
+                await DeviceSelectedAsync(result);
         }
 
         public async Task SearchDevicesAsync()
