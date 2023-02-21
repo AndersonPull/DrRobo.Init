@@ -140,6 +140,8 @@
 	  <None Remove="Platforms\iOS\Renderers\" />
 	  <None Remove="Platforms\Android\Renderers\" />
 	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="Utils\Bluetooth\" />
+	  <None Remove="Utils\Bluetooth\Implementations\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -202,6 +204,8 @@
 	  <Folder Include="Platforms\MacCatalyst\Renderers\" />
 	  <Folder Include="Platforms\iOS\Renderers\" />
 	  <Folder Include="Platforms\Android\Renderers\" />
+	  <Folder Include="Utils\Bluetooth\" />
+	  <Folder Include="Utils\Bluetooth\Implementations\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
