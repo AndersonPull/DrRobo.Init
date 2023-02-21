@@ -128,8 +128,6 @@
 	  <None Remove="Resources\Images\joystick.svg" />
 	  <None Remove="Resources\Images\not_cam_icon.svg" />
 	  <None Remove="Modules\RemotelyControlled\Services\" />
-	  <None Remove="Modules\Shared\Services\Dtos\" />
-	  <None Remove="Modules\Shared\Services\Dtos\Response\" />
 	  <None Remove="Utils\" />
 	  <None Remove="Utils\Constant\" />
 	  <None Remove="Modules\Shared\Enums\" />
@@ -194,8 +192,6 @@
 	  <Folder Include="Modules\RemotelyControlled\Models\" />
 	  <Folder Include="Modules\RemotelyControlled\Enums\" />
 	  <Folder Include="Modules\RemotelyControlled\Services\" />
-	  <Folder Include="Modules\Shared\Services\Dtos\" />
-	  <Folder Include="Modules\Shared\Services\Dtos\Response\" />
 	  <Folder Include="Utils\" />
 	  <Folder Include="Utils\Constant\" />
 	  <Folder Include="Modules\Shared\Enums\" />

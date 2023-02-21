@@ -18,7 +18,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         public NavigationService()
         {
             _mappings = new Dictionary<Type, Type>();
-            CreatePageViewModelMappings();
+            CreateViewModelMappings();
         }
 
         public Task InitializeAsync()
@@ -99,19 +99,18 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
             return page;
         }
 
-        public void CreatePageViewModelMappings()
+        public void CreateViewModelMappings()
         {
-            DashboardPageMaps();
-            RemotelyPageMaps();
+            DashboardMaps();
+            RemotelyMaps();
         }
 
-        private void DashboardPageMaps()
+        private void DashboardMaps()
         {
             _mappings.Add(typeof(StartViewModel), typeof(StartView));
-            
         }
 
-        private void RemotelyPageMaps()
+        private void RemotelyMaps()
         {
             _mappings.Add(typeof(JumperViewModel), typeof(JumperView));
             _mappings.Add(typeof(DroneViewModel), typeof(DroneView));
