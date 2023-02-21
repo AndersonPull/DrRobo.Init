@@ -4,6 +4,8 @@ using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Shared.Services.Navigation.Implementations;
 using Drrobo.Modules.Dashboard.ViewModels;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
+using Drrobo.Utils.Bluetooth;
+using Drrobo.Utils.Bluetooth.Implementations;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -22,12 +24,8 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             _container = new UnityContainer();
 
-            _container.RegisterType<INavigationService, NavigationService>();
-
-            _container.RegisterType<StartViewModel>();
-            _container.RegisterType<JumperViewModel>();
-            _container.RegisterType<DroneViewModel>();
-            _container.RegisterType<BaseViewModel>();
+            RegisterInterfaces();
+            RegisterViewModels();
         }
 
         public T Resolve<T>()
@@ -38,6 +36,20 @@ namespace Drrobo.Modules.Shared.ViewModels
         public object Resolve(Type type)
         {
             return _container.Resolve(type);
+        }
+
+        private void RegisterInterfaces()
+        {
+            _container.RegisterType<INavigationService, NavigationService>();
+            _container.RegisterType<IBluetoothUtil, BluetoothUtil>();
+        }
+
+        private void RegisterViewModels()
+        {
+            _container.RegisterType<StartViewModel>();
+            _container.RegisterType<JumperViewModel>();
+            _container.RegisterType<DroneViewModel>();
+            _container.RegisterType<BaseViewModel>();
         }
     }
 }
