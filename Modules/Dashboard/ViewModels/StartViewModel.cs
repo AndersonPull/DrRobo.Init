@@ -8,6 +8,11 @@ using Drrobo.Modules.Dashboard.Models;
 using Drrobo.Modules.RemotelyControlled.Enums;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using System.Collections.ObjectModel;
+using Drrobo.Utils.Bluetooth;
+using Plugin.BLE.Abstractions.Contracts;
+using CommunityToolkit.Maui.Views;
+using Plugin.BLE.Abstractions;
+using Drrobo.Modules.Shared.Components.PopUp;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -15,7 +20,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
     {
         public ICommand SetContentTypeCommand => new Command(async (value) => await SetContentTypeAsync((DashboardPageTypeEnum)value));
         public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((RemotelyControlledTypeEnum)value));
-        public ICommand EnterCommand => new Command(() =>  EnterAsync());
+        public ICommand EnterCommand => new Command(async () => await EnterAsync());
 
         private Dictionary<DashboardPageTypeEnum, Lazy<ContentView>> ContentType =
             new Dictionary<DashboardPageTypeEnum, Lazy<ContentView>>
@@ -27,11 +32,13 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         public DashboardPageTypeEnum CurrentContent { get; set; } = DashboardPageTypeEnum.Dashboard;
 
+        IBluetoothUtil _bluetoothUtil;
         INavigationService _serviceNavigation;
 
-        public StartViewModel(INavigationService serviceNavigation)
+        public StartViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
+            _bluetoothUtil = bluetoothUtil;
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)
@@ -68,7 +75,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             }
         }
 
-        private void EnterAsync()
+        private async Task EnterAsync()
         {
             Model.CommandsList.Add(Model.CommandText);
             Model.CommandText = "";
@@ -90,27 +97,36 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case "clear":
                     Model.CommandsList = new ObservableCollection<string>();
                     break;
-                case "jumper connect":
-                   
+                case "ble connect":
+                    await BluetoothPopupAsync();
                     break;
                 case "jumper left":
-                    
+                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "L");
                     break;
                 case "jumper front":
-                  
+                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "F");
                     break;
                 case "jumper right":
-                    
+                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "R");
                     break;
                 case "jumper back":
-                    
+                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "B");
                     break;
                 case "jumper stop":
-                    
+                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "S");
                     break;
                 default:
                     break;
             }
+        }
+
+        private async Task BluetoothPopupAsync()
+        {
+            var result = (IDevice)await App.Current.MainPage
+                .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
+
+            if (result != null)
+                Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(result);
         }
     }
 }

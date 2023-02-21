@@ -17,6 +17,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         IBluetoothUtil _bluetoothUtil; 
         INavigationService _serviceNavigation;
+
         public JumperViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
@@ -25,37 +26,15 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private async Task BluetoothPopupAsync()
         {
-            Model.Bluetooth.Devices = await _bluetoothUtil.SearchDevicesAsync();
-
             var result = (IDevice)await App.Current.MainPage
-                .ShowPopupAsync(new BluetoothPopup(Model.Bluetooth.Devices));
+                .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
             if(result != null)
-                await DeviceSelectedAsync(result);
-        }
-
-        public async Task DeviceSelectedAsync(IDevice device)
-        {
-            Model.Bluetooth.ConnectedDevice = device;
-
-            var result = await App.Current.MainPage
-                .DisplayAlert("AVISO", $"Deseja se conectar com {Model.Bluetooth.ConnectedDevice.Name}", "Conectar", "Cancelar");
-
-            if (!result)
-                return;
-
-            Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(Model.Bluetooth.ConnectedDevice);
+                Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(result);
         }
 
         public async Task MovementJumperAsync(string value)
-        {
-            if (Model.Bluetooth.ConnectedDevice == null || Model.Bluetooth.ConnectedDevice.State != DeviceState.Connected)
-            {
-                Model.Bluetooth.BluetoothConnected = false;
-                return;
-            }
-
-            await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, value);
-        }
+            =>  Model.Bluetooth.BluetoothConnected = await _bluetoothUtil
+            .SendAsync(Model.Bluetooth.ConnectedDevice, value);
     }
 }

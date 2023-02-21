@@ -130,7 +130,6 @@
 	  <None Remove="Modules\RemotelyControlled\Services\" />
 	  <None Remove="Utils\" />
 	  <None Remove="Utils\Constant\" />
-	  <None Remove="Modules\Shared\Enums\" />
 	  <None Remove="PropertyChanged.Fody" />
 	  <None Remove="Modules\Shared\Components\Entry\" />
 	  <None Remove="Platforms\MacCatalyst\Renderers\" />
@@ -194,7 +193,6 @@
 	  <Folder Include="Modules\RemotelyControlled\Services\" />
 	  <Folder Include="Utils\" />
 	  <Folder Include="Utils\Constant\" />
-	  <Folder Include="Modules\Shared\Enums\" />
 	  <Folder Include="Modules\Shared\Components\Entry\" />
 	  <Folder Include="Platforms\MacCatalyst\Renderers\" />
 	  <Folder Include="Platforms\iOS\Renderers\" />

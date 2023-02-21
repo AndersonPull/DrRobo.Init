@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Plugin.BLE;
+using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
 
@@ -44,6 +45,12 @@ namespace Drrobo.Utils.Bluetooth.Implementations
 
         public async Task<bool> SelectDeviceAsync(IDevice device)
         {
+            var result = await App.Current.MainPage
+               .DisplayAlert("AVISO", $"Deseja se conectar com {device.Name}", "Conectar", "Cancelar");
+
+            if (!result)
+                return false;
+
             await _adapter.StopScanningForDevicesAsync();
 
             try
@@ -58,8 +65,11 @@ namespace Drrobo.Utils.Bluetooth.Implementations
             }
         }
 
-        public async Task SendAsync(IDevice device, string value)
+        public async Task<bool> SendAsync(IDevice device, string value)
         {
+            if (device == null || device.State != DeviceState.Connected)
+                return false;
+
             var services = await device.GetServicesAsync();
             var service = services.LastOrDefault();
 
@@ -68,6 +78,8 @@ namespace Drrobo.Utils.Bluetooth.Implementations
 
             if (characteristic.CanWrite)
                 await characteristic.WriteAsync(Encoding.ASCII.GetBytes(value));
+
+            return true;
         }
     }
 }

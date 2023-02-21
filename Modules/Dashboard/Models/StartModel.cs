@@ -23,5 +23,6 @@ namespace Drrobo.Modules.Dashboard.Models
         public string CommandText { get; set; }
         public bool DroneCamOn { get; set; }
         public bool JumperCamOn { get; set; }
+        public BluetoothModel Bluetooth { get; set; } = new BluetoothModel();
     }
 }
