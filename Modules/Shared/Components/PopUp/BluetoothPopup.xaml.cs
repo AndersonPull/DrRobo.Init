@@ -1,14 +1,13 @@
 ﻿using Plugin.BLE.Abstractions.Contracts;
 using System.Collections.ObjectModel;
 
-namespace Drrobo.Modules.RemotelyControlled.Components.Popup;
+namespace Drrobo.Modules.Shared.Components.PopUp;
 
 public partial class BluetoothPopup : CommunityToolkit.Maui.Views.Popup
 {
-    public BluetoothPopup(ObservableCollection<IDevice> devices)
-    {
-        InitializeComponent();
-
+	public BluetoothPopup(ObservableCollection<IDevice> devices)
+	{
+		InitializeComponent();
         DevicesListView.ItemsSource = devices;
     }
 

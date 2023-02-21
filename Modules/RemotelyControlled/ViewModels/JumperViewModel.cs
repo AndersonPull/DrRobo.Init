@@ -5,7 +5,7 @@ using Drrobo.Modules.RemotelyControlled.Models;
 using Plugin.BLE.Abstractions;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
-using Drrobo.Modules.RemotelyControlled.Components.Popup;
+using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Utils.Bluetooth;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
@@ -25,10 +25,10 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private async Task BluetoothPopupAsync()
         {
-            Model.Devices = await _bluetoothUtil.SearchDevicesAsync();
+            Model.Bluetooth.Devices = await _bluetoothUtil.SearchDevicesAsync();
 
             var result = (IDevice)await App.Current.MainPage
-                .ShowPopupAsync(new BluetoothPopup(Model.Devices));
+                .ShowPopupAsync(new BluetoothPopup(Model.Bluetooth.Devices));
 
             if(result != null)
                 await DeviceSelectedAsync(result);
@@ -36,26 +36,26 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         public async Task DeviceSelectedAsync(IDevice device)
         {
-            Model.ConnectedDevice = device;
+            Model.Bluetooth.ConnectedDevice = device;
 
             var result = await App.Current.MainPage
-                .DisplayAlert("AVISO", $"Deseja se conectar com {Model.ConnectedDevice.Name}", "Conectar", "Cancelar");
+                .DisplayAlert("AVISO", $"Deseja se conectar com {Model.Bluetooth.ConnectedDevice.Name}", "Conectar", "Cancelar");
 
             if (!result)
                 return;
 
-            Model.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(Model.ConnectedDevice);
+            Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(Model.Bluetooth.ConnectedDevice);
         }
 
         public async Task MovementJumperAsync(string value)
         {
-            if (Model.ConnectedDevice == null || Model.ConnectedDevice.State != DeviceState.Connected)
+            if (Model.Bluetooth.ConnectedDevice == null || Model.Bluetooth.ConnectedDevice.State != DeviceState.Connected)
             {
-                Model.BluetoothConnected = false;
+                Model.Bluetooth.BluetoothConnected = false;
                 return;
             }
 
-            await _bluetoothUtil.SendAsync(Model.ConnectedDevice, value);
+            await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, value);
         }
     }
 }

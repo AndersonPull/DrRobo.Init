@@ -123,7 +123,6 @@
 	  <None Remove="Modules\Shared\Components\joystick\" />
 	  <None Remove="Resources\Images\bluetooth_on_icon.svg" />
 	  <None Remove="Modules\RemotelyControlled\Models\" />
-	  <None Remove="Modules\RemotelyControlled\Components\Popup\" />
 	  <None Remove="Modules\RemotelyControlled\Enums\" />
 	  <None Remove="Resources\Images\device.svg" />
 	  <None Remove="Resources\Images\joystick.svg" />
@@ -142,6 +141,7 @@
 	  <None Remove="CommunityToolkit.Maui" />
 	  <None Remove="Utils\Bluetooth\" />
 	  <None Remove="Utils\Bluetooth\Implementations\" />
+	  <None Remove="Modules\Shared\Components\PopUp\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -192,7 +192,6 @@
 	  <Folder Include="Modules\RemotelyControlled\Components\" />
 	  <Folder Include="Modules\Shared\Components\joystick\" />
 	  <Folder Include="Modules\RemotelyControlled\Models\" />
-	  <Folder Include="Modules\RemotelyControlled\Components\Popup\" />
 	  <Folder Include="Modules\RemotelyControlled\Enums\" />
 	  <Folder Include="Modules\RemotelyControlled\Services\" />
 	  <Folder Include="Modules\Shared\Services\Dtos\" />
@@ -206,6 +205,7 @@
 	  <Folder Include="Platforms\Android\Renderers\" />
 	  <Folder Include="Utils\Bluetooth\" />
 	  <Folder Include="Utils\Bluetooth\Implementations\" />
+	  <Folder Include="Modules\Shared\Components\PopUp\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
@@ -238,9 +238,6 @@
 	  <MauiXaml Update="Modules\Shared\Components\joystick\JoystickComponent.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Modules\RemotelyControlled\Components\Popup\BluetoothPopup.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Modules\RemotelyControlled\Views\DroneView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
@@ -248,6 +245,9 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Modules\Shared\Components\Entry\EntryComponent.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Modules\Shared\Components\PopUp\BluetoothPopup.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

@@ -6,8 +6,6 @@ namespace Drrobo.Modules.RemotelyControlled.Models
 {
 	public class JumperModel : BaseModel
 	{
-        public ObservableCollection<IDevice> Devices { get; set; }
-        public IDevice ConnectedDevice { get; set; }
-        public bool BluetoothConnected { get; set; }
+        public BluetoothModel Bluetooth { get; set; } = new BluetoothModel();
     }
 }
