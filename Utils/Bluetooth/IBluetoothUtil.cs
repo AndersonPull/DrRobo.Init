@@ -8,7 +8,7 @@ namespace Drrobo.Utils.Bluetooth
 	{
         Task<ObservableCollection<IDevice>> SearchDevicesAsync();
 
-        Task<bool> SelectDeviceAsync(IDevice device);
+        Task<IDevice> SelectDeviceAsync(IDevice device);
 
         Task<bool> SendAsync(IDevice device, string value);
     }

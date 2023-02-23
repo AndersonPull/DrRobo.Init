@@ -43,25 +43,25 @@ namespace Drrobo.Utils.Bluetooth.Implementations
             return devices;
         }
 
-        public async Task<bool> SelectDeviceAsync(IDevice device)
+        public async Task<IDevice> SelectDeviceAsync(IDevice device)
         {
             var result = await App.Current.MainPage
                .DisplayAlert("AVISO", $"Deseja se conectar com {device.Name}", "Conectar", "Cancelar");
 
             if (!result)
-                return false;
+                return null;
 
             await _adapter.StopScanningForDevicesAsync();
 
             try
             {
                 await _adapter.ConnectToDeviceAsync(device);
-                return true;
+                return device;
             }
             catch (DeviceConnectionException ex)
             {
                 await App.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK");
-                return false;
+                return null;
             }
         }
 

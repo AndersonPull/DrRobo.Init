@@ -30,7 +30,10 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
                 .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
             if(result != null)
-                Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(result);
+                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
+
+            if (Model.Bluetooth.ConnectedDevice != null)
+                Model.Bluetooth.BluetoothConnected = true;
         }
 
         public async Task MovementJumperAsync(string value)

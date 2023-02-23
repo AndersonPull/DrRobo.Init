@@ -11,7 +11,6 @@ using System.Collections.ObjectModel;
 using Drrobo.Utils.Bluetooth;
 using Plugin.BLE.Abstractions.Contracts;
 using CommunityToolkit.Maui.Views;
-using Plugin.BLE.Abstractions;
 using Drrobo.Modules.Shared.Components.PopUp;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
@@ -126,7 +125,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
             if (result != null)
-                Model.Bluetooth.BluetoothConnected = await _bluetoothUtil.SelectDeviceAsync(result);
+                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
         }
     }
 }
