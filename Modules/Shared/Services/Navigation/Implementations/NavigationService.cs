@@ -40,7 +40,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
             => Application.Current.MainPage = new NavigationPage(page);
 
         public void NavAsyncPage(Page page)
-            => Device.BeginInvokeOnMainThread(async ()
+            => MainThread.BeginInvokeOnMainThread(async ()
                 => await Application.Current.MainPage.Navigation.PushAsync(page));
 
         private static NavigationService instance = null;
@@ -69,7 +69,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
             else
             {
                 var nav = CurrentApplication.MainPage as NavigationPage;
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await nav.PushAsync(page);
                 });

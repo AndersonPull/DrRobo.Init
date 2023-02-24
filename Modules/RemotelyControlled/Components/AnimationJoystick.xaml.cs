@@ -6,7 +6,7 @@ public partial class AnimationJoystick : ContentView
 	{
 		InitializeComponent();
 
-        StartAnimationJoystick();
+        _ = StartAnimationJoystick();
     }
 
     private async Task StartAnimationJoystick()

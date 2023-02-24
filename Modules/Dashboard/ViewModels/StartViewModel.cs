@@ -77,7 +77,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         private async Task EnterAsync()
         {
             Model.CommandsList.Add(Model.CommandText);
-            Model.CommandText = "";
+            Model.CommandText = string.Empty;
 
             switch (Model.CommandsList.LastOrDefault())
             {

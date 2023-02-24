@@ -16,7 +16,7 @@ public partial class JumperView : ContentPage
         SetDeviceDisplay();
     }
 
-    private async Task  SetDeviceDisplay()
+    private void SetDeviceDisplay()
     {
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {

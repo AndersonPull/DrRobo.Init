@@ -16,7 +16,7 @@ public partial class DroneView : ContentPage
         SetDeviceDisplay();
     }
 
-    private async Task SetDeviceDisplay()
+    private void SetDeviceDisplay()
     {
         if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
             return;

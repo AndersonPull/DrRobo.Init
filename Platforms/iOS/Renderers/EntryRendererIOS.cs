@@ -9,7 +9,7 @@ using UIKit;
 [assembly: ExportRenderer(typeof(EntryComponent), typeof(EntryRendererIOS))]
 namespace Drrobo.Platforms.iOS.Renderers
 {
-	public class EntryRendererIOS : EntryRenderer
+    public class EntryRendererIOS : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {

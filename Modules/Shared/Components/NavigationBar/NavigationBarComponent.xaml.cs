@@ -12,11 +12,6 @@ public partial class NavigationBarComponent : ContentView
     public NavigationBarComponent()
     {
         InitializeComponent();
-
-        if (BluetoothConnected)
-        {
-            var tes = 1;
-        }
     }
 
     public string Title

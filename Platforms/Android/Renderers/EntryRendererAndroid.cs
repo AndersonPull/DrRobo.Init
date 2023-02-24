@@ -1,4 +1,5 @@
-﻿using Drrobo.Modules.Shared.Components.Entry;
+﻿using Android.Content;
+using Drrobo.Modules.Shared.Components.Entry;
 using Drrobo.Platforms.Android.Renderers;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
@@ -9,6 +10,10 @@ namespace Drrobo.Platforms.Android.Renderers
 {
     public class EntryRendererAndroid : EntryRenderer
     {
+        public EntryRendererAndroid(Context context) : base(context)
+        {
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
