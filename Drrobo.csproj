@@ -139,6 +139,8 @@
 	  <None Remove="Utils\Bluetooth\" />
 	  <None Remove="Utils\Bluetooth\Implementations\" />
 	  <None Remove="Modules\Shared\Components\PopUp\" />
+	  <None Remove="Resources\ImgsBanners\" />
+	  <None Remove="Resources\ImgsBanners\mockup.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -156,6 +158,7 @@
 	  </BundleResource>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
@@ -200,6 +203,7 @@
 	  <Folder Include="Utils\Bluetooth\" />
 	  <Folder Include="Utils\Bluetooth\Implementations\" />
 	  <Folder Include="Modules\Shared\Components\PopUp\" />
+	  <Folder Include="Resources\ImgsBanners\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
