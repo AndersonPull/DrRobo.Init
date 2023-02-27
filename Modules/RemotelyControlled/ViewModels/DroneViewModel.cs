@@ -4,10 +4,11 @@ using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.RemotelyControlled.Models;
 using Drrobo.Utils.Constant;
 using System.Windows.Input;
+using Drrobo.Modules.Shared.Models;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
-    public class DroneViewModel : BaseViewModel<DroneModel>
+    public class DroneViewModel : BaseViewModel<BaseModel>
     {
         public ICommand MovementDroneCommand => new Command(async (value) => await MovementDroneAsync((string)value));
 
