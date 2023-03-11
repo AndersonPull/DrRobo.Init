@@ -27,6 +27,8 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-    <string>Esse aplicativo precisa acessar o Bluetooth.</string>
+	<string>Esse aplicativo precisa acessar o Bluetooth.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Esse aplicativo precisa acessar o Bluetooth.</string>
 </dict>
 </plist>
