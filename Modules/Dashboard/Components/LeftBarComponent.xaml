@@ -14,13 +14,13 @@
                 x:Name="CmdIcon"
                 Source="cmd_icon.png"
                 SemanticProperties.Description="Icon for cmd page"
-                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+                HeightRequest="20" />
             <Image
                 x:Name="CmdIconFull"
                 Source="cmd_full_icon.png"
                 IsVisible="false"
                 SemanticProperties.Description="Icon for cmd page"
-                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+                HeightRequest="20" />
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer
                     Tapped="SetIcon"
@@ -56,13 +56,13 @@
                 x:Name="ProfileIcon"
                 Source="profile_icon.png"
                 SemanticProperties.Description="Icon for profile page"
-                HeightRequest="{OnIdiom Phone='20', Default='30'}" />
+                HeightRequest="20" />
             <Image
                 x:Name="ProfileIconFull"
                 Source="profile_full_icon.png"
                 IsVisible="false"
                 SemanticProperties.Description="Icon for profile page"
-                HeightRequest="{OnIdiom Phone='20', Default='30'}"/>
+                HeightRequest="20"/>
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer
                     Tapped="SetIcon"

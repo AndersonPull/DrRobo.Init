@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Shared.Components.RemoteControl.RemoteControlPopup"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="RemoteControl">
+    <Frame
+        Padding="15"
+        WidthRequest="260"
+        HeightRequest="560"
+        BackgroundColor="#646464">
+        <Grid
+            ColumnDefinitions="33.3*,33.3*,33.3*"
+            RowDefinitions="75,75,75,75,75,75,75">
+            <ImageButton
+                Padding="15"
+                Grid.Column="0"
+                Grid.Row="0"
+                Source="power_icon"
+                Style="{DynamicResource CircleImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="P">
+            </ImageButton>
+            <ImageButton
+                Padding="5"
+                Grid.Column="2"
+                Grid.Row="0"
+                Source="logo_icon.png"
+                Style="{DynamicResource CircleImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="P">
+            </ImageButton>
+            <ImageButton
+                Rotation="90"
+                Grid.Column="1"
+                Grid.Row="1"
+                Source="arrow_green_icon"
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="U"/>
+            <ImageButton
+                Rotation="0"
+                Grid.Column="0"
+                Grid.Row="2"
+                Source="arrow_green_icon"
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="R"/>
+            <ImageButton
+                Grid.Column="1"
+                Grid.Row="2"
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="C"/>
+            <ImageButton
+                Rotation="180"
+                Grid.Column="2"
+                Grid.Row="2"
+                Source="arrow_green_icon"
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="L"/>
+            <ImageButton
+                Rotation="-90"
+                Grid.Column="1"
+                Grid.Row="3"
+                Source="arrow_green_icon"
+                Style="{DynamicResource JoystickImageButton}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="D"/>
+            <Button
+                Grid.Column="0"
+                Grid.Row="4"
+                Text="1"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="1"/>
+            <Button
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="2"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="2"/>
+            <Button
+                Grid.Column="2"
+                Grid.Row="4"
+                Text="3"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="3"/>
+            <Button
+                Grid.Column="0"
+                Grid.Row="5"
+                Text="4"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="4"/>
+            <Button
+                Grid.Column="1"
+                Grid.Row="5"
+                Text="5"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="5"/>
+            <Button
+                Grid.Column="2"
+                Grid.Row="5"
+                Text="6"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="6"/>
+            <Button
+                Grid.Column="0"
+                Grid.Row="6"
+                Text="7"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="7"/>
+            <Button
+                Grid.Column="1"
+                Grid.Row="6"
+                Text="8"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="8"/>
+            <Button
+                Grid.Column="2"
+                Grid.Row="6"
+                Text="9"
+                Style="{DynamicResource JoystickButton}"
+                BackgroundColor="{DynamicResource Black}"
+                Command="{Binding Command, Source={x:Reference RemoteControl}}"
+                CommandParameter="9"/>
+        </Grid>
+    </Frame>
+</toolkit:Popup>

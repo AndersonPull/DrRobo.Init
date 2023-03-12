@@ -141,6 +141,9 @@
 	  <None Remove="Modules\Shared\Components\PopUp\" />
 	  <None Remove="Resources\ImgsBanners\" />
 	  <None Remove="Resources\ImgsBanners\mockup.png" />
+	  <None Remove="Modules\Shared\Components\RemoteControl\" />
+	  <None Remove="Resources\Images\power_icon.svg" />
+	  <None Remove="Resources\Images\arrow_green_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -204,6 +207,7 @@
 	  <Folder Include="Utils\Bluetooth\Implementations\" />
 	  <Folder Include="Modules\Shared\Components\PopUp\" />
 	  <Folder Include="Resources\ImgsBanners\" />
+	  <Folder Include="Modules\Shared\Components\RemoteControl\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

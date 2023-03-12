@@ -12,6 +12,7 @@ using Drrobo.Utils.Bluetooth;
 using Plugin.BLE.Abstractions.Contracts;
 using CommunityToolkit.Maui.Views;
 using Drrobo.Modules.Shared.Components.PopUp;
+using Drrobo.Modules.Shared.Components.RemoteControl;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -114,6 +115,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case "jumper stop":
                     await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "S");
                     break;
+                case "remote_control":
+                    await RemoteControlPopupAsync();
+                    break;
                 default:
                     break;
             }
@@ -121,11 +125,17 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private async Task BluetoothPopupAsync()
         {
-            var result = (IDevice)await App.Current.MainPage
+            var result = (IDevice)await Application.Current.MainPage
                 .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
             if (result != null)
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
+        }
+
+        private async Task RemoteControlPopupAsync()
+        {
+            await Application.Current.MainPage
+                .ShowPopupAsync(new RemoteControlPopup());
         }
     }
 }

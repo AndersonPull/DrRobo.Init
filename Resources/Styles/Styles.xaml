@@ -110,6 +110,20 @@
         <Setter Property="CornerRadius" Value="30" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Black}" />
     </Style>
+    <Style
+        x:Key="CircleImageButton"
+        TargetType="ImageButton">
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="CornerRadius" Value="30" />
+        <Setter Property="Background">
+            <LinearGradientBrush>
+                <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+            </LinearGradientBrush>
+        </Setter>
+    </Style>
 
     <!--Page-->
     <Style TargetType="Page" ApplyToDerivedTypes="True">
