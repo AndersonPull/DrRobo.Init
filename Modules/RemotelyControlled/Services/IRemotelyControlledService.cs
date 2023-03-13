@@ -5,7 +5,7 @@ namespace Drrobo.Modules.RemotelyControlled.Services
 {
 	public interface IRemotelyControlledService
 	{
-        [Post("/Movement")]
+        [Post("/movement")]
         Task<string> Movement(string request);
     }
 }

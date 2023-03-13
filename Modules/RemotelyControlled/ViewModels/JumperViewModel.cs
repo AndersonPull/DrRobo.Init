@@ -26,7 +26,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private async Task BluetoothPopupAsync()
         {
-            var result = (IDevice)await App.Current.MainPage
+            var result = (IDevice)await Application.Current.MainPage
                 .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
             if(result != null)
