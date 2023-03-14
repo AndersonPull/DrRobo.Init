@@ -18,6 +18,9 @@ public partial class JumperView : ContentPage
 
     private void SetDeviceDisplay()
     {
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+            return;
+
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
             case DisplayOrientation.Landscape:
