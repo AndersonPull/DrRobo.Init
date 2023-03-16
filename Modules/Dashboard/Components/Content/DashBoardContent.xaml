@@ -102,7 +102,8 @@
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="80"
                         CornerRadius="15"
-                        HasShadow="False">
+                        HasShadow="False"
+                        IsClippedToBounds="True">
                         <Frame.Background>
                             <LinearGradientBrush >
                                 <GradientStop Offset="0.0" Color="{DynamicResource Primary}" />
@@ -129,7 +130,7 @@
                                 Grid.Column="1"
                                 VerticalOptions="EndAndExpand"
                                 HorizontalOptions="EndAndExpand"
-                                Margin="0,0,-25,-25"
+                                Margin="0,0,-22,-22"
                                 WidthRequest="100"
                                 HeightRequest="100"
                                 Source="logo_icon.png" />

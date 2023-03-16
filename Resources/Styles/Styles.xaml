@@ -104,19 +104,21 @@
     <Style
         x:Key="JoystickImageButton"
         TargetType="ImageButton">
-        <Setter Property="Padding" Value="20"/>
+        <!--Padding in ImageButton not working on android-->
+        <Setter Property="Padding" Value="{OnPlatform Android=0, Default=20}"/>
         <Setter Property="WidthRequest" Value="60" />
         <Setter Property="HeightRequest" Value="60" />
         <Setter Property="CornerRadius" Value="30" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Black}" />
     </Style>
     <Style
-        x:Key="CircleImageButton"
+        x:Key="CircleButtonPrimary"
         TargetType="ImageButton">
-        <Setter Property="Padding" Value="20"/>
+        <!--Padding in ImageButton not working on android-->
+        <Setter Property="Padding" Value="{OnPlatform Android=0, Default=15}"/>
         <Setter Property="WidthRequest" Value="60" />
         <Setter Property="HeightRequest" Value="60" />
-        <Setter Property="CornerRadius" Value="30" />
+        <Setter Property="CornerRadius" Value="30" />       
         <Setter Property="Background">
             <LinearGradientBrush>
                 <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
