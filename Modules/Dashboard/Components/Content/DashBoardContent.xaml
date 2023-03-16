@@ -110,10 +110,10 @@
                             </LinearGradientBrush>
                         </Frame.Background>
                         <Grid
-                            ColumnDefinitions="80*, 20*"
-                            Margin="15">
+                            ColumnDefinitions="80*, 20*">
                             <StackLayout
                                 Spacing="5"
+                                Margin="15"
                                 Grid.Column="0">
                                 <Label
                                     Style="{DynamicResource Label12WhiteBold}"
@@ -129,7 +129,7 @@
                                 Grid.Column="1"
                                 VerticalOptions="EndAndExpand"
                                 HorizontalOptions="EndAndExpand"
-                                Margin="0,0,-37,-37"
+                                Margin="0,0,-25,-25"
                                 WidthRequest="100"
                                 HeightRequest="100"
                                 Source="logo_icon.png" />
