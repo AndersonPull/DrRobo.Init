@@ -21,6 +21,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public ICommand SetContentTypeCommand => new Command(async (value) => await SetContentTypeAsync((DashboardPageTypeEnum)value));
         public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((RemotelyControlledTypeEnum)value));
         public ICommand EnterCommand => new Command(async () => await EnterAsync());
+        public ICommand AccessCardsViewCommand => new Command(async () => await AccessCardsViewAsync());
 
         private Dictionary<DashboardPageTypeEnum, Lazy<ContentView>> ContentType =
             new Dictionary<DashboardPageTypeEnum, Lazy<ContentView>>
@@ -136,6 +137,11 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         {
             await Application.Current.MainPage
                 .ShowPopupAsync(new RemoteControlPopup());
+        }
+
+        private async Task AccessCardsViewAsync()
+        {
+            await _serviceNavigation.NavigateToAsync<JumperViewModel>();
         }
     }
 }
