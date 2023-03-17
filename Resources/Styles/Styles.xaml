@@ -91,9 +91,22 @@
         </Setter>
     </Style>
     <Style
+        x:Key="BackButton"
+        TargetType="Button">
+        <!--Padding in ImageButton not working on android-->
+        <Setter Property="Padding" Value="{OnPlatform Android=0, Default=15}"/>
+        <Setter Property="WidthRequest" Value="60" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="CornerRadius" Value="30" />
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+    </Style>
+    <Style
         x:Key="JoystickButton"
         TargetType="Button">
-        <Setter Property="Padding" Value="15"/>
+        <!--Padding in ImageButton not working on android-->
+        <Setter Property="Padding" Value="{OnPlatform Android=0, Default=15}"/>
         <Setter Property="WidthRequest" Value="60" />
         <Setter Property="HeightRequest" Value="60" />
         <Setter Property="CornerRadius" Value="30" />
@@ -133,4 +146,3 @@
         <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
     </Style>
 </ResourceDictionary>
-
