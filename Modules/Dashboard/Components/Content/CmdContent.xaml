@@ -17,13 +17,11 @@
                 Spacing="5">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label
-                                Style="{DynamicResource Label12Primary}"
-                                Text="{Binding .}"
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Start" />
-                        </StackLayout>
+                        <Label
+                            Style="{DynamicResource Label12Primary}"
+                            Text="{Binding .}"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start" />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
@@ -31,6 +29,7 @@
                 x:Name="EntryCMD"
                 Text="{Binding Model.CommandText, Mode=TwoWay}"
                 TextColor="{DynamicResource Primary}"
+                BackgroundColor="{OnPlatform Android='White',Default='Transparent'}"
                 Keyboard="Plain"
                 ReturnCommand="{Binding EnterCommand}"/>
         </StackLayout>
