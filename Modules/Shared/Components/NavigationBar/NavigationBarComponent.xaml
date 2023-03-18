@@ -5,49 +5,24 @@
     x:Class="Drrobo.Modules.Shared.Components.NavigationBar.NavigationBarComponent"
     x:Name="NavigationBar">
     <Grid
+        Margin="15,0,15,0"
         HeightRequest="60"
-        ColumnDefinitions="75,90*,10*">
-        <ImageButton
+        ColumnDefinitions="10*,80*,10*">
+        <Button
             Grid.Column="0"
-            Margin="15,0,0,0"
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="StartAndExpand"
-            WidthRequest="40"
-            HeightRequest="40"
-            Padding="{OnPlatform Android=0, Default=10}"
-            CornerRadius="20"
-            Opacity="0.4"
-            BackgroundColor="{DynamicResource BackgroundLeftBar}"
-            Source="arrow_icon"
+            ImageSource="arrow_icon"
+            Style="{DynamicResource NavigationButton}"
             Clicked="BackPage"/>
         <Label
             Grid.Column="1"
             VerticalOptions="Center"
             Style="{DynamicResource LabelTitleWhite}"
             Text="{Binding Title, Source={x:Reference NavigationBar}}" />
-        <ImageButton
+        <Button
             Grid.Column="2"
-            Margin="0,0,15,0"
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="EndAndExpand"
-            WidthRequest="40"
-            HeightRequest="40"
-            Padding="{OnPlatform Android=0, Default=10}"
-            CornerRadius="20"
-            Opacity="0.4"
-            BackgroundColor="{DynamicResource BackgroundLeftBar}"
-            Source="bluetooth_icon"
-            x:Name="ImageButtonBluetooth"
+            Style="{DynamicResource NavigationButton}"
+            Text="B"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
-            Command="{Binding Command, Source={x:Reference NavigationBar}}">
-            <ImageButton.Triggers>
-                <DataTrigger
-                    TargetType="ImageButton"
-                    Binding="{Binding BluetoothConnected, Source={x:Reference NavigationBar}}"
-                    Value="True">
-                    <Setter Property="Source" Value="bluetooth_on_icon.png"/>
-                </DataTrigger>
-            </ImageButton.Triggers>
-        </ImageButton>
+            Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
     </Grid>
 </ContentView>

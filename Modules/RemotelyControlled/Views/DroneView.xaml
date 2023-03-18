@@ -35,7 +35,7 @@
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding MovementDroneCommand}"
                     CommandParameter="{Binding .}"/>
-                <ImageButton
+                <Button
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     WidthRequest="60"
@@ -44,7 +44,7 @@
                     CornerRadius="30"
                     Opacity="0.4"
                     BackgroundColor="{DynamicResource BackgroundLeftBar}"
-                    Source="not_cam_icon"
+                    ImageSource="not_cam_icon"
                     Clicked="OpenCam"
                     x:Name="ImageButtonCam"/> 
             </Grid>
