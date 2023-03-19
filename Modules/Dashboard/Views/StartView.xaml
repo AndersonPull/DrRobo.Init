@@ -6,7 +6,9 @@
     xmlns:content="clr-namespace:Drrobo.Modules.Dashboard.Components.Content"
     xmlns:component="clr-namespace:Drrobo.Modules.Dashboard.Components"
     NavigationPage.HasNavigationBar="False"
-    NavigationPage.HasBackButton="False">
+    NavigationPage.HasBackButton="False"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False">
     <ContentPage.Content>
         <StackLayout
             Orientation="Horizontal"
