@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace Drrobo;
 
@@ -18,7 +19,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
-			.ConfigureMauiHandlers((handlers) => { NewHandlers(handlers); });
+			.ConfigureMauiHandlers((handlers) => { NewHandlers(handlers); })
+			.ConfigureLifecycleEvents(events => { NewLifeCycle(events); });
+
 
 		#if DEBUG
 			builder.Logging.AddDebug();
@@ -27,7 +30,9 @@ public static class MauiProgram
 		return builder.Build();
 	}
 
-	private static void NewHandlers(IMauiHandlersCollection handlers)
+    
+
+    private static void NewHandlers(IMauiHandlersCollection handlers)
 	{
 		#if MACCATALYST
 			handlers.AddCompatibilityRenderer(typeof(Drrobo.Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.MacCatalyst.Renderers.EntryRendererMac));
@@ -39,6 +44,21 @@ public static class MauiProgram
 
 		#if ANDROID
 			handlers.AddCompatibilityRenderer(typeof(Drrobo.Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.Android.Renderers.EntryRendererAndroid));
+        #endif
+    }
+
+    private static void NewLifeCycle(ILifecycleBuilder events)
+    {
+		#if ANDROID
+			events.AddAndroid(android => android.OnCreate((activity, bundle) => MakeStatusBarTranslucent(activity)));
+			static void MakeStatusBarTranslucent(Android.App.Activity activity)
+			{
+				activity.Window.SetFlags(Android.Views.WindowManagerFlags.LayoutNoLimits, Android.Views.WindowManagerFlags.LayoutNoLimits);
+
+				activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
+
+				activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
+			}
 		#endif
-	}
+    }
 }
