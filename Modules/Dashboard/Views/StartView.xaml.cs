@@ -26,22 +26,24 @@ public partial class StartView : ContentPage
                 LeftBar.IsVisible = true;
                 BottomBar.IsVisible = false;
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Top = 0;
-                safeInsets.Right = -50;
-
-                Padding = safeInsets;
+                if(DeviceInfo.Platform == DevicePlatform.iOS)
+                    SetSafeArea(0, -50);
             }
             else
             {
                 LeftBar.IsVisible = false;
                 BottomBar.IsVisible = true;
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Top = -50;
-                safeInsets.Right = 0;
-
-                Padding = safeInsets;
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    SetSafeArea(-50, 0);
             }
+    }
+
+    private void SetSafeArea(int top, int right)
+    {
+        var safeInsets = On<iOS>().SafeAreaInsets();
+        safeInsets.Top = top;
+        safeInsets.Right = right;
+        Padding = safeInsets;
     }
 }
