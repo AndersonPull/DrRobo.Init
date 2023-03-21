@@ -49,16 +49,16 @@ public static class MauiProgram
 
     private static void NewLifeCycle(ILifecycleBuilder events)
     {
-		#if ANDROID
+		#if ANDROID33_0_OR_GREATER
 			events.AddAndroid(android => android.OnCreate((activity, bundle) => MakeStatusBarTranslucent(activity)));
-			static void MakeStatusBarTranslucent(Android.App.Activity activity)
-			{
-				activity.Window.SetFlags(Android.Views.WindowManagerFlags.LayoutNoLimits, Android.Views.WindowManagerFlags.LayoutNoLimits);
+				static void MakeStatusBarTranslucent(Android.App.Activity activity)
+				{
+					activity.Window.SetFlags(Android.Views.WindowManagerFlags.LayoutNoLimits, Android.Views.WindowManagerFlags.LayoutNoLimits);
 
-				activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
+					activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
 
-				activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
-			}
+					activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
+				}
 		#endif
     }
 }
