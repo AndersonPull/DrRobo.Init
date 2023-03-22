@@ -52,39 +52,13 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame
+                                     <ImageButton
                                         WidthRequest="{Binding NewWidthFrame, Source={x:Reference DashboardPage}}"
                                         HeightRequest="{Binding NewHeightFrame, Source={x:Reference DashboardPage}}"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Start"
-                                        Style="{DynamicResource FrameGradient}">
-                                        <ContentView
-                                            VerticalOptions="FillAndExpand"
-                                            HorizontalOptions="FillAndExpand">
-                                            <ContentView.Background>
-                                                <LinearGradientBrush EndPoint="0,1">
-                                                    <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
-                                                    <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
-                                                </LinearGradientBrush>
-                                            </ContentView.Background>
-                                            <StackLayout Margin="15">
-                                                <Image
-                                                    Margin="15"
-                                                    WidthRequest="200"
-                                                    HeightRequest="200"
-                                                    Source="{Binding ImageIcon}"/>
-                                                <Label
-                                                    Margin="0,-50"
-                                                    Style="{DynamicResource LabelTitleWhite}"
-                                                    Text="{Binding Title}"/>
-                                            </StackLayout>
-                                        </ContentView>
-                                    </Frame>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"
-                                            CommandParameter="{Binding Type}"/>
-                                    </StackLayout.GestureRecognizers>
+                                        Source="{Binding ImageIcon}"
+                                        Style="{DynamicResource PrimaryImageButtonBanner}"
+                                        Command="{Binding Source={x:Reference DashboardPage}, Path=BindingContext.RemotelyControlledCommand}"
+                                        CommandParameter="{Binding Type}"/>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
