@@ -57,24 +57,6 @@
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
-    <!--Frame-->
-     <Style
-        x:Key="FrameGradient"
-        TargetType="Frame">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="WidthRequest" Value="320"/>
-        <Setter Property="HeightRequest" Value="290" />
-        <Setter Property="CornerRadius" Value="8" />
-        <Setter Property="HasShadow" Value="False"/>
-        <Setter Property="IsClippedToBounds" Value="True"/>
-        <Setter Property="Background">
-            <LinearGradientBrush>
-                <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
-                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
-            </LinearGradientBrush>
-        </Setter>
-    </Style>
-
     <!--Buttons-->
     <Style
         x:Key="PrimaryButton"
@@ -84,6 +66,20 @@
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="Background">
+            <LinearGradientBrush>
+                <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
+                <GradientStop Offset="1.0" Color="{DynamicResource Secondary}" />
+            </LinearGradientBrush>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="PrimaryImageButtonBanner"
+        TargetType="ImageButton">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="WidthRequest" Value="320"/>
+        <Setter Property="HeightRequest" Value="290" />
+        <Setter Property="CornerRadius" Value="8" />
         <Setter Property="Background">
             <LinearGradientBrush>
                 <GradientStop Offset="0.1" Color="{DynamicResource Primary}" />
