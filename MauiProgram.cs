@@ -58,6 +58,8 @@ public static class MauiProgram
 					activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
 
 					activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
+
+					activity.Window.SetNavigationBarColor(Android.Graphics.Color.Black);
 				}
 		#endif
     }
