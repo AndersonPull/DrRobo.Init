@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.LifecycleEvents;
 
 namespace Drrobo;
@@ -59,7 +60,7 @@ public static class MauiProgram
 
 					activity.Window.SetStatusBarColor(Android.Graphics.Color.Transparent);
 
-					activity.Window.SetNavigationBarColor(Android.Graphics.Color.Black);
+					activity.Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#1E1E1E"));
 				}
 		#endif
     }
