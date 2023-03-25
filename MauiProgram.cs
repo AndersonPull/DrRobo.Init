@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.LifecycleEvents;
 
 namespace Drrobo;
@@ -50,7 +49,7 @@ public static class MauiProgram
 
     private static void NewLifeCycle(ILifecycleBuilder events)
     {
-		#if ANDROID33_0_OR_GREATER
+		#if ANDROID
 			events.AddAndroid(android => android.OnCreate((activity, bundle) => MakeStatusBarTranslucent(activity)));
 				static void MakeStatusBarTranslucent(Android.App.Activity activity)
 				{
