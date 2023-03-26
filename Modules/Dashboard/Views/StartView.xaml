@@ -14,11 +14,14 @@
             Orientation="Horizontal"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <component:LeftBarComponent x:Name="LeftBar"/>
+            <component:LeftBarComponent
+                ZIndex="1"
+                x:Name="LeftBar"/>
             <StackLayout
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
                 <ContentView
+                    Margin="0,0,0,-20"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     x:Name="ContentBody">
@@ -28,7 +31,8 @@
                     x:Name="BottomBar"
                     IsVisible="{OnIdiom Desktop=false, Default=true}"
                     VerticalOptions="End"
-                    HorizontalOptions="FillAndExpand"/>
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,-60,0,15"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

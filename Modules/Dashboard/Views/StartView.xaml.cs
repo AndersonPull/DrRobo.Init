@@ -20,14 +20,19 @@ public partial class StartView : ContentPage
 
     protected override void OnSizeAllocated(double width, double height)
     {
-        if(DeviceInfo.Idiom != DeviceIdiom.Desktop)
-            if(width > height)
+        if (DeviceInfo.Idiom != DeviceIdiom.Desktop)
+        {
+            if (width > height)
             {
                 LeftBar.IsVisible = true;
                 BottomBar.IsVisible = false;
 
-                if(DeviceInfo.Platform == DevicePlatform.iOS)
-                    SetSafeArea(0, -50);
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    SetSafeArea(0, -50, -50);
+                    //ContentBody.Margin = new Thickness(-50, 0, 0, -20);
+                    //LeftBar.Margin = new Thickness(50, 0, -60, 0);
+                }
             }
             else
             {
@@ -35,15 +40,22 @@ public partial class StartView : ContentPage
                 BottomBar.IsVisible = true;
 
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
                     SetSafeArea(-50, 0);
+                    //ContentBody.Margin = new Thickness(0, 0, 0, -20);
+                }
+
             }
+        }
     }
 
-    private void SetSafeArea(int top, int right)
+    private void SetSafeArea(int top, int right, int left = 0)
     {
         var safeInsets = On<iOS>().SafeAreaInsets();
+        safeInsets.Left = left;
         safeInsets.Top = top;
         safeInsets.Right = right;
+        safeInsets.Bottom = -30;
         Padding = safeInsets;
     }
 }
