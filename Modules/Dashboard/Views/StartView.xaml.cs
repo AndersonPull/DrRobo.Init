@@ -30,8 +30,8 @@ public partial class StartView : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     SetSafeArea(0, -50, -50);
-                    //ContentBody.Margin = new Thickness(-50, 0, 0, -20);
-                    //LeftBar.Margin = new Thickness(50, 0, -60, 0);
+                    ContentBody.Margin = new Thickness(-50, 0, 0, -20);
+                    LeftBar.Margin = new Thickness(50, 0, -60, 0);
                 }
             }
             else
@@ -42,7 +42,7 @@ public partial class StartView : ContentPage
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
                     SetSafeArea(-50, 0);
-                    //ContentBody.Margin = new Thickness(0, 0, 0, -20);
+                    ContentBody.Margin = new Thickness(0, 0, 0, -20);
                 }
 
             }
