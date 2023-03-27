@@ -47,6 +47,14 @@ public partial class StartView : ContentPage
 
             }
         }
+        else
+        {
+            if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)
+            {
+                ContentBody.Margin = new Thickness(-110, 0, 0, 0);
+                LeftBar.Margin = new Thickness(50, 0, 0, 0);
+            }
+        }
     }
 
     private void SetSafeArea(int top, int right, int left = 0)
