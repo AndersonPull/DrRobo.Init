@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+﻿using Drrobo.Modules.Shared.Services.Device;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace Drrobo.Modules.Dashboard.Views;
@@ -29,9 +30,9 @@ public partial class StartView : ContentPage
 
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
-                    SetSafeArea(0, -50, -50);
-                    ContentBody.Margin = new Thickness(-50, 0, 0, -20);
-                    LeftBar.Margin = new Thickness(50, 0, -60, 0);
+                    SetSafeArea();
+                    ContentBody.Margin = new Thickness(-50, 0, 0, 0);
+                    LeftBar.Margin = new Thickness(40, 0, -50, 0);
                 }
             }
             else
@@ -41,7 +42,7 @@ public partial class StartView : ContentPage
 
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
-                    SetSafeArea(-50, 0);
+                    SetSafeArea();
                     ContentBody.Margin = new Thickness(0, 0, 0, -20);
                 }
 
@@ -57,13 +58,19 @@ public partial class StartView : ContentPage
         }
     }
 
-    private void SetSafeArea(int top, int right, int left = 0)
+    private void SetSafeArea()
     {
+        DeviceSafeInsetsService area = new DeviceSafeInsetsService();
+        double topArea = area.GetSafeAreaTop();
+        double bottomArea = area.GetSafeAreaBottom();
+        double rightArea = area.GetSafeAreaRight();
+        double leftArea = area.GetSafeAreaLeft();
+
         var safeInsets = On<iOS>().SafeAreaInsets();
-        safeInsets.Left = left;
-        safeInsets.Top = top;
-        safeInsets.Right = right;
-        safeInsets.Bottom = -30;
+        safeInsets.Left = -leftArea;
+        safeInsets.Top = -topArea;
+        safeInsets.Right = -rightArea;
+        safeInsets.Bottom = -bottomArea;
         Padding = safeInsets;
     }
 }

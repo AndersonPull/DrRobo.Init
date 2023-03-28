@@ -147,6 +147,8 @@
 	  <None Remove="Resources\Images\arrow_green_icon.svg" />
 	  <None Remove="Modules\Shared\Services\Service\" />
 	  <None Remove="Modules\Shared\Enums\" />
+	  <None Remove="Modules\Shared\Services\Device\" />
+	  <None Remove="Platforms\iOS\Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -214,6 +216,8 @@
 	  <Folder Include="Modules\Shared\Components\RemoteControl\" />
 	  <Folder Include="Modules\Shared\Services\Service\" />
 	  <Folder Include="Modules\Shared\Enums\" />
+	  <Folder Include="Modules\Shared\Services\Device\" />
+	  <Folder Include="Platforms\iOS\Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

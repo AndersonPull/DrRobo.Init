@@ -32,7 +32,7 @@
                     IsVisible="{OnIdiom Desktop=false, Default=true}"
                     VerticalOptions="End"
                     HorizontalOptions="FillAndExpand"
-                    Margin="0,-60,0,15"/>
+                    Margin="0,-60,0,20"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
