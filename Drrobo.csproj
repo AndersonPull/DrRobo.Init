@@ -149,6 +149,7 @@
 	  <None Remove="Modules\Shared\Enums\" />
 	  <None Remove="Modules\Shared\Services\Device\" />
 	  <None Remove="Platforms\iOS\Service\" />
+	  <None Remove="Platforms\Android\Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -218,6 +219,7 @@
 	  <Folder Include="Modules\Shared\Enums\" />
 	  <Folder Include="Modules\Shared\Services\Device\" />
 	  <Folder Include="Platforms\iOS\Service\" />
+	  <Folder Include="Platforms\Android\Service\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

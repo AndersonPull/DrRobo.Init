@@ -16,7 +16,9 @@
             HorizontalOptions="FillAndExpand">
             <component:LeftBarComponent
                 ZIndex="1"
-                x:Name="LeftBar"/>
+                x:Name="LeftBar"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
             <StackLayout
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
@@ -31,7 +33,7 @@
                     x:Name="BottomBar"
                     IsVisible="{OnIdiom Desktop=false, Default=true}"
                     VerticalOptions="End"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Center"
                     Margin="0,-60,0,20"/>
             </StackLayout>
         </StackLayout>

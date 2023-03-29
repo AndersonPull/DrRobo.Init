@@ -28,24 +28,17 @@ public partial class StartView : ContentPage
                 LeftBar.IsVisible = true;
                 BottomBar.IsVisible = false;
 
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    SetSafeArea();
-                    ContentBody.Margin = new Thickness(-50, 0, 0, 0);
-                    LeftBar.Margin = new Thickness(40, 0, -50, 0);
-                }
+                SetSafeArea();
+                ContentBody.Margin = new Thickness(-50, 0, 0, 0);
+                LeftBar.Margin = new Thickness(40, 0, -50, 0);
             }
             else
             {
                 LeftBar.IsVisible = false;
                 BottomBar.IsVisible = true;
 
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    SetSafeArea();
-                    ContentBody.Margin = new Thickness(0, 0, 0, -20);
-                }
-
+                SetSafeArea();
+                ContentBody.Margin = new Thickness(0, 0, 0, -20);
             }
         }
         else
