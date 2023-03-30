@@ -2,8 +2,8 @@
 
 namespace Drrobo.Modules.Shared.Services.Device
 {
-	public partial class DeviceSafeInsetsService
-	{
+    public partial class DeviceSafeInsetsService
+    {
         public partial double GetSafeAreaTop()
         {
             return 0;
