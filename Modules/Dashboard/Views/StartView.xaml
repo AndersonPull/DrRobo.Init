@@ -14,11 +14,15 @@
             Orientation="Horizontal"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <component:LeftBarComponent
+            <Grid
+                RowDefinitions="33.3*,200,33.3*"
                 ZIndex="1"
-                x:Name="LeftBar"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
+                x:Name="LeftBar">
+                <component:LeftBarComponent
+                    Grid.Row="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            </Grid>
             <StackLayout
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
@@ -29,12 +33,16 @@
                     x:Name="ContentBody">
                     <content:DashBoardContent/>
                 </ContentView>
-                <component:BottomBarComponent
+                <Grid
+                    ColumnDefinitions="*,175,*"
                     x:Name="BottomBar"
-                    IsVisible="{OnIdiom Desktop=false, Default=true}"
-                    VerticalOptions="End"
-                    HorizontalOptions="Center"
-                    Margin="0,-60,0,20"/>
+                    IsVisible="{OnIdiom Desktop=false, Default=true}">
+                    <component:BottomBarComponent
+                        Grid.Column="1"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        Margin="0,-60,0,20"/>
+                </Grid>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
