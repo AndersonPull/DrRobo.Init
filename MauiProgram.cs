@@ -1,4 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using Drrobo.Modules.Dashboard.Views;
+using Drrobo.Utils.Translations;
+using LocalizationResourceManager.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Microsoft.Maui.LifecycleEvents;
@@ -14,23 +17,23 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.UseMauiCompatibility()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			})
-			.ConfigureMauiHandlers((handlers) => { NewHandlers(handlers); })
-			.ConfigureLifecycleEvents(events => { NewLifeCycle(events); });
-
+			.ConfigureFonts(fonts => { SetFonts(fonts); })
+			.ConfigureMauiHandlers(handlers => { NewHandlers(handlers); })
+			.ConfigureLifecycleEvents(events => { NewLifeCycle(events); })
+            .UseLocalizationResourceManager(settings => { Localization(settings); });
 
 		#if DEBUG
 			builder.Logging.AddDebug();
 		#endif
 
-		return builder.Build();
+        return builder.Build();
 	}
 
-    
+    private static void SetFonts(IFontCollection fonts)
+    {
+        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+    }
 
     private static void NewHandlers(IMauiHandlersCollection handlers)
 	{
@@ -62,5 +65,11 @@ public static class MauiProgram
 					activity.Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#1E1E1E"));
 				}
 		#endif
+    }
+
+    private static void Localization(ILocalizationSettings settings)
+    {
+        settings.AddResource(AppResources.ResourceManager);
+        settings.RestoreLatestCulture(true);
     }
 }
