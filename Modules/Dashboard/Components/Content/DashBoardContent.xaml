@@ -93,13 +93,12 @@
                                 Grid.Column="0">
                                 <Label
                                     Style="{DynamicResource Label12WhiteBold}"
-                                    Text="Vamos utilizar cartões hoje?"/>
+                                    SemanticProperties.Description="{localization:Translate BannerRoboPart1}"
+                                    Text="{localization:Translate BannerRoboPart1}"/>
                                 <Label
                                     Style="{DynamicResource Label12WhiteBold}"
-                                    Text="Salvar e emular cartões e comigo"/>
-                                <Label
-                                    Style="{DynamicResource Label12WhiteBold}"
-                                    Text="mesmo"/>
+                                    SemanticProperties.Description="{localization:Translate BannerRoboPart2}"
+                                    Text="{localization:Translate BannerRoboPart2}"/>
                             </StackLayout>
                             <Image
                                 Grid.Column="1"

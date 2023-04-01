@@ -62,4 +62,10 @@
     <data name="DevicesConnectedToTheNetwork" xml:space="preserve">
         <value>Dispositivos conectados a la red</value>
     </data>
+    <data name="BannerRoboPart1" xml:space="preserve">
+        <value>¿Usamos tarjetas hoy?</value>
+    </data>
+    <data name="BannerRoboPart2" xml:space="preserve">
+        <value>Guardar y emular cartas y conmigo mismo</value>
+    </data>
 </root>

@@ -36,6 +36,22 @@ namespace Drrobo.Utils.Translations
                 return ResourceManager.GetString("DevicesConnectedToTheNetwork", resourceCulture);
             }
         }
+
+        internal static string BannerRoboPart1
+        {
+            get
+            {
+                return ResourceManager.GetString("BannerRoboPart1", resourceCulture);
+            }
+        }
+
+        internal static string BannerRoboPart2
+        {
+            get
+            {
+                return ResourceManager.GetString("BannerRoboPart2", resourceCulture);
+            }
+        }
         #endregion Dasboard
     }
 }
