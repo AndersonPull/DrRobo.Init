@@ -68,4 +68,9 @@
     <data name="BannerRoboPart2" xml:space="preserve">
         <value>Save and emulate cards and with myself</value>
     </data>
+
+    <!--Profile-->
+    <data name="Profile" xml:space="preserve">
+        <value>Profile</value>
+    </data>
 </root>
