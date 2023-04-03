@@ -2,6 +2,7 @@
 using Drrobo.Modules.Shared.Services.Service;
 using Drrobo.Utils.Bluetooth;
 using Drrobo.Utils.Constant;
+using Drrobo.Utils.Translations;
 using GalaSoft.MvvmLight;
 using Plugin.BLE.Abstractions.Contracts;
 using PropertyChanged;
@@ -19,6 +20,9 @@ namespace Drrobo.Modules.Shared.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel<T> : BaseViewModel
     {
+        public LocalizationResourceManager LocalizationResourceManager
+        => LocalizationResourceManager.Instance;
+
         public BaseViewModel()
         {
         }
