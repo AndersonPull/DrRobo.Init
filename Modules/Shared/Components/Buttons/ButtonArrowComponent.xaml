@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Shared.Components.Buttons.ButtonArrowComponent"
+    x:Name="ButtonArrow">
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        HeightRequest="40"
+        ColumnDefinitions="50*,50*,30">
+        <Label
+            Grid.Column="0"
+            VerticalOptions="Center"
+            HorizontalOptions="StartAndExpand"
+            Style="{DynamicResource Label14White}"
+            Text="{Binding TextComponent, Source={x:Reference ButtonArrow}}"/>
+        <Label
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            Style="{DynamicResource Label14White}"
+            Text="{Binding SubTextComponent, Source={x:Reference ButtonArrow}}"/>
+        <Image
+            Grid.Column="3"
+            Rotation="180"
+            WidthRequest="12"
+            HeightRequest="12"
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            Source="arrow_icon"/>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding Command, Source={x:Reference ButtonArrow}}"
+                CommandParameter="{Binding CommandParameter, Source={x:Reference ButtonArrow}}"/>
+        </Grid.GestureRecognizers>
+    </Grid>
+</ContentView>
