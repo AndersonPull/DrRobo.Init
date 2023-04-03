@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+
 namespace Drrobo.Utils.Translations
 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
@@ -28,6 +30,19 @@ namespace Drrobo.Utils.Translations
             }
         }
 
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+
         #region Dashboard
         internal static string DevicesConnectedToTheNetwork
         {
@@ -53,6 +68,16 @@ namespace Drrobo.Utils.Translations
             }
         }
         #endregion Dasboard
+
+        #region Profile
+        internal static string Profile
+        {
+            get
+            {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        #endregion Profile
     }
 }
 
