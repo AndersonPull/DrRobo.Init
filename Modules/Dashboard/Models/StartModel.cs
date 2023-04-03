@@ -16,6 +16,8 @@ namespace Drrobo.Modules.Dashboard.Models
             };
 
             CommandsList = new ObservableCollection<string>();
+            Bluetooth = new BluetoothModel();
+            Profile = new ProfileModel();
         }
 
         public List<ItemMenuModel> ListMenu { get; set; }
@@ -23,6 +25,7 @@ namespace Drrobo.Modules.Dashboard.Models
         public string CommandText { get; set; }
         public bool DroneCamOn { get; set; }
         public bool JumperCamOn { get; set; }
-        public BluetoothModel Bluetooth { get; set; } = new BluetoothModel();
+        public BluetoothModel Bluetooth { get; set; }
+        public ProfileModel Profile { get; set; } 
     }
 }

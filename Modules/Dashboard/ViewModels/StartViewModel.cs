@@ -13,6 +13,9 @@ using Plugin.BLE.Abstractions.Contracts;
 using CommunityToolkit.Maui.Views;
 using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Modules.Shared.Components.RemoteControl;
+using Drrobo.Modules.Dashboard.Components.Popup;
+using System.Globalization;
+using Drrobo.Utils.Translations;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -22,6 +25,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((RemotelyControlledTypeEnum)value));
         public ICommand EnterCommand => new Command(async () => await EnterAsync());
         public ICommand AccessCardsViewCommand => new Command(async () => await AccessCardsViewAsync());
+        public ICommand ProfileClickButtonCommand => new Command(async (value) => await ProfileClickButtonAsync((ProfileButtonEnum)value));
 
         private Dictionary<DashboardPageTypeEnum, Lazy<ContentView>> ContentType =
             new Dictionary<DashboardPageTypeEnum, Lazy<ContentView>>
@@ -40,6 +44,8 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
+
+            Model.Profile.Language = LanguagesEnum.Português;
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)
@@ -117,7 +123,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "S");
                     break;
                 case "remote_control":
-                    await RemoteControlPopupAsync();
+                    await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
                     break;
                 default:
                     break;
@@ -133,15 +139,44 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
         }
 
-        private async Task RemoteControlPopupAsync()
+        private async Task AccessCardsViewAsync()
+            => await _serviceNavigation.NavigateToAsync<JumperViewModel>();
+
+        private async Task ProfileClickButtonAsync(ProfileButtonEnum value)
         {
-            await Application.Current.MainPage
-                .ShowPopupAsync(new RemoteControlPopup());
+            switch (value)
+            {
+                case ProfileButtonEnum.Language:
+                    await SetLanguageAsync();
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private async Task AccessCardsViewAsync()
+        private async Task SetLanguageAsync()
         {
-            await _serviceNavigation.NavigateToAsync<JumperViewModel>();
+            var language = await Application.Current.MainPage.ShowPopupAsync(new LanguagesPopup());
+
+            if (language == null)
+                return;
+
+            switch ((LanguagesEnum)language)
+            {
+                case LanguagesEnum.Português:
+                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("pt"));
+                    break;
+                case LanguagesEnum.Español:
+                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("es"));
+                    break;
+                case LanguagesEnum.English:
+                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("en"));
+                    break;
+                default:
+                    break;
+            }
+            
+            Model.Profile.Language = (LanguagesEnum)language;
         }
     }
 }

@@ -1,11 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Drrobo.Modules.Dashboard.Components.Content.ProfileContent">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Profile"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
+    x:Class="Drrobo.Modules.Dashboard.Components.Content.ProfileContent"
+    xmlns:enums="clr-namespace:Drrobo.Modules.Dashboard.Enums"
+    x:Name="Profile">
+    <VerticalStackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Spacing="15"
+        Margin="{OnPlatform Default=15, iOS='15,45,15,15'}">
+        <Label
+            HorizontalOptions="CenterAndExpand"
+            Style="{DynamicResource Label14WhiteBold}"
+            SemanticProperties.Description="{Binding LocalizationResourceManager[Profile], Mode=OneWay}"
+            Text="{Binding LocalizationResourceManager[Profile], Mode=OneWay}"/>
+        <Label
+            Style="{DynamicResource Label14WhiteBold}"
+            Text="Geral"/>
+        <components:ButtonArrowComponent
+            TextComponent="Idioma"
+            SubTextComponent="{Binding Model.Profile.Language, Mode=TwoWay}"
+            Command="{Binding ProfileClickButtonCommand}"
+            CommandParameter="{x:Static enums:ProfileButtonEnum.Language}"/>
     </VerticalStackLayout>
 </ContentView>

@@ -78,7 +78,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-		<PackageReference Include="LocalizationResourceManager.Maui" Version="1.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -153,6 +152,8 @@
 	  <None Remove="Platforms\Android\Service\" />
 	  <None Remove="Platforms\MacCatalyst\Service\" />
 	  <None Remove="Utils\Translations\" />
+	  <None Remove="Modules\Shared\Components\Buttons\" />
+	  <None Remove="Modules\Dashboard\Components\Popup\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -225,6 +226,8 @@
 	  <Folder Include="Platforms\Android\Service\" />
 	  <Folder Include="Platforms\MacCatalyst\Service\" />
 	  <Folder Include="Utils\Translations\" />
+	  <Folder Include="Modules\Shared\Components\Buttons\" />
+	  <Folder Include="Modules\Dashboard\Components\Popup\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

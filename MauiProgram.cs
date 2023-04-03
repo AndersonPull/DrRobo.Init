@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using Drrobo.Modules.Dashboard.ViewModels;
 using Drrobo.Modules.Dashboard.Views;
 using Drrobo.Utils.Translations;
-using LocalizationResourceManager.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Microsoft.Maui.LifecycleEvents;
@@ -19,8 +19,7 @@ public static class MauiProgram
 			.UseMauiCompatibility()
 			.ConfigureFonts(fonts => { SetFonts(fonts); })
 			.ConfigureMauiHandlers(handlers => { NewHandlers(handlers); })
-			.ConfigureLifecycleEvents(events => { NewLifeCycle(events); })
-            .UseLocalizationResourceManager(settings => { Localization(settings); });
+			.ConfigureLifecycleEvents(events => { NewLifeCycle(events); });
 
 		#if DEBUG
 			builder.Logging.AddDebug();
@@ -65,11 +64,5 @@ public static class MauiProgram
 					activity.Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#1E1E1E"));
 				}
 		#endif
-    }
-
-    private static void Localization(ILocalizationSettings settings)
-    {
-        settings.AddResource(AppResources.ResourceManager);
-        settings.RestoreLatestCulture(true);
     }
 }
