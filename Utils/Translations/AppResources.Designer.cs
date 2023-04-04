@@ -77,6 +77,22 @@ namespace Drrobo.Utils.Translations
                 return ResourceManager.GetString("Profile", resourceCulture);
             }
         }
+
+        internal static string Language
+        {
+            get
+            {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+
+        internal static string General
+        {
+            get
+            {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
         #endregion Profile
     }
 }

@@ -18,9 +18,11 @@
             Text="{Binding LocalizationResourceManager[Profile], Mode=OneWay}"/>
         <Label
             Style="{DynamicResource Label14WhiteBold}"
-            Text="Geral"/>
+            SemanticProperties.Description="{Binding LocalizationResourceManager[General], Mode=OneWay}"
+            Text="{Binding LocalizationResourceManager[General], Mode=OneWay}"/>
         <components:ButtonArrowComponent
-            TextComponent="Idioma"
+            SemanticProperties.Description="{Binding LocalizationResourceManager[Language], Mode=OneWay}"
+            TextComponent="{Binding LocalizationResourceManager[Language], Mode=OneWay}"
             SubTextComponent="{Binding Model.Profile.Language, Mode=TwoWay}"
             Command="{Binding ProfileClickButtonCommand}"
             CommandParameter="{x:Static enums:ProfileButtonEnum.Language}"/>

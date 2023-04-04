@@ -72,4 +72,10 @@
     <data name="Profile" xml:space="preserve">
         <value>Profile</value>
     </data>
+    <data name="Language" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="General" xml:space="preserve">
+        <value>General</value>
+    </data>
 </root>
