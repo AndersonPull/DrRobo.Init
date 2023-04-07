@@ -3,7 +3,8 @@ namespace Drrobo.Modules.Dashboard.Enums
 {
 	public enum ProfileButtonEnum
 	{
-		Language
-	}
+		Language,
+        ConfigServerProfile
+    }
 }
 
