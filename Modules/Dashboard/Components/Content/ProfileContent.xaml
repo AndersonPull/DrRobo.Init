@@ -26,5 +26,10 @@
             SubTextComponent="{Binding Model.Profile.Language, Mode=TwoWay}"
             Command="{Binding ProfileClickButtonCommand}"
             CommandParameter="{x:Static enums:ProfileButtonEnum.Language}"/>
+        <components:ButtonArrowComponent
+            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
+            TextComponent="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
+            Command="{Binding ProfileClickButtonCommand}"
+            CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigServerProfile}"/>
     </VerticalStackLayout>
 </ContentView>
