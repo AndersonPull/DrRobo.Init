@@ -149,6 +149,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case ProfileButtonEnum.Language:
                     await SetLanguageAsync();
                     break;
+                case ProfileButtonEnum.ConfigServerProfile:
+                    await _serviceNavigation.NavigateToAsync<ConfigureServerViewModel>();
+                    break;
                 default:
                     break;
             }
@@ -161,21 +164,23 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             if (language == null)
                 return;
 
+            CultureInfo cultureInfo = new CultureInfo("pt");
             switch ((LanguagesEnum)language)
             {
                 case LanguagesEnum.Português:
-                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("pt"));
+                    cultureInfo = new CultureInfo("pt");
                     break;
                 case LanguagesEnum.Español:
-                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("es"));
+                    cultureInfo = new CultureInfo("es");
                     break;
                 case LanguagesEnum.English:
-                    LocalizationResourceManager.Instance.SetCulture(new CultureInfo("en"));
+                    cultureInfo = new CultureInfo("en");
                     break;
                 default:
                     break;
             }
-            
+
+            LocalizationResourceManager.Instance.SetCulture(cultureInfo);
             Model.Profile.Language = (LanguagesEnum)language;
         }
     }
