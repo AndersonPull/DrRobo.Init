@@ -7,4 +7,3 @@ namespace Drrobo.Modules.Dashboard.Enums
         ConfigServerProfile
     }
 }
-
