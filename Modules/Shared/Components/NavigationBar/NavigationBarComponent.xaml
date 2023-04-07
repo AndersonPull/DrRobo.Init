@@ -6,6 +6,7 @@
     x:Name="NavigationBar">
     <Grid
         Margin="15"
+        ColumnSpacing="10"
         HeightRequest="60"
         ColumnDefinitions="10*,80*,10*">
         <Button
