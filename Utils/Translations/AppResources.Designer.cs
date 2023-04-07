@@ -93,6 +93,14 @@ namespace Drrobo.Utils.Translations
                 return ResourceManager.GetString("General", resourceCulture);
             }
         }
+
+        internal static string ConfigServerProfile
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigServerProfile", resourceCulture);
+            }
+        }
         #endregion Profile
     }
 }

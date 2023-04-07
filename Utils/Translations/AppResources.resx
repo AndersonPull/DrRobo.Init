@@ -78,4 +78,7 @@
     <data name="General" xml:space="preserve">
         <value>General</value>
     </data>
+    <data name="ConfigServerProfile" xml:space="preserve">
+        <value>Configure server</value>
+    </data>
 </root>
