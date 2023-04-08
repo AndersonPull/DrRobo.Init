@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:entry="clr-namespace:Drrobo.Modules.Shared.Components.Entry"
+    x:Class="Drrobo.Modules.Shared.Components.PopUp.AddItemPopup"
+    CanBeDismissedByTappingOutsideOfPopup="False">
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        <Frame
+            Padding="15"
+            BackgroundColor="{DynamicResource White}"
+            WidthRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
+            CornerRadius="8"
+            HasShadow="False"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Spacing="10">
+                <Label
+                    Text="Digite nome do Servidor"
+                    Style="{DynamicResource Label14BlackBold}" />
+                <entry:EntryComponent
+                    x:Name="NameEntry"
+                    TextColor="{DynamicResource Black}"/>
+                <Label
+                    Text="Digite URL do Servidor"
+                    Style="{DynamicResource Label14BlackBold}" />
+                <entry:EntryComponent
+                    TextColor="{DynamicResource Black}"/>
+                <StackLayout
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="10">
+                    <Button
+                        HorizontalOptions="FillAndExpand"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="Cancelar"/>
+                    <Button
+                        HorizontalOptions="FillAndExpand"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="Adicionar"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</toolkit:Popup>
