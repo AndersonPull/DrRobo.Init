@@ -21,34 +21,8 @@ public partial class StartView : ContentPage
 
     protected override void OnSizeAllocated(double width, double height)
     {
-        if (DeviceInfo.Idiom != DeviceIdiom.Desktop)
-        {
-            if (width > height)
-            {
-                LeftBar.IsVisible = true;
-                BottomBar.IsVisible = false;
-
-                SetSafeArea();
-                ContentBody.Margin = new Thickness(-50, 0, 0, 0);
-                LeftBar.Margin = new Thickness(40, 0, -50, 0);
-            }
-            else
-            {
-                LeftBar.IsVisible = false;
-                BottomBar.IsVisible = true;
-
-                SetSafeArea();
-                ContentBody.Margin = new Thickness(0, 0, 0, -20);
-            }
-        }
-        else
-        {
-            if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)
-            {
-                ContentBody.Margin = new Thickness(-110, 0, 0, 0);
-                LeftBar.Margin = new Thickness(50, 0, 0, 0);
-            }
-        }
+        SetSafeArea();
+        ContentBody.Margin = new Thickness(0, 0, 0, -20);
     }
 
     private void SetSafeArea()

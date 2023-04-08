@@ -14,15 +14,6 @@
             Orientation="Horizontal"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <Grid
-                RowDefinitions="33.3*,200,33.3*"
-                ZIndex="1"
-                x:Name="LeftBar">
-                <component:LeftBarComponent
-                    Grid.Row="1"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"/>
-            </Grid>
             <StackLayout
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
