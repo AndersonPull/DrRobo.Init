@@ -22,15 +22,19 @@
                 HorizontalOptions="FillAndExpand"
                 Spacing="10">
                 <Label
-                    Text="Digite nome do Servidor"
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerName], Mode=OneWay}"
+                    Text="{Binding LocalizationResourceManager[EnterServerName], Mode=OneWay}"
                     Style="{DynamicResource Label14BlackBold}" />
                 <entry:EntryComponent
                     x:Name="NameEntry"
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerName], Mode=OneWay}"
                     TextColor="{DynamicResource Black}"/>
                 <Label
-                    Text="Digite URL do Servidor"
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
+                    Text="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
                     Style="{DynamicResource Label14BlackBold}" />
                 <entry:EntryComponent
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
                     TextColor="{DynamicResource Black}"/>
                 <StackLayout
                     Orientation="Horizontal"
@@ -40,11 +44,14 @@
                     <Button
                         HorizontalOptions="FillAndExpand"
                         Style="{DynamicResource PrimaryButton}"
-                        Text="Cancelar"/>
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[Cancel], Mode=OneWay}"
+                        Text="{Binding LocalizationResourceManager[Cancel], Mode=OneWay}"
+                        Clicked="ClosePopup"/>
                     <Button
                         HorizontalOptions="FillAndExpand"
                         Style="{DynamicResource PrimaryButton}"
-                        Text="Adicionar"/>
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
+                        Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"/>
                 </StackLayout>
             </StackLayout>
         </Frame>

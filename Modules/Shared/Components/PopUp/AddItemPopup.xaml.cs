@@ -9,4 +9,9 @@ public partial class AddItemPopup : Popup
 		InitializeComponent();
 		NameEntry.Focus();
 	}
+
+    void ClosePopup(object sender, EventArgs args)
+    {
+        Close();
+    }
 }

@@ -81,4 +81,17 @@
     <data name="ConfigServerProfile" xml:space="preserve">
         <value>Configure server</value>
     </data>
+    <!--Shared-->
+    <data name="EnterServerName" xml:space="preserve">
+        <value>Enter server name</value>
+    </data>
+    <data name="EnterServerURL" xml:space="preserve">
+        <value>Enter server URL</value>
+    </data>
+    <data name="Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="Add" xml:space="preserve">
+        <value>Add</value>
+    </data>
 </root>
