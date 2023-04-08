@@ -15,7 +15,7 @@
                 HorizontalOptions="FillAndExpand"
                 CornerRadius="0"
                 Opacity="0.4"
-                BackgroundColor="{DynamicResource BackgroundLeftBar}"
+                BackgroundColor="{DynamicResource SecondaryBackground}"
                 HasShadow="False"/>
             <Image
                 Margin="0,15"

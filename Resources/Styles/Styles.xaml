@@ -95,7 +95,7 @@
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="CornerRadius" Value="20" />
         <Setter Property="Opacity" Value="4.0"/>
-        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundLeftBar}"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
         <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
     </Style>

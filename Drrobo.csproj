@@ -90,7 +90,6 @@
 	  <None Remove="Modules\Dashboard\Views\" />
 	  <None Remove="Modules\Dashboard\ViewModels\" />
 	  <None Remove="Resources\Styles\GreenTheme\" />
-	  <None Remove="Resources\Styles\RedTheme\" />
 	  <None Remove="Resources\Images\GreenTheme\" />
 	  <None Remove="Resources\Images\GreenTheme\TabPageIcons\" />
 	  <None Remove="Resources\Images\GreenTheme\TabPageIcons\cmd_icon.svg" />
@@ -165,10 +164,6 @@
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </BundleResource>
-	  <BundleResource Include="Resources\Styles\RedTheme\Colors.xaml">
-	    <SubType>Designer</SubType>
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </BundleResource>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
@@ -184,7 +179,6 @@
 	  <Folder Include="Modules\Dashboard\Views\" />
 	  <Folder Include="Modules\Dashboard\ViewModels\" />
 	  <Folder Include="Resources\Styles\GreenTheme\" />
-	  <Folder Include="Resources\Styles\RedTheme\" />
 	  <Folder Include="Resources\Images\GreenTheme\" />
 	  <Folder Include="Resources\Images\GreenTheme\TabPageIcons\" />
 	  <Folder Include="Modules\Shared\" />
@@ -276,6 +270,5 @@
 	<ItemGroup>
 	  <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
 	  <EmbeddedResource Remove="Resources\Styles\GreenTheme\Colors.xaml" />
-	  <EmbeddedResource Remove="Resources\Styles\RedTheme\Colors.xaml" />
 	</ItemGroup>
 </Project>

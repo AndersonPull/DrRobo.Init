@@ -45,7 +45,7 @@
                     Padding="20"
                     CornerRadius="30"
                     Opacity="0.4"
-                    BackgroundColor="{DynamicResource BackgroundLeftBar}"
+                    BackgroundColor="{DynamicResource SecondaryBackground}"
                     Source="not_cam_icon"
                     Clicked="OpenCam"
                     x:Name="ImageButtonCam"/> 
