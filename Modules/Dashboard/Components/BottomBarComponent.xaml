@@ -9,7 +9,7 @@
         CornerRadius="30"
         HorizontalOptions="Center"
         Opacity="0.4"
-        BackgroundColor="{DynamicResource BackgroundLeftBar}"
+        BackgroundColor="{DynamicResource SecondaryBackground}"
         HeightRequest="60"
         HasShadow="False">
         <HorizontalStackLayout Spacing="10">
