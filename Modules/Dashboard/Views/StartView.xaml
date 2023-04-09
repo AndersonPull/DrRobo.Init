@@ -28,7 +28,6 @@
                     ColumnDefinitions="*,175,*"
                     Margin="0,-60,0,20"
                     x:Name="BottomBar"
-                    IsVisible="{OnIdiom Desktop=false, Default=true}"
                     IsClippedToBounds="False">
                     <component:BottomBarComponent
                         Grid.Column="1"
