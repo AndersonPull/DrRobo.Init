@@ -16,4 +16,9 @@
     <Color x:Key="JoystickRed">#C12C2C</Color>
     <Color x:Key="JoystickGreen">#2FC12C</Color>
     <Color x:Key="JoystickBlue">#0199D0</Color>
+
+    <Color x:Key="AlertYellow">#C16B2C</Color>
+    <Color x:Key="AlertRed">#C12C2C</Color>
+    <Color x:Key="AlertGreen">#2FC12C</Color>
+
 </ResourceDictionary>

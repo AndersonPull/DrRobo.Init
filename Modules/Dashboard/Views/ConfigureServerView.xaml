@@ -16,8 +16,53 @@
             Margin="15"
             Spacing="10"
             VerticalOptions="FillAndExpand">
+            <ScrollView>
+                <StackLayout
+                    Spacing="15"
+                    BindableLayout.ItemsSource="{Binding Model.ServerList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            Text="Delete"
+                                            BackgroundColor="{DynamicResource AlertRed}" />
+                                        <SwipeItem
+                                            Text="Editar"
+                                            BackgroundColor="{DynamicResource AlertYellow}" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid
+                                    Padding="10"
+                                    HeightRequest="80"
+                                    BackgroundColor="{DynamicResource SecondaryBackground}"
+                                    ColumnDefinitions="*,20"
+                                    RowDefinitions="50*,50*">
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="{Binding Name}"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"
+                                        Style="{DynamicResource Label12WhiteBold}"/>
+                                    <Label
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Text="{Binding URL}"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"
+                                        Style="{DynamicResource Label12WhiteBold}"/>
+                                </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
             <Button
                 VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"
+                WidthRequest="300"
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                 Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                 Style="{DynamicResource PrimaryButton}"
