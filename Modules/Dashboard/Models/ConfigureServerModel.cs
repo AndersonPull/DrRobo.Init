@@ -2,7 +2,7 @@
 
 namespace Drrobo.Modules.Dashboard.Models
 {
-	public class ConfigureServerModel
+	public class ConfigureServerModel : BaseModel
 	{
         public ConfigureServerModel()
         {
@@ -12,4 +12,3 @@ namespace Drrobo.Modules.Dashboard.Models
         public List<ServerModel> ServerList { get; set; }
 	}
 }
-

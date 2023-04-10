@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     x:Class="Drrobo.Modules.Dashboard.Views.ConfigureServerView"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    x:Name="ConfigureServer">
     <Grid RowDefinitions="60,*">
         <navigation:NavigationBarComponent
             Grid.Row="0"
@@ -19,20 +20,22 @@
             <ScrollView>
                 <StackLayout
                     Spacing="15"
-                    BindableLayout.ItemsSource="{Binding Model.ServerList}">
+                    BindableLayout.ItemsSource="{Binding Model.ServerList, Mode=TwoWay}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
-                                <SwipeView.RightItems>
+                                <SwipeView.LeftItems>
                                     <SwipeItems>
                                         <SwipeItem
                                             Text="Delete"
-                                            BackgroundColor="{DynamicResource AlertRed}" />
+                                            BackgroundColor="{DynamicResource AlertRed}"
+                                            Command="{Binding Source={x:Reference ConfigureServer}, Path=BindingContext.DeleteCommand}"
+                                            CommandParameter="{Binding .}"/>
                                         <SwipeItem
-                                            Text="Editar"
+                                            Text="Update"
                                             BackgroundColor="{DynamicResource AlertYellow}" />
                                     </SwipeItems>
-                                </SwipeView.RightItems>
+                                </SwipeView.LeftItems>
                                 <Grid
                                     Padding="10"
                                     HeightRequest="80"
@@ -66,7 +69,7 @@
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                 Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                 Style="{DynamicResource PrimaryButton}"
-                Command="{Binding AddServerCommand}"/>
+                Command="{Binding AddCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

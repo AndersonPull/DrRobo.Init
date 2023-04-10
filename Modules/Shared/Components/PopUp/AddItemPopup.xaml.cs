@@ -14,4 +14,13 @@ public partial class AddItemPopup : Popup
     {
         Close();
     }
+
+    void SaveServer(object sender, EventArgs args)
+    {
+        List<string> response = new List<string>() { };
+        response.Add(NameEntry.Text);
+        response.Add(URLEntry.Text);
+
+        Close(response);
+    }
 }

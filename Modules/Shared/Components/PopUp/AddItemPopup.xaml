@@ -26,16 +26,17 @@
                     Text="{Binding LocalizationResourceManager[EnterServerName], Mode=OneWay}"
                     Style="{DynamicResource Label14BlackBold}" />
                 <entry:EntryComponent
-                    x:Name="NameEntry"
                     SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerName], Mode=OneWay}"
-                    TextColor="{DynamicResource Black}"/>
+                    TextColor="{DynamicResource Black}"
+                    x:Name="NameEntry"/>
                 <Label
                     SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
                     Text="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
                     Style="{DynamicResource Label14BlackBold}" />
                 <entry:EntryComponent
                     SemanticProperties.Description="{Binding LocalizationResourceManager[EnterServerURL], Mode=OneWay}"
-                    TextColor="{DynamicResource Black}"/>
+                    TextColor="{DynamicResource Black}"
+                    x:Name="URLEntry"/>
                 <StackLayout
                     Orientation="Horizontal"
                     VerticalOptions="EndAndExpand"
@@ -51,7 +52,8 @@
                         HorizontalOptions="FillAndExpand"
                         Style="{DynamicResource PrimaryButton}"
                         SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
-                        Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"/>
+                        Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
+                        Clicked="SaveServer"/>
                 </StackLayout>
             </StackLayout>
         </Frame>
