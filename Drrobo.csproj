@@ -78,6 +78,11 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -153,6 +158,8 @@
 	  <None Remove="Utils\Translations\" />
 	  <None Remove="Modules\Shared\Components\Buttons\" />
 	  <None Remove="Modules\Dashboard\Components\Popup\" />
+	  <None Remove="Modules\Shared\Services\Data\" />
+	  <None Remove="Modules\Shared\Services\Data\Implementations\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -222,6 +229,8 @@
 	  <Folder Include="Utils\Translations\" />
 	  <Folder Include="Modules\Shared\Components\Buttons\" />
 	  <Folder Include="Modules\Dashboard\Components\Popup\" />
+	  <Folder Include="Modules\Shared\Services\Data\" />
+	  <Folder Include="Modules\Shared\Services\Data\Implementations\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
