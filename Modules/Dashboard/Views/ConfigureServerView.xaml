@@ -15,10 +15,13 @@
         <StackLayout
             Grid.Row="1"
             Margin="15"
-            Spacing="10"
             VerticalOptions="FillAndExpand">
-            <ScrollView>
+            <ScrollView
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
                 <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
                     Spacing="15"
                     BindableLayout.ItemsSource="{Binding Model.ServerList, Mode=TwoWay}">
                     <BindableLayout.ItemTemplate>
@@ -63,7 +66,7 @@
                 </StackLayout>
             </ScrollView>
             <Button
-                VerticalOptions="EndAndExpand"
+                VerticalOptions="End"
                 HorizontalOptions="Center"
                 WidthRequest="300"
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"

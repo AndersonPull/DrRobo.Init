@@ -4,9 +4,7 @@ using Drrobo.Modules.Dashboard.Models;
 using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Data;
-using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Shared.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -26,6 +24,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private void GetServers()
         {
+            Model.ServerList = new System.Collections.ObjectModel.ObservableCollection<ServerModel>();
             var collection = _serverData.GetAll();
             foreach (var item in collection)
             {
