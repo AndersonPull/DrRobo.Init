@@ -1,4 +1,5 @@
-﻿using Drrobo.Modules.Shared.Models;
+﻿using System.Collections.ObjectModel;
+using Drrobo.Modules.Shared.Models;
 
 namespace Drrobo.Modules.Dashboard.Models
 {
@@ -6,9 +7,9 @@ namespace Drrobo.Modules.Dashboard.Models
 	{
         public ConfigureServerModel()
         {
-            ServerList = new List<ServerModel>();
+            ServerList = new ObservableCollection<ServerModel>();
         }
 
-        public List<ServerModel> ServerList { get; set; }
+        public ObservableCollection<ServerModel> ServerList { get; set; }
 	}
 }

@@ -15,12 +15,10 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public ICommand AddCommand => new Command(async () => await AddAsync());
         public ICommand DeleteCommand => new Command(async (value) => await DeleteAsync((ServerModel)value));
 
-        INavigationService _serviceNavigation;
         ServerData _serverData;
 
-        public ConfigureServerViewModel(INavigationService serviceNavigation)
+        public ConfigureServerViewModel()
         {
-            _serviceNavigation = serviceNavigation;
             _serverData = new ServerData();
 
             GetServers();
@@ -28,7 +26,11 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private void GetServers()
         {
-           Model.ServerList = _serverData.GetAll();
+            var collection = _serverData.GetAll();
+            foreach (var item in collection)
+            {
+                Model.ServerList.Add(item);
+            }
         }
 
         private async Task AddAsync()
@@ -45,13 +47,13 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             };
 
             _serverData.Save(server);
-            GetServers();
+            Model.ServerList.Add(server);
         }
 
         private async Task DeleteAsync(ServerModel value)
         {
             _serverData.Delete(value);
-            GetServers();
+            Model.ServerList.Remove(value);
         }
     }
 }

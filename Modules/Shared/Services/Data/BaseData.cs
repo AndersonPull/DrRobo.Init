@@ -5,11 +5,13 @@ namespace Drrobo.Modules.Shared.Services.Data
     public abstract class BaseData<T>
     {
         protected SQLiteConnection _dataBase;
-        private string _name = "Robo.db3";
 
         public BaseData()
         {
-            string _dataBasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), _name);
+            string _dataBasePath = Path
+                .Combine(Environment
+                .GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Robo.db3");
+
             _dataBase = new SQLiteConnection(_dataBasePath);
             _dataBase.CreateTable<T>();
         }
