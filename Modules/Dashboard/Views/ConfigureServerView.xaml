@@ -36,7 +36,9 @@
                                             CommandParameter="{Binding .}"/>
                                         <SwipeItem
                                             Text="Update"
-                                            BackgroundColor="{DynamicResource AlertYellow}" />
+                                            BackgroundColor="{DynamicResource AlertYellow}"
+                                            Command="{Binding Source={x:Reference ConfigureServer}, Path=BindingContext.UpdateCommand}"
+                                            CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid
