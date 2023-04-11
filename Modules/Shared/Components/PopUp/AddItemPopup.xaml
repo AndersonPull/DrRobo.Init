@@ -49,8 +49,10 @@
                         Text="{Binding LocalizationResourceManager[Cancel], Mode=OneWay}"
                         Clicked="ClosePopup"/>
                     <Button
+                        x:Name="SaveButton"
                         HorizontalOptions="FillAndExpand"
-                        Style="{DynamicResource PrimaryButton}"
+                        IsEnabled="False"
+                        Style="{DynamicResource DisableButton}"
                         SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                         Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
                         Clicked="SaveServer"/>

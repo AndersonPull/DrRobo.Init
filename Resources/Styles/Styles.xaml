@@ -136,7 +136,16 @@
             </LinearGradientBrush>
         </Setter>
     </Style>
-
+    <Style
+        x:Key="DisableButton"
+        TargetType="Button">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}"/>
+    </Style>
     <!--Page-->
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Padding" Value="0"/>
