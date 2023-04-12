@@ -16,6 +16,7 @@ using Drrobo.Modules.Shared.Components.RemoteControl;
 using Drrobo.Modules.Dashboard.Components.Popup;
 using System.Globalization;
 using Drrobo.Utils.Translations;
+using Drrobo.Modules.Dashboard.Data;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -39,13 +40,27 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         IBluetoothUtil _bluetoothUtil;
         INavigationService _serviceNavigation;
+        LanguageData _languageData;
 
         public StartViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
+            _languageData = new LanguageData();
 
-            Model.Profile.Language = LanguagesEnum.Português;
+            GetLanguage();
+        }
+
+        private void GetLanguage()
+        {
+            var languages = _languageData.GetAll();
+            if (languages.Count > 0)
+            {
+                LocalizationResourceManager.Instance
+                    .SetCulture(new CultureInfo(languages.FirstOrDefault().CultureInfo));
+
+                Model.Profile.Language = languages.FirstOrDefault().Name;
+            }
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)
@@ -159,13 +174,13 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private async Task SetLanguageAsync()
         {
-            var language = await Application.Current.MainPage.ShowPopupAsync(new LanguagesPopup());
+            var response = await Application.Current.MainPage.ShowPopupAsync(new LanguagesPopup());
 
-            if (language == null)
+            if (response == null)
                 return;
 
             CultureInfo cultureInfo = new CultureInfo("pt");
-            switch ((LanguagesEnum)language)
+            switch ((LanguagesEnum)response)
             {
                 case LanguagesEnum.Português:
                     cultureInfo = new CultureInfo("pt");
@@ -181,7 +196,25 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             }
 
             LocalizationResourceManager.Instance.SetCulture(cultureInfo);
-            Model.Profile.Language = (LanguagesEnum)language;
+            Model.Profile.Language = (LanguagesEnum)response;
+
+            var languages = _languageData.GetAll();
+            if (languages.Count == 0)
+            {
+                LanguageModel language = new LanguageModel()
+                {
+                    Name = (LanguagesEnum)response,
+                    CultureInfo = cultureInfo.ToString()
+                };
+
+                _languageData.Save(language);
+            }
+            else
+            {
+                languages.FirstOrDefault().Name = (LanguagesEnum)response;
+                languages.FirstOrDefault().CultureInfo = cultureInfo.ToString();
+                _languageData.Update(languages.FirstOrDefault());
+            }
         }
     }
 }
