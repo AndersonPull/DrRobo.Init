@@ -159,7 +159,7 @@
 	  <None Remove="Modules\Shared\Components\Buttons\" />
 	  <None Remove="Modules\Dashboard\Components\Popup\" />
 	  <None Remove="Modules\Shared\Services\Data\" />
-	  <None Remove="Modules\Shared\Services\Data\Implementations\" />
+	  <None Remove="Modules\Dashboard\Data\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -230,7 +230,7 @@
 	  <Folder Include="Modules\Shared\Components\Buttons\" />
 	  <Folder Include="Modules\Dashboard\Components\Popup\" />
 	  <Folder Include="Modules\Shared\Services\Data\" />
-	  <Folder Include="Modules\Shared\Services\Data\Implementations\" />
+	  <Folder Include="Modules\Dashboard\Data\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
