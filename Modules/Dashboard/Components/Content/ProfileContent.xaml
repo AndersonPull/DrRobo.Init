@@ -6,11 +6,12 @@
     x:Class="Drrobo.Modules.Dashboard.Components.Content.ProfileContent"
     xmlns:enums="clr-namespace:Drrobo.Modules.Dashboard.Enums"
     x:Name="Profile">
-    <VerticalStackLayout
+    <StackLayout
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand"
         Spacing="15"
-        Margin="{OnPlatform Default=15, iOS='15,45,15,15'}">
+        Margin="{OnPlatform Default=15, iOS='15,45,15,15'}"
+        x:Name="ProfileStackLayout">
         <Label
             HorizontalOptions="CenterAndExpand"
             Style="{DynamicResource Label14WhiteBold}"
@@ -31,5 +32,5 @@
             TextComponent="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
             Command="{Binding ProfileClickButtonCommand}"
             CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigServerProfile}"/>
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentView>
