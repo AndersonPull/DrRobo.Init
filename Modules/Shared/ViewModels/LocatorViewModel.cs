@@ -49,6 +49,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<StartViewModel>();
             _container.RegisterType<JumperViewModel>();
             _container.RegisterType<DroneViewModel>();
+            _container.RegisterType<JoystickViewModel>();
             _container.RegisterType<BaseViewModel>();
             _container.RegisterType<ConfigureServerViewModel>();
         }
