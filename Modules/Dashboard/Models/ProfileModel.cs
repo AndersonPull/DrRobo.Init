@@ -7,6 +7,5 @@ namespace Drrobo.Modules.Dashboard.Models
 	public class ProfileModel : BaseModel
     {
 		public LanguagesEnum Language { get; set; }
-
 	}
 }
