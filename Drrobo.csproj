@@ -145,7 +145,6 @@
 	  <None Remove="Utils\Bluetooth\Implementations\" />
 	  <None Remove="Modules\Shared\Components\PopUp\" />
 	  <None Remove="Resources\ImgsBanners\" />
-	  <None Remove="Resources\ImgsBanners\mockup.png" />
 	  <None Remove="Modules\Shared\Components\RemoteControl\" />
 	  <None Remove="Resources\Images\power_icon.svg" />
 	  <None Remove="Resources\Images\arrow_green_icon.svg" />
@@ -160,6 +159,7 @@
 	  <None Remove="Modules\Dashboard\Components\Popup\" />
 	  <None Remove="Modules\Shared\Services\Data\" />
 	  <None Remove="Modules\Dashboard\Data\" />
+	  <None Remove="Resources\ImgsBanners\mockup.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
