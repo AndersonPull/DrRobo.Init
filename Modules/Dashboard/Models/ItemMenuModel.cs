@@ -1,5 +1,5 @@
 ﻿using System;
-using Drrobo.Modules.RemotelyControlled.Enums;
+using Drrobo.Modules.Dashboard.Enums;
 
 namespace Drrobo.Modules.Dashboard.Models
 {
@@ -9,6 +9,6 @@ namespace Drrobo.Modules.Dashboard.Models
         public string Description { get; set; }
         public string ImageIcon { get; set; }
         public string ImageBack { get; set; }
-        public RemotelyControlledTypeEnum Type { get; set; }
+        public CarouselItems Type { get; set; }
     }
 }

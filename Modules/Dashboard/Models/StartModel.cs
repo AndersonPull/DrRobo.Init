@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Drrobo.Modules.Dashboard.Enums;
 using Drrobo.Modules.RemotelyControlled.Enums;
 using Drrobo.Modules.Shared.Models;
 
@@ -10,7 +11,7 @@ namespace Drrobo.Modules.Dashboard.Models
 		{
             ListMenu = new List<ItemMenuModel>()
             {
-                new ItemMenuModel(){ Title="Remotely Controlled", Description="", ImageIcon = "drone_icon.png", ImageBack="", Type = RemotelyControlledTypeEnum.Drone}
+                new ItemMenuModel(){ Title="Remotely Controlled", Description="", ImageIcon = "drone_icon.png", ImageBack="", Type = CarouselItems.RemotelyControlled}
             };
 
             CommandsList = new ObservableCollection<string>();

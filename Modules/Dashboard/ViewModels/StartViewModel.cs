@@ -23,7 +23,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
     public class StartViewModel : BaseViewModel<StartModel>
     {
         public ICommand SetContentTypeCommand => new Command(async (value) => await SetContentTypeAsync((DashboardPageTypeEnum)value));
-        public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((RemotelyControlledTypeEnum)value));
+        public ICommand RemotelyControlledCommand => new Command(async (value) => await RemotelyControlledAsync((CarouselItems)value));
         public ICommand EnterCommand => new Command(async () => await EnterAsync());
         public ICommand AccessCardsViewCommand => new Command(async () => await AccessCardsViewAsync());
         public ICommand ProfileClickButtonCommand => new Command(async (value) => await ProfileClickButtonAsync((ProfileButtonEnum)value));
@@ -81,18 +81,12 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             IsBusy = false;
         }
 
-        private async Task RemotelyControlledAsync(RemotelyControlledTypeEnum type)
+        private async Task RemotelyControlledAsync(CarouselItems type)
         {
             switch (type)
             {
-                case RemotelyControlledTypeEnum.Drone:
-                    await _serviceNavigation.NavigateToAsync<DroneViewModel>();
-                    break;
-                case RemotelyControlledTypeEnum.Jumper:
-                    await _serviceNavigation.NavigateToAsync<JumperViewModel>();
-                    break;
-                case RemotelyControlledTypeEnum.Spider:
-                    await _serviceNavigation.NavigateToAsync<JumperViewModel>();
+                case CarouselItems.RemotelyControlled:
+                    await _serviceNavigation.NavigateToAsync<JoystickViewModel>();
                     break;
             }
         }
