@@ -254,16 +254,10 @@
 	  <MauiXaml Update="Modules\Dashboard\Components\LeftBarComponent.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Modules\RemotelyControlled\Views\JumperView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Modules\Shared\Components\NavigationBar\NavigationBarComponent.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Modules\Shared\Components\joystick\JoystickComponent.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Modules\RemotelyControlled\Views\DroneView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Modules\RemotelyControlled\Components\AnimationJoystick.xaml">
