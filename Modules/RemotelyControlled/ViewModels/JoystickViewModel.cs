@@ -10,7 +10,7 @@ using Drrobo.Utils.Bluetooth;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
-	public class JoystickViewModel : BaseViewModel<JumperModel>
+	public class JoystickViewModel : BaseViewModel<JoystickModel>
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementCommand => new Command(async (value) => await MovementAsync((string)value));
