@@ -10,7 +10,8 @@
         Margin="15">
         <StackLayout
             Grid.Row="0"
-            Grid.RowSpan="2">
+            Grid.RowSpan="2"
+            Margin="25,25,0,0">
             <StackLayout 
                 BindableLayout.ItemsSource="{Binding Model.CommandsList}"
                 x:Name="StackLayoutChat"
@@ -37,7 +38,8 @@
             VerticalOptions="Start"
             HorizontalOptions="End"
             Spacing="15"
-            Grid.Row="0">
+            Grid.Row="0"
+            Margin="0,25,0,0">
             <Frame
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="EndAndExpand"
