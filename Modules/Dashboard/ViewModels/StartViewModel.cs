@@ -149,7 +149,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         }
 
         private async Task AccessCardsViewAsync()
-            => await _serviceNavigation.NavigateToAsync<JoystickViewModel>();
+            => await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
 
         private async Task ProfileClickButtonAsync(ProfileButtonEnum value)
         {
