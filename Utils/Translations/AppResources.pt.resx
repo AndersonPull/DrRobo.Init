@@ -63,10 +63,10 @@
         <value>Aparelhos conectados na rede</value>
     </data>
     <data name="BannerRoboPart1" xml:space="preserve">
-        <value>Vamos utilizar cartões hoje?</value>
+        <value>Precisando de um controle remoto rápido?</value>
     </data>
     <data name="BannerRoboPart2" xml:space="preserve">
-        <value>Salvar e emular cartões é comigo</value>
+        <value>É só clicar aqui!</value>
     </data>
     <!--Profile-->
     <data name="Profile" xml:space="preserve">
