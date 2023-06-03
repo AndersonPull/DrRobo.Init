@@ -7,13 +7,17 @@
     xmlns:animationJoystick="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:joystick="clr-namespace:Drrobo.Modules.Shared.Components.joystick"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <Grid>
         <navigation:NavigationBarComponent
             ZIndex="1"
             VerticalOptions="Start"
             Grid.Row="0"
-            Command="{Binding BluetoothPopupCommand}"/>
+            HasBluetooth="True"
+            Command="{Binding BluetoothPopupCommand}"
+            x:Name="NavigationComponent"/>
         <StackLayout
             Grid.Row="1"
             Grid.RowSpan="2"
@@ -35,7 +39,8 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding MovementDroneCommand}"
-                    CommandParameter="{Binding .}"/>
+                    CommandParameter="{Binding .}"
+                    x:Name="JoystickComponent"/>
                 <Button
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"

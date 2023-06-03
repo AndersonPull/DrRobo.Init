@@ -1,18 +1,19 @@
-﻿namespace Drrobo.Modules.RemotelyControlled.Views;
+﻿using Drrobo.Modules.Shared.Services.Device;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+
+namespace Drrobo.Modules.RemotelyControlled.Views;
 
 public partial class JoystickView : ContentPage
 {
 	public JoystickView()
 	{
 		InitializeComponent();
-
-        SetDeviceDisplay();
-
-        DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
     }
 
-    private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+    protected override void OnSizeAllocated(double width, double height)
     {
+        SetSafeArea();
         SetDeviceDisplay();
     }
 
@@ -32,6 +33,25 @@ public partial class JoystickView : ContentPage
                 JoystickWarning.IsVisible = true;
                 break;
         }
+    }
+
+    private void SetSafeArea()
+    {
+        DeviceSafeInsetsService area = new DeviceSafeInsetsService();
+        double topArea = area.GetSafeAreaTop();
+        double bottomArea = area.GetSafeAreaBottom();
+        double rightArea = area.GetSafeAreaRight();
+        double leftArea = area.GetSafeAreaLeft();
+
+        var safeInsets = On<iOS>().SafeAreaInsets();
+        safeInsets.Left = -leftArea;
+        safeInsets.Top = -topArea;
+        safeInsets.Right = -rightArea;
+        safeInsets.Bottom = -bottomArea;
+        Padding = safeInsets;
+
+        NavigationComponent.Margin = new Thickness(0, topArea, 0, 0);
+        JoystickComponent.Margin = new Thickness(leftArea, topArea, rightArea, bottomArea);
     }
 
     void OpenCam(object sender, EventArgs args)
