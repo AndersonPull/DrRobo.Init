@@ -210,6 +210,5 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private async Task AccessCardsViewAsync()
             => await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
-
     }
 }
