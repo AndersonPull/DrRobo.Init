@@ -5,7 +5,7 @@
     x:Class="Drrobo.Modules.Shared.Components.NavigationBar.NavigationBarComponent"
     x:Name="NavigationBar">
     <Grid
-        Margin="15"
+        Margin="15,0,15,0"
         ColumnSpacing="10"
         HeightRequest="60"
         ColumnDefinitions="10*,80*,10*">
