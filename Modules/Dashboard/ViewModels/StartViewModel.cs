@@ -148,9 +148,6 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
         }
 
-        private async Task AccessCardsViewAsync()
-            => await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
-
         private async Task ProfileClickButtonAsync(ProfileButtonEnum value)
         {
             switch (value)
@@ -210,5 +207,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 _languageData.Update(languages.FirstOrDefault());
             }
         }
+
+        private async Task AccessCardsViewAsync()
+            => await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
+
     }
 }
