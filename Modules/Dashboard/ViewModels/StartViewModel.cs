@@ -158,6 +158,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case ProfileButtonEnum.ConfigServerProfile:
                     await _serviceNavigation.NavigateToAsync<ConfigureServerViewModel>();
                     break;
+                case ProfileButtonEnum.ConfigJoystick:
+                    await _serviceNavigation.NavigateToAsync<ConfigureJoystickViewModel>();
+                    break;
                 default:
                     break;
             }

@@ -32,5 +32,10 @@
             TextComponent="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
             Command="{Binding ProfileClickButtonCommand}"
             CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigServerProfile}"/>
+        <components:ButtonArrowComponent
+            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"
+            TextComponent="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"
+            Command="{Binding ProfileClickButtonCommand}"
+            CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigJoystick}"/>
     </StackLayout>
 </ContentView>

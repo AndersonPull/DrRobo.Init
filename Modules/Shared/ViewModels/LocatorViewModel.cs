@@ -50,6 +50,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<JoystickViewModel>();
             _container.RegisterType<BaseViewModel>();
             _container.RegisterType<ConfigureServerViewModel>();
+            _container.RegisterType<ConfigureJoystickViewModel>();
         }
     }
 }

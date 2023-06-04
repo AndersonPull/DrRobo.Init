@@ -81,6 +81,9 @@
     <data name="ConfigServerProfile" xml:space="preserve">
         <value>Configure server</value>
     </data>
+    <data name="ConfigJoystick" xml:space="preserve">
+        <value>Configure joystick</value>
+    </data>
     <!--Shared-->
     <data name="EnterServerName" xml:space="preserve">
         <value>Enter server name</value>
