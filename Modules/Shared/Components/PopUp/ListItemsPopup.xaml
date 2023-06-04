@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Shared.Components.PopUp.ListItemsPopup"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        <Frame
+            Padding="15"
+            BackgroundColor="{DynamicResource White}"
+            WidthRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
+            HeightRequest="{OnIdiom Desktop=600, Phone=300, Tablet=400}"
+            CornerRadius="8"
+            HasShadow="False"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout>
+                <ListView
+                    HasUnevenRows="True"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="FillAndExpand"
+                    SeparatorVisibility="None"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never"
+                    ItemSelected="ListViewItemSelected"
+                    x:Name="PopupListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <HorizontalStackLayout
+                                    Spacing="10"
+                                    HeightRequest="40"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="StartAndExpand">
+                                    <Label 
+                                        Text="{Binding .}"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Center"
+                                        Style="{DynamicResource Label14BlackBold}"/>
+                                </HorizontalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label
+                    x:Name="EmptyLabel"
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[EmptyList], Mode=OneWay}"
+                    Text="{Binding LocalizationResourceManager[EmptyList], Mode=OneWay}"
+                    Style="{DynamicResource Label14Black}"
+                    IsVisible="false"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"/>
+                <Button
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[Cancel], Mode=OneWay}"
+                    Text="{Binding LocalizationResourceManager[Cancel], Mode=OneWay}"
+                    VerticalOptions="End"
+                    Style="{DynamicResource PrimaryButton}"
+                    Clicked="ClosePopup"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</toolkit:Popup>
+

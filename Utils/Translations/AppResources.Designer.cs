@@ -45,42 +45,52 @@ namespace Drrobo.Utils.Translations
         }
 
         #region Dashboard
-            internal static string DevicesConnectedToTheNetwork
-            { get { return ResourceManager.GetString("DevicesConnectedToTheNetwork", resourceCulture);}}
+        internal static string DevicesConnectedToTheNetwork
+        { get { return ResourceManager.GetString("DevicesConnectedToTheNetwork", resourceCulture);}}
 
-            internal static string BannerRoboPart1
-            { get { return ResourceManager.GetString("BannerRoboPart1", resourceCulture);}}
+        internal static string BannerRoboPart1
+        { get { return ResourceManager.GetString("BannerRoboPart1", resourceCulture);}}
 
-            internal static string BannerRoboPart2
-            { get { return ResourceManager.GetString("BannerRoboPart2", resourceCulture);}}
+        internal static string BannerRoboPart2
+        { get { return ResourceManager.GetString("BannerRoboPart2", resourceCulture);}}
         #endregion Dasboard
 
         #region Profile
-            internal static string Profile
-            { get { return ResourceManager.GetString("Profile", resourceCulture);}}
+        internal static string Profile
+        { get { return ResourceManager.GetString("Profile", resourceCulture);}}
 
-            internal static string Language
-            { get { return ResourceManager.GetString("Language", resourceCulture);}}
+        internal static string Language
+        { get { return ResourceManager.GetString("Language", resourceCulture);}}
 
-            internal static string General
-            { get { return ResourceManager.GetString("General", resourceCulture);}}
+        internal static string General
+        { get { return ResourceManager.GetString("General", resourceCulture);}}
 
-            internal static string ConfigServerProfile
-            { get { return ResourceManager.GetString("ConfigServerProfile", resourceCulture);}}
+        internal static string ConfigServerProfile
+        { get { return ResourceManager.GetString("ConfigServerProfile", resourceCulture);}}
         #endregion Profile
 
+        #region ConfigServer
+        internal static string EnterServerName
+        { get { return ResourceManager.GetString("EnterServerName", resourceCulture); } }
+
+        internal static string EnterServerURL
+        { get { return ResourceManager.GetString("EnterServerURL", resourceCulture); } }
+        #endregion ConfigServer
+
+        #region ConfigJoystick
+        internal static string ConnectedServer
+        { get { return ResourceManager.GetString("ConnectedServer", resourceCulture); } }
+        #endregion ConfigJoystick
+
         #region Shared
-            internal static string EnterServerName
-            { get { return ResourceManager.GetString("EnterServerName", resourceCulture);}}
+        internal static string Cancel
+        { get { return ResourceManager.GetString("Cancel", resourceCulture);}}
 
-            internal static string EnterServerURL
-            { get { return ResourceManager.GetString("EnterServerURL", resourceCulture);}}
+        internal static string Add
+        { get { return ResourceManager.GetString("Add", resourceCulture);}}
 
-            internal static string Cancel
-            { get { return ResourceManager.GetString("Cancel", resourceCulture);}}
-
-            internal static string Add
-            { get { return ResourceManager.GetString("Add", resourceCulture);}}
+        internal static string EmptyList
+        { get { return ResourceManager.GetString("EmptyList", resourceCulture); } }
         #endregion Shared
     }
 }

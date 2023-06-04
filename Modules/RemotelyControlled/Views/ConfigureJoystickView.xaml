@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.RemotelyControlled.Views.ConfigureJoystickView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
+    xmlns:components="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
     NavigationPage.HasNavigationBar="False">
     <Grid RowDefinitions="60,*">
         <navigation:NavigationBarComponent
@@ -11,5 +12,17 @@
             ZIndex="1"
             SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"
             Title="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"/>
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never"
+            HorizontalScrollBarVisibility="Never">
+            <StackLayout Margin="15">
+                <components:ButtonArrowComponent
+                    SemanticProperties.Description="{Binding LocalizationResourceManager[ConnectedServer], Mode=OneWay}"
+                    TextComponent="{Binding LocalizationResourceManager[ConnectedServer], Mode=OneWay}"
+                    SubTextComponent="{Binding Model.Server.Name, Mode=TwoWay}"
+                    Command="{Binding SelectServerCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </Grid>
 </ContentPage>

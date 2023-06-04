@@ -84,17 +84,25 @@
     <data name="ConfigJoystick" xml:space="preserve">
         <value>Configurar joystick</value>
     </data>
-    <!--Shared-->
+    <!--ConfigServer-->
     <data name="EnterServerName" xml:space="preserve">
         <value>Digite o nome do servidor</value>
     </data>
     <data name="EnterServerURL" xml:space="preserve">
         <value>Digite a URL do servidor</value>
     </data>
+    <!--ConfigJoystick-->
+    <data name="ConnectedServer" xml:space="preserve">
+        <value>Servidor conectado</value>
+    </data>
+    <!--Shared-->
     <data name="Cancel" xml:space="preserve">
         <value>Cancelar</value>
     </data>
     <data name="Add" xml:space="preserve">
         <value>Adicionar</value>
+    </data>
+    <data name="EmptyList" xml:space="preserve">
+        <value>Nenhum item encontrado</value>
     </data>
 </root>
