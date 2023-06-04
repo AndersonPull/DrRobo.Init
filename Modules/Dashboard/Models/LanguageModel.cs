@@ -9,9 +9,7 @@ namespace Drrobo.Modules.Dashboard.Models
 	{
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-
         public LanguagesEnum Name { get; set; }
-
         public string CultureInfo { get; set; }
     }
 }
