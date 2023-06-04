@@ -43,9 +43,6 @@ namespace Drrobo.Modules.Shared.ViewModels
                     case CommunicationEnum.Wifi:
                         universalService.Request(request).GetAwaiter().GetResult();
                         break;
-                    case CommunicationEnum.WifiRobo:
-                        universalService.RequestDrRobo(request).GetAwaiter().GetResult();
-                        break;
                     case CommunicationEnum.Bluetooth:
                         bluetoothUtil.SendAsync(device, request).GetAwaiter().GetResult();
                         break;

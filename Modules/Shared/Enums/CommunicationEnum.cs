@@ -3,7 +3,6 @@
 	public enum CommunicationEnum
 	{
 		Wifi,
-        WifiRobo,
         Bluetooth
 	}
 }
