@@ -5,6 +5,7 @@
     x:Class="Drrobo.Modules.RemotelyControlled.Views.ConfigureJoystickView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:components="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
+    xmlns:buttons="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
     NavigationPage.HasNavigationBar="False">
     <Grid RowDefinitions="60,*">
         <navigation:NavigationBarComponent
@@ -16,12 +17,21 @@
             Grid.Row="1"
             VerticalScrollBarVisibility="Never"
             HorizontalScrollBarVisibility="Never">
-            <StackLayout Margin="15">
+            <StackLayout
+                Margin="15"
+                Spacing="15">
                 <components:ButtonArrowComponent
                     SemanticProperties.Description="{Binding LocalizationResourceManager[ConnectedServer], Mode=OneWay}"
                     TextComponent="{Binding LocalizationResourceManager[ConnectedServer], Mode=OneWay}"
                     SubTextComponent="{Binding Model.Server.Name, Mode=TwoWay}"
                     Command="{Binding SelectServerCommand}"/>
+                <Label
+                    Style="{DynamicResource Label14WhiteBold}"
+                    Text="Escolha o modo de comunicação"/>
+                <buttons:ToggleComponent
+                    WidthRequest="300"
+                    FirstText="Wifi"
+                    SecondText="Bluetooth"/>
             </StackLayout>
         </ScrollView>
     </Grid>
