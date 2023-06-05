@@ -160,6 +160,7 @@
 	  <None Remove="Modules\Shared\Services\Data\" />
 	  <None Remove="Modules\Dashboard\Data\" />
 	  <None Remove="Resources\ImgsBanners\mockup.png" />
+	  <None Remove="Resources\Images\joystick_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -174,6 +175,7 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
+	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
