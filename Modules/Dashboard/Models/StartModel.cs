@@ -11,7 +11,7 @@ namespace Drrobo.Modules.Dashboard.Models
 		{
             ListMenu = new List<ItemMenuModel>()
             {
-                new ItemMenuModel(){ Title="Remotely Controlled", Description="", ImageIcon = "drone_icon.png", ImageBack="", Type = CarouselItems.RemotelyControlled}
+                new ItemMenuModel(){ Title="Remotely Controlled", Description="", ImageIcon = "joystick_banner_icon.png", ImageBack="", Type = CarouselItems.RemotelyControlled}
             };
 
             CommandsList = new ObservableCollection<string>();
