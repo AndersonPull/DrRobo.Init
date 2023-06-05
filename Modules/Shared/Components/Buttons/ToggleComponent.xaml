@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Drrobo.Modules.Shared.Components.Buttons.ToggleComponent"
+    x:Name="Toggle">
+    <Frame
+        Padding="0"
+        HasShadow="False"
+        HeightRequest="50"
+        CornerRadius="25"
+        BackgroundColor="{DynamicResource SecondaryBackground}">
+        <StackLayout
+            Orientation="Horizontal">
+            <Frame
+                Padding="0"
+                HasShadow="False"
+                HeightRequest="50"
+                CornerRadius="25"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                x:Name="PrimaryFrame">
+                <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <Label
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{DynamicResource Label14WhiteBold}"
+                        Text="{Binding FirstText, Source={x:Reference Toggle}}"
+                        x:Name="PrimaryLabel"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PrimaryToggleClick"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame
+                Padding="0"
+                HasShadow="False"
+                HeightRequest="50"
+                CornerRadius="25"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                x:Name="SecondaryFrame">
+                <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <Label
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding SecondText, Source={x:Reference Toggle}}"
+                        x:Name="SecondaryLabel"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SecondaryToggleClick"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </Frame>
+</ContentView>
+
