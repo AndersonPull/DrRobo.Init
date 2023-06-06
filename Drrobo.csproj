@@ -49,6 +49,8 @@
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	  <MauiImage Remove="Resources\Images\power_icon.svg" />
+	  <MauiImage Remove="Resources\Images\cards_banner_icon.png" />
+	  <MauiImage Remove="Resources\Images\cards_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<!-- App Icon -->
@@ -166,6 +168,7 @@
 	  <None Remove="Modules\Cards\ViewModels\" />
 	  <None Remove="Modules\Cards\Models\" />
 	  <None Remove="Resources\Images\cards_banner_icon.png" />
+	  <None Remove="Resources\Images\configure_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -181,6 +184,8 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
+	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
+	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
 	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>

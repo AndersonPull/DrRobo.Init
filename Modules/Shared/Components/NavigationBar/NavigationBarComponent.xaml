@@ -25,7 +25,7 @@
             HorizontalOptions="End"
             Grid.Column="2"
             Style="{DynamicResource NavigationButton}"
-            Text="B"
+            ImageSource="bluetooth_icon"
             Opacity="0.4"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
             Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
