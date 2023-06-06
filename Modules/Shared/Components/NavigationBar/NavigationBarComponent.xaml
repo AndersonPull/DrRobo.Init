@@ -6,23 +6,27 @@
     x:Name="NavigationBar">
     <Grid
         Margin="15,0,15,0"
-        ColumnSpacing="10"
         HeightRequest="60"
         ColumnDefinitions="10*,80*,10*">
         <Button
+            HorizontalOptions="Start"
             Grid.Column="0"
             ImageSource="arrow_icon"
             Style="{DynamicResource NavigationButton}"
+            Opacity="0.4"
             Clicked="BackPage"/>
         <Label
+            Margin="10,0,0,0"
             Grid.Column="1"
             VerticalOptions="Center"
             Style="{DynamicResource LabelTitleWhite}"
             Text="{Binding Title, Source={x:Reference NavigationBar}}" />
         <Button
+            HorizontalOptions="End"
             Grid.Column="2"
             Style="{DynamicResource NavigationButton}"
             Text="B"
+            Opacity="0.4"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
             Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
     </Grid>
