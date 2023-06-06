@@ -29,6 +29,7 @@
                     Style="{DynamicResource Label14WhiteBold}"
                     Text="Escolha o modo de comunicação"/>
                 <buttons:ToggleComponent
+                    HorizontalOptions="Start"
                     WidthRequest="300"
                     FirstText="Wifi"
                     SecondText="Bluetooth"/>
