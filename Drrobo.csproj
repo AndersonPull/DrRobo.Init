@@ -161,6 +161,11 @@
 	  <None Remove="Modules\Dashboard\Data\" />
 	  <None Remove="Resources\ImgsBanners\mockup.png" />
 	  <None Remove="Resources\Images\joystick_banner_icon.png" />
+	  <None Remove="Modules\Cards\" />
+	  <None Remove="Modules\Cards\Views\" />
+	  <None Remove="Modules\Cards\ViewModels\" />
+	  <None Remove="Modules\Cards\Models\" />
+	  <None Remove="Resources\Images\cards_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -176,6 +181,7 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
+	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
@@ -233,6 +239,10 @@
 	  <Folder Include="Modules\Dashboard\Components\Popup\" />
 	  <Folder Include="Modules\Shared\Services\Data\" />
 	  <Folder Include="Modules\Dashboard\Data\" />
+	  <Folder Include="Modules\Cards\" />
+	  <Folder Include="Modules\Cards\Views\" />
+	  <Folder Include="Modules\Cards\ViewModels\" />
+	  <Folder Include="Modules\Cards\Models\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

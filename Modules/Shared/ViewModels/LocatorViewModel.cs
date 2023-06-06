@@ -6,6 +6,7 @@ using Drrobo.Modules.Dashboard.ViewModels;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using Drrobo.Utils.Bluetooth;
 using Drrobo.Utils.Bluetooth.Implementations;
+using Drrobo.Modules.Cards.ViewModels;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -51,6 +52,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<BaseViewModel>();
             _container.RegisterType<ConfigureServerViewModel>();
             _container.RegisterType<ConfigureJoystickViewModel>();
+            _container.RegisterType<HomeCardsViewModel>();
         }
     }
 }

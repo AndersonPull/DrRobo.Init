@@ -17,6 +17,7 @@ using Drrobo.Modules.Dashboard.Components.Popup;
 using System.Globalization;
 using Drrobo.Utils.Translations;
 using Drrobo.Modules.Dashboard.Data;
+using Drrobo.Modules.Cards.ViewModels;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -87,6 +88,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             {
                 case CarouselItems.RemotelyControlled:
                     await _serviceNavigation.NavigateToAsync<JoystickViewModel>();
+                    break;
+                case CarouselItems.Cards:
+                    await _serviceNavigation.NavigateToAsync<HomeCardsViewModel>();
                     break;
             }
         }
