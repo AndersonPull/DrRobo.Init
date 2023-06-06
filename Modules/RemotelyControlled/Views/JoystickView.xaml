@@ -52,7 +52,15 @@
                     BackgroundColor="{DynamicResource SecondaryBackground}"
                     ImageSource="not_cam_icon"
                     Clicked="OpenCam"
-                    x:Name="ImageButtonCam"/> 
+                    x:Name="ImageButtonCam"/>
+                <Button
+                    Margin="15,60,15,15"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Style="{DynamicResource NavigationButton}"
+                    ImageSource="configure_icon"
+                    Opacity="0.4"
+                    Command="{Binding ConfigureCommand}"/>
             </Grid>
         </StackLayout>
         <StackLayout
