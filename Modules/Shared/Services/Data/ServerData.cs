@@ -24,5 +24,8 @@ namespace Drrobo.Modules.Shared.Services.Data
 
         public override void Dispose()
             => _dataBase.Dispose();
+
+        public ServerModel GetByConnectedjoystick()
+            => _dataBase.Table<ServerModel>().FirstOrDefault(entity => entity.Connectedjoystick == true);
     }
 }
