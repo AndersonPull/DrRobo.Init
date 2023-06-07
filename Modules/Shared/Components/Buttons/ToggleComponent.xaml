@@ -31,7 +31,8 @@
                         x:Name="PrimaryLabel"/>
                 </StackLayout>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="PrimaryToggleClick"/>
+                    <TapGestureRecognizer
+                        Tapped="PrimaryToggleClick"/>
                 </Frame.GestureRecognizers>
             </Frame>
             <Frame
@@ -52,7 +53,8 @@
                         x:Name="SecondaryLabel"/>
                 </StackLayout>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SecondaryToggleClick"/>
+                    <TapGestureRecognizer
+                        Tapped="SecondaryToggleClick"/>
                 </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>

@@ -1,4 +1,5 @@
-﻿using Drrobo.Utils;
+﻿using System.Windows.Input;
+using Drrobo.Utils;
 
 namespace Drrobo.Modules.Shared.Components.Buttons;
 
@@ -6,14 +7,14 @@ public partial class ToggleComponent : ContentView
 {
     public static readonly BindableProperty FirstTextProperty = BindableProperty.Create(nameof(FirstText), typeof(string), typeof(ToggleComponent));
     public static readonly BindableProperty SecondTextProperty = BindableProperty.Create(nameof(SecondText), typeof(string), typeof(ToggleComponent));
-    public static readonly BindableProperty SelectedProperty = BindableProperty.Create(nameof(Selected), typeof(bool), typeof(ToggleComponent));
+    public static readonly BindableProperty SelectedProperty = BindableProperty.Create(nameof(Selected), typeof(bool), typeof(ToggleComponent),false);
+    public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(ToggleComponent));
+    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(ToggleComponent));
 
     public ToggleComponent()
 	{
 		InitializeComponent();
-
         SetToggle();
-
     }
 
     public string FirstText
@@ -34,13 +35,33 @@ public partial class ToggleComponent : ContentView
         set => SetValue(SelectedProperty, value);
     }
 
+    public ICommand Command
+    {
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
+    }
+
+    public object CommandParameter
+    {
+        get => GetValue(CommandParameterProperty);
+        set => SetValue(CommandParameterProperty, value);
+    }
+
+    protected override void OnPropertyChanged(string propertyName = null)
+    {
+        base.OnPropertyChanged(propertyName);
+        if (nameof(Selected).Equals(propertyName))
+            SetToggle();
+    }
+
+
     void PrimaryToggleClick(object sender, TappedEventArgs args)
     {
         if (Selected)
             return;
 
         Selected = true;
-        SetToggle();
+        ExecuteCommand();
     }
 
     void SecondaryToggleClick(object sender, TappedEventArgs args)
@@ -49,7 +70,7 @@ public partial class ToggleComponent : ContentView
             return;
 
         Selected = false;
-        SetToggle();
+        ExecuteCommand();
     }
 
     private void SetToggle()
@@ -71,5 +92,11 @@ public partial class ToggleComponent : ContentView
             PrimaryLabel.Style = Util.GetResource<Style>("Label14WhiteBold");
 
         }
+    }
+
+    void ExecuteCommand()
+    {
+        if (this.Command != null)
+            this.Command.Execute(Selected);
     }
 }
