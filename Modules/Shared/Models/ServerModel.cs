@@ -12,5 +12,7 @@ namespace Drrobo.Modules.Shared.Models
         public string URL { get; set; }
 
         public bool Connectedjoystick { get; set; }
+
+        public bool IsBluetooth { get; set; }
     }
 }

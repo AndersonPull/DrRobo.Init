@@ -14,6 +14,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 	public class ConfigureJoystickViewModel : BaseViewModel<ConfigureJoystickModel>
     {
         public ICommand SelectServerCommand => new Command(async () => await SelectServerAsync());
+        public ICommand SelectCommunicationCommand => new Command((value) => SelectCommunicationAsync((bool)value));
 
         ServerData _serverData;
         public ConfigureJoystickViewModel()
@@ -54,12 +55,33 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
             Model.Server = Model.ServerList
                 .FirstOrDefault(server => server.Connectedjoystick == true);
+
+            if (Model.Server != null)
+                return;
+
+            AddServe();
+            GetServers();
         }
 
         private void SetServe(ServerModel server, bool connected)
         {
             server.Connectedjoystick = connected;
             _serverData.Update(server);
+        }
+
+        private void SelectCommunicationAsync(bool value)
+        {
+            Model.Server.IsBluetooth = value;
+            _serverData.Update(Model.Server);
+        }
+
+        private void AddServe()
+        {
+            Model.Server = new ServerModel();
+            Model.Server.Name = "Default_robo";
+            Model.Server.Connectedjoystick = true;
+            Model.Server.IsBluetooth = true;
+            _serverData.Save(Model.Server);
         }
     }
 }

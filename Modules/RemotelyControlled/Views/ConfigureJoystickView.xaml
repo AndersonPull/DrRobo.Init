@@ -31,8 +31,10 @@
                 <buttons:ToggleComponent
                     HorizontalOptions="Start"
                     WidthRequest="300"
-                    FirstText="Wifi"
-                    SecondText="Bluetooth"/>
+                    FirstText="Bluetooth"
+                    SecondText="Wi-fi"
+                    Selected="{Binding Model.Server.IsBluetooth}"
+                    Command="{Binding SelectCommunicationCommand}"/>
             </StackLayout>
         </ScrollView>
     </Grid>
