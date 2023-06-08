@@ -15,7 +15,7 @@
             ZIndex="1"
             VerticalOptions="Start"
             Grid.Row="0"
-            HasBluetooth="True"
+            HasBluetooth="{Binding Model.Server.IsBluetooth}"
             Command="{Binding BluetoothPopupCommand}"
             x:Name="NavigationComponent"/>
         <StackLayout
@@ -32,7 +32,7 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
-                    Source="http://192.168.0.118"
+                    Source="{Binding Model.Server.URL}"
                     x:Name="WebViewCam"/>
                 <joystick:JoystickComponent
                     Padding="15"
@@ -52,15 +52,16 @@
                     BackgroundColor="{DynamicResource SecondaryBackground}"
                     ImageSource="not_cam_icon"
                     Clicked="OpenCam"
+                    IsVisible="{Binding Model.Server.URL, Converter={StaticResource StringNullOrEmptyConverter}}"
                     x:Name="ImageButtonCam"/>
                 <Button
-                    Margin="15,60,15,15"
                     VerticalOptions="Start"
                     HorizontalOptions="End"
                     Style="{DynamicResource NavigationButton}"
                     ImageSource="configure_icon"
                     Opacity="0.4"
-                    Command="{Binding ConfigureCommand}"/>
+                    Command="{Binding ConfigureCommand}"
+                    x:Name="ConfigButton"/>
             </Grid>
         </StackLayout>
         <StackLayout
