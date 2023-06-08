@@ -54,7 +54,6 @@ public partial class ToggleComponent : ContentView
             SetToggle();
     }
 
-
     void PrimaryToggleClick(object sender, TappedEventArgs args)
     {
         if (Selected)
