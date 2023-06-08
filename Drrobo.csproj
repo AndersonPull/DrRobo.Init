@@ -188,13 +188,6 @@
 	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
 	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
 	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
-	  <BundleResource Include="Resources\Styles\ConverterStyle.xaml">
-	    <SubType>Designer</SubType>
-	  </BundleResource>
-	  <BundleResource Include="Resources\Styles\ConverterStyle.xaml.cs">
-	    <DependentUpon>ConverterStyle.xaml</DependentUpon>
-	    <SubType>Code</SubType>
-	  </BundleResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
@@ -259,9 +252,6 @@
 	  <Folder Include="Utils\Converters\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Remove="Resources\Styles\ConverterStyle.xaml" />
-	</ItemGroup>
-	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
@@ -302,8 +292,5 @@
 	<ItemGroup>
 	  <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
 	  <EmbeddedResource Remove="Resources\Styles\GreenTheme\Colors.xaml" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Remove="Resources\Styles\ConverterStyle.xaml.cs" />
 	</ItemGroup>
 </Project>
