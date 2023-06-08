@@ -2,7 +2,11 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:styles="clr-namespace:Drrobo.Utils.Converters">
+    <ResourceDictionary.MergedDictionaries>
+        <styles:ConverterStyle />
+    </ResourceDictionary.MergedDictionaries>
     <!--Labels-->
     <Style
         x:Key="LabelTitleWhite"
