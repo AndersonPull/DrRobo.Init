@@ -12,7 +12,14 @@
         <StackLayout
             Grid.Row="1"
             Margin="15">
-            <Label Text="teste"/>
+            <Button
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
+                Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
+                Style="{DynamicResource PrimaryButton}"
+                Command="{Binding ReadCardCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

@@ -7,6 +7,7 @@ using Drrobo.Modules.RemotelyControlled.ViewModels;
 using Drrobo.Utils.Bluetooth;
 using Drrobo.Utils.Bluetooth.Implementations;
 using Drrobo.Modules.Cards.ViewModels;
+using Drrobo.Modules.Shared.Services.Device;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -43,6 +44,14 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             _container.RegisterType<INavigationService, NavigationService>();
             _container.RegisterType<IBluetoothUtil, BluetoothUtil>();
+
+            #if IOS
+            _container.RegisterType<INfcService, Drrobo.Platforms.iOS.Service.NfcService>();
+            #endif
+
+            #if ANDROID
+            _container.RegisterType<INfcService, Drrobo.Platforms.Android.Service.NfcService>();
+            #endif
         }
 
         private void RegisterViewModels()

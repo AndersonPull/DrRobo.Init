@@ -170,6 +170,7 @@
 	  <None Remove="Resources\Images\cards_banner_icon.png" />
 	  <None Remove="Resources\Images\configure_icon.svg" />
 	  <None Remove="Utils\Converters\" />
+	  <None Remove="Platforms\Android\Resources\xml\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -250,6 +251,7 @@
 	  <Folder Include="Modules\Cards\ViewModels\" />
 	  <Folder Include="Modules\Cards\Models\" />
 	  <Folder Include="Utils\Converters\" />
+	  <Folder Include="Platforms\Android\Resources\xml\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

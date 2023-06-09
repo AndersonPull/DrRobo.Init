@@ -5,6 +5,6 @@ namespace Drrobo.Modules.Cards.Models
 {
 	public class HomeCardsModel : BaseModel
     {
-	}
+		public string StringData { get; set; }
+    }
 }
-
