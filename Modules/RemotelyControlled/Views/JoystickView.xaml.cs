@@ -1,4 +1,5 @@
-﻿using Drrobo.Modules.Shared.Services.Device;
+﻿using Drrobo.Modules.RemotelyControlled.ViewModels;
+using Drrobo.Modules.Shared.Services.Device;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
@@ -6,7 +7,9 @@ namespace Drrobo.Modules.RemotelyControlled.Views;
 
 public partial class JoystickView : ContentPage
 {
-	public JoystickView()
+    private JoystickViewModel ViewModel => (JoystickViewModel)BindingContext;
+
+    public JoystickView()
 	{
 		InitializeComponent();
     }
@@ -15,6 +18,14 @@ public partial class JoystickView : ContentPage
     {
         SetSafeArea();
         SetDeviceDisplay();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (ViewModel.GetServerCommand.CanExecute(null))
+            ViewModel.GetServerCommand.Execute(null);
     }
 
     private void SetDeviceDisplay()

@@ -52,7 +52,7 @@
                     BackgroundColor="{DynamicResource SecondaryBackground}"
                     ImageSource="not_cam_icon"
                     Clicked="OpenCam"
-                    IsVisible="{Binding Model.Server.URL, Converter={StaticResource StringNullOrEmptyConverter}}"
+                    IsVisible="{Binding Model.Server.URL, Converter={StaticResource StringNotNullOrEmptyConverter}}"
                     x:Name="ImageButtonCam"/>
                 <Button
                     VerticalOptions="Start"
