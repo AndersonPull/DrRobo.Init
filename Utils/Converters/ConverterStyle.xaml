@@ -6,4 +6,5 @@
     xmlns:converters="clr-namespace:Drrobo.Utils.Converters">
     <converters:ObjectNotNullConverter x:Key="ObjectNotNullConverter" />
     <converters:StringNullOrEmptyConverter x:Key="StringNullOrEmptyConverter"/>
+    <converters:StringNotNullOrEmptyConverter x:Key="StringNotNullOrEmptyConverter"/>
 </ResourceDictionary>
