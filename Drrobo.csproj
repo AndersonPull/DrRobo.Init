@@ -49,8 +49,6 @@
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	  <MauiImage Remove="Resources\Images\power_icon.svg" />
-	  <MauiImage Remove="Resources\Images\cards_banner_icon.png" />
-	  <MauiImage Remove="Resources\Images\cards_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<!-- App Icon -->
@@ -159,13 +157,9 @@
 	  <None Remove="Modules\Dashboard\Data\" />
 	  <None Remove="Resources\ImgsBanners\mockup.png" />
 	  <None Remove="Resources\Images\joystick_banner_icon.png" />
-	  <None Remove="Modules\Cards\" />
-	  <None Remove="Modules\Cards\Views\" />
-	  <None Remove="Modules\Cards\ViewModels\" />
-	  <None Remove="Modules\Cards\Models\" />
-	  <None Remove="Resources\Images\cards_banner_icon.png" />
 	  <None Remove="Resources\Images\configure_icon.svg" />
 	  <None Remove="Utils\Converters\" />
+	  <None Remove="Resources\Images\GreenTheme\.DS_Store" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -181,9 +175,7 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
-	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
-	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
-	  <BundleResource Include="Resources\Images\cards_banner_icon.png" />
+	  <BundleResource Include="Resources\Images\GreenTheme\.DS_Store" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
@@ -241,10 +233,6 @@
 	  <Folder Include="Modules\Dashboard\Components\Popup\" />
 	  <Folder Include="Modules\Shared\Services\Data\" />
 	  <Folder Include="Modules\Dashboard\Data\" />
-	  <Folder Include="Modules\Cards\" />
-	  <Folder Include="Modules\Cards\Views\" />
-	  <Folder Include="Modules\Cards\ViewModels\" />
-	  <Folder Include="Modules\Cards\Models\" />
 	  <Folder Include="Utils\Converters\" />
 	</ItemGroup>
 	<ItemGroup>
