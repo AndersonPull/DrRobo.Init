@@ -81,6 +81,7 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="Plugin.NFC" Version="0.1.26" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -166,6 +167,9 @@
 	  <None Remove="Resources\Images\cards_banner_icon.png" />
 	  <None Remove="Resources\Images\configure_icon.svg" />
 	  <None Remove="Utils\Converters\" />
+	  <None Remove="Utils\NFC\" />
+	  <None Remove="Utils\NFC\Implementations\" />
+	  <None Remove="Utils\NFC\Model\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -246,6 +250,9 @@
 	  <Folder Include="Modules\Cards\ViewModels\" />
 	  <Folder Include="Modules\Cards\Models\" />
 	  <Folder Include="Utils\Converters\" />
+	  <Folder Include="Utils\NFC\" />
+	  <Folder Include="Utils\NFC\Implementations\" />
+	  <Folder Include="Utils\NFC\Model\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

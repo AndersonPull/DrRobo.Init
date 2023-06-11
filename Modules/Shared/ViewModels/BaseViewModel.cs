@@ -53,5 +53,9 @@ namespace Drrobo.Modules.Shared.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Erro na comunicação", "Certifique que as configurações estão corretas", "OK");
             }
         }
+
+        public virtual void ExecuteOnDisappearing() { }
+
+        public virtual void ExecuteOnAppearing() { }
     }
 }

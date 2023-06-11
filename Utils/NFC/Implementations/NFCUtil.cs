@@ -1,64 +1,16 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Input;
-using Drrobo.Modules.Cards.Models;
-using Drrobo.Modules.Shared.ViewModels;
+using Drrobo.Utils.NFC.Model;
 using Plugin.NFC;
 
-namespace Drrobo.Modules.Cards.ViewModels
+namespace Drrobo.Utils.NFC.Implementations
 {
-	public class HomeCardsViewModel : BaseViewModel<HomeCardsModel>
-    {
-        public ICommand ReadCardCommand => new Command(async () => await ReadCardAsync());
-        private async Task ReadCardAsync()
-        {
-            await Publish(NFCNdefTypeFormat.WellKnown);
-        }
-
-        public HomeCardsViewModel()
+	public class NFCUtil
+	{
+        NFCModel _model;
+        public NFCUtil()
 		{
-
-            CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
-        }
-
-        public async override void ExecuteOnAppearing()
-        {
-            base.ExecuteOnAppearing();
-            CrossNFC.Legacy = false;
-
-            if (CrossNFC.IsSupported)
-            {
-                if (!CrossNFC.Current.IsAvailable)
-                    await Application.Current.MainPage.DisplayAlert("Alert", "NFC is not available", "Ok");
-
-                Model.NfcIsEnabled = CrossNFC.Current.IsEnabled;
-                if (!Model.NfcIsEnabled)
-                    await Application.Current.MainPage.DisplayAlert("Alert", "NFC is disabled", "Ok");
-
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                    Model.IsDeviceiOS = true;
-
-                //TODO mensagnes personalizadas
-
-                await AutoStartAsync().ConfigureAwait(false);
-            }
-        }
-
-        public async override void ExecuteOnDisappearing()
-        {
-            base.ExecuteOnDisappearing();
-            await Task.Run(() => StopListening());
-        }
-
-        /// <summary>
-        /// Auto Start Listening
-        /// </summary>
-        /// <returns></returns>
-        async Task AutoStartAsync()
-        {
-            // Some delay to prevent Java.Lang.IllegalStateException "Foreground dispatch can only be enabled when your activity is resumed" on Android
-            await Task.Delay(500);
-            await StartListeningIfNotiOS();
+            _model = new NFCModel();
         }
 
         /// <summary>
@@ -66,10 +18,10 @@ namespace Drrobo.Modules.Cards.ViewModels
         /// </summary>
         void SubscribeEvents()
         {
-            if (Model.EventsAlreadySubscribed)
+            if (_model.EventsAlreadySubscribed)
                 UnsubscribeEvents();
 
-            Model.EventsAlreadySubscribed = true;
+            _model.EventsAlreadySubscribed = true;
 
             CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
             CrossNFC.Current.OnMessagePublished += Current_OnMessagePublished;
@@ -77,7 +29,7 @@ namespace Drrobo.Modules.Cards.ViewModels
             CrossNFC.Current.OnNfcStatusChanged += Current_OnNfcStatusChanged;
             CrossNFC.Current.OnTagListeningStatusChanged += Current_OnTagListeningStatusChanged;
 
-            if (Model.IsDeviceiOS)
+            if (_model.IsDeviceiOS)
                 CrossNFC.Current.OniOSReadingSessionCancelled += Current_OniOSReadingSessionCancelled;
         }
 
@@ -92,17 +44,17 @@ namespace Drrobo.Modules.Cards.ViewModels
             CrossNFC.Current.OnNfcStatusChanged -= Current_OnNfcStatusChanged;
             CrossNFC.Current.OnTagListeningStatusChanged -= Current_OnTagListeningStatusChanged;
 
-            if (Model.IsDeviceiOS)
+            if (_model.IsDeviceiOS)
                 CrossNFC.Current.OniOSReadingSessionCancelled -= Current_OniOSReadingSessionCancelled;
 
-            Model.EventsAlreadySubscribed = false;
+            _model.EventsAlreadySubscribed = false;
         }
 
         /// <summary>
         /// Event raised when Listener Status has changed
         /// </summary>
         /// <param name="isListening"></param>
-        void Current_OnTagListeningStatusChanged(bool isListening) => Model.DeviceIsListening = isListening;
+        void Current_OnTagListeningStatusChanged(bool isListening) => _model.DeviceIsListening = isListening;
 
         /// <summary>
         /// Event raised when NFC Status has changed
@@ -110,7 +62,7 @@ namespace Drrobo.Modules.Cards.ViewModels
         /// <param name="isEnabled">NFC status</param>
         async void Current_OnNfcStatusChanged(bool isEnabled)
         {
-            Model.NfcIsEnabled = isEnabled;
+            _model.NfcIsEnabled = isEnabled;
             await ShowAlert($"NFC has been {(isEnabled ? "enabled" : "disabled")}");
         }
 
@@ -189,13 +141,13 @@ namespace Drrobo.Modules.Cards.ViewModels
             try
             {
                 NFCNdefRecord record = null;
-                switch (Model.Type)
+                switch (_model.Type)
                 {
                     case NFCNdefTypeFormat.WellKnown:
                         record = new NFCNdefRecord
                         {
                             TypeFormat = NFCNdefTypeFormat.WellKnown,
-                            MimeType = Model.MIME_TYPE,
+                            MimeType = _model.MIME_TYPE,
                             Payload = NFCUtils.EncodeToByteArray("Plugin.NFC is awesome!"),
                             LanguageCode = "en"
                         };
@@ -211,7 +163,7 @@ namespace Drrobo.Modules.Cards.ViewModels
                         record = new NFCNdefRecord
                         {
                             TypeFormat = NFCNdefTypeFormat.Mime,
-                            MimeType = Model.MIME_TYPE,
+                            MimeType = _model.MIME_TYPE,
                             Payload = NFCUtils.EncodeToByteArray("Plugin.NFC is awesome!")
                         };
                         break;
@@ -228,7 +180,7 @@ namespace Drrobo.Modules.Cards.ViewModels
                     CrossNFC.Current.ClearMessage(tagInfo);
                 else
                 {
-                    CrossNFC.Current.PublishMessage(tagInfo, Model.MakeReadOnly);
+                    CrossNFC.Current.PublishMessage(tagInfo, _model.MakeReadOnly);
                 }
             }
             catch (Exception ex)
@@ -289,15 +241,13 @@ namespace Drrobo.Modules.Cards.ViewModels
             await StartListeningIfNotiOS();
             try
             {
-                Model.Type = NFCNdefTypeFormat.Empty;
+                _model.Type = NFCNdefTypeFormat.Empty;
+                if (!await Application.Current.MainPage.DisplayAlert("Warning", "Make a Tag read-only operation is permanent and can't be undone. Are you sure you wish to continue?", "Yes", "No"))
+                    return;
 
-                    if (!await Application.Current.MainPage.DisplayAlert("Warning", "Make a Tag read-only operation is permanent and can't be undone. Are you sure you wish to continue?", "Yes", "No"))
-                    {
-                        return;
-                    }
-                    Model.MakeReadOnly = true;
+                _model.MakeReadOnly = true;
 
-                if (type.HasValue) Model.Type = type.Value;
+                if (type.HasValue) _model.Type = type.Value;
                 CrossNFC.Current.StartPublishing(!type.HasValue);
             }
             catch (Exception ex)
@@ -340,7 +290,7 @@ namespace Drrobo.Modules.Cards.ViewModels
         /// <param name="message">Message to be displayed</param>
         /// <param name="title">Alert title</param>
         /// <returns>The task to be performed</returns>
-        Task ShowAlert(string message, string title = null) => Application.Current.MainPage.DisplayAlert(string.IsNullOrWhiteSpace(title) ? Model.ALERT_TITLE : title, message, "OK");
+        Task ShowAlert(string message, string title = null) => Application.Current.MainPage.DisplayAlert(string.IsNullOrWhiteSpace(title) ? _model.ALERT_TITLE : title, message, "OK");
 
         /// <summary>
         /// Task to start listening for NFC tags if the user's device platform is not iOS
@@ -348,7 +298,7 @@ namespace Drrobo.Modules.Cards.ViewModels
         /// <returns>The task to be performed</returns>
         async Task StartListeningIfNotiOS()
         {
-            if (Model.IsDeviceiOS)
+            if (_model.IsDeviceiOS)
             {
                 SubscribeEvents();
                 return;
@@ -395,7 +345,6 @@ namespace Drrobo.Modules.Cards.ViewModels
                 await ShowAlert(ex.Message);
             }
         }
-
     }
 }
 
