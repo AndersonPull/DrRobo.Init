@@ -28,10 +28,10 @@
             Command="{Binding ProfileClickButtonCommand}"
             CommandParameter="{x:Static enums:ProfileButtonEnum.Language}"/>
         <components:ButtonArrowComponent
-            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
-            TextComponent="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
+            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"
+            TextComponent="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"
             Command="{Binding ProfileClickButtonCommand}"
-            CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigServerProfile}"/>
+            CommandParameter="{x:Static enums:ProfileButtonEnum.ConfigDevice}"/>
         <components:ButtonArrowComponent
             SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"
             TextComponent="{Binding LocalizationResourceManager[ConfigJoystick], Mode=OneWay}"

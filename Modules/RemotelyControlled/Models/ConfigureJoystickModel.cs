@@ -7,8 +7,8 @@ namespace Drrobo.Modules.RemotelyControlled.Models
 {
 	public class ConfigureJoystickModel : BaseModel
 	{
-        public ObservableCollection<ServerModel> ServerList { get; set; }
-        public ServerModel Server { get; set; }
+        public ObservableCollection<DevicesModel> ServerList { get; set; }
+        public DevicesModel Server { get; set; }
 		public CommunicationEnum Communication { get; set;}
         public List<string> ServersNames { get; set; }
     }

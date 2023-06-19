@@ -65,17 +65,9 @@ namespace Drrobo.Utils.Translations
         internal static string General
         { get { return ResourceManager.GetString("General", resourceCulture);}}
 
-        internal static string ConfigServerProfile
-        { get { return ResourceManager.GetString("ConfigServerProfile", resourceCulture);}}
+        internal static string ConfigDevices
+        { get { return ResourceManager.GetString("ConfigDevices", resourceCulture);}}
         #endregion Profile
-
-        #region ConfigServer
-        internal static string EnterServerName
-        { get { return ResourceManager.GetString("EnterServerName", resourceCulture); } }
-
-        internal static string EnterServerURL
-        { get { return ResourceManager.GetString("EnterServerURL", resourceCulture); } }
-        #endregion ConfigServer
 
         #region ConfigJoystick
         internal static string ConnectedServer

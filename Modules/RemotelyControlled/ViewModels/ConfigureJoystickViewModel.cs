@@ -16,10 +16,10 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         public ICommand SelectServerCommand => new Command(async () => await SelectServerAsync());
         public ICommand SelectCommunicationCommand => new Command((value) => SelectCommunicationAsync((bool)value));
 
-        ServerData _serverData;
+        DevicesData _serverData;
         public ConfigureJoystickViewModel()
         {
-            _serverData = new ServerData();
+            _serverData = new DevicesData();
 
             GetServers();
         }
@@ -32,7 +32,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             if (response == null)
                 return;
 
-            var server = (ServerModel)Model.ServerList
+            var server = (DevicesModel)Model.ServerList
                 .FirstOrDefault(server => server.Name.Equals(response));
 
             if (Model.Server != null)
@@ -45,16 +45,13 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         private void GetServers()
         {
             Model.ServersNames = new List<string>();
-            Model.ServerList = new ObservableCollection<ServerModel>();
+            Model.ServerList = new ObservableCollection<DevicesModel>();
 
             foreach (var item in _serverData.GetAll())
             {
                 Model.ServerList.Add(item);
                 Model.ServersNames.Add(item.Name);
             }
-
-            Model.Server = Model.ServerList
-                .FirstOrDefault(server => server.Connectedjoystick == true);
 
             if (Model.Server != null)
                 return;
@@ -63,9 +60,8 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             GetServers();
         }
 
-        private void SetServe(ServerModel server, bool connected)
+        private void SetServe(DevicesModel server, bool connected)
         {
-            server.Connectedjoystick = connected;
             _serverData.Update(server);
         }
 
@@ -77,9 +73,8 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private void AddServe()
         {
-            Model.Server = new ServerModel();
+            Model.Server = new DevicesModel();
             Model.Server.Name = "Default_robo";
-            Model.Server.Connectedjoystick = true;
             Model.Server.IsBluetooth = true;
             _serverData.Save(Model.Server);
         }

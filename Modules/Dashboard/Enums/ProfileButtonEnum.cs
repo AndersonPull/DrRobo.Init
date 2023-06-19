@@ -4,7 +4,7 @@ namespace Drrobo.Modules.Dashboard.Enums
 	public enum ProfileButtonEnum
 	{
 		Language,
-        ConfigServerProfile,
+        ConfigDevice,
         ConfigJoystick
     }
 }

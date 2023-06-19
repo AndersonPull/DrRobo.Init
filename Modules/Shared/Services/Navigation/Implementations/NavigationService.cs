@@ -110,7 +110,6 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         private void DashboardMaps()
         {
             _mappings.Add(typeof(StartViewModel), typeof(StartView));
-            _mappings.Add(typeof(ConfigureServerViewModel), typeof(ConfigureServerView));
         }
 
         private void RemotelyMaps()

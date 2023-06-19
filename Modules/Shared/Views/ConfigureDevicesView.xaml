@@ -11,8 +11,8 @@
         <navigation:NavigationBarComponent
             Grid.Row="0"
             ZIndex="1"
-            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"
-            Title="{Binding LocalizationResourceManager[ConfigServerProfile], Mode=OneWay}"/>
+            SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"
+            Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
             Margin="15"

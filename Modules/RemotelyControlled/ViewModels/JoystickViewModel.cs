@@ -22,22 +22,18 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         INavigationService _serviceNavigation;
         IBluetoothUtil _bluetoothUtil;
-        ServerData _serverData;
+        DevicesData _serverData;
         public JoystickViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
-            _serverData = new ServerData();
+            _serverData = new DevicesData();
         }
 
         private void GetServer()
         {
-            Model.Server = _serverData.GetByConnectedjoystick();
-
             if (Model.Server != null)
                 return;
-
-            AddServe();
         }
 
         private async Task BluetoothPopupAsync()
@@ -60,13 +56,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         private async Task ConfigureAsync()
             => await _serviceNavigation.NavigateToAsync<ConfigureJoystickViewModel>();
 
-        private void AddServe()
-        {
-            Model.Server = new ServerModel();
-            Model.Server.Name = "Default_robo";
-            Model.Server.Connectedjoystick = true;
-            Model.Server.IsBluetooth = true;
-            _serverData.Save(Model.Server);
-        }
+       
     }
 }

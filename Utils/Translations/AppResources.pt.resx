@@ -78,18 +78,11 @@
     <data name="General" xml:space="preserve">
         <value>Geral</value>
     </data>
-    <data name="ConfigServerProfile" xml:space="preserve">
-        <value>Configurar servidor</value>
+    <data name="ConfigDevices" xml:space="preserve">
+        <value>Configurar dispositivos</value>
     </data>
     <data name="ConfigJoystick" xml:space="preserve">
         <value>Configurar joystick</value>
-    </data>
-    <!--ConfigServer-->
-    <data name="EnterServerName" xml:space="preserve">
-        <value>Digite o nome do servidor</value>
-    </data>
-    <data name="EnterServerURL" xml:space="preserve">
-        <value>Digite a URL do servidor</value>
     </data>
     <!--ConfigJoystick-->
     <data name="ConnectedServer" xml:space="preserve">

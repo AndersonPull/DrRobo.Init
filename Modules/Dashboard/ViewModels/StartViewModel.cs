@@ -154,8 +154,8 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case ProfileButtonEnum.Language:
                     await SetLanguageAsync();
                     break;
-                case ProfileButtonEnum.ConfigServerProfile:
-                    await _serviceNavigation.NavigateToAsync<ConfigureServerViewModel>();
+                case ProfileButtonEnum.ConfigDevice:
+                    await _serviceNavigation.NavigateToAsync<ConfigureDevicesViewModel>();
                     break;
                 case ProfileButtonEnum.ConfigJoystick:
                     await _serviceNavigation.NavigateToAsync<ConfigureJoystickViewModel>();
