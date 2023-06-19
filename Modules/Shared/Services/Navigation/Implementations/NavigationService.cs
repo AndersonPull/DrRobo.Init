@@ -120,6 +120,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
 
         private void SharedMaps()
         {
+            _mappings.Add(typeof(ListDevicesViewModel), typeof(ListDevicesView));
             _mappings.Add(typeof(ConfigureDevicesViewModel), typeof(ConfigureDevicesView));
         }
     }

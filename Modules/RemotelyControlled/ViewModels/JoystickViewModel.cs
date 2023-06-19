@@ -55,7 +55,5 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private async Task ConfigureAsync()
             => await _serviceNavigation.NavigateToAsync<ConfigureJoystickViewModel>();
-
-       
     }
 }
