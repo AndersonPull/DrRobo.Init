@@ -6,7 +6,7 @@ namespace Drrobo.Modules.Shared.Components.PopUp;
 
 public partial class AddItemPopup : Popup
 {
-	public AddItemPopup(ServerModel server = null)
+	public AddItemPopup(DevicesModel server = null)
 	{
 		InitializeComponent();
 		NameEntry.Focus();

@@ -41,7 +41,6 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         IBluetoothUtil _bluetoothUtil;
         INavigationService _serviceNavigation;
         LanguageData _languageData;
-
         public StartViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;

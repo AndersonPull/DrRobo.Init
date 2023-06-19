@@ -5,6 +5,7 @@ using Drrobo.Modules.Dashboard.Models;
 using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Data;
+using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Shared.ViewModels;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
@@ -15,10 +16,11 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public ICommand DeleteCommand => new Command((value) => DeleteAsync((ServerModel)value));
         public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((ServerModel)value));
 
+        INavigationService _serviceNavigation;
         ServerData _serverData;
-
-        public ConfigureServerViewModel()
+        public ConfigureServerViewModel(INavigationService serviceNavigation)
         {
+            _serviceNavigation = serviceNavigation;
             _serverData = new ServerData();
 
             GetServers();
@@ -33,36 +35,14 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         }
 
         private async Task AddAsync()
-        {
-            var response = (List<string>)await Application.Current.MainPage.ShowPopupAsync(new AddItemPopup());
-            if (response == null)
-                return;
-
-            _serverData.Save(new ServerModel
-            {
-                Name = response.FirstOrDefault(),
-                URL = response.LastOrDefault(),
-            });
-
-            GetServers();
-        }
+            => await _serviceNavigation.NavigateToAsync<ConfigureDevicesViewModel>();
+        
+        private async Task UpdateAsync(ServerModel value)
+            => await _serviceNavigation.NavigateToAsync<ConfigureDevicesViewModel>(value);
 
         private void DeleteAsync(ServerModel value)
         {
             _serverData.Delete(value);
-            GetServers();
-        }
-
-        private async Task UpdateAsync(ServerModel value)
-        {
-            var response = (List<string>)await Application.Current.MainPage.ShowPopupAsync(new AddItemPopup(value));
-            if (response == null)
-                return;
-
-            value.Name = response.FirstOrDefault();
-            value.URL = response.LastOrDefault();
-
-            _serverData.Update(value);
             GetServers();
         }
     }

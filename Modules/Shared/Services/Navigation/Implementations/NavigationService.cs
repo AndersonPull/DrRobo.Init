@@ -3,6 +3,7 @@ using Drrobo.Modules.Dashboard.Views;
 using Drrobo.Modules.Shared.ViewModels;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using Drrobo.Modules.RemotelyControlled.Views;
+using Drrobo.Modules.Shared.Views;
 
 namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
 {
@@ -103,6 +104,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         {
             DashboardMaps();
             RemotelyMaps();
+            SharedMaps();
         }
 
         private void DashboardMaps()
@@ -115,6 +117,11 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         {
             _mappings.Add(typeof(JoystickViewModel), typeof(JoystickView));
             _mappings.Add(typeof(ConfigureJoystickViewModel), typeof(ConfigureJoystickView));
+        }
+
+        private void SharedMaps()
+        {
+            _mappings.Add(typeof(ConfigureDevicesViewModel), typeof(ConfigureDevicesView));
         }
     }
 }
