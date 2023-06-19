@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.Shared.Views.ListDevicesView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
-    xmlns:buttons="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
     NavigationPage.HasNavigationBar="False"
     x:Name="ListDevices">
     <Grid RowDefinitions="60,*">
