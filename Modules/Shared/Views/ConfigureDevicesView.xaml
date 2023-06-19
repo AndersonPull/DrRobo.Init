@@ -5,6 +5,7 @@
     x:Class="Drrobo.Modules.Shared.Views.ConfigureDevicesView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:buttons="clr-namespace:Drrobo.Modules.Shared.Components.Buttons"
+    xmlns:entry="clr-namespace:Drrobo.Modules.Shared.Components.Entry"
     NavigationPage.HasNavigationBar="False"
     x:Name="ConfigureDevices">
     <Grid RowDefinitions="60,*">
@@ -23,49 +24,26 @@
                 <StackLayout
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    Spacing="15"
-                    BindableLayout.ItemsSource="{Binding Model.DevicesList, Mode=TwoWay}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <SwipeView>
-                                <SwipeView.LeftItems>
-                                    <SwipeItems>
-                                        <SwipeItem
-                                            Text="Delete"
-                                            BackgroundColor="{DynamicResource AlertRed}"
-                                            Command="{Binding Source={x:Reference ConfigureDevices}, Path=BindingContext.DeleteCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                        <SwipeItem
-                                            Text="Update"
-                                            BackgroundColor="{DynamicResource AlertYellow}"
-                                            Command="{Binding Source={x:Reference ConfigureDevices}, Path=BindingContext.UpdateCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                    </SwipeItems>
-                                </SwipeView.LeftItems>
-                                <Grid
-                                    Padding="10"
-                                    HeightRequest="80"
-                                    BackgroundColor="{DynamicResource SecondaryBackground}"
-                                    ColumnDefinitions="*,20"
-                                    RowDefinitions="50*,50*">
-                                    <Label
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Text="{Binding Name, Mode=TwoWay}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        Style="{DynamicResource Label12WhiteBold}"/>
-                                    <Label
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                        Text="{Binding URL, Mode=TwoWay}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        Style="{DynamicResource Label12WhiteBold}"/>
-                                </Grid>
-                            </SwipeView>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
+                    Spacing="15">
+                    <Label
+                        Text="Digite o nome para seu device"
+                        Style="{DynamicResource LabelTitleWhite}"/>
+                    <entry:EntryComponent
+                        Style="{DynamicResource Label14White}"
+                        x:Name="EntryName"/>
+                    <buttons:ToggleComponent
+                        HorizontalOptions="Start"
+                        WidthRequest="300"
+                        FirstText="Bluetooth"
+                        SecondText="Wi-fi"
+                        Selected="{Binding Model.Server.IsBluetooth}"
+                        Command="{Binding SelectCommunicationCommand}"/>
+                    <Label
+                        Text="Digite a url do servidor do seu device"
+                        Style="{DynamicResource LabelTitleWhite}"/>
+                    <entry:EntryComponent
+                        Text="https://"
+                        Style="{DynamicResource Label14White}"/>
                 </StackLayout>
             </ScrollView>
             <Button

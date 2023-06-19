@@ -5,5 +5,6 @@ public partial class ConfigureDevicesView : ContentPage
 	public ConfigureDevicesView()
 	{
 		InitializeComponent();
-	}
+		EntryName.Focus();
+    }
 }
