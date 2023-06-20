@@ -69,11 +69,6 @@ namespace Drrobo.Utils.Translations
         { get { return ResourceManager.GetString("ConfigDevices", resourceCulture);}}
         #endregion Profile
 
-        #region ConfigJoystick
-        internal static string ConnectedServer
-        { get { return ResourceManager.GetString("ConnectedServer", resourceCulture); } }
-        #endregion ConfigJoystick
-
         #region Shared
         internal static string Cancel
         { get { return ResourceManager.GetString("Cancel", resourceCulture);}}

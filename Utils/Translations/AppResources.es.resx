@@ -84,10 +84,6 @@
     <data name="ConfigJoystick" xml:space="preserve">
         <value>Configurar joystick</value>
     </data>
-    <!--ConfigJoystick-->
-    <data name="ConnectedServer" xml:space="preserve">
-        <value>Servidor conectado</value>
-    </data>
     <!--Shared-->
     <data name="Cancel" xml:space="preserve">
         <value>Cancelar</value>
