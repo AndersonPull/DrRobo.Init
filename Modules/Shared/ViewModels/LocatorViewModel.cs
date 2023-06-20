@@ -49,7 +49,6 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<StartViewModel>();
             _container.RegisterType<JoystickViewModel>();
             _container.RegisterType<BaseViewModel>();
-            _container.RegisterType<ConfigureJoystickViewModel>();
             _container.RegisterType<ListDevicesViewModel>();
             _container.RegisterType<ConfigureDevicesViewModel>();
         }

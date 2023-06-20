@@ -63,7 +63,6 @@ public partial class JoystickView : ContentPage
 
         NavigationComponent.Margin = new Thickness(leftArea, topArea, rightArea, bottomArea);
         JoystickComponent.Margin = new Thickness(leftArea, topArea, rightArea, bottomArea);
-        ConfigButton.Margin = new Thickness(leftArea + 15, 55, rightArea + 15, 0);
     }
 
     void OpenCam(object sender, EventArgs args)

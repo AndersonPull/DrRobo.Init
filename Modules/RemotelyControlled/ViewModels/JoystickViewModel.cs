@@ -17,7 +17,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementCommand => new Command(async (value) => await MovementAsync((string)value));
-        public ICommand ConfigureCommand => new Command(async () => await ConfigureAsync());
         public ICommand GetServerCommand => new Command(() => GetServer());
 
         INavigationService _serviceNavigation;
@@ -52,8 +51,5 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         {
             throw new NotImplementedException();
         }
-
-        private async Task ConfigureAsync()
-            => await _serviceNavigation.NavigateToAsync<ConfigureJoystickViewModel>();
     }
 }

@@ -54,14 +54,6 @@
                     Clicked="OpenCam"
                     IsVisible="{Binding Model.Server.URL, Converter={StaticResource StringNotNullOrEmptyConverter}}"
                     x:Name="ImageButtonCam"/>
-                <Button
-                    VerticalOptions="Start"
-                    HorizontalOptions="End"
-                    Style="{DynamicResource NavigationButton}"
-                    ImageSource="configure_icon"
-                    Opacity="0.4"
-                    Command="{Binding ConfigureCommand}"
-                    x:Name="ConfigButton"/>
             </Grid>
         </StackLayout>
         <StackLayout
