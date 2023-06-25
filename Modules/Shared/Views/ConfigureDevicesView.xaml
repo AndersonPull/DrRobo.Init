@@ -60,7 +60,7 @@
                                 HorizontalOptions="FillAndExpand">
                                 <Image
                                     Source="edit_icon"
-                                    WidthRequest="25"
+                                    WidthRequest="28"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
