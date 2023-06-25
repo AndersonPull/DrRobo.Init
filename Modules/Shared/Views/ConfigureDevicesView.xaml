@@ -25,24 +25,47 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Spacing="15">
-                    <Frame
-                        Padding="0"
-                        WidthRequest="120"
-                        HeightRequest="120"
-                        CornerRadius="60"
-                        BackgroundColor="{DynamicResource SecondaryBackground}"
-                        HasShadow="False"
-                        IsClippedToBounds="True" >
-                        <StackLayout
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
-                            <Image
-                                Source="spider_icon"
-                                WidthRequest="100"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                    </Frame>
+                    <StackLayout
+                        HorizontalOptions="Center">
+                        <Frame
+                            Padding="0"
+                            WidthRequest="120"
+                            HeightRequest="120"
+                            CornerRadius="60"
+                            BackgroundColor="{DynamicResource SecondaryBackground}"
+                            HasShadow="False"
+                            IsClippedToBounds="True" >
+                            <StackLayout
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                                <Image
+                                    Source="spider_icon"
+                                    WidthRequest="100"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Padding="0"
+                            Margin="0,-30,5,0"
+                            HorizontalOptions="End"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="20"
+                            BackgroundColor="{DynamicResource Background}"
+                            HasShadow="False"
+                            IsClippedToBounds="True" >
+                            <StackLayout
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                                <Image
+                                    Source="edit_icon"
+                                    WidthRequest="25"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
                     <Label
                         Text="Nome do dispositivo"
                         Style="{DynamicResource LabelTitleWhite}"/>
