@@ -161,6 +161,7 @@
 	  <None Remove="Utils\Converters\" />
 	  <None Remove="Resources\Images\GreenTheme\.DS_Store" />
 	  <None Remove="Modules\Shared\Views\" />
+	  <None Remove="Resources\Images\edit_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
