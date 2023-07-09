@@ -7,7 +7,7 @@
     x:Name="CMDPage">
     <Grid
         RowDefinitions="*,*"
-        Margin="15">
+        Margin="15,35,15,15">
         <StackLayout
             Grid.Row="0"
             Grid.RowSpan="2"
@@ -19,20 +19,33 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Label
-                            Style="{DynamicResource Label12Primary}"
+                            Style="{DynamicResource Label14Primary}"
                             Text="{Binding .}"
                             VerticalOptions="Center" 
                             HorizontalOptions="Start" />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
-            <entry:EntryComponent
-                x:Name="EntryCMD"
-                Text="{Binding Model.CommandText, Mode=TwoWay}"
-                TextColor="{DynamicResource Primary}"
-                BackgroundColor="{OnPlatform Android='White',Default='Transparent'}"
-                Keyboard="Plain"
-                ReturnCommand="{Binding EnterCommand}"/>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <Label
+                    VerticalOptions="Center"
+                    Text="Default ~ %"
+                    Style="{DynamicResource Label14Primary}"
+                    x:Name="LabelDeviceInfo"/>
+                <entry:EntryComponent
+                    x:Name="EntryCMD"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding Model.CommandText, Mode=TwoWay}"
+                    Style="{DynamicResource Label14Primary}"
+                    BackgroundColor="{OnPlatform Android='White',Default='Transparent'}"
+                    Keyboard="Plain"
+                    ReturnCommand="{Binding EnterCommand}"/>
+            </StackLayout>
+            
         </StackLayout>
         <StackLayout
             VerticalOptions="Start"
