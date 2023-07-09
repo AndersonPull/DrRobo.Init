@@ -10,7 +10,7 @@
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand"
         Spacing="15"
-        Margin="{OnPlatform Default=15, iOS='15,45,15,15'}"
+        Margin="{OnPlatform Default=15, iOS='15,55,15,15'}"
         x:Name="ProfileStackLayout">
         <Label
             HorizontalOptions="CenterAndExpand"

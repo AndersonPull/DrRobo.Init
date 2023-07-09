@@ -35,8 +35,13 @@
                                     HeightRequest="40"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="StartAndExpand">
+                                    <Image
+                                        Source="{Binding Image}"
+                                        WidthRequest="30"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"/>
                                     <Label 
-                                        Text="{Binding .}"
+                                        Text="{Binding Name}"
                                         VerticalOptions="Center" 
                                         HorizontalOptions="Center"
                                         Style="{DynamicResource Label14BlackBold}"/>

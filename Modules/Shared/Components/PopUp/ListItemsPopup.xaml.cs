@@ -1,8 +1,10 @@
-﻿namespace Drrobo.Modules.Shared.Components.PopUp;
+﻿using Drrobo.Modules.Shared.ComponentModels;
+
+namespace Drrobo.Modules.Shared.Components.PopUp;
 
 public partial class ListItemsPopup : CommunityToolkit.Maui.Views.Popup
 {
-	public ListItemsPopup(List<string> values)
+	public ListItemsPopup(List<ListItemsComponentModel> values)
 	{
 		InitializeComponent();
 

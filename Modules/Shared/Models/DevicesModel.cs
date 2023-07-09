@@ -1,4 +1,5 @@
 ﻿using System;
+using Drrobo.Modules.Shared.Enums;
 using SQLite;
 
 namespace Drrobo.Modules.Shared.Models
@@ -15,6 +16,13 @@ namespace Drrobo.Modules.Shared.Models
         public bool Isjoystick { get; set; }
 
         public bool IsBluetooth { get; set; }
+
+        public bool HaveCamera { get; set; }
+
+        public string URLCamera { get; set; }
+
+        public string Image { get; set; }
+
+        public string Type { get; set; }
     }
 }
-

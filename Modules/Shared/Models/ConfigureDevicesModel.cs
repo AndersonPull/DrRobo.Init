@@ -5,6 +5,8 @@ namespace Drrobo.Modules.Shared.Models
 {
 	public class ConfigureDevicesModel : BaseModel
     {
-        public ObservableCollection<DevicesModel> DevicesList { get; set; }
+        public DevicesModel Device { get; set; }
+
+        public bool IsAdd { get; set; }
     }
 }

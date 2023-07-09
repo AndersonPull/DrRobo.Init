@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace Drrobo.Utils
 {
 	public class Util
@@ -12,6 +14,12 @@ namespace Drrobo.Utils
 #else
             return default(T);
 #endif
+        }
+
+        public static object GetDefaultValueEnum(Type enumType)
+        {
+            var attributes = (DefaultValueAttribute[])enumType.GetCustomAttributes(typeof(DefaultValueAttribute), false);
+            return attributes.Length > 0 ? attributes[0].Value : Activator.CreateInstance(enumType);
         }
     }
 }

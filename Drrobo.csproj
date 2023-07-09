@@ -162,6 +162,7 @@
 	  <None Remove="Resources\Images\GreenTheme\.DS_Store" />
 	  <None Remove="Modules\Shared\Views\" />
 	  <None Remove="Resources\Images\edit_icon.svg" />
+	  <None Remove="Modules\Shared\ComponentModels\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -237,6 +238,7 @@
 	  <Folder Include="Modules\Dashboard\Data\" />
 	  <Folder Include="Utils\Converters\" />
 	  <Folder Include="Modules\Shared\Views\" />
+	  <Folder Include="Modules\Shared\ComponentModels\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
