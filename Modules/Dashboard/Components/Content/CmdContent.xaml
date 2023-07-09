@@ -27,6 +27,7 @@
                 </BindableLayout.ItemTemplate>
             </StackLayout>
             <StackLayout
+                Spacing="10"
                 Orientation="Horizontal"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Start">
