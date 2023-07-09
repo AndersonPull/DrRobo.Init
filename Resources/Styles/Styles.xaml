@@ -67,6 +67,13 @@
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
+    <!--Entrys-->
+    <Style
+        x:Key="Entry14White"
+        TargetType="Entry">
+        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
     <!--Buttons-->
     <Style
         x:Key="PrimaryButton"
