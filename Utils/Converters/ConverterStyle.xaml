@@ -7,4 +7,5 @@
     <converters:ObjectNotNullConverter x:Key="ObjectNotNullConverter" />
     <converters:StringNullOrEmptyConverter x:Key="StringNullOrEmptyConverter"/>
     <converters:StringNotNullOrEmptyConverter x:Key="StringNotNullOrEmptyConverter"/>
+    <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
 </ResourceDictionary>
