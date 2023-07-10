@@ -15,6 +15,7 @@ namespace Drrobo.Modules.Shared.ViewModels
         public ICommand AddCommand => new Command(async () => await AddAsync());
         public ICommand DeleteCommand => new Command((value) => DeleteAsync((DevicesModel)value));
         public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
+        public ICommand GetDevicesCommand => new Command(() => GetDevices());
 
         INavigationService _serviceNavigation;
         DevicesData _deviceData;
@@ -22,8 +23,12 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             _serviceNavigation = serviceNavigation;
             _deviceData = new DevicesData();
+        }
 
+        public override Task InitializeAsync(object navigationData)
+        {
             GetDevices();
+            return base.InitializeAsync(navigationData);
         }
 
         private void GetDevices()

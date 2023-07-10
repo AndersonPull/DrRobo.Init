@@ -37,13 +37,6 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         public Task NavigateToAsync(Type viewModelType, object parameter)
             => InternalNavigateToAsync(viewModelType, parameter);
 
-        public void NavPage(Page page)
-            => Application.Current.MainPage = new NavigationPage(page);
-
-        public void NavAsyncPage(Page page)
-            => MainThread.BeginInvokeOnMainThread(async ()
-                => await Application.Current.MainPage.Navigation.PushAsync(page));
-
         private static NavigationService instance = null;
         private static readonly object padlock = new object();
 

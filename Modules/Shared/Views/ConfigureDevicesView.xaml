@@ -16,7 +16,7 @@
             Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
-            Margin="15,0,15,5"
+            Margin="{OnIdiom Desktop=15, Default=0}"
             VerticalOptions="FillAndExpand">
             <ScrollView
                 VerticalOptions="FillAndExpand"
@@ -78,7 +78,7 @@
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <entry:EntryComponent
                         Style="{DynamicResource Entry14White}"
-                        x:Name="EntryName"
+                        x:Name="NameEntry"
                         Text="{Binding Model.Device.Name, Mode=TwoWay}"/>
                     <Label
                         Text="Selecione o tipo de comunicação"
@@ -95,7 +95,7 @@
                         Style="{DynamicResource LabelTitleWhite}"
                         IsVisible="{Binding Model.Device.IsBluetooth, Mode=TwoWay, Converter={StaticResource InverseBoolConverter}}"/>
                     <entry:EntryComponent
-                        Text="{Binding Model.Device.URL, Mode=TwoWay}"
+                        Text="{Binding Model.Device.URL}"
                         Style="{DynamicResource Entry14White}"
                         IsVisible="{Binding Model.Device.IsBluetooth, Mode=TwoWay, Converter={StaticResource InverseBoolConverter}}"/>
                     <Label
@@ -121,20 +121,23 @@
                 VerticalOptions="End"
                 HorizontalOptions="Center"
                 WidthRequest="300"
-                IsVisible="{Binding Model.IsAdd, Converter={StaticResource InverseBoolConverter}}"
-                SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
-                Text="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
+                IsVisible="{Binding Model.IsUpdate}"
+                SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
+                Text="Atualizar"
                 Style="{DynamicResource PrimaryButton}"
-                Command="{Binding AddCommand}"/>
+                Command="{Binding UpdateCommand}"
+                x:Name="UpdateButton"/>
             <Button
                 VerticalOptions="End"
                 HorizontalOptions="Center"
                 WidthRequest="300"
-                IsVisible="{Binding Model.IsAdd}"
-                SemanticProperties.Description="{Binding LocalizationResourceManager[Add], Mode=OneWay}"
-                Text="Atualizar"
-                Style="{DynamicResource PrimaryButton}"
-                Command="{Binding UpdateCommand}"/>
+                IsEnabled="False"
+                IsVisible="{Binding Model.IsUpdate, Converter={StaticResource InverseBoolConverter}}"
+                SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
+                Text="{Binding LocalizationResourceManager[Add]}"
+                Style="{DynamicResource DisableButton}"
+                Command="{Binding AddCommand}"
+                x:Name="SaveButton"/>
         </StackLayout>
     </Grid>
 </ContentPage>

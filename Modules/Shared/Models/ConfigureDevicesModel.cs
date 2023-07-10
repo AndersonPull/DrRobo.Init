@@ -7,6 +7,6 @@ namespace Drrobo.Modules.Shared.Models
     {
         public DevicesModel Device { get; set; }
 
-        public bool IsAdd { get; set; }
+        public bool IsUpdate{ get; set; }
     }
 }

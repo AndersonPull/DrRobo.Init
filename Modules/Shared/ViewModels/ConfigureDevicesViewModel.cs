@@ -13,10 +13,10 @@ namespace Drrobo.Modules.Shared.ViewModels
 {
 	public class ConfigureDevicesViewModel : BaseViewModel<ConfigureDevicesModel>
     {
-        public ICommand AddCommand => new Command(async () => await AddAsync());
-        public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
         public ICommand SelectCommunicationCommand => new Command(async () => await SelectCommunicationAsync());
         public ICommand SelectTypeDeviceCommand => new Command(async () => await SelectTypeDevice());
+        public ICommand AddCommand => new Command(async () => await AddAsync());
+        public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
 
         DevicesData _deviceData;
         public ConfigureDevicesViewModel()
@@ -29,7 +29,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             if (navigationData is DevicesModel)
             {
                 Model.Device = (DevicesModel)navigationData;
-                Model.IsAdd = true;
+                Model.IsUpdate = true;
             }
             else
                 Model.Device = new DevicesModel();
@@ -40,19 +40,12 @@ namespace Drrobo.Modules.Shared.ViewModels
             if (string.IsNullOrEmpty(Model.Device.URLCamera))
                 Model.Device.URLCamera = "https://";
 
+            if (string.IsNullOrEmpty(Model.Device.Image))
+                Model.Device.Image = DeviceTypeEnum.Other.Value();
+
             return base.InitializeAsync(navigationData);
         }
-
-        private async Task AddAsync()
-        {
-            _deviceData.Save(Model.Device);
-        }
-
-        private async Task UpdateAsync(DevicesModel value)
-        {
-            _deviceData.Update(Model.Device);
-        }
-
+        
         private async Task SelectCommunicationAsync()
         {
             var teste =  Model.Device.IsBluetooth;
@@ -83,6 +76,18 @@ namespace Drrobo.Modules.Shared.ViewModels
 
             Model.Device.Image = typeDevice.Image;
             Model.Device.Type = typeDevice.Name;
+        }
+
+        private async Task AddAsync()
+        {
+            _deviceData.Save(Model.Device);
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        private async Task UpdateAsync(DevicesModel value)
+        {
+            _deviceData.Update(Model.Device);
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
     }
 }
