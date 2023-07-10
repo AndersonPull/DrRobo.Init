@@ -66,7 +66,6 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
-
     <!--Entrys-->
     <Style
         x:Key="Entry14White"
@@ -160,7 +159,7 @@
         <Setter Property="HeightRequest" Value="50" />
         <Setter Property="CornerRadius" Value="25" />
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="TextColor" Value="{DynamicResource Background}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryBackground}"/>
     </Style>
     <!--Page-->
