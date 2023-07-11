@@ -10,7 +10,7 @@ namespace Drrobo.Modules.Shared.Services.Data
         {
             string _dataBasePath = Path
                 .Combine(Environment
-                .GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Robo.db3");
+                .GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DrRoboData.db3");
 
             _dataBase = new SQLiteConnection(_dataBasePath);
             _dataBase.CreateTable<T>();
