@@ -73,12 +73,16 @@
 		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="Unity" Version="5.11.10" />
-		<PackageReference Include="Plugin.BLE" Version="3.0.0-beta.2" />
-		<PackageReference Include="Refit" Version="6.3.2" />
+		<PackageReference Include="Plugin.BLE" Version="3.0.0-beta.4" />
+		<PackageReference Include="Refit" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -159,7 +163,6 @@
 	  <None Remove="Resources\Images\joystick_banner_icon.png" />
 	  <None Remove="Resources\Images\configure_icon.svg" />
 	  <None Remove="Utils\Converters\" />
-	  <None Remove="Resources\Images\GreenTheme\.DS_Store" />
 	  <None Remove="Modules\Shared\Views\" />
 	  <None Remove="Resources\Images\edit_icon.svg" />
 	  <None Remove="Modules\Shared\ComponentModels\" />
@@ -178,7 +181,6 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
-	  <BundleResource Include="Resources\Images\GreenTheme\.DS_Store" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
