@@ -16,7 +16,7 @@
             Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
-            Margin="{OnIdiom Desktop=15, Default=0}"
+            Margin="{OnIdiom Desktop=15, Default='15,0,15,0'}"
             VerticalOptions="FillAndExpand">
             <ScrollView
                 VerticalOptions="FillAndExpand"

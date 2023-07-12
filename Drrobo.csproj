@@ -166,6 +166,8 @@
 	  <None Remove="Modules\Shared\Views\" />
 	  <None Remove="Resources\Images\edit_icon.svg" />
 	  <None Remove="Modules\Shared\ComponentModels\" />
+	  <None Remove="Resources\Images\have_cam_icon.png" />
+	  <None Remove="Resources\Images\wifi_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />

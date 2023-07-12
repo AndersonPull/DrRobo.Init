@@ -1,9 +1,5 @@
-﻿using System;
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using CommunityToolkit.Maui.Views;
-using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Services.Navigation;

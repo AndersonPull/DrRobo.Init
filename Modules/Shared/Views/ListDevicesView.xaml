@@ -14,55 +14,101 @@
             Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
-            Margin="{OnIdiom Desktop=15, Default=0}"
+            Margin="{OnIdiom Desktop=15, Default='15,0,15,0'}"
             VerticalOptions="FillAndExpand">
             <ScrollView
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                HorizontalScrollBarVisibility="Never"
+                VerticalScrollBarVisibility="Never">
                 <StackLayout
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Spacing="15"
+                    x:Name="StackLayoutListItems"
                     BindableLayout.ItemsSource="{Binding Model.DevicesList, Mode=TwoWay}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <SwipeView>
-                                <SwipeView.LeftItems>
-                                    <SwipeItems>
-                                        <SwipeItem
-                                            Text="Delete"
-                                            BackgroundColor="{DynamicResource AlertRed}"
-                                            Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.DeleteCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                        <SwipeItem
-                                            Text="Update"
-                                            BackgroundColor="{DynamicResource AlertYellow}"
-                                            Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.UpdateCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                    </SwipeItems>
-                                </SwipeView.LeftItems>
-                                <Grid
-                                    Padding="10"
-                                    HeightRequest="80"
-                                    BackgroundColor="{DynamicResource SecondaryBackground}"
-                                    ColumnDefinitions="*,20"
-                                    RowDefinitions="50*,50*">
-                                    <Label
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Text="{Binding Name, Mode=TwoWay}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        Style="{DynamicResource Label12WhiteBold}"/>
-                                    <Label
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                        Text="{Binding URL, Mode=TwoWay}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        Style="{DynamicResource Label12WhiteBold}"/>
-                                </Grid>
-                            </SwipeView>
+                            <Frame
+                                Padding="0"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="80"
+                                CornerRadius="15"
+                                HasShadow="False"
+                                IsClippedToBounds="True">
+                                <SwipeView>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems Mode="Execute">
+                                            <SwipeItem
+                                                Text="Delete"
+                                                BackgroundColor="{DynamicResource AlertRed}"
+                                                Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.DeleteCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+                                    <StackLayout
+                                        Spacing="10"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                                        Orientation="Horizontal"
+                                        x:Name="StackLayoutItem">
+                                        <Image
+                                            Source="dashboard_full_icon"
+                                            WidthRequest="60"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="Start"/>
+                                        <StackLayout
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="StartAndExpand"
+                                            Spacing="10">
+                                            <Label
+                                                Text="{Binding Name, Mode=TwoWay}"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                Style="{DynamicResource Label12WhiteBold}"/>
+                                            <Label
+                                                Text="{Binding URL, Mode=TwoWay}"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                Style="{DynamicResource Label12WhiteBold}"
+                                                IsVisible="{Binding IsBluetooth, Converter={StaticResource InverseBoolConverter}}"/>
+                                        </StackLayout>
+                                        <Image
+                                            Source="have_cam_icon"
+                                            Margin="0"
+                                            WidthRequest="25"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding HaveCamera}"/>
+                                        <Image
+                                            Source="wifi_icon"
+                                            Margin="0"
+                                            WidthRequest="25"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding IsBluetooth, Converter={StaticResource InverseBoolConverter}}"/>
+                                        <Image
+                                            Source="bluetooth_on_icon"
+                                            Margin="0"
+                                            WidthRequest="18"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="End"
+                                            IsVisible="{Binding IsBluetooth}"/>
+                                        <Image
+                                            Source="{Binding Image, Mode=TwoWay}"
+                                            Margin="0,0,-26,-15"
+                                            WidthRequest="130"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="End"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.UpdateCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </SwipeView>
+                            </Frame>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
