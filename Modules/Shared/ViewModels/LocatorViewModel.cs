@@ -1,5 +1,4 @@
-﻿using System;
-using Unity;
+﻿using Unity;
 using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.Shared.Services.Navigation.Implementations;
 using Drrobo.Modules.Dashboard.ViewModels;
