@@ -47,7 +47,7 @@
                                         </SwipeItems>
                                     </SwipeView.LeftItems>
                                     <StackLayout
-                                        Spacing="10"
+                                        Spacing="5"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="{DynamicResource SecondaryBackground}"
@@ -76,22 +76,19 @@
                                         </StackLayout>
                                         <Image
                                             Source="have_cam_icon"
-                                            Margin="0"
-                                            WidthRequest="25"
+                                            WidthRequest="{OnIdiom Desktop=25, Default=15}"
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="End"
                                             IsVisible="{Binding HaveCamera}"/>
                                         <Image
                                             Source="wifi_icon"
-                                            Margin="0"
-                                            WidthRequest="25"
+                                            WidthRequest="{OnIdiom Desktop=25, Default=15}"
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="End"
                                             IsVisible="{Binding IsBluetooth, Converter={StaticResource InverseBoolConverter}}"/>
                                         <Image
                                             Source="bluetooth_on_icon"
-                                            Margin="0"
-                                            WidthRequest="18"
+                                            WidthRequest="{OnIdiom Desktop=18, Default=12}"
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="End"
                                             IsVisible="{Binding IsBluetooth}"/>
