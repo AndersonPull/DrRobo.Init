@@ -1,10 +1,8 @@
 ﻿using CommunityToolkit.Maui;
-using Drrobo.Modules.Dashboard.ViewModels;
-using Drrobo.Modules.Dashboard.Views;
-using Drrobo.Utils.Translations;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Microsoft.Maui.LifecycleEvents;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Drrobo;
 
@@ -15,7 +13,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
+            .UseSkiaSharp(true)
+            .UseMauiCommunityToolkit()
 			.UseMauiCompatibility()
 			.ConfigureFonts(fonts => { SetFonts(fonts); })
 			.ConfigureMauiHandlers(handlers => { NewHandlers(handlers); })
