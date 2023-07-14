@@ -25,6 +25,7 @@ namespace Drrobo.Modules.Dashboard.Models
         public bool DroneCamOn { get; set; }
         public bool JumperCamOn { get; set; }
         public BluetoothModel Bluetooth { get; set; }
-        public ProfileModel Profile { get; set; } 
+        public ProfileModel Profile { get; set; }
+        public ObservableCollection<DevicesModel> DevicesList { get; set; }
     }
 }

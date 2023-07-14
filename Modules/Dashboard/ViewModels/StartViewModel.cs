@@ -5,7 +5,6 @@ using Drrobo.Modules.Dashboard.Enums;
 using Drrobo.Modules.Dashboard.Components.Content;
 using Drrobo.Modules.Dashboard.Views;
 using Drrobo.Modules.Dashboard.Models;
-using Drrobo.Modules.RemotelyControlled.Enums;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using System.Collections.ObjectModel;
 using Drrobo.Utils.Bluetooth;
@@ -17,6 +16,8 @@ using Drrobo.Modules.Dashboard.Components.Popup;
 using System.Globalization;
 using Drrobo.Utils.Translations;
 using Drrobo.Modules.Dashboard.Data;
+using Drrobo.Modules.Shared.Services.Data;
+using Drrobo.Modules.Shared.Models;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -41,13 +42,21 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         IBluetoothUtil _bluetoothUtil;
         INavigationService _serviceNavigation;
         LanguageData _languageData;
+        DevicesData _deviceData;
         public StartViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
             _languageData = new LanguageData();
+            _deviceData = new DevicesData();
 
+        }
+
+        public override Task InitializeAsync(object navigationData)
+        {
             GetLanguage();
+            GetDevices();
+            return base.InitializeAsync(navigationData);
         }
 
         private void GetLanguage()
@@ -60,6 +69,13 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
                 Model.Profile.Language = languages.FirstOrDefault().Name;
             }
+        }
+
+        private void GetDevices()
+        {
+            Model.DevicesList = new ObservableCollection<DevicesModel>();
+            foreach (var item in _deviceData.GetAll())
+                Model.DevicesList.Add(item);
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)
