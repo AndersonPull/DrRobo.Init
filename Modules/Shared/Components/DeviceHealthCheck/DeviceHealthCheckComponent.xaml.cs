@@ -8,6 +8,7 @@ namespace Drrobo.Modules.Shared.Components.DeviceHealthCheck;
 
 public partial class DeviceHealthCheckComponent : ContentView
 {
+    public static readonly BindableProperty BatteryProperty = BindableProperty.Create(nameof(Battery), typeof(int), typeof(DeviceHealthCheckComponent), 50);
     public static readonly BindableProperty BatteryPercentageProperty = BindableProperty.Create(nameof(BatteryPercentage), typeof(IEnumerable<ISeries>), typeof(DeviceHealthCheckComponent));
 
     public DeviceHealthCheckComponent()
@@ -15,6 +16,12 @@ public partial class DeviceHealthCheckComponent : ContentView
         InitializeComponent();
 
         seting();
+    }
+
+    public int Battery
+    {
+        get => (int)GetValue(BatteryProperty);
+        set => SetValue(BatteryProperty, value);
     }
 
     public IEnumerable<ISeries> BatteryPercentage
@@ -30,7 +37,7 @@ public partial class DeviceHealthCheckComponent : ContentView
             .WithBackgroundInnerRadius(120)
             .WithBackground(new SolidColorPaint(new SKColor(30, 30, 30)))
             .WithLabelsPosition(PolarLabelsPosition.ChartCenter)
-            .AddValue(75, null, new SKColor(47, 193, 44), SKColors.Transparent)
+            .AddValue(Battery, null, new SKColor(47, 193, 44), SKColors.Transparent)
             .BuildSeries();
     }
 }
