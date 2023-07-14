@@ -8,33 +8,33 @@
     <Frame
         Padding="0"
         WidthRequest="130"
-        HeightRequest="180"
+        HeightRequest="160"
         HasShadow="False"
         CornerRadius="10"
-        BackgroundColor="{DynamicResource SecondaryBackground}">
+        BackgroundColor="{DynamicResource SecondaryBackground}"
+        IsClippedToBounds="True">
         <StackLayout
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand"
             Margin="10">
             <Label 
-                VerticalOptions="Start" 
                 HorizontalOptions="Center"
                 Style="{DynamicResource Label12WhiteBold}"
-                Text="Robo aranha"/>
+                Text="{Binding Name}"/>
             <Grid
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Text="{Binding Teste}"/>
                 <lvc:PieChart
-                    WidthRequest="120"
+                    WidthRequest="{OnIdiom Desktop=120, Default=110}"
                     Series="{Binding BatteryPercentage, Source={x:Reference DeviceHealthCheck}}"
                     InitialRotation="-90"
-                    Total="100"/>
+                    Total="100"
+                    TooltipPosition="Hidden"/>
                 <Image
-                    Source="logo_icon"
-                    WidthRequest="80"/>
+                    Source="{Binding Image}"
+                    WidthRequest="60"/>
             </Grid>
         </StackLayout>
     </Frame>
