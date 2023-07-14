@@ -9,7 +9,8 @@ using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Utils.Bluetooth;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
-using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using Drrobo.Modules.Shared.ComponentModels;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -17,22 +18,63 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     {
         public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementCommand => new Command(async (value) => await MovementAsync((string)value));
-        public ICommand GetServerCommand => new Command(() => GetServer());
+        public ICommand DevicesPopupCommand => new Command(async () => await DevicesPopupAsync());
 
         INavigationService _serviceNavigation;
         IBluetoothUtil _bluetoothUtil;
-        DevicesData _serverData;
+
+        DevicesData _deviceData;
         public JoystickViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
-            _serverData = new DevicesData();
+
+            _deviceData = new DevicesData();
         }
 
-        private void GetServer()
+        public override Task InitializeAsync(object navigationData)
         {
-            if (Model.Server != null)
+            GetDevices();
+            Model.Device = Model.DevicesList
+                .FirstOrDefault(x => x.IsSelected == true) ?? Model.DevicesList.FirstOrDefault();
+
+            return base.InitializeAsync(navigationData);
+        }
+
+        private void GetDevices()
+        {
+            Model.DevicesList = new ObservableCollection<DevicesModel>();
+            foreach (var item in _deviceData.GetAll())
+                Model.DevicesList.Add(item);
+        }
+
+        private async Task DevicesPopupAsync()
+        {
+            var items = new List<ListItemsComponentModel>();
+
+            foreach (var device in Model.DevicesList)
+            {
+                var item = new ListItemsComponentModel()
+                {
+                    Id = device.Id,
+                    Image = device.Image,
+                    Name = device.Name
+                };
+
+                items.Add(item);
+            }
+
+            var deviceSelected = (ListItemsComponentModel)await Application.Current.MainPage
+                .ShowPopupAsync(new ListItemsPopup(items));
+
+            if (deviceSelected == null)
                 return;
+
+            Model.Device.IsSelected = false;
+            _deviceData.Update(Model.Device);
+            Model.Device = _deviceData.GetById(deviceSelected.Id);
+            Model.Device.IsSelected = true;
+            _deviceData.Update(Model.Device);
         }
 
         private async Task BluetoothPopupAsync()

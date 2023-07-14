@@ -24,5 +24,7 @@ namespace Drrobo.Modules.Shared.Models
         public string Image { get; set; }
 
         public string Type { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

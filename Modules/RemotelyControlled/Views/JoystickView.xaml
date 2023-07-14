@@ -15,7 +15,6 @@
             ZIndex="1"
             VerticalOptions="Start"
             Grid.Row="0"
-            HasBluetooth="{Binding Model.Server.IsBluetooth}"
             Command="{Binding BluetoothPopupCommand}"
             x:Name="NavigationComponent"/>
         <StackLayout
@@ -32,7 +31,7 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
-                    Source="{Binding Model.Server.URL}"
+                    Source="{Binding Model.Device.URLCamera}"
                     x:Name="WebViewCam"/>
                 <joystick:JoystickComponent
                     Padding="15"
@@ -52,8 +51,38 @@
                     BackgroundColor="{DynamicResource SecondaryBackground}"
                     ImageSource="not_cam_icon"
                     Clicked="OpenCam"
-                    IsVisible="{Binding Model.Server.URL, Converter={StaticResource StringNotNullOrEmptyConverter}}"
+                    IsVisible="{Binding Model.Device.HaveCamera}"
                     x:Name="ImageButtonCam"/>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Margin="0,45,45,0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Spacing="15"
+                    Opacity="0.4">
+                    <Label
+                        VerticalOptions="CenterAndExpand"
+                        Style="{DynamicResource Label12WhiteBold}"
+                        Text="{Binding Model.Device.Name}"/>
+                    <Frame
+                        Padding="0"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        CornerRadius="20"
+                        Background="{DynamicResource SecondaryBackground}">
+                        <Grid
+                            WidthRequest="20">
+                            <Image
+                                WidthRequest="30"
+                                Source="{Binding Model.Device.Image}"/>
+                        </Grid>
+                    </Frame>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding DevicesPopupCommand}"
+                            CommandParameter="{Binding .}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
             </Grid>
         </StackLayout>
         <StackLayout

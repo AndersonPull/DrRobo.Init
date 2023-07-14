@@ -24,8 +24,8 @@ public partial class JoystickView : ContentPage
     {
         base.OnAppearing();
 
-        if (ViewModel.GetServerCommand.CanExecute(null))
-            ViewModel.GetServerCommand.Execute(null);
+        //if (ViewModel.GetServerCommand.CanExecute(null))
+        //    ViewModel.GetServerCommand.Execute(null);
     }
 
     private void SetDeviceDisplay()
