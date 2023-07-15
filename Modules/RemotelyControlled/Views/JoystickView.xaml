@@ -40,7 +40,7 @@
                     Command="{Binding MovementDroneCommand}"
                     CommandParameter="{Binding .}"
                     x:Name="JoystickComponent"/>
-                <Button
+                <ImageButton
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     WidthRequest="60"
@@ -49,7 +49,7 @@
                     CornerRadius="30"
                     Opacity="0.4"
                     BackgroundColor="{DynamicResource SecondaryBackground}"
-                    ImageSource="not_cam_icon"
+                    Source="not_cam_icon"
                     Clicked="OpenCam"
                     IsVisible="{Binding Model.Device.HaveCamera}"
                     x:Name="ImageButtonCam"/>
