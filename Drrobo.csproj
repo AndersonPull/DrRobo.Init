@@ -171,6 +171,7 @@
 	  <None Remove="Resources\Images\wifi_icon.png" />
 	  <None Remove="Modules\Shared\Components\DeviceHealthCheck\" />
 	  <None Remove="Utils\Components\" />
+	  <None Remove="Resources\Images\not_cam_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
