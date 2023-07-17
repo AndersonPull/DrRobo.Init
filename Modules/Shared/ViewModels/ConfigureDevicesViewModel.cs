@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
 using Drrobo.Modules.Shared.ComponentModels;
 using Drrobo.Modules.Shared.Components.PopUp;
@@ -8,6 +6,8 @@ using Drrobo.Modules.Shared.Enums;
 using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Utils;
+using Drrobo.Utils.Bluetooth;
+using Plugin.BLE.Abstractions.Contracts;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -18,9 +18,11 @@ namespace Drrobo.Modules.Shared.ViewModels
         public ICommand AddCommand => new Command(async () => await AddAsync());
         public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
 
+        IBluetoothUtil _bluetoothUtil;
         DevicesData _deviceData;
-        public ConfigureDevicesViewModel()
+        public ConfigureDevicesViewModel(IBluetoothUtil bluetoothUtil)
         {
+            _bluetoothUtil = bluetoothUtil;
             _deviceData = new DevicesData();
         }
 
@@ -48,7 +50,8 @@ namespace Drrobo.Modules.Shared.ViewModels
         
         private async Task SelectCommunicationAsync()
         {
-            var teste =  Model.Device.IsBluetooth;
+            if (Model.Device.IsBluetooth)
+                await BluetoothPopupAsync();
         }
 
         private async Task SelectTypeDevice()
@@ -88,6 +91,15 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             _deviceData.Update(Model.Device);
             await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        private async Task BluetoothPopupAsync()
+        {
+            var result = (IDevice)await Application.Current.MainPage
+                .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
+
+            if (result != null)
+                Model.Device.GuidBluetooth = result.Id;
         }
     }
 }

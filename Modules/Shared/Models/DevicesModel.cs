@@ -1,6 +1,4 @@
-﻿using System;
-using Drrobo.Modules.Shared.Enums;
-using SQLite;
+﻿using SQLite;
 
 namespace Drrobo.Modules.Shared.Models
 {
@@ -26,5 +24,7 @@ namespace Drrobo.Modules.Shared.Models
         public string Type { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public Guid GuidBluetooth { get; set; }
     }
 }
