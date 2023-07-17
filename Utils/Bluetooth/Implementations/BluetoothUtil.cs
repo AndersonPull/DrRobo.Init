@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
-using System.Threading;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
@@ -47,6 +46,7 @@ namespace Drrobo.Utils.Bluetooth.Implementations
             try
             {
                 await _adapter.StopScanningForDevicesAsync();
+                await _adapter.ConnectToDeviceAsync(device);
                 return device;
             }
             catch (DeviceConnectionException ex)
@@ -73,17 +73,7 @@ namespace Drrobo.Utils.Bluetooth.Implementations
             return true;
         }
 
-        public async Task<IDevice> ConnectToDeviceAsync(Guid guid)
-        {
-            try
-            {
-                return await _adapter.ConnectToKnownDeviceAsync(guid);
-            }
-            catch (DeviceConnectionException ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
-                return null;
-            }
-        }
+        public async Task<IDevice> ConnectDeviceAsync(Guid guid)
+            => await _adapter.ConnectToKnownDeviceAsync(guid);
     }
 }

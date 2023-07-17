@@ -15,7 +15,6 @@
             ZIndex="1"
             VerticalOptions="Start"
             Grid.Row="0"
-            Command="{Binding BluetoothPopupCommand}"
             x:Name="NavigationComponent"/>
         <StackLayout
             Grid.Row="1"

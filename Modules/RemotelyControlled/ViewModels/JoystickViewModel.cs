@@ -2,7 +2,6 @@
 using Drrobo.Modules.Shared.Services.Navigation;
 using Plugin.BLE.Abstractions.Contracts;
 using Drrobo.Modules.RemotelyControlled.Models;
-using Plugin.BLE.Abstractions;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
 using Drrobo.Modules.Shared.Components.PopUp;
@@ -16,7 +15,6 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
 	public class JoystickViewModel : BaseViewModel<JoystickModel>
     {
-        public ICommand BluetoothPopupCommand => new Command(async () => await BluetoothPopupAsync());
         public ICommand MovementCommand => new Command(async (value) => await MovementAsync((string)value));
         public ICommand DevicesPopupCommand => new Command(async () => await DevicesPopupAsync());
 
@@ -75,18 +73,10 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             Model.Device = _deviceData.GetById(deviceSelected.Id);
             Model.Device.IsSelected = true;
             _deviceData.Update(Model.Device);
-        }
 
-        private async Task BluetoothPopupAsync()
-        {
-            var result = (IDevice)await Application.Current.MainPage
-                .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
 
-            if (result != null)
-                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
-
-            if (Model.Bluetooth.ConnectedDevice != null)
-                Model.Bluetooth.BluetoothConnected = true;
+            if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
+                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
         }
 
         private Task MovementAsync(string value)
