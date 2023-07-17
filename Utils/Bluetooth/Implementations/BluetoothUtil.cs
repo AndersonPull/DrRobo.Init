@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions;
@@ -45,7 +43,7 @@ namespace Drrobo.Utils.Bluetooth.Implementations
 
         public async Task<IDevice> SelectDeviceAsync(IDevice device)
         {
-            var result = await App.Current.MainPage
+            var result = await Application.Current.MainPage
                .DisplayAlert("AVISO", $"Deseja se conectar com {device.Name}", "Conectar", "Cancelar");
 
             if (!result)
