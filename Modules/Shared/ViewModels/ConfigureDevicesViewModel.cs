@@ -56,7 +56,6 @@ namespace Drrobo.Modules.Shared.ViewModels
 
         private async Task SelectTypeDevice()
         {
-
             var items = new List<ListItemsComponentModel>();
 
             var deviceTypes = (DeviceTypeEnum[])Enum.GetValues(typeof(DeviceTypeEnum));
