@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
@@ -23,7 +24,7 @@ namespace Drrobo.Utils.Bluetooth.Implementations
             var devices = new ObservableCollection<IDevice>();
 
             if (_bluetooth.State == BluetoothState.Off)
-                await App.Current.MainPage.DisplayAlert("AVISO", "Bluetooth desabilitado.", "OK");
+                await Application.Current.MainPage.DisplayAlert("AVISO", "Bluetooth desabilitado.", "OK");
             else
             {
                 _adapter.ScanTimeout = 1000;
@@ -43,22 +44,14 @@ namespace Drrobo.Utils.Bluetooth.Implementations
 
         public async Task<IDevice> SelectDeviceAsync(IDevice device)
         {
-            var result = await Application.Current.MainPage
-               .DisplayAlert("AVISO", $"Deseja se conectar com {device.Name}", "Conectar", "Cancelar");
-
-            if (!result)
-                return null;
-
-            await _adapter.StopScanningForDevicesAsync();
-
             try
             {
-                await _adapter.ConnectToDeviceAsync(device);
+                await _adapter.StopScanningForDevicesAsync();
                 return device;
             }
             catch (DeviceConnectionException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
                 return null;
             }
         }
@@ -78,6 +71,19 @@ namespace Drrobo.Utils.Bluetooth.Implementations
                 await characteristic.WriteAsync(Encoding.ASCII.GetBytes(value));
 
             return true;
+        }
+
+        public async Task<IDevice> ConnectToDeviceAsync(Guid guid)
+        {
+            try
+            {
+                return await _adapter.ConnectToKnownDeviceAsync(guid);
+            }
+            catch (DeviceConnectionException ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+                return null;
+            }
         }
     }
 }

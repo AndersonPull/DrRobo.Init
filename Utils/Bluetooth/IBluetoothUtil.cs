@@ -11,6 +11,8 @@ namespace Drrobo.Utils.Bluetooth
         Task<IDevice> SelectDeviceAsync(IDevice device);
 
         Task<bool> SendAsync(IDevice device, string value);
+
+        Task<IDevice> ConnectToDeviceAsync(Guid guid);
     }
 }
 
