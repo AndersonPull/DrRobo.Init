@@ -8,9 +8,7 @@ using Drrobo.Modules.Dashboard.Models;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using System.Collections.ObjectModel;
 using Drrobo.Utils.Bluetooth;
-using Plugin.BLE.Abstractions.Contracts;
 using CommunityToolkit.Maui.Views;
-using Drrobo.Modules.Shared.Components.PopUp;
 using Drrobo.Modules.Shared.Components.RemoteControl;
 using Drrobo.Modules.Dashboard.Components.Popup;
 using System.Globalization;
@@ -18,6 +16,7 @@ using Drrobo.Utils.Translations;
 using Drrobo.Modules.Dashboard.Data;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
+using Drrobo.Modules.Shared.Services.Service;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -28,6 +27,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         public ICommand EnterCommand => new Command(async () => await EnterAsync());
         public ICommand AccessCardsViewCommand => new Command(async () => await AccessCardsViewAsync());
         public ICommand ProfileClickButtonCommand => new Command(async (value) => await ProfileClickButtonAsync((ProfileButtonEnum)value));
+        public ICommand GetDevicesConnectCommand => new Command(async () => await GetDevicesConnectAsync());
 
         private Dictionary<DashboardPageTypeEnum, Lazy<ContentView>> ContentType =
             new Dictionary<DashboardPageTypeEnum, Lazy<ContentView>>
@@ -41,22 +41,29 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         IBluetoothUtil _bluetoothUtil;
         INavigationService _serviceNavigation;
+        IUniversalService _universalService;
+
         LanguageData _languageData;
         DevicesData _deviceData;
-        public StartViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
+        public StartViewModel
+        (
+            INavigationService serviceNavigation,
+            IBluetoothUtil bluetoothUtil,
+            IUniversalService universalService
+        )
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
+            _universalService = universalService;
+
             _languageData = new LanguageData();
             _deviceData = new DevicesData();
-
         }
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
             GetLanguage();
-            GetDevices();
-            return base.InitializeAsync(navigationData);
+            await base.InitializeAsync(navigationData);
         }
 
         private void GetLanguage()
@@ -71,11 +78,32 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             }
         }
 
-        private void GetDevices()
+        private async Task GetDevicesConnectAsync()
         {
             Model.DevicesList = new ObservableCollection<DevicesModel>();
+
             foreach (var item in _deviceData.GetAll())
-                Model.DevicesList.Add(item);
+            {
+                if (item.IsBluetooth)
+                {
+                    var response = await _bluetoothUtil.ConnectDeviceAsync(item.GuidBluetooth);
+                    if (response != null)
+                        Model.DevicesList.Add(item);
+                    else
+                        continue;
+                }
+                else 
+                {
+                    var response = await _universalService.HealthCheckAsync(item.URL);
+                    if (response != null)
+                        Model.DevicesList.Add(item);
+                    else
+                        continue;
+                }
+            }
+
+            if (Model.DevicesList.Count > 0)
+                Model.DevicesOn = true;
         }
 
         private async Task SetContentTypeAsync(DashboardPageTypeEnum item)
@@ -129,7 +157,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     Model.CommandsList = new ObservableCollection<string>();
                     break;
                 case "ble connect":
-                    await BluetoothPopupAsync();
+                    //await BluetoothPopupAsync();
                     break;
                 case "jumper left":
                     await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "L");
@@ -152,15 +180,6 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 default:
                     break;
             }
-        }
-
-        private async Task BluetoothPopupAsync()
-        {
-            var result = (IDevice)await Application.Current.MainPage
-                .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
-
-            if (result != null)
-                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.SelectDeviceAsync(result);
         }
 
         private async Task ProfileClickButtonAsync(ProfileButtonEnum value)

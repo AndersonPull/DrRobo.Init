@@ -4,7 +4,7 @@ namespace Drrobo.Modules.Shared.Services.Service
 {
 	public interface IUniversalService
 	{
-        Task<HealthCheckResponse> HealthCheckAsync(string url, string request);
+        Task<HealthCheckResponse> HealthCheckAsync(string url);
 
         Task RequestAsync(string url, string request);
     }

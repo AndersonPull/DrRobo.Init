@@ -8,7 +8,7 @@ namespace Drrobo.Modules.Shared.Components.DeviceHealthCheck;
 
 public partial class DeviceHealthCheckComponent : ContentView
 {
-    public static readonly BindableProperty BatteryProperty = BindableProperty.Create(nameof(Battery), typeof(int), typeof(DeviceHealthCheckComponent), 50);
+    public static readonly BindableProperty BatteryProperty = BindableProperty.Create(nameof(Battery), typeof(int), typeof(DeviceHealthCheckComponent));
     public static readonly BindableProperty BatteryPercentageProperty = BindableProperty.Create(nameof(BatteryPercentage), typeof(IEnumerable<ISeries>), typeof(DeviceHealthCheckComponent));
 
     public DeviceHealthCheckComponent()

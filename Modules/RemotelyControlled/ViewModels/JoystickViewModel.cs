@@ -17,6 +17,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
     {
         public ICommand MovementCommand => new Command(async (value) => await MovementAsync((string)value));
         public ICommand DevicesPopupCommand => new Command(async () => await DevicesPopupAsync());
+        public ICommand GetDevicesCommand => new Command(async () => await GetDevicesAsync());
 
         INavigationService _serviceNavigation;
         IBluetoothUtil _bluetoothUtil;
@@ -37,24 +38,42 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             _deviceData = new DevicesData();
         }
 
-        public override async Task InitializeAsync(object navigationData)
-        {
-            GetDevices();
-            Model.Device = Model.DevicesList
-                .FirstOrDefault(x => x.IsSelected == true) ?? Model.DevicesList.FirstOrDefault();
-
-            if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
-                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
-
-            Model.HaveCam = Model.Device.HaveCamera;
-            await base.InitializeAsync(navigationData);
-        }
-
-        private void GetDevices()
+        private async Task GetDevicesAsync()
         {
             Model.DevicesList = new ObservableCollection<DevicesModel>();
             foreach (var item in _deviceData.GetAll())
-                Model.DevicesList.Add(item);
+            {
+                if (item.Isjoystick)
+                {
+                    if (item.IsBluetooth)
+                    {
+                        var response = await _bluetoothUtil.ConnectDeviceAsync(item.GuidBluetooth);
+                        if (response != null)
+                            Model.DevicesList.Add(item);
+                        else
+                            continue;
+                    }
+                    else
+                    {
+                        var response = await _universalService.HealthCheckAsync(item.URL);
+                        if (response != null)
+                            Model.DevicesList.Add(item);
+                        else
+                            continue;
+                    }
+                }
+            }
+
+            if(Model.DevicesList.Count > 0)
+            {
+                Model.Device = Model.DevicesList
+                    .FirstOrDefault(x => x.IsSelected == true) ?? Model.DevicesList.FirstOrDefault();
+
+                if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
+                    Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
+
+                Model.HaveCam = Model.Device.HaveCamera;
+            }
         }
 
         private async Task DevicesPopupAsync()

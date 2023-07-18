@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using Drrobo.Modules.Dashboard.Enums;
-using Drrobo.Modules.RemotelyControlled.Enums;
 using Drrobo.Modules.Shared.Models;
 
 namespace Drrobo.Modules.Dashboard.Models
@@ -27,5 +26,6 @@ namespace Drrobo.Modules.Dashboard.Models
         public BluetoothModel Bluetooth { get; set; }
         public ProfileModel Profile { get; set; }
         public ObservableCollection<DevicesModel> DevicesList { get; set; }
+        public bool DevicesOn { get; set; }
     }
 }

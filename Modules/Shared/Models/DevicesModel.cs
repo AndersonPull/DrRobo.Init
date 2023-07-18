@@ -26,5 +26,7 @@ namespace Drrobo.Modules.Shared.Models
         public bool IsSelected { get; set; }
 
         public Guid GuidBluetooth { get; set; }
+
+        public int Battery { get; set; }
     }
 }

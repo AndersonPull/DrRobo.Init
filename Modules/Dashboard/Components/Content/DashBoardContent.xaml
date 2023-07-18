@@ -53,7 +53,7 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                     <ImageButton
+                                    <ImageButton
                                         WidthRequest="{Binding NewWidthFrame, Source={x:Reference DashboardPage}}"
                                         HeightRequest="{Binding NewHeightFrame, Source={x:Reference DashboardPage}}"
                                         Source="{Binding ImageIcon}"
@@ -71,7 +71,8 @@
                     <Label
                         SemanticProperties.Description="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
                         Text="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
-                        Style="{DynamicResource Label14WhiteBold}"/>
+                        Style="{DynamicResource Label14WhiteBold}"
+                        IsVisible="{Binding Model.DevicesOn}"/>
                     <ScrollView
                         Orientation="Horizontal"
                         VerticalScrollBarVisibility="Never"

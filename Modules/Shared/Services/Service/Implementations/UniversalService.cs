@@ -12,7 +12,7 @@ namespace Drrobo.Modules.Shared.Services.Service.Implementations
             _httpClient = new HttpClient();
         }
 
-        public async Task<HealthCheckResponse> HealthCheckAsync(string url, string request)
+        public async Task<HealthCheckResponse> HealthCheckAsync(string url)
         {
             try
             {

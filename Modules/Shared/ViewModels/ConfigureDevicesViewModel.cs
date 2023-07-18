@@ -78,6 +78,9 @@ namespace Drrobo.Modules.Shared.ViewModels
 
             Model.Device.Image = typeDevice.Image;
             Model.Device.Type = typeDevice.Name;
+
+            if (Model.Device.Type == DeviceTypeEnum.Jumper.Description())
+                Model.Device.Isjoystick = true;
         }
 
         private async Task AddAsync()
@@ -99,6 +102,8 @@ namespace Drrobo.Modules.Shared.ViewModels
 
             if (result != null)
                 Model.Device.GuidBluetooth = result.Id;
+            else
+                Model.Device.IsBluetooth = false;
         }
     }
 }
