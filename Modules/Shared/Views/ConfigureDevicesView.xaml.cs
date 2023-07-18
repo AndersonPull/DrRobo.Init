@@ -1,5 +1,4 @@
-﻿using Drrobo.Modules.Shared.Models;
-using Drrobo.Utils;
+﻿using Drrobo.Utils;
 
 namespace Drrobo.Modules.Shared.Views;
 
