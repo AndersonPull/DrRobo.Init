@@ -18,12 +18,7 @@ public partial class App : Application
                 config
                 .AddSkiaSharp()
                 .AddDefaultMappers()
-                .AddLightTheme()
-                .HasMap<City>((city, point) =>
-                {
-                    point.PrimaryValue = city.Population;
-                    point.SecondaryValue = point.Context.Index;
-                }));
+                .AddLightTheme());
     }
 
     public Task InitNavigation()

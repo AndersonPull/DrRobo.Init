@@ -44,7 +44,7 @@ namespace Drrobo.Utils.Converters
 
                 writer.WriteValue(Convert.ChangeType(value, GetUnderlyingType(type)));
             }
-            catch (Exception e)
+            catch
             {
                 //AsyncErrorHandler.HandleException(new Exception($"[StringEnumConverter] - Write - {e.Message}", e));
             }

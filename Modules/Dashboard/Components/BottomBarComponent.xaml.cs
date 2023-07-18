@@ -28,8 +28,8 @@ public partial class BottomBarComponent : ContentView
     private void IconAlignment(Image newIcon, Image oldIcon)
     {
         newIcon.IsVisible = true;
-        newIcon.VerticalOptions = LayoutOptions.CenterAndExpand;
-        newIcon.HorizontalOptions = LayoutOptions.CenterAndExpand;
+        newIcon.VerticalOptions = LayoutOptions.Center;
+        newIcon.HorizontalOptions = LayoutOptions.Center;
 
         oldIcon.IsVisible = false;
         oldIcon.VerticalOptions = LayoutOptions.Start;
