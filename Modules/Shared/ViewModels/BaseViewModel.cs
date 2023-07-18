@@ -1,7 +1,5 @@
-﻿using Drrobo.Modules.Shared.Enums;
-using Drrobo.Modules.Shared.Services.Service;
+﻿using Drrobo.Modules.Shared.Services.Service;
 using Drrobo.Utils.Bluetooth;
-using Drrobo.Utils.Constant;
 using Drrobo.Utils.Translations;
 using GalaSoft.MvvmLight;
 using Plugin.BLE.Abstractions.Contracts;
@@ -23,9 +21,8 @@ namespace Drrobo.Modules.Shared.ViewModels
         public LocalizationResourceManager LocalizationResourceManager
         => LocalizationResourceManager.Instance;
 
-        public BaseViewModel()
-        {
-        }
+
+        public BaseViewModel(){}
 
         private T _model = Activator.CreateInstance<T>();
         public T Model { get { return _model; } set { Set("Model", ref _model, value); } }
@@ -34,23 +31,27 @@ namespace Drrobo.Modules.Shared.ViewModels
         public bool IsBusy { get { return _isBusy; } set { Set("IsBusy", ref _isBusy, value); } }
 
 
-        public async Task Communication(CommunicationEnum communication, string request, IUniversalService universalService = null, IBluetoothUtil bluetoothUtil = null, IDevice device = null)
+        public async Task CommunicationBLE(string message, IDevice device, IBluetoothUtil bluetoothUtil)
         {
             try
             {
-                switch (communication)
-                {
-                    case CommunicationEnum.Wifi:
-                        universalService.Request(request).GetAwaiter().GetResult();
-                        break;
-                    case CommunicationEnum.Bluetooth:
-                        bluetoothUtil.SendAsync(device, request).GetAwaiter().GetResult();
-                        break;
-                }
+                await bluetoothUtil.SendAsync(device, message);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Erro na comunicação", "Certifique que as configurações estão corretas", "OK");
+                await Application.Current.MainPage.DisplayAlert("Erro na comunicação", e.Message, "OK");
+            }
+        }
+
+        public async Task CommunicationWifi(string message, string url, IUniversalService universalService)
+        {
+            try
+            {
+                universalService.Request(url, message).GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                await Application.Current.MainPage.DisplayAlert("Erro na comunicação", e.Message, "OK");
             }
         }
     }

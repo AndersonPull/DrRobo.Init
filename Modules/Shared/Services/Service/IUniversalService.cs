@@ -4,10 +4,7 @@ namespace Drrobo.Modules.Shared.Services.Service
 {
 	public interface IUniversalService
 	{
-        [Post("")]
-        Task<string> Request(string request);
-
-        [Post("drrobo")]
-        Task<string> RequestDrRobo(string request);
+        [Post("{url}")] 
+        Task<string> Request(string url, string request);
     }
 }

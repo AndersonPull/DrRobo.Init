@@ -1,6 +1,5 @@
 ﻿using Drrobo.Modules.Shared.ViewModels;
 using Drrobo.Modules.Shared.Services.Navigation;
-using Plugin.BLE.Abstractions.Contracts;
 using Drrobo.Modules.RemotelyControlled.Models;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
@@ -10,6 +9,7 @@ using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
 using System.Collections.ObjectModel;
 using Drrobo.Modules.Shared.ComponentModels;
+using Drrobo.Modules.Shared.Services.Service;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -22,7 +22,11 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         IBluetoothUtil _bluetoothUtil;
 
         DevicesData _deviceData;
-        public JoystickViewModel(INavigationService serviceNavigation, IBluetoothUtil bluetoothUtil)
+        public JoystickViewModel
+        (
+            INavigationService serviceNavigation,
+            IBluetoothUtil bluetoothUtil
+        )
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
@@ -30,13 +34,16 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             _deviceData = new DevicesData();
         }
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
             GetDevices();
             Model.Device = Model.DevicesList
                 .FirstOrDefault(x => x.IsSelected == true) ?? Model.DevicesList.FirstOrDefault();
 
-            return base.InitializeAsync(navigationData);
+            if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
+                Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
+
+            await base.InitializeAsync(navigationData);
         }
 
         private void GetDevices()
@@ -74,14 +81,16 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             Model.Device.IsSelected = true;
             _deviceData.Update(Model.Device);
 
-
             if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
         }
 
-        private Task MovementAsync(string value)
+        private async Task MovementAsync(string value)
         {
-            throw new NotImplementedException();
+            if (Model.Device.IsBluetooth)
+                await CommunicationBLE(value, Model.Bluetooth.ConnectedDevice, _bluetoothUtil);
+            //else
+                //await CommunicationWifi(value, Model.Device.URL, _universalService);
         }
     }
 }
