@@ -197,8 +197,6 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case LanguagesEnum.English:
                     cultureInfo = new CultureInfo("en");
                     break;
-                default:
-                    break;
             }
 
             LocalizationResourceManager.Instance.SetCulture(cultureInfo);
