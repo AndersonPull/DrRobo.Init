@@ -47,7 +47,7 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             try
             {
-                universalService.Request(url, message).GetAwaiter().GetResult();
+                universalService.RequestAsync(url, message).GetAwaiter().GetResult();
             }
             catch (Exception e)
             {

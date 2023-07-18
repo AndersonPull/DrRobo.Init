@@ -9,6 +9,7 @@ using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
 using System.Collections.ObjectModel;
 using Drrobo.Modules.Shared.ComponentModels;
+using Drrobo.Modules.Shared.Services.Service;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -19,16 +20,19 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         INavigationService _serviceNavigation;
         IBluetoothUtil _bluetoothUtil;
+        IUniversalService _universalService;
 
         DevicesData _deviceData;
         public JoystickViewModel
         (
             INavigationService serviceNavigation,
-            IBluetoothUtil bluetoothUtil
+            IBluetoothUtil bluetoothUtil,
+            IUniversalService universalService
         )
         {
             _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
+            _universalService = universalService;
 
             _deviceData = new DevicesData();
         }
@@ -93,8 +97,8 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         {
             if (Model.Device.IsBluetooth)
                 await CommunicationBLE(value, Model.Bluetooth.ConnectedDevice, _bluetoothUtil);
-            //else
-                //await CommunicationWifi(value, Model.Device.URL, _universalService);
+            else
+                await CommunicationWifi(value, Model.Device.URL, _universalService);
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using Refit;
+﻿using Drrobo.Modules.Shared.Services.Service.Response;
 
 namespace Drrobo.Modules.Shared.Services.Service
 {
 	public interface IUniversalService
 	{
-        [Post("{url}")] 
-        Task<string> Request(string url, string request);
+        Task<HealthCheckResponse> HealthCheckAsync(string url, string request);
+
+        Task RequestAsync(string url, string request);
     }
 }

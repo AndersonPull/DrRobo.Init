@@ -74,10 +74,9 @@
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="Unity" Version="5.11.10" />
 		<PackageReference Include="Plugin.BLE" Version="3.0.0-beta.4" />
-		<PackageReference Include="Refit" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
-		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All"/>
+		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.5" />
 		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.5" />
@@ -133,9 +132,7 @@
 	  <None Remove="Resources\Images\device.svg" />
 	  <None Remove="Resources\Images\joystick.svg" />
 	  <None Remove="Resources\Images\not_cam_icon.svg" />
-	  <None Remove="Modules\RemotelyControlled\Services\" />
 	  <None Remove="Utils\" />
-	  <None Remove="Utils\Constant\" />
 	  <None Remove="PropertyChanged.Fody" />
 	  <None Remove="Modules\Shared\Components\Entry\" />
 	  <None Remove="Platforms\MacCatalyst\Renderers\" />
@@ -172,6 +169,8 @@
 	  <None Remove="Modules\Shared\Components\DeviceHealthCheck\" />
 	  <None Remove="Utils\Components\" />
 	  <None Remove="Resources\Images\not_cam_icon.png" />
+	  <None Remove="Modules\Shared\Services\Service\Implementations\" />
+	  <None Remove="Modules\Shared\Services\Service\Response\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -221,9 +220,7 @@
 	  <Folder Include="Modules\Shared\Components\joystick\" />
 	  <Folder Include="Modules\RemotelyControlled\Models\" />
 	  <Folder Include="Modules\RemotelyControlled\Enums\" />
-	  <Folder Include="Modules\RemotelyControlled\Services\" />
 	  <Folder Include="Utils\" />
-	  <Folder Include="Utils\Constant\" />
 	  <Folder Include="Modules\Shared\Components\Entry\" />
 	  <Folder Include="Platforms\MacCatalyst\Renderers\" />
 	  <Folder Include="Platforms\iOS\Renderers\" />
@@ -249,6 +246,8 @@
 	  <Folder Include="Modules\Shared\ComponentModels\" />
 	  <Folder Include="Modules\Shared\Components\DeviceHealthCheck\" />
 	  <Folder Include="Utils\Components\" />
+	  <Folder Include="Modules\Shared\Services\Service\Implementations\" />
+	  <Folder Include="Modules\Shared\Services\Service\Response\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">

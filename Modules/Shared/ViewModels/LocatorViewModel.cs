@@ -6,6 +6,7 @@ using Drrobo.Modules.RemotelyControlled.ViewModels;
 using Drrobo.Utils.Bluetooth;
 using Drrobo.Utils.Bluetooth.Implementations;
 using Drrobo.Modules.Shared.Services.Service;
+using Drrobo.Modules.Shared.Services.Service.Implementations;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -42,7 +43,7 @@ namespace Drrobo.Modules.Shared.ViewModels
         {
             _container.RegisterType<INavigationService, NavigationService>();
             _container.RegisterType<IBluetoothUtil, BluetoothUtil>();
-            _container.RegisterType<IUniversalService>();
+            _container.RegisterType<IUniversalService, UniversalService>();
         }
 
         private void RegisterViewModels()
