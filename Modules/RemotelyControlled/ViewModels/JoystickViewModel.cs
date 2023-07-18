@@ -9,7 +9,6 @@ using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
 using System.Collections.ObjectModel;
 using Drrobo.Modules.Shared.ComponentModels;
-using Drrobo.Modules.Shared.Services.Service;
 
 namespace Drrobo.Modules.RemotelyControlled.ViewModels
 {
@@ -43,6 +42,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
             if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
 
+            Model.HaveCam = Model.Device.HaveCamera;
             await base.InitializeAsync(navigationData);
         }
 
@@ -77,9 +77,13 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
             Model.Device.IsSelected = false;
             _deviceData.Update(Model.Device);
+
             Model.Device = _deviceData.GetById(deviceSelected.Id);
             Model.Device.IsSelected = true;
             _deviceData.Update(Model.Device);
+
+            Model.WebViewCam = false;
+            Model.HaveCam = Model.Device.HaveCamera;
 
             if (Model.Device.IsBluetooth && Model.Device.GuidBluetooth != null)
                 Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);

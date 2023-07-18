@@ -74,6 +74,16 @@ namespace Drrobo.Utils.Bluetooth.Implementations
         }
 
         public async Task<IDevice> ConnectDeviceAsync(Guid guid)
-            => await _adapter.ConnectToKnownDeviceAsync(guid);
+        {
+            try
+            {
+                var device = await _adapter.ConnectToKnownDeviceAsync(guid);
+                return device;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@
                     Margin="0"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    IsVisible="False"
+                    IsVisible="{Binding Model.WebViewCam, Mode=TwoWay}"
                     Source="{Binding Model.Device.URLCamera}"
                     x:Name="WebViewCam"/>
                 <joystick:JoystickComponent
@@ -50,7 +50,7 @@
                     BackgroundColor="{DynamicResource SecondaryBackground}"
                     Source="not_cam_icon"
                     Clicked="OpenCam"
-                    IsVisible="{Binding Model.Device.HaveCamera}"
+                    IsVisible="{Binding Model.HaveCam, Mode=TwoWay}"
                     x:Name="ImageButtonCam"/>
                 <StackLayout
                     Orientation="Horizontal"
