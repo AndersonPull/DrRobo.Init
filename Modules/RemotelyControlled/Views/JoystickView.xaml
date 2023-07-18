@@ -36,7 +36,7 @@
                     Padding="15"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    Command="{Binding MovementDroneCommand}"
+                    Command="{Binding MovementCommand}"
                     CommandParameter="{Binding .}"
                     x:Name="JoystickComponent"/>
                 <ImageButton
