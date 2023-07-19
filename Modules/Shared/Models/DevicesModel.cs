@@ -28,5 +28,8 @@ namespace Drrobo.Modules.Shared.Models
         public Guid GuidBluetooth { get; set; }
 
         public int Battery { get; set; }
+
+        [Ignore]
+        public bool Isconnected { get; set; }
     }
 }

@@ -171,6 +171,8 @@
 	  <None Remove="Resources\Images\not_cam_icon.png" />
 	  <None Remove="Modules\Shared\Services\Service\Implementations\" />
 	  <None Remove="Modules\Shared\Services\Service\Response\" />
+	  <None Remove="Resources\Images\universal_control_icon.png" />
+	  <None Remove="Resources\Images\device_off_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />

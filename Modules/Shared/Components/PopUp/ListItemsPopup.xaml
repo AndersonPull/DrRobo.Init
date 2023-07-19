@@ -38,6 +38,7 @@
                                     <Image
                                         Source="{Binding Image}"
                                         WidthRequest="30"
+                                        HeightRequest="30"
                                         VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="CenterAndExpand"/>
                                     <Label 

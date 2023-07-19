@@ -57,7 +57,13 @@
                                             Source="dashboard_full_icon"
                                             WidthRequest="60"
                                             VerticalOptions="CenterAndExpand"
-                                            HorizontalOptions="Start"/>
+                                            HorizontalOptions="Start">
+                                            <Image.Triggers>
+                                                <DataTrigger TargetType="Image" Binding="{Binding Isconnected}" Value="False">
+                                                    <Setter Property="Source" Value="device_off_icon"/>
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
                                         <StackLayout
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="StartAndExpand"
@@ -96,6 +102,7 @@
                                             Source="{Binding Image, Mode=TwoWay}"
                                             Margin="0,0,-26,-15"
                                             WidthRequest="130"
+                                            HeightRequest="130"
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="End"/>
                                         <StackLayout.GestureRecognizers>
