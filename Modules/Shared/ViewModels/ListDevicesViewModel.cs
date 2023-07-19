@@ -11,7 +11,7 @@ namespace Drrobo.Modules.Shared.ViewModels
 	public class ListDevicesViewModel : BaseViewModel<ListDevicesModel>
     {
         public ICommand AddCommand => new Command(async () => await AddAsync());
-        public ICommand DeleteCommand => new Command((value) => DeleteAsync((DevicesModel)value));
+        public ICommand DeleteCommand => new Command(async (value) => await DeleteAsync((DevicesModel)value));
         public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
         public ICommand GetDevicesCommand => new Command(async() => await GetDevicesAsync());
 
