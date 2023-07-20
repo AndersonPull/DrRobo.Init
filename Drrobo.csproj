@@ -46,8 +46,6 @@
 	  <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
 	</PropertyGroup>
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
-	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	  <MauiImage Remove="Resources\Images\power_icon.svg" />
 	</ItemGroup>
 	<ItemGroup>
@@ -158,7 +156,6 @@
 	  <None Remove="Modules\Shared\Services\Data\" />
 	  <None Remove="Modules\Dashboard\Data\" />
 	  <None Remove="Resources\ImgsBanners\mockup.png" />
-	  <None Remove="Resources\Images\joystick_banner_icon.png" />
 	  <None Remove="Resources\Images\configure_icon.svg" />
 	  <None Remove="Utils\Converters\" />
 	  <None Remove="Modules\Shared\Views\" />
@@ -173,6 +170,9 @@
 	  <None Remove="Modules\Shared\Services\Service\Response\" />
 	  <None Remove="Resources\Images\universal_control_icon.png" />
 	  <None Remove="Resources\Images\device_off_icon.svg" />
+	  <None Remove="Resources\Images\cam_banner_icon.png" />
+	  <None Remove="Resources\Images\cam_icon.png" />
+	  <None Remove="Resources\Images\cam_on_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -185,9 +185,7 @@
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </BundleResource>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
-	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
-	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />

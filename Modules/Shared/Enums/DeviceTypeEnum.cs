@@ -15,6 +15,8 @@ namespace Drrobo.Modules.Shared.Enums
         Jumper,
         [EnumMember(Value = "universal_control_icon"), Description("universal control")]
         UniversalControl,
+        [EnumMember(Value = "cam_icon"), Description("camera")]
+        Camera,
         [EnumMember(Value = "logo_icon"), Description("Other")]
         Other
     }
