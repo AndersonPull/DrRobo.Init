@@ -37,15 +37,27 @@
                                 HasShadow="False"
                                 IsClippedToBounds="True">
                                 <SwipeView>
-                                    <SwipeView.LeftItems>
-                                        <SwipeItems Mode="Execute">
-                                            <SwipeItem
-                                                Text="Delete"
-                                                BackgroundColor="{DynamicResource AlertRed}"
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                           
+                                            <SwipeItemView
                                                 Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.DeleteCommand}"
-                                                CommandParameter="{Binding .}"/>
+                                                CommandParameter="{Binding .}">
+                                                <StackLayout
+                                                    WidthRequest="100"
+                                                    VerticalOptions="FillAndExpand"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    BackgroundColor="{DynamicResource AlertRed}">
+                                                    <Image
+                                                        Source="trash_icon.png"
+                                                        WidthRequest="{OnIdiom Desktop=25, Default=20}"
+                                                        HeightRequest="{OnIdiom Desktop=25, Default=20}"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+                                            </SwipeItemView>
                                         </SwipeItems>
-                                    </SwipeView.LeftItems>
+                                    </SwipeView.RightItems>
                                     <StackLayout
                                         Spacing="5"
                                         VerticalOptions="FillAndExpand"

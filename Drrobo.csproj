@@ -173,6 +173,8 @@
 	  <None Remove="Resources\Images\cam_banner_icon.png" />
 	  <None Remove="Resources\Images\cam_icon.png" />
 	  <None Remove="Resources\Images\cam_on_icon.png" />
+	  <None Remove="Resources\Images\joystick_banner_icon.png" />
+	  <None Remove="Resources\Images\trash_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -186,6 +188,8 @@
 	  </BundleResource>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
+	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
