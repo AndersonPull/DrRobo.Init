@@ -25,5 +25,17 @@ namespace Drrobo.Modules.Shared.Services.Data
 
         public override void Dispose()
             => _dataBase.Dispose();
+
+        public  bool ValidName(string name)
+        {
+            var device = _dataBase
+                .Table<DevicesModel>()
+                .FirstOrDefault(entity => entity.Name == name);
+
+            if (device != null)
+                return true;
+
+            return false;
+        }
     }
 }
