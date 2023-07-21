@@ -16,7 +16,7 @@ namespace Drrobo.Modules.Shared.ViewModels
         public ICommand SelectCommunicationCommand => new Command(async () => await SelectCommunicationAsync());
         public ICommand SelectTypeDeviceCommand => new Command(async () => await SelectTypeDevice());
         public ICommand AddCommand => new Command(async () => await AddAsync());
-        public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync((DevicesModel)value));
+        public ICommand UpdateCommand => new Command(async (value) => await UpdateAsync());
 
         IBluetoothUtil _bluetoothUtil;
         DevicesData _deviceData;
@@ -37,13 +37,18 @@ namespace Drrobo.Modules.Shared.ViewModels
                 Model.Device = new DevicesModel();
 
             if (string.IsNullOrEmpty(Model.Device.URL))
-                Model.Device.URL = "https://";
+                Model.Device.URL = "http://";
 
             if (string.IsNullOrEmpty(Model.Device.URLCamera))
-                Model.Device.URLCamera = "https://";
+                Model.Device.URLCamera = "http://";
 
             if (string.IsNullOrEmpty(Model.Device.Image))
                 Model.Device.Image = DeviceTypeEnum.Other.Value();
+
+            if (Model.Device.Type == DeviceTypeEnum.Camera.Description())
+                Model.IsCamera = true;
+            else
+                Model.IsCamera = false;
 
             return base.InitializeAsync(navigationData);
         }
@@ -81,18 +86,28 @@ namespace Drrobo.Modules.Shared.ViewModels
 
             if (Model.Device.Type == DeviceTypeEnum.Jumper.Description())
                 Model.Device.Isjoystick = true;
+
+            if (Model.Device.Type == DeviceTypeEnum.Camera.Description())
+                Model.IsCamera = true;
+            else
+                Model.IsCamera = false;
         }
 
         private async Task AddAsync()
         {
-            _deviceData.Save(Model.Device);
-            await Application.Current.MainPage.Navigation.PopAsync();
+            if (await ValidateDevice())
+            { 
+                _deviceData.Save(Model.Device);
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
         }
-
-        private async Task UpdateAsync(DevicesModel value)
+        private async Task UpdateAsync()
         {
-            _deviceData.Update(Model.Device);
-            await Application.Current.MainPage.Navigation.PopAsync();
+            if (await ValidateDevice())
+            {
+                _deviceData.Update(Model.Device);
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
         }
 
         private async Task BluetoothPopupAsync()
@@ -104,6 +119,35 @@ namespace Drrobo.Modules.Shared.ViewModels
                 Model.Device.GuidBluetooth = result.Id;
             else
                 Model.Device.IsBluetooth = false;
+        }
+
+        private async Task<bool> ValidateDevice()
+        {
+            var response = true;
+            var message = string.Empty;
+
+            if (Model.IsCamera && !Util.IsValidUrl(Model.Device.URLCamera))
+                message = "Digite uma URL valida para camera";
+
+            if(Model.Device.HaveCamera && !Util.IsValidUrl(Model.Device.URLCamera))
+                message = "Digite uma URL valida para camera";
+
+            if (!Model.Device.IsBluetooth && !Util.IsValidUrl(Model.Device.URL))
+                message = "Digite uma URL valida para o dispositivo";
+
+            if (_deviceData.ValidName(Model.Device.Name) && !Model.IsUpdate)
+                message = "Ja existe um dispositivo com este nome";
+
+            if (string.IsNullOrEmpty(Model.Device.Name))
+                message = "Digite um nome valido para o dispositivo";
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                response = false;
+                await Application.Current.MainPage.DisplayAlert("Aviso", message, "OK");
+            }
+
+            return response;
         }
     }
 }
