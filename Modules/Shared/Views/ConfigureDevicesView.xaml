@@ -79,7 +79,6 @@
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <entry:EntryComponent
                         Style="{DynamicResource Entry14White}"
-                        x:Name="NameEntry"
                         Text="{Binding Model.Device.Name, Mode=TwoWay}"/>
                     <Label
                         Text="Selecione o tipo de comunicação"
@@ -126,19 +125,16 @@
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
                 Text="Atualizar"
                 Style="{DynamicResource PrimaryButton}"
-                Command="{Binding UpdateCommand}"
-                x:Name="UpdateButton"/>
+                Command="{Binding UpdateCommand}"/>
             <Button
                 VerticalOptions="End"
                 HorizontalOptions="Center"
                 WidthRequest="300"
-                IsEnabled="False"
                 IsVisible="{Binding Model.IsUpdate, Converter={StaticResource InverseBoolConverter}}"
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
                 Text="{Binding LocalizationResourceManager[Add]}"
                 Style="{DynamicResource DisableButton}"
-                Command="{Binding AddCommand}"
-                x:Name="SaveButton"/>
+                Command="{Binding AddCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>
