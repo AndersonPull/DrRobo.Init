@@ -21,6 +21,15 @@ namespace Drrobo.Utils
             var attributes = (DefaultValueAttribute[])enumType.GetCustomAttributes(typeof(DefaultValueAttribute), false);
             return attributes.Length > 0 ? attributes[0].Value : Activator.CreateInstance(enumType);
         }
+
+        public static bool IsValidUrl(string url)
+        {
+            if (Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
+                return true;
+
+            return false;
+        }
     }
 }
 
