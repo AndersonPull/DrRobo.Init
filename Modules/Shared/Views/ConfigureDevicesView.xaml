@@ -133,7 +133,7 @@
                 IsVisible="{Binding Model.IsUpdate, Converter={StaticResource InverseBoolConverter}}"
                 SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
                 Text="{Binding LocalizationResourceManager[Add]}"
-                Style="{DynamicResource DisableButton}"
+                Style="{DynamicResource PrimaryButton}"
                 Command="{Binding AddCommand}"/>
         </StackLayout>
     </Grid>
