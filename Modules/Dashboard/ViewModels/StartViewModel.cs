@@ -131,6 +131,9 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case CarouselItems.RemotelyControlled:
                     await _serviceNavigation.NavigateToAsync<JoystickViewModel>();
                     break;
+                case CarouselItems.Camera:
+                    await _serviceNavigation.NavigateToAsync<CameraMonitoringViewModel>();
+                    break;
             }
         }
 

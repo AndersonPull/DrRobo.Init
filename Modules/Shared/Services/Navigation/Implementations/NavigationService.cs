@@ -108,6 +108,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         private void RemotelyMaps()
         {
             _mappings.Add(typeof(JoystickViewModel), typeof(JoystickView));
+            _mappings.Add(typeof(CameraMonitoringViewModel), typeof(CameraMonitoringView));
         }
 
         private void SharedMaps()

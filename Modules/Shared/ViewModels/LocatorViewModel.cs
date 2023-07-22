@@ -53,6 +53,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<BaseViewModel>();
             _container.RegisterType<ListDevicesViewModel>();
             _container.RegisterType<ConfigureDevicesViewModel>();
+            _container.RegisterType<CameraMonitoringViewModel>();
         }
     }
 }
