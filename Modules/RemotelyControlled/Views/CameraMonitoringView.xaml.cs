@@ -25,6 +25,25 @@ public partial class CameraMonitoringView : ContentPage
     protected override void OnSizeAllocated(double width, double height)
     {
         SetSafeArea();
+        SetDeviceDisplay();
+    }
+
+    private void SetDeviceDisplay()
+    {
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+            return;
+
+        switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
+        {
+            case DisplayOrientation.Landscape:
+                StackLayoutCam.IsVisible = true;
+                StackLayoutCamWarning.IsVisible = false;
+                break;
+            case DisplayOrientation.Portrait:
+                StackLayoutCam.IsVisible = false;
+                StackLayoutCamWarning.IsVisible = true;
+                break;
+        }
     }
 
     private void SetSafeArea()

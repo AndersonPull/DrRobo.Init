@@ -5,6 +5,7 @@
     x:Class="Drrobo.Modules.RemotelyControlled.Views.CameraMonitoringView"
     xmlns:navigation="clr-namespace:Drrobo.Modules.Shared.Components.NavigationBar"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:animation="clr-namespace:Drrobo.Modules.RemotelyControlled.Components"
     ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <Grid>
@@ -15,14 +16,15 @@
             x:Name="NavigationComponent"/>
         <StackLayout
             Grid.Row="1"
-            Grid.RowSpan="2">
+            Grid.RowSpan="2"
+            x:Name="StackLayoutCam"
+            IsVisible="{OnIdiom Desktop=True,Default=False}">
             <CarouselView
                 Position="{Binding Model.Position}"
                 IsSwipeEnabled="False"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
-                ItemsSource="{Binding Model.DevicesList}"
-                x:Name="carouselViewCam">
+                ItemsSource="{Binding Model.DevicesList}">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Grid
@@ -89,6 +91,14 @@
                     Opacity="0.4"
                     Command="{Binding NextCommand}"/>
             </StackLayout>
+        </StackLayout>
+        <StackLayout
+            Grid.Row="1"
+            x:Name="StackLayoutCamWarning"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            IsVisible="{OnIdiom Desktop=False,Default=True}">
+            <animation:AnimationCam/>
         </StackLayout>
     </Grid>
 </ContentPage>
