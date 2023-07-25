@@ -82,7 +82,11 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         {
             Model.DevicesList = new ObservableCollection<DevicesModel>();
 
-            foreach (var item in _deviceData.GetAll())
+            var devices = _deviceData.GetAll();
+            if (devices == null || devices.Count == 0)
+                return;
+
+            foreach (var item in devices)
             {
                 if (item.IsBluetooth)
                 {

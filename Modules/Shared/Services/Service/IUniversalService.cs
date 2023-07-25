@@ -7,5 +7,7 @@ namespace Drrobo.Modules.Shared.Services.Service
         Task<HealthCheckResponse> HealthCheckAsync(string url);
 
         Task RequestAsync(string url, string request);
+
+        Task<bool> AccessCamAsync(string url);
     }
 }

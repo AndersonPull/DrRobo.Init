@@ -31,5 +31,11 @@ namespace Drrobo.Modules.Shared.Models
 
         [Ignore]
         public bool Isconnected { get; set; }
+
+        [Ignore]
+        public bool CurrentlyMonitoring { get; set; }
+
+        [Ignore]
+        public bool CameraON { get; set; }
     }
 }

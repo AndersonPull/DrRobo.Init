@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net;
+using System.Text;
 using Drrobo.Modules.Shared.Services.Service.Response;
 using Newtonsoft.Json;
 
@@ -39,6 +40,19 @@ namespace Drrobo.Modules.Shared.Services.Service.Implementations
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"Erro na requisição HTTP: {e.Message}");
+            }
+        }
+
+        public  async Task<bool> AccessCamAsync(string url)
+        {
+            try
+            {
+                var response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, url));
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

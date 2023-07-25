@@ -16,7 +16,81 @@
         <StackLayout
             Grid.Row="1"
             Grid.RowSpan="2">
-            <Label Text="seje bem vindo"/>
+            <CarouselView
+                Position="{Binding Model.Position}"
+                IsSwipeEnabled="False"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding Model.DevicesList}"
+                x:Name="carouselViewCam">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                            <WebView
+                                Margin="0"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                IsVisible="{Binding CameraON}"
+                                Source="{Binding URLCamera}"
+                                x:Name="WebViewCam"/>
+                            <Label
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                IsVisible="{Binding CameraON, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{DynamicResource LabelTitleWhite}"
+                                Text="Camera sem sinal"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <StackLayout
+                x:Name="StackLayoutCameras"
+                Spacing="20"
+                Orientation="Horizontal">
+                <Button
+                    HorizontalOptions="Start"
+                    ImageSource="arrow_icon"
+                    Style="{DynamicResource NavigationButton}"
+                    Opacity="0.4"
+                    Command="{Binding BackCommand}"/>
+                <ScrollView
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Spacing="20"
+                        HorizontalOptions="CenterAndExpand"
+                        BindableLayout.ItemsSource="{Binding Model.DevicesList}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Image
+                                    WidthRequest="50"
+                                    HeightRequest="50"
+                                    Source="cam_icon">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding CurrentlyMonitoring}" Value="true">
+                                            <Setter Property="Source" Value="cam_on_icon"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                <Button
+                    Rotation="180"
+                    HorizontalOptions="End"
+                    ImageSource="arrow_icon"
+                    Style="{DynamicResource NavigationButton}"
+                    Opacity="0.4"
+                    Command="{Binding NextCommand}"/>
+            </StackLayout>
         </StackLayout>
     </Grid>
 </ContentPage>
