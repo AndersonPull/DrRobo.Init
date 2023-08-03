@@ -37,5 +37,8 @@ namespace Drrobo.Modules.Shared.Services.Data
 
             return false;
         }
+
+        public DevicesModel GetByName(string name)
+            => _dataBase.Table<DevicesModel>().FirstOrDefault(entity => entity.Name == name);
     }
 }

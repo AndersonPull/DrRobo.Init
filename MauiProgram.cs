@@ -36,16 +36,16 @@ public static class MauiProgram
     private static void NewHandlers(IMauiHandlersCollection handlers)
 	{
 		#if MACCATALYST
-			handlers.AddCompatibilityRenderer(typeof(Drrobo.Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.MacCatalyst.Renderers.EntryRendererMac));
+			handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.MacCatalyst.Renderers.EntryRendererMac));
 		#endif
 
 		#if IOS
-			handlers.AddCompatibilityRenderer(typeof(Drrobo.Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.iOS.Renderers.EntryRendererIOS));
+			handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.iOS.Renderers.EntryRendererIOS));
 		#endif
 
 		#if ANDROID
-			handlers.AddCompatibilityRenderer(typeof(Drrobo.Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.Android.Renderers.EntryRendererAndroid));
-        #endif
+			handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.Android.Renderers.EntryRendererAndroid));
+		#endif
     }
 
     private static void NewLifeCycle(ILifecycleBuilder events)

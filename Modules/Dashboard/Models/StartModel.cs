@@ -22,11 +22,12 @@ namespace Drrobo.Modules.Dashboard.Models
         public List<ItemMenuModel> ListMenu { get; set; }
         public ObservableCollection<string> CommandsList { get; set; } 
         public string CommandText { get; set; }
-        public bool DroneCamOn { get; set; }
-        public bool JumperCamOn { get; set; }
+        public bool OpenCam { get; set; }
         public BluetoothModel Bluetooth { get; set; }
         public ProfileModel Profile { get; set; }
         public ObservableCollection<DevicesModel> DevicesList { get; set; }
         public bool DevicesOn { get; set; }
+        public string DeviceConnectedLabel { get; set; } = $"{DeviceInfo.Name} ~ %";
+        public DevicesModel DeviceConnected { get; set; }
     }
 }

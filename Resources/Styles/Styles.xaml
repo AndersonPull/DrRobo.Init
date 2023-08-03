@@ -68,6 +68,12 @@
     </Style>
     <!--Entrys-->
     <Style
+        x:Key="Entry14Primary"
+        TargetType="Entry">
+        <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style
         x:Key="Entry14White"
         TargetType="Entry">
         <Setter Property="TextColor" Value="{DynamicResource White}" />

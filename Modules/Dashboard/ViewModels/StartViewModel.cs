@@ -143,48 +143,42 @@ namespace Drrobo.Modules.Dashboard.ViewModels
 
         private async Task EnterAsync()
         {
-            Model.CommandsList.Add(Model.CommandText);
+            var commandText = Model.CommandText;
+
+            Model.CommandsList.Add($"{Model.DeviceConnectedLabel} {commandText}");
             Model.CommandText = string.Empty;
 
-            switch (Model.CommandsList.LastOrDefault())
+            await ExecutionCommand(commandText);
+        }
+
+        private async Task ExecutionCommand(string commandText)
+        {
+            var separatedCommand = commandText.Split(' ');
+
+            var command = separatedCommand.FirstOrDefault();
+            var Device = separatedCommand.LastOrDefault();
+            switch (command)
             {
-                case "drone open_cam":
-                    Model.DroneCamOn = true;
+                case "connect":
+                    Model.DeviceConnected = _deviceData.GetByName(Device);
+                    if (Model.DeviceConnected != null)
+                        Model.DeviceConnectedLabel = $"{Model.DeviceConnectedLabel
+                            .Split(' ')
+                            .FirstOrDefault()} / {Model.DeviceConnected.Name} %";
+                    else
+                        Model.CommandsList.Add($"{Device} : não encontrado");
                     break;
-                case "drone close_cam":
-                    Model.DroneCamOn = false;
+                case "open_cam":
+                    if(Model.DeviceConnected.HaveCamera)
+                        Model.OpenCam = true;
+                    else
+                        Model.CommandsList.Add($"Dispositivo não possui camera");
                     break;
-                case "jumper open_cam":
-                    Model.JumperCamOn = true;
-                    break;
-                case "jumper close_cam":
-                    Model.JumperCamOn = false;
-                    break;
-                case "clear":
-                    Model.CommandsList = new ObservableCollection<string>();
-                    break;
-                case "ble connect":
-                    //await BluetoothPopupAsync();
-                    break;
-                case "jumper left":
-                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "L");
-                    break;
-                case "jumper front":
-                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "F");
-                    break;
-                case "jumper right":
-                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "R");
-                    break;
-                case "jumper back":
-                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "B");
-                    break;
-                case "jumper stop":
-                    await _bluetoothUtil.SendAsync(Model.Bluetooth.ConnectedDevice, "S");
-                    break;
-                case "remote_control":
-                    await Application.Current.MainPage.ShowPopupAsync(new RemoteControlPopup());
+                case "close_cam":
+                    Model.OpenCam = false;
                     break;
                 default:
+                    Model.CommandsList.Add($"comando nao conhecido");
                     break;
             }
         }

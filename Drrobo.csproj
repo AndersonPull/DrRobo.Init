@@ -175,6 +175,8 @@
 	  <None Remove="Resources\Images\cam_on_icon.png" />
 	  <None Remove="Resources\Images\joystick_banner_icon.png" />
 	  <None Remove="Resources\Images\trash_icon.png" />
+	  <None Remove="Resources\Images\terminal_banner_icon.png" />
+	  <None Remove="Resources\Images\logo_ascii_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
@@ -194,6 +196,7 @@
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	  <MauiIcon Include="Resources\Images\power_icon.svg" />
+	  <MauiIcon Include="Resources\Images\terminal_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Splash\" />

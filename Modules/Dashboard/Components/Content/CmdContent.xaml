@@ -12,41 +12,53 @@
             Grid.Row="0"
             Grid.RowSpan="2"
             Margin="25,25,0,0">
-            <StackLayout 
-                BindableLayout.ItemsSource="{Binding Model.CommandsList}"
-                x:Name="StackLayoutChat"
-                Spacing="5">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Label
-                            Style="{DynamicResource Label14Primary}"
-                            Text="{Binding .}"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Start" />
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-            <StackLayout
-                Spacing="10"
-                Orientation="Horizontal"
+            <ScrollView
+                VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="Start">
-                <Label
-                    VerticalOptions="Center"
-                    Text="Default ~ %"
-                    Style="{DynamicResource Label14Primary}"
-                    x:Name="LabelDeviceInfo"/>
-                <entry:EntryComponent
-                    x:Name="EntryCMD"
-                    VerticalOptions="Center"
-                    HorizontalOptions="FillAndExpand"
-                    Text="{Binding Model.CommandText, Mode=TwoWay}"
-                    Style="{DynamicResource Label14Primary}"
-                    BackgroundColor="{OnPlatform Android='White',Default='Transparent'}"
-                    Keyboard="Plain"
-                    ReturnCommand="{Binding EnterCommand}"/>
-            </StackLayout>
-            
+                VerticalScrollBarVisibility="Never"
+                HorizontalScrollBarVisibility="Never">
+                <StackLayout>
+                    <Image
+                        Margin="-9,0,0,0"
+                        HorizontalOptions="Start"
+                        WidthRequest="200"
+                        HeightRequest="100"
+                        Source="terminal_banner_icon"/>
+                    <StackLayout 
+                        BindableLayout.ItemsSource="{Binding Model.CommandsList}"
+                        x:Name="StackLayoutChat"
+                        Spacing="5">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    Style="{DynamicResource Label14Primary}"
+                                    Text="{Binding .}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Start" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <StackLayout
+                        Spacing="{OnIdiom Desktop=10, Default=0}"
+                        Orientation="Horizontal"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <Label
+                            VerticalOptions="Center"
+                            Text="{Binding Model.DeviceConnectedLabel, Mode=TwoWay}"
+                            Style="{DynamicResource Label14Primary}"/>
+                        <entry:EntryComponent
+                            x:Name="EntryCMD"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="Transparent"
+                            Keyboard="Plain"
+                            Text="{Binding Model.CommandText, Mode=TwoWay}"
+                            Style="{DynamicResource Entry14Primary}"
+                            ReturnCommand="{Binding EnterCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
         <StackLayout
             VerticalOptions="Start"
@@ -61,31 +73,14 @@
                 HeightRequest="{OnIdiom Phone=120, Default=250}"
                 IsClippedToBounds="True"
                 CornerRadius="8"
-                IsVisible="{Binding Model.DroneCamOn}"
+                IsVisible="{Binding Model.OpenCam, Mode=TwoWay}"
                 Padding="0">
                 <StackLayout>
                     <WebView
                         Margin="0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Source="http://192.168.0.118"/>
-                </StackLayout>
-            </Frame>
-            <Frame
-                VerticalOptions="StartAndExpand"
-                HorizontalOptions="EndAndExpand"
-                WidthRequest="{OnIdiom Phone=220, Default=400}"
-                HeightRequest="{OnIdiom Phone=120, Default=250}"
-                IsClippedToBounds="True"
-                CornerRadius="8"
-                IsVisible="{Binding Model.JumperCamOn}"
-                Padding="0">
-                <StackLayout>
-                    <WebView
-                        Margin="0"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Source="http://192.168.0.37"/>
+                        Source="{Binding Model.DeviceConnected.URLCamera}"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

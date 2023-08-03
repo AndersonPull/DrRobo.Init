@@ -5,7 +5,5 @@ public partial class CmdContent : ContentView
     public CmdContent()
 	{
 		InitializeComponent();
-
-        LabelDeviceInfo.Text = $"{DeviceInfo.Name} ~ %";
     }
 }
