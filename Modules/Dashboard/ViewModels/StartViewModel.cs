@@ -17,6 +17,8 @@ using Drrobo.Modules.Dashboard.Data;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Service;
+using Drrobo.Modules.Shared.Enums;
+using Drrobo.Utils;
 
 namespace Drrobo.Modules.Dashboard.ViewModels
 {
@@ -154,33 +156,191 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         private async Task ExecutionCommand(string commandText)
         {
             var separatedCommand = commandText.Split(' ');
-
+            
             var command = separatedCommand.FirstOrDefault();
-            var Device = separatedCommand.LastOrDefault();
+            var value = separatedCommand.LastOrDefault();
+
+            if (Model.CreateDevice)
+            {
+                CreateDevice(command);
+                return;
+            }
+
             switch (command)
             {
+                case "devices":
+                    var devices = _deviceData.GetAll();
+                    if(devices == null || devices.Count == 0)
+                    {
+                        Model.CommandsList.Add($"nenhum device encontrado");
+                        break;
+                    }
+
+                    foreach (var device in devices)
+                    {
+                        Model.CommandsList.Add(device.Name);
+                    }
+                    break;
                 case "connect":
-                    Model.DeviceConnected = _deviceData.GetByName(Device);
+                    Model.DeviceConnected = _deviceData.GetByName(value);
                     if (Model.DeviceConnected != null)
                         Model.DeviceConnectedLabel = $"{Model.DeviceConnectedLabel
                             .Split(' ')
                             .FirstOrDefault()} / {Model.DeviceConnected.Name} %";
                     else
-                        Model.CommandsList.Add($"{Device} : não encontrado");
+                        Model.CommandsList.Add($"{value} : não encontrado");
+                    break;
+                case "disconnect":
+                    Model.DeviceConnectedLabel = $"{DeviceInfo.Name} ~ %";
+                    Model.DeviceConnected = null;
                     break;
                 case "open_cam":
-                    if(Model.DeviceConnected.HaveCamera)
-                        Model.OpenCam = true;
+                    if (Model.DeviceConnected != null)
+                    {
+                        if (Model.DeviceConnected.HaveCamera)
+                            Model.OpenCam = true;
+                        else
+                            Model.CommandsList.Add($"dispositivo não possui camera");
+                    }
                     else
-                        Model.CommandsList.Add($"Dispositivo não possui camera");
+                        Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
+
                     break;
                 case "close_cam":
-                    Model.OpenCam = false;
+                    if (Model.DeviceConnected != null)
+                    {
+                        if (Model.DeviceConnected.HaveCamera)
+                            Model.OpenCam = false;
+                        else
+                            Model.CommandsList.Add($"dispositivo não possui camera");
+                    }
+                    else
+                        Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
+                    break;
+                case "create":
+                    if (!string.IsNullOrEmpty(value) && separatedCommand.Length > 1)
+                    {
+                        var device = _deviceData.GetByName(value);
+                        if (device == null)
+                        {
+                            Model.CreateDevice = true;
+                            CreateDevice(value);
+                        }
+                        else
+                            Model.CommandsList.Add($"já existe um dispositivo com esse nome");
+                    }
+                    else
+                        Model.CommandsList.Add($"o comando create deve ser seguido pelo nome do dispositivo");
+                    break;
+                case "remove":
+                    RemoveDevice(value);
+                    break;
+                case "clear":
+                    Model.CommandsList = new ObservableCollection<string>();
                     break;
                 default:
                     Model.CommandsList.Add($"comando nao conhecido");
+                break;
+            }
+        }
+
+        private void CreateDevice(string value)
+        {
+            switch (Model.CreationStep)
+            {
+                case 0:
+                    Model.NewDevice = new DevicesModel();
+                    Model.NewDevice.Name = value;
+                    var deviceTypes = (DeviceTypeEnum[])Enum.GetValues(typeof(DeviceTypeEnum));
+                    Model.CommandsList.Add($" tipos de devices : {string.Join(", ", deviceTypes)}");
+                    Model.DeviceConnectedLabel = "qual tipo do seu device? :";
+                    Model.CreationStep = 1;
+                    break;
+                case 1:
+                    if (Enum.TryParse(value, out DeviceTypeEnum resultado))
+                    {
+                        Model.NewDevice.Image = resultado.Value();
+                        Model.NewDevice.Type = resultado.Description();
+                        Model.DeviceConnectedLabel = "comunicação será via bluetooth? S/N :";
+                        Model.CreationStep = 2;
+                    }
+                    else
+                        Model.CommandsList.Add($"tipo não reconhecido");
+                    break;
+                case 2:
+
+                    if (value.ToLower().Equals("s"))
+                    {
+                        Model.NewDevice.IsBluetooth = true;
+                        Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
+                        Model.CreationStep = 5;
+                    }
+                    else if (value.ToLower().Equals("n"))
+                    {
+                        Model.NewDevice.IsBluetooth = false;
+                        Model.DeviceConnectedLabel = "digite a Url do dispositivo :";
+                        Model.CreationStep = 4;
+                    }
+                    else
+                        Model.CommandsList.Add($"comando nao conhecido");
+                    break;
+                case 4:
+                    if (Util.IsValidUrl(value))
+                    {
+                        Model.NewDevice.URL = value;
+                        Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
+                        Model.CreationStep = 5;
+                    }
+                    else
+                        Model.CommandsList.Add($"{value} : não é uma url valida");
+                    break;
+                case 5:
+                    if (value.ToLower().Equals("s"))
+                    {
+                        Model.NewDevice.HaveCamera = true;
+                        Model.DeviceConnectedLabel = "digite a Url para camera :";
+                        Model.CreationStep = 6;
+                    }
+                    else if (value.ToLower().Equals("n"))
+                    {
+                        Model.NewDevice.HaveCamera = false;
+                        _deviceData.Save(Model.NewDevice);
+                        Model.CommandsList.Add($"{Model.NewDevice.Name} : creado com sucesso!");
+                        Model.CreateDevice = false;
+                        Model.CreationStep = 0;
+                        Model.DeviceConnected = _deviceData.GetByName(Model.NewDevice.Name);
+                        Model.DeviceConnectedLabel = $"{DeviceInfo.Name} / {Model.DeviceConnected.Name} %";
+                    }
+                    else
+                        Model.CommandsList.Add($"comando nao conhecido");
+                    break;
+                case 6:
+                    if (Util.IsValidUrl(value))
+                    {
+                        Model.NewDevice.URLCamera = value;
+                        _deviceData.Save(Model.NewDevice);
+                        Model.CommandsList.Add($"{Model.NewDevice.Name} : creado com sucesso!");
+                        Model.CreateDevice = false;
+                        Model.CreationStep = 0;
+                        Model.DeviceConnected = _deviceData.GetByName(Model.NewDevice.Name);
+                        Model.DeviceConnectedLabel = $"{DeviceInfo.Name} / {Model.DeviceConnected.Name} %";
+                    }
+                    else
+                        Model.CommandsList.Add($"{value} : não é uma url valida");
                     break;
             }
+        }
+
+        private void RemoveDevice(string name)
+        {
+            var device = _deviceData.GetByName(name);
+            if(device != null)
+            {
+                _deviceData.Delete(device);
+                Model.CommandsList.Add($"{name} : removido com sucesso");
+            }
+            else
+                Model.CommandsList.Add($"{name} : não encontrado");
         }
 
         private async Task ProfileClickButtonAsync(ProfileButtonEnum value)

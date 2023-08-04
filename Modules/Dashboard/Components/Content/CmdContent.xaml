@@ -6,37 +6,37 @@
     x:Class="Drrobo.Modules.Dashboard.Components.Content.CmdContent"
     x:Name="CMDPage">
     <Grid
-        RowDefinitions="*,*"
+        RowDefinitions="50*,50*"
         Margin="15,35,15,15">
-        <StackLayout
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Margin="25,25,0,0">
+        <StackLayout Grid.Row="0">
             <ScrollView
+                x:Name="ScrollTerminal"
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
-                VerticalScrollBarVisibility="Never"
-                HorizontalScrollBarVisibility="Never">
-                <StackLayout>
-                    <Image
-                        Margin="-9,0,0,0"
-                        HorizontalOptions="Start"
-                        WidthRequest="200"
-                        HeightRequest="100"
-                        Source="terminal_banner_icon"/>
-                    <StackLayout 
-                        BindableLayout.ItemsSource="{Binding Model.CommandsList}"
-                        x:Name="StackLayoutChat"
-                        Spacing="5">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <Label
-                                    Style="{DynamicResource Label14Primary}"
-                                    Text="{Binding .}"
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="Start" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    x:Name="StackLayoutTerminal"
+                    Margin="25,25,0,0">
+                    <StackLayout>
+                        <Image
+                            Margin="0,0,0,10"
+                            HorizontalOptions="Start"
+                            WidthRequest="200"
+                            HeightRequest="150"
+                            Source="terminal_banner_icon"/>
+                        <StackLayout 
+                            BindableLayout.ItemsSource="{Binding Model.CommandsList}"
+                            x:Name="StackLayoutChat"
+                            Spacing="5">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label
+                                        Style="{DynamicResource Label14Primary}"
+                                        Text="{Binding .}"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Start" />
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                     </StackLayout>
                     <StackLayout
                         Spacing="{OnIdiom Desktop=10, Default=0}"
@@ -51,8 +51,8 @@
                             x:Name="EntryCMD"
                             VerticalOptions="Center"
                             HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Transparent"
                             Keyboard="Plain"
+                            Completed="EntryCMD_Completed"
                             Text="{Binding Model.CommandText, Mode=TwoWay}"
                             Style="{DynamicResource Entry14Primary}"
                             ReturnCommand="{Binding EnterCommand}"/>

@@ -196,7 +196,6 @@
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	  <MauiIcon Include="Resources\Images\power_icon.svg" />
-	  <MauiIcon Include="Resources\Images\terminal_banner_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Splash\" />

@@ -29,5 +29,8 @@ namespace Drrobo.Modules.Dashboard.Models
         public bool DevicesOn { get; set; }
         public string DeviceConnectedLabel { get; set; } = $"{DeviceInfo.Name} ~ %";
         public DevicesModel DeviceConnected { get; set; }
+        public DevicesModel NewDevice { get; set; }
+        public bool CreateDevice { get; set; }
+        public int CreationStep { get; set; }
     }
 }
