@@ -72,7 +72,7 @@
                         SemanticProperties.Description="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
                         Text="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
                         Style="{DynamicResource Label14WhiteBold}"
-                        IsVisible="{Binding Model.DevicesOn}"/>
+                        IsVisible="{Binding Model.DevicesOn, Mode=TwoWay}"/>
                     <ScrollView
                         Orientation="Horizontal"
                         VerticalScrollBarVisibility="Never"
@@ -93,7 +93,9 @@
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
                     </ScrollView>
+                    <!--banner IsVisible="false"-->
                     <Frame
+                        IsVisible="false"
                         Padding="0"
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="80"
