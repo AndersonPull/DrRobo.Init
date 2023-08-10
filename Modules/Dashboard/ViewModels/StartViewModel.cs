@@ -169,66 +169,23 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             switch (command)
             {
                 case "devices":
-                    var devices = _deviceData.GetAll();
-                    if(devices == null || devices.Count == 0)
-                    {
-                        Model.CommandsList.Add($"nenhum device encontrado");
-                        break;
-                    }
-
-                    foreach (var device in devices)
-                    {
-                        Model.CommandsList.Add(device.Name);
-                    }
+                    ListDevices();
                     break;
                 case "connect":
-                    Model.DeviceConnected = _deviceData.GetByName(value);
-                    if (Model.DeviceConnected != null)
-                        Model.DeviceConnectedLabel = $"{Model.DeviceConnectedLabel
-                            .Split(' ')
-                            .FirstOrDefault()} / {Model.DeviceConnected.Name} %";
-                    else
-                        Model.CommandsList.Add($"{value} : não encontrado");
+                    ConnectDevice(value);
                     break;
                 case "disconnect":
-                    Model.DeviceConnectedLabel = $"{DeviceInfo.Name} ~ %";
-                    Model.DeviceConnected = null;
+                    Disconnect();
                     break;
                 case "open_cam":
-                    if (Model.DeviceConnected != null)
-                    {
-                        if (Model.DeviceConnected.HaveCamera)
-                            Model.OpenCam = true;
-                        else
-                            Model.CommandsList.Add($"dispositivo não possui camera");
-                    }
-                    else
-                        Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
-
+                    OpenCloseCam(true);
                     break;
                 case "close_cam":
-                    if (Model.DeviceConnected != null)
-                    {
-                        if (Model.DeviceConnected.HaveCamera)
-                            Model.OpenCam = false;
-                        else
-                            Model.CommandsList.Add($"dispositivo não possui camera");
-                    }
-                    else
-                        Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
+                    OpenCloseCam(false);
                     break;
                 case "create":
                     if (!string.IsNullOrEmpty(value) && separatedCommand.Length > 1)
-                    {
-                        var device = _deviceData.GetByName(value);
-                        if (device == null)
-                        {
-                            Model.CreateDevice = true;
-                            CreateDevice(value);
-                        }
-                        else
-                            Model.CommandsList.Add($"já existe um dispositivo com esse nome");
-                    }
+                        CreateDevice(value);
                     else
                         Model.CommandsList.Add($"o comando create deve ser seguido pelo nome do dispositivo");
                     break;
@@ -238,10 +195,62 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 case "clear":
                     Model.CommandsList = new ObservableCollection<string>();
                     break;
+                case "move":
+                    await MovementAsync(value);
+                    break;
                 default:
                     Model.CommandsList.Add($"comando nao conhecido");
                 break;
             }
+        }
+
+        private void ConnectDevice(string value)
+        {
+            Model.DeviceConnected = _deviceData.GetByName(value);
+            if (Model.DeviceConnected != null)
+                Model.DeviceConnectedLabel = $"{Model.DeviceConnectedLabel
+                    .Split(' ')
+                    .FirstOrDefault()} / {Model.DeviceConnected.Name} %";
+            else
+                Model.CommandsList.Add($"{value} : não encontrado");
+        }
+
+        private void ListDevices()
+        {
+            var devices = _deviceData.GetAll();
+            if (devices == null || devices.Count == 0)
+                Model.CommandsList.Add($"nenhum device encontrado");
+            else
+                foreach (var device in devices)
+                    Model.CommandsList.Add(device.Name);
+        }
+
+        private void OpenCloseCam(bool value)
+        {
+            if (Model.DeviceConnected != null)
+            {
+                if (Model.DeviceConnected.HaveCamera)
+                    Model.OpenCam = value;
+                else
+                    Model.CommandsList.Add($"dispositivo não possui camera");
+            }
+            else
+                Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
+        }
+
+        private void Disconnect()
+        {
+            OpenCloseCam(false);
+            Model.DeviceConnectedLabel = $"{DeviceInfo.Name} ~ %";
+            Model.DeviceConnected = null;
+        }
+
+        private async Task MovementAsync(string value)
+        {
+            if (Model.DeviceConnected.IsBluetooth)
+                await CommunicationBLE(value, Model.Bluetooth.ConnectedDevice, _bluetoothUtil);
+            else
+                await CommunicationWifi(value, Model.DeviceConnected.URL, _universalService);
         }
 
         private void CreateDevice(string value)
@@ -249,57 +258,66 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             switch (Model.CreationStep)
             {
                 case 0:
+                    if (_deviceData.GetByName(value) == null)
+                    {
+                        Model.CreateDevice = true;
+                        Model.CreationStep = 1;
+                        CreateDevice(value);
+                    }
+                    else
+                        Model.CommandsList.Add($"já existe um dispositivo com esse nome");                   
+                    break;
+                case 1:
                     Model.NewDevice = new DevicesModel();
                     Model.NewDevice.Name = value;
                     var deviceTypes = (DeviceTypeEnum[])Enum.GetValues(typeof(DeviceTypeEnum));
                     Model.CommandsList.Add($" tipos de devices : {string.Join(", ", deviceTypes)}");
                     Model.DeviceConnectedLabel = "qual tipo do seu device? :";
-                    Model.CreationStep = 1;
+                    Model.CreationStep = 2;
                     break;
-                case 1:
+                case 2:
                     if (Enum.TryParse(value, out DeviceTypeEnum resultado))
                     {
                         Model.NewDevice.Image = resultado.Value();
                         Model.NewDevice.Type = resultado.Description();
                         Model.DeviceConnectedLabel = "comunicação será via bluetooth? S/N :";
-                        Model.CreationStep = 2;
+                        Model.CreationStep = 3;
                     }
                     else
                         Model.CommandsList.Add($"tipo não reconhecido");
                     break;
-                case 2:
-
+                case 3:
                     if (value.ToLower().Equals("s"))
                     {
                         Model.NewDevice.IsBluetooth = true;
                         Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
-                        Model.CreationStep = 5;
+                        Model.CreationStep = 6;
                     }
                     else if (value.ToLower().Equals("n"))
                     {
                         Model.NewDevice.IsBluetooth = false;
                         Model.DeviceConnectedLabel = "digite a Url do dispositivo :";
-                        Model.CreationStep = 4;
+                        Model.CreationStep = 5;
                     }
                     else
                         Model.CommandsList.Add($"comando nao conhecido");
                     break;
-                case 4:
+                case 5:
                     if (Util.IsValidUrl(value))
                     {
                         Model.NewDevice.URL = value;
                         Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
-                        Model.CreationStep = 5;
+                        Model.CreationStep = 6;
                     }
                     else
                         Model.CommandsList.Add($"{value} : não é uma url valida");
                     break;
-                case 5:
+                case 6:
                     if (value.ToLower().Equals("s"))
                     {
                         Model.NewDevice.HaveCamera = true;
                         Model.DeviceConnectedLabel = "digite a Url para camera :";
-                        Model.CreationStep = 6;
+                        Model.CreationStep = 7;
                     }
                     else if (value.ToLower().Equals("n"))
                     {
@@ -314,7 +332,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     else
                         Model.CommandsList.Add($"comando nao conhecido");
                     break;
-                case 6:
+                case 7:
                     if (Util.IsValidUrl(value))
                     {
                         Model.NewDevice.URLCamera = value;

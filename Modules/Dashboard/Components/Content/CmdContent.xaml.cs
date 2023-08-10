@@ -10,21 +10,15 @@ public partial class CmdContent : ContentView
     void EntryCMD_Completed(object sender, EventArgs e)
     {
         EntryCMD.Focus();
-        Device.BeginInvokeOnMainThread(async () =>
+        MainThread.BeginInvokeOnMainThread(async () =>
         {
-            // Update your children here, add more or remove.
-            // todo
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
+            if (DeviceInfo.Platform == DevicePlatform.Android)
                 await ScrollTerminal.ScrollToAsync(0, StackLayoutTerminal.Height, false);
-            }
             else
             {
-                await Task.Delay(10); //UI will be updated by Xamarin
+                await Task.Delay(10);
                 await ScrollTerminal.ScrollToAsync(StackLayoutTerminal, ScrollToPosition.End, false);
             }
-
         });
     }
 }

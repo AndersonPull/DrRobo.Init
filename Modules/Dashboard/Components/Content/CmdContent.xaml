@@ -12,7 +12,9 @@
             <ScrollView
                 x:Name="ScrollTerminal"
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never"
+                HorizontalScrollBarVisibility="Never">
                 <StackLayout
                     x:Name="StackLayoutTerminal"
                     Margin="25,25,0,0">
