@@ -1,5 +1,4 @@
 ﻿using Android.Content;
-using Android.Util;
 using Drrobo.Modules.Shared.Components.Entry;
 using Drrobo.Platforms.Android.Renderers;
 using Microsoft.Maui.Controls.Compatibility;

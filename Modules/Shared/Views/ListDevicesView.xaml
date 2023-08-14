@@ -8,13 +8,14 @@
     x:Name="ListDevices">
     <Grid RowDefinitions="60,*">
         <navigation:NavigationBarComponent
+            Margin="{OnPlatform Android='0,15,0,0'}"
             Grid.Row="0"
             ZIndex="1"
             SemanticProperties.Description="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"
             Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
-            Margin="{OnIdiom Desktop=15, Default='15,0,15,0'}"
+            Margin="15"
             VerticalOptions="FillAndExpand">
             <ScrollView
                 VerticalOptions="FillAndExpand"
@@ -39,7 +40,6 @@
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems>
-                                           
                                             <SwipeItemView
                                                 Command="{Binding Source={x:Reference ListDevices}, Path=BindingContext.DeleteCommand}"
                                                 CommandParameter="{Binding .}">
@@ -67,7 +67,8 @@
                                         x:Name="StackLayoutItem">
                                         <Image
                                             Source="dashboard_full_icon"
-                                            WidthRequest="60"
+                                            WidthRequest="{OnPlatform Default=60, Android=30}"
+                                            Margin="{OnPlatform Default=0, Android='10,0,5,0'}"
                                             VerticalOptions="CenterAndExpand"
                                             HorizontalOptions="Start">
                                             <Image.Triggers>

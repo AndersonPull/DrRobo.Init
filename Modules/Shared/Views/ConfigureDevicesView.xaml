@@ -8,7 +8,9 @@
     xmlns:entry="clr-namespace:Drrobo.Modules.Shared.Components.Entry"
     NavigationPage.HasNavigationBar="False"
     x:Name="ConfigureDevices">
-    <Grid RowDefinitions="60,*">
+    <Grid
+        Margin="{OnPlatform Android='0,15,0,0'}"
+        RowDefinitions="60,*">
         <navigation:NavigationBarComponent
             Grid.Row="0"
             ZIndex="1"
@@ -16,7 +18,7 @@
             Title="{Binding LocalizationResourceManager[ConfigDevices], Mode=OneWay}"/>
         <StackLayout
             Grid.Row="1"
-            Margin="{OnIdiom Desktop=15, Default='15,0,15,0'}"
+            Margin="15"
             VerticalOptions="FillAndExpand">
             <ScrollView
                 VerticalOptions="FillAndExpand"
@@ -28,8 +30,7 @@
                     HorizontalOptions="FillAndExpand"
                     Spacing="15"
                     Margin="0,0,0,25">
-                    <StackLayout
-                        HorizontalOptions="Center">
+                    <StackLayout HorizontalOptions="Center">
                         <Frame
                             Padding="0"
                             WidthRequest="120"
@@ -37,7 +38,7 @@
                             CornerRadius="60"
                             BackgroundColor="{DynamicResource SecondaryBackground}"
                             HasShadow="False"
-                            IsClippedToBounds="True" >
+                            IsClippedToBounds="True">
                             <StackLayout
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand">
@@ -47,6 +48,10 @@
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={x:Reference ConfigureDevices}, Path=BindingContext.SelectTypeDeviceCommand}"/>
+                            </Frame.GestureRecognizers>
                         </Frame>
                         <Frame
                             Padding="0"
@@ -68,11 +73,11 @@
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={x:Reference ConfigureDevices}, Path=BindingContext.SelectTypeDeviceCommand}"/>
+                            </Frame.GestureRecognizers>
                         </Frame>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding SelectTypeDeviceCommand}"/>
-                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <Label
                         Text="Nome do dispositivo"

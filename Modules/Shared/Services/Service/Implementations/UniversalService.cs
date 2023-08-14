@@ -22,7 +22,7 @@ namespace Drrobo.Modules.Shared.Services.Service.Implementations
                 return JsonConvert
                     .DeserializeObject<HealthCheckResponse>(await response.Content.ReadAsStringAsync());
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Erro na requisição HTTP: {e.Message}");
                 return null;
@@ -37,7 +37,7 @@ namespace Drrobo.Modules.Shared.Services.Service.Implementations
                 var response = await _httpClient.PostAsync(url, content);
                 response.EnsureSuccessStatusCode();
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Erro na requisição HTTP: {e.Message}");
             }

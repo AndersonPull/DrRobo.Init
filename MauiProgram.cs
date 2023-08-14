@@ -43,9 +43,9 @@ public static class MauiProgram
 			handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.iOS.Renderers.EntryRendererIOS));
 		#endif
 
-		#if ANDROID
-			handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.Android.Renderers.EntryRendererAndroid));
-		#endif
+		//#if ANDROID
+		//	handlers.AddCompatibilityRenderer(typeof(Modules.Shared.Components.Entry.EntryComponent), typeof(Platforms.Android.Renderers.EntryRendererAndroid));
+		//#endif
     }
 
     private static void NewLifeCycle(ILifecycleBuilder events)
