@@ -10,5 +10,6 @@ namespace Drrobo.Modules.RemotelyControlled.Models
         public ObservableCollection<DevicesModel> DevicesList { get; set; }
         public bool WebViewCam { get; set; }
         public bool HaveCam { get; set; }
+        public bool On { get; set; }
     }
 }

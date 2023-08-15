@@ -73,6 +73,7 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
                     Model.Bluetooth.ConnectedDevice = await _bluetoothUtil.ConnectDeviceAsync(Model.Device.GuidBluetooth);
 
                 Model.HaveCam = Model.Device.HaveCamera;
+                Model.On = true;
             }
         }
 
