@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.Shared.Components.NavigationBar.NavigationBarComponent"
     x:Name="NavigationBar">
-    <Grid
-        Margin="15"
-        HeightRequest="60"
-        ColumnDefinitions="10*,80*,10*">
+    <StackLayout
+        Orientation="Horizontal"
+        Margin="{OnPlatform Default=15, Android='15,25,0,15'}"
+        HeightRequest="30">
         <Button
             HorizontalOptions="Start"
             Grid.Column="0"
@@ -18,7 +18,7 @@
         <Label
             Margin="10,0,0,0"
             Grid.Column="1"
-            VerticalOptions="Center"
+            VerticalOptions="Start"
             Style="{DynamicResource LabelTitleWhite}"
             Text="{Binding Title, Source={x:Reference NavigationBar}}" />
         <Button
@@ -29,5 +29,5 @@
             Opacity="0.4"
             IsVisible="{Binding HasBluetooth, Source={x:Reference NavigationBar}}"
             Command="{Binding Command, Source={x:Reference NavigationBar}}"/>
-    </Grid>
+    </StackLayout>
 </ContentView>

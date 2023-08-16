@@ -1,5 +1,4 @@
 ﻿using Drrobo.Modules.Shared.ViewModels;
-using Drrobo.Modules.Shared.Services.Navigation;
 using Drrobo.Modules.RemotelyControlled.Models;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
@@ -19,19 +18,12 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
         public ICommand DevicesPopupCommand => new Command(async () => await DevicesPopupAsync());
         public ICommand GetDevicesCommand => new Command(async () => await GetDevicesAsync());
 
-        INavigationService _serviceNavigation;
         IBluetoothUtil _bluetoothUtil;
         IUniversalService _universalService;
 
         DevicesData _deviceData;
-        public JoystickViewModel
-        (
-            INavigationService serviceNavigation,
-            IBluetoothUtil bluetoothUtil,
-            IUniversalService universalService
-        )
+        public JoystickViewModel(IBluetoothUtil bluetoothUtil, IUniversalService universalService)
         {
-            _serviceNavigation = serviceNavigation;
             _bluetoothUtil = bluetoothUtil;
             _universalService = universalService;
 

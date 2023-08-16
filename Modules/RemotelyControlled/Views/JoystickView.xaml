@@ -13,17 +13,13 @@
         <navigation:NavigationBarComponent
             ZIndex="1"
             VerticalOptions="Start"
-            Grid.Row="0"
             x:Name="NavigationComponent"/>
         <StackLayout
-            Grid.Row="1"
-            Grid.RowSpan="2"
             x:Name="Joystick"
             IsVisible="{OnIdiom Desktop=True,Default=False}">
             <Grid
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
-                RowDefinitions="100*">
+                HorizontalOptions="FillAndExpand">
                 <WebView
                     Margin="0"
                     VerticalOptions="FillAndExpand"
@@ -62,25 +58,16 @@
                         VerticalOptions="CenterAndExpand"
                         Style="{DynamicResource Label12WhiteBold}"
                         Text="{Binding Model.Device.Name}"/>
-                    <Frame
-                        Padding="0"
-                        WidthRequest="40"
-                        HeightRequest="40"
-                        CornerRadius="20"
-                        Background="{DynamicResource SecondaryBackground}"
-                        HasShadow="False">
-                        <Grid
-                            WidthRequest="20">
-                            <Image
-                                WidthRequest="30"
-                                Source="{Binding Model.Device.Image}"/>
-                        </Grid>
-                    </Frame>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding DevicesPopupCommand}"
-                            CommandParameter="{Binding .}"/>
-                    </StackLayout.GestureRecognizers>
+                    <ImageButton
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="45"
+                        HeightRequest="45"
+                        Padding="3"
+                        CornerRadius="22"
+                        BackgroundColor="{DynamicResource SecondaryBackground}"
+                        Source="{Binding Model.Device.Image}"
+                        Command="{Binding DevicesPopupCommand}"/>
                 </StackLayout>
             </Grid>
         </StackLayout>
