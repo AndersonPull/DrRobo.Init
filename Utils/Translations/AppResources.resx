@@ -84,6 +84,22 @@
     <data name="ConfigJoystick" xml:space="preserve">
         <value>Configure joystick</value>
     </data>
+    <!--ConfigureDevices-->
+    <data name="DeviceName" xml:space="preserve">
+        <value>Device name</value>
+    </data>
+    <data name="SelectTheTypeOfCommunication" xml:space="preserve">
+        <value>Select the type of communication</value>
+    </data>
+    <data name="EnterDeviceURL" xml:space="preserve">
+        <value>Enter device URL</value>
+    </data>
+    <data name="DoesThisDeviceHaveACamera" xml:space="preserve">
+        <value>Does this device Have a camera?</value>
+    </data>
+    <data name="EnterCameraURL" xml:space="preserve">
+        <value>Enter camera URL</value>
+    </data>
     <!--Shared-->
     <data name="Cancel" xml:space="preserve">
         <value>Cancel</value>
@@ -93,5 +109,20 @@
     </data>
     <data name="EmptyList" xml:space="preserve">
         <value>no items found</value>
+    </data>
+    <data name="Update" xml:space="preserve">
+        <value>Update</value>
+    </data>
+    <data name="Bluetooth" xml:space="preserve">
+        <value>Bluetooth</value>
+    </data>
+    <data name="Wifi" xml:space="preserve">
+        <value>Wi-fi</value>
+    </data>
+    <data name="Yes" xml:space="preserve">
+        <value>Yes</value>
+    </data>
+    <data name="No" xml:space="preserve">
+        <value>No</value>
     </data>
 </root>

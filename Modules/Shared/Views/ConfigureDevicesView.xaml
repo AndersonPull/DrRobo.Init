@@ -80,23 +80,26 @@
                         </Frame>
                     </StackLayout>
                     <Label
-                        Text="Nome do dispositivo"
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[DeviceName]}"
+                        Text="{Binding LocalizationResourceManager[DeviceName]}"
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <entry:EntryComponent
                         Style="{DynamicResource Entry14White}"
                         Text="{Binding Model.Device.Name, Mode=TwoWay}"/>
                     <Label
-                        Text="Selecione o tipo de comunicação"
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[SelectTheTypeOfCommunication]}"
+                        Text="{Binding LocalizationResourceManager[SelectTheTypeOfCommunication]}"
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <buttons:ToggleComponent
                         HorizontalOptions="Start"
                         WidthRequest="300"
-                        FirstText="Bluetooth"
-                        SecondText="Wi-fi"
+                        FirstText="{Binding LocalizationResourceManager[Bluetooth]}"
+                        SecondText="{Binding LocalizationResourceManager[Wifi]}"
                         Selected="{Binding Model.Device.IsBluetooth, Mode=TwoWay}"
                         Command="{Binding SelectCommunicationCommand}"/>
                     <Label
-                        Text="Digite a url do dispositivo"
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[EnterDeviceURL]}"
+                        Text="{Binding LocalizationResourceManager[EnterDeviceURL]}"
                         Style="{DynamicResource LabelTitleWhite}"
                         IsVisible="{Binding Model.Device.IsBluetooth, Mode=TwoWay, Converter={StaticResource InverseBoolConverter}}"/>
                     <entry:EntryComponent
@@ -104,16 +107,18 @@
                         Style="{DynamicResource Entry14White}"
                         IsVisible="{Binding Model.Device.IsBluetooth, Mode=TwoWay, Converter={StaticResource InverseBoolConverter}}"/>
                     <Label
-                        Text="Este device possui camera?"
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[DoesThisDeviceHaveACamera]}"
+                        Text="{Binding LocalizationResourceManager[DoesThisDeviceHaveACamera]}"
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <buttons:ToggleComponent
                         HorizontalOptions="Start"
                         WidthRequest="300"
-                        FirstText="Sim"
-                        SecondText="Não"
+                        FirstText="{Binding LocalizationResourceManager[Yes]}"
+                        SecondText="{Binding LocalizationResourceManager[No]}"
                         Selected="{Binding Model.Device.HaveCamera, Mode=TwoWay}"/>
                     <Label
-                        Text="Digite a url da camera"
+                        SemanticProperties.Description="{Binding LocalizationResourceManager[EnterCameraURL]}"
+                        Text="{Binding LocalizationResourceManager[EnterCameraURL]}"
                         Style="{DynamicResource LabelTitleWhite}"
                         IsVisible="{Binding Model.Device.HaveCamera, Mode=TwoWay}"/>
                     <entry:EntryComponent
@@ -127,8 +132,8 @@
                 HorizontalOptions="Center"
                 WidthRequest="300"
                 IsVisible="{Binding Model.IsUpdate}"
-                SemanticProperties.Description="{Binding LocalizationResourceManager[Add]}"
-                Text="Atualizar"
+                SemanticProperties.Description="{Binding LocalizationResourceManager[Update]}"
+                Text="{Binding LocalizationResourceManager[Update]}"
                 Style="{DynamicResource PrimaryButton}"
                 Command="{Binding UpdateCommand}"/>
             <Button

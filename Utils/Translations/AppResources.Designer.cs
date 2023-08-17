@@ -64,20 +64,52 @@ namespace Drrobo.Utils.Translations
 
         internal static string General
         { get { return ResourceManager.GetString("General", resourceCulture);}}
-
-        internal static string ConfigDevices
-        { get { return ResourceManager.GetString("ConfigDevices", resourceCulture);}}
         #endregion Profile
+
+        #region ConfigureDevice
+        internal static string ConfigDevices
+        { get { return ResourceManager.GetString("ConfigDevices", resourceCulture); } }
+
+        internal static string DeviceName
+        { get { return ResourceManager.GetString("DeviceName", resourceCulture); } }
+
+        internal static string SelectTheTypeOfCommunication
+        { get { return ResourceManager.GetString("SelectTheTypeOfCommunication", resourceCulture); } }
+
+        internal static string EnterDeviceURL
+        { get { return ResourceManager.GetString("EnterDeviceURL", resourceCulture); } }
+
+        internal static string DoesThisDeviceHaveACamera
+        { get { return ResourceManager.GetString("DoesThisDeviceHaveACamera", resourceCulture); } }
+
+        internal static string EnterCameraURL
+        { get { return ResourceManager.GetString("EnterCameraURL", resourceCulture); } }
+        #endregion ConfigureDevice
 
         #region Shared
         internal static string Cancel
-        { get { return ResourceManager.GetString("Cancel", resourceCulture);}}
+        { get { return ResourceManager.GetString("Cancel", resourceCulture); } }
 
         internal static string Add
-        { get { return ResourceManager.GetString("Add", resourceCulture);}}
+        { get { return ResourceManager.GetString("Add", resourceCulture); } }
 
         internal static string EmptyList
         { get { return ResourceManager.GetString("EmptyList", resourceCulture); } }
+
+        internal static string Update
+        { get { return ResourceManager.GetString("Update", resourceCulture); } }
+
+        internal static string Bluetooth
+        { get { return ResourceManager.GetString("Bluetooth", resourceCulture); } }
+
+        internal static string Wifi
+        { get { return ResourceManager.GetString("Wifi", resourceCulture); } }
+
+        internal static string Yes
+        { get { return ResourceManager.GetString("yes", resourceCulture); } }
+
+        internal static string No
+        { get { return ResourceManager.GetString("No", resourceCulture); } }
         #endregion Shared
     }
 }
