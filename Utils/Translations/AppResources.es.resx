@@ -100,6 +100,49 @@
     <data name="EnterCameraURL" xml:space="preserve">
         <value>DIntroduzca la URL de la cámara</value>
     </data>
+    <!--Terminal-->
+    <data name="CommandNotKnown" xml:space="preserve">
+        <value>Comando desconocido</value>
+    </data>
+    <data name="NoDeviceFound" xml:space="preserve">
+        <value>Ningún dispositivo encontrado</value>
+    </data>
+    <data name="NotHaveCamera" xml:space="preserve">
+        <value>El dispositivo no tiene cámara.</value>
+    </data>
+    <data name="DisconnectedAlert" xml:space="preserve">
+        <value>Conectarse en un dispositivo para realizar esta acción</value>
+    </data>
+    <data name="AlreadyExists" xml:space="preserve">
+        <value>Ya existe un dispositivo con ese nombre</value>
+    </data>
+    <data name="DeviceTypes" xml:space="preserve">
+        <value>Tipos de dispositivos</value>
+    </data>
+    <data name="WhatTypeOfYourDevice" xml:space="preserve">
+        <value>¿Qué tipo de dispositivo?</value>
+    </data>
+    <data name="CommunicationType" xml:space="preserve">
+        <value>La comunicacion sera por bluetooth? S/N:</value>
+    </data>
+    <data name="UnrecognizedType" xml:space="preserve">
+        <value>tipo no reconocido</value>
+    </data>
+    <data name="HaveCam" xml:space="preserve">
+        <value>¿Tu dispositivo tiene cámara? S/N:</value>
+    </data>
+    <data name="NotValidURL" xml:space="preserve">
+        <value>No es una URL válida</value>
+    </data>
+    <data name="SuccessfullyCreated" xml:space="preserve">
+        <value>¡Creado con éxito!</value>
+    </data>
+    <data name="SuccessfullyRemoved" xml:space="preserve">
+        <value>Eliminado exitosamente</value>
+    </data>
+    <data name="ErrorCreate" xml:space="preserve">
+        <value>El comando de creación debe ir seguido del nombre del dispositivo</value>
+    </data>
     <!--Shared-->
     <data name="Cancel" xml:space="preserve">
         <value>Cancelar</value>

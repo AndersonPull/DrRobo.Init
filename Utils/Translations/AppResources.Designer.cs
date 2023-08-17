@@ -86,6 +86,51 @@ namespace Drrobo.Utils.Translations
         { get { return ResourceManager.GetString("EnterCameraURL", resourceCulture); } }
         #endregion ConfigureDevice
 
+        #region Terminal
+        internal static string CommandNotKnown
+        { get { return ResourceManager.GetString("CommandNotKnown", resourceCulture); } }
+
+        internal static string NoDeviceFound
+        { get { return ResourceManager.GetString("NoDeviceFound", resourceCulture); } }
+
+        internal static string NotHaveCamera
+        { get { return ResourceManager.GetString("NotHaveCamera", resourceCulture); } }
+
+        internal static string DisconnectedAlert
+        { get { return ResourceManager.GetString("DisconnectedAlert", resourceCulture); } }
+
+        internal static string AlreadyExists
+        { get { return ResourceManager.GetString("AlreadyExists", resourceCulture); } }
+
+        internal static string DeviceTypes
+        { get { return ResourceManager.GetString("DeviceTypes", resourceCulture); } }
+
+        internal static string WhatTypeOfYourDevice
+        { get { return ResourceManager.GetString("WhatTypeOfYourDevice", resourceCulture); } }
+
+        internal static string CommunicationType
+        { get { return ResourceManager.GetString("CommunicationType", resourceCulture); } }
+
+        internal static string UnrecognizedType
+        { get { return ResourceManager.GetString("UnrecognizedType", resourceCulture); } }
+
+        internal static string HaveCam
+        { get { return ResourceManager.GetString("HaveCam", resourceCulture); } }
+
+        internal static string NotValidURL
+        { get { return ResourceManager.GetString("NotValidURL", resourceCulture); } }
+
+        internal static string SuccessfullyCreated
+        { get { return ResourceManager.GetString("SuccessfullyCreated", resourceCulture); } }
+
+        internal static string SuccessfullyRemoved
+        { get { return ResourceManager.GetString("SuccessfullyRemoved", resourceCulture); } }
+
+        internal static string ErrorCreate
+        { get { return ResourceManager.GetString("ErrorCreate", resourceCulture); } }
+
+        #endregion Termial
+
         #region Shared
         internal static string Cancel
         { get { return ResourceManager.GetString("Cancel", resourceCulture); } }
@@ -110,6 +155,9 @@ namespace Drrobo.Utils.Translations
 
         internal static string No
         { get { return ResourceManager.GetString("No", resourceCulture); } }
+
+        internal static string NotFound
+        { get { return ResourceManager.GetString("NotFound", resourceCulture); } }
         #endregion Shared
     }
 }

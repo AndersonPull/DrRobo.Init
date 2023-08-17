@@ -189,7 +189,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     if (!string.IsNullOrEmpty(value) && separatedCommand.Length > 1)
                         await CreateDeviceAsync(value);
                     else
-                        Model.CommandsList.Add($"o comando create deve ser seguido pelo nome do dispositivo");
+                        Model.CommandsList.Add(AppResources.ErrorCreate);
                     break;
                 case "remove":
                     RemoveDevice(value);
@@ -201,7 +201,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     await MovementAsync(value);
                     break;
                 default:
-                    Model.CommandsList.Add($"comando nao conhecido");
+                    Model.CommandsList.Add(AppResources.CommandNotKnown);
                 break;
             }
         }
@@ -214,14 +214,14 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     .Split(' ')
                     .FirstOrDefault()} / {Model.DeviceConnected.Name} %";
             else
-                Model.CommandsList.Add($"{value} : não encontrado");
+                Model.CommandsList.Add($"{value} : {AppResources.NotFound}");
         }
 
         private void ListDevices()
         {
             var devices = _deviceData.GetAll();
             if (devices == null || devices.Count == 0)
-                Model.CommandsList.Add($"nenhum device encontrado");
+                Model.CommandsList.Add($"{AppResources.NoDeviceFound}");
             else
                 foreach (var device in devices)
                     Model.CommandsList.Add(device.Name);
@@ -234,10 +234,10 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 if (Model.DeviceConnected.HaveCamera)
                     Model.OpenCam = value;
                 else
-                    Model.CommandsList.Add($"dispositivo não possui camera");
+                    Model.CommandsList.Add(AppResources.NotHaveCamera);
             }
             else
-                Model.CommandsList.Add($"conecte-se em um dispositivo para realizar essa ação");
+                Model.CommandsList.Add(AppResources.DisconnectedAlert);
         }
 
         private void Disconnect()
@@ -274,14 +274,14 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                         await CreateDeviceAsync(value);
                     }
                     else
-                        Model.CommandsList.Add($"já existe um dispositivo com esse nome");                   
+                        Model.CommandsList.Add(AppResources.AlreadyExists);                   
                 break;
                 case 1:
                     Model.NewDevice = new DevicesModel();
                     Model.NewDevice.Name = value;
                     var deviceTypes = (DeviceTypeEnum[])Enum.GetValues(typeof(DeviceTypeEnum));
-                    Model.CommandsList.Add($" tipos de devices : {string.Join(", ", deviceTypes)}");
-                    Model.DeviceConnectedLabel = "qual tipo do seu device? :";
+                    Model.CommandsList.Add($" {AppResources.DeviceTypes}: {string.Join(", ", deviceTypes)}");
+                    Model.DeviceConnectedLabel = $"{AppResources.WhatTypeOfYourDevice} :";
                     Model.CreationStep = 2;
                 break;
                 case 2:
@@ -292,11 +292,11 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                         if (Model.NewDevice.Type == DeviceTypeEnum.Jumper.Description())
                             Model.NewDevice.Isjoystick = true;
 
-                        Model.DeviceConnectedLabel = "comunicação será via bluetooth? S/N :";
+                        Model.DeviceConnectedLabel = AppResources.CommunicationType;
                         Model.CreationStep = 3;
                     }
                     else
-                        Model.CommandsList.Add($"tipo não reconhecido");
+                        Model.CommandsList.Add(AppResources.UnrecognizedType);
                 break;
                 case 3:
                     if (value.ToLower().Equals("s"))
@@ -309,7 +309,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                             Model.NewDevice.IsBluetooth = true;
                             Model.NewDevice.GuidBluetooth = result.Id;
 
-                            Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
+                            Model.DeviceConnectedLabel = AppResources.HaveCam;
                             Model.CreationStep = 6;
                         }
                         else
@@ -320,55 +320,55 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                     else if (value.ToLower().Equals("n"))
                     {
                         Model.NewDevice.IsBluetooth = false;
-                        Model.DeviceConnectedLabel = "digite a Url do dispositivo :";
+                        Model.DeviceConnectedLabel = $"{AppResources.EnterDeviceURL} :";
                         Model.CreationStep = 5;
                     }
                     else
-                        Model.CommandsList.Add($"comando nao conhecido");
+                        Model.CommandsList.Add(AppResources.CommandNotKnown);
                 break;
                 case 5:
                     if (Util.IsValidUrl(value))
                     {
                         Model.NewDevice.URL = value;
-                        Model.DeviceConnectedLabel = "seu dispositivo possui camera? S/N :";
+                        Model.DeviceConnectedLabel = AppResources.HaveCam;
                         Model.CreationStep = 6;
                     }
                     else
-                        Model.CommandsList.Add($"{value} : não é uma url valida");
+                        Model.CommandsList.Add($"{value} : {AppResources.NotValidURL}");
                 break;
                 case 6:
                     if (value.ToLower().Equals("s"))
                     {
                         Model.NewDevice.HaveCamera = true;
-                        Model.DeviceConnectedLabel = "digite a Url para camera :";
+                        Model.DeviceConnectedLabel = $"{AppResources.EnterCameraURL} :";
                         Model.CreationStep = 7;
                     }
                     else if (value.ToLower().Equals("n"))
                     {
                         Model.NewDevice.HaveCamera = false;
                         _deviceData.Save(Model.NewDevice);
-                        Model.CommandsList.Add($"{Model.NewDevice.Name} : creado com sucesso!");
+                        Model.CommandsList.Add($"{Model.NewDevice.Name} : {AppResources.SuccessfullyCreated}");
                         Model.CreateDevice = false;
                         Model.CreationStep = 0;
                         Model.DeviceConnected = _deviceData.GetByName(Model.NewDevice.Name);
                         Model.DeviceConnectedLabel = $"{DeviceInfo.Name} / {Model.DeviceConnected.Name} %";
                     }
                     else
-                        Model.CommandsList.Add($"comando nao conhecido");
+                        Model.CommandsList.Add(AppResources.CommandNotKnown);
                 break;
                 case 7:
                     if (Util.IsValidUrl(value))
                     {
                         Model.NewDevice.URLCamera = value;
                         _deviceData.Save(Model.NewDevice);
-                        Model.CommandsList.Add($"{Model.NewDevice.Name} : creado com sucesso!");
+                        Model.CommandsList.Add($"{Model.NewDevice.Name} : {AppResources.SuccessfullyCreated}");
                         Model.CreateDevice = false;
                         Model.CreationStep = 0;
                         Model.DeviceConnected = _deviceData.GetByName(Model.NewDevice.Name);
                         Model.DeviceConnectedLabel = $"{DeviceInfo.Name} / {Model.DeviceConnected.Name} %";
                     }
                     else
-                        Model.CommandsList.Add($"{value} : não é uma url valida");
+                        Model.CommandsList.Add($"{value} : {AppResources.NotValidURL}");
                 break;
             }
         }
@@ -379,10 +379,10 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             if(device != null)
             {
                 _deviceData.Delete(device);
-                Model.CommandsList.Add($"{name} : removido com sucesso");
+                Model.CommandsList.Add($"{name} : {AppResources.SuccessfullyRemoved}");
             }
             else
-                Model.CommandsList.Add($"{name} : não encontrado");
+                Model.CommandsList.Add($"{name} : {AppResources.NotFound}");
         }
 
         private async Task ProfileClickButtonAsync(ProfileButtonEnum value)
