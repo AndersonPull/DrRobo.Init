@@ -159,12 +159,12 @@ namespace Drrobo.Modules.Dashboard.ViewModels
         {
             var separatedCommand = commandText.Split(' ');
             
-            var command = separatedCommand.FirstOrDefault();
+            var command = separatedCommand.FirstOrDefault().ToLower();
             var value = separatedCommand.LastOrDefault();
 
             if (Model.CreateDevice)
             {
-                await CreateDeviceAsync(command);
+                await CreateDeviceAsync(value);
                 return;
             }
 
@@ -261,6 +261,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
             {
                 Model.CreateDevice = false;
                 Model.CreationStep = 0;
+                Disconnect();
                 return;
             }
 
@@ -299,7 +300,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                         Model.CommandsList.Add(AppResources.UnrecognizedType);
                 break;
                 case 3:
-                    if (value.ToLower().Equals("s"))
+                    if (value.ToLower().Equals("s") || value.ToLower().Equals("y"))
                     {
                         var result = (IDevice)await Application.Current.MainPage
                             .ShowPopupAsync(new BluetoothPopup(await _bluetoothUtil.SearchDevicesAsync()));
@@ -337,7 +338,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                         Model.CommandsList.Add($"{value} : {AppResources.NotValidURL}");
                 break;
                 case 6:
-                    if (value.ToLower().Equals("s"))
+                    if (value.ToLower().Equals("s") || value.ToLower().Equals("y"))
                     {
                         Model.NewDevice.HaveCamera = true;
                         Model.DeviceConnectedLabel = $"{AppResources.EnterCameraURL} :";
