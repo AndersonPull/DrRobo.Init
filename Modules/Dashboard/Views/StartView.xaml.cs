@@ -22,7 +22,7 @@ public partial class StartView : ContentPage
             ViewModel.GetDevicesConnectCommand.Execute(null);
     }
 
-    public ContentView GetContent() => this.ContentBody.Content as ContentView;
+    public ContentView GetContent() => ContentBody.Content as ContentView;
 
     public async Task SetContent(ContentView content)
     {
