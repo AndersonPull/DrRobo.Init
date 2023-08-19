@@ -177,6 +177,7 @@
 	  <None Remove="Resources\Images\trash_icon.png" />
 	  <None Remove="Resources\Images\terminal_banner_icon.png" />
 	  <None Remove="Resources\Images\logo_ascii_icon.png" />
+	  <None Remove="Resources\Images\banner_principal.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
