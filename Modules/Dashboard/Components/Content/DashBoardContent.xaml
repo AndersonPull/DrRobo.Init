@@ -94,7 +94,7 @@
                     </ScrollView>
                     <!--banner IsVisible="false"-->
                     <Frame
-                        IsVisible="true"
+                        IsVisible="false"
                         Padding="0"
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="80"
