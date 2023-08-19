@@ -18,23 +18,21 @@
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
                 <ContentView
-                    Margin="0,0,0,-20"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     x:Name="ContentBody">
                     <content:DashBoardContent/>
                 </ContentView>
-                <Grid
-                    ColumnDefinitions="*,175,*"
-                    Margin="0,-60,0,20"
-                    x:Name="BottomBar"
+                <StackLayout
+                    BackgroundColor="Red"
+                    Margin="0,-80,0,0"
                     HorizontalOptions="Center"
-                    IsClippedToBounds="False">
+                    IsClippedToBounds="False"
+                    x:Name="BottomBarComponent">
                     <component:BottomBarComponent
-                        Grid.Column="1"
                         VerticalOptions="End"
                         HorizontalOptions="Center"/>
-                </Grid>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

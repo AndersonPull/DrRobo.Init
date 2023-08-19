@@ -33,7 +33,6 @@ public partial class StartView : ContentPage
     protected override void OnSizeAllocated(double width, double height)
     {
         SetSafeArea();
-        ContentBody.Margin = new Thickness(0, 0, 0, -20);
     }
 
     private void SetSafeArea()

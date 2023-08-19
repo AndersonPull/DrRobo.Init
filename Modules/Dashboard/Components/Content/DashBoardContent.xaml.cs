@@ -8,7 +8,7 @@ public partial class DashBoardContent : ContentView
     public DashBoardContent()
 	{
 		InitializeComponent();
-	}
+    }
 
     public int NewWidthFrame
     {
