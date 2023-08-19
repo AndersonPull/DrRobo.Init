@@ -8,29 +8,13 @@ public partial class ProfileContent : ContentView
     public ProfileContent()
     {
         InitializeComponent();
-
-        SetDeviceDisplay();
-        DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
     }
 
-    private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
-        => SetDeviceDisplay();
-    
-    private void SetDeviceDisplay()
+    protected override void OnSizeAllocated(double width, double height)
     {
-        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
-            return;
-
-        switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
-        {
-            case DisplayOrientation.Landscape:
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                    ProfileStackLayout.Margin = new Thickness(47);
-                break;
-            case DisplayOrientation.Portrait:
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                    ProfileStackLayout.Margin = new Thickness(15, 45, 15, 15);
-                break;
-        }
+        if (width > height)
+            ProfileStackLayout.Margin = new Thickness(120, 15, 55, 15);
+        else
+            ProfileStackLayout.Margin = new Thickness(15, 55, 15, 15);
     }
 }

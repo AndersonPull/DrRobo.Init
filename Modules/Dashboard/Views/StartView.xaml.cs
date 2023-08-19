@@ -33,6 +33,17 @@ public partial class StartView : ContentPage
     protected override void OnSizeAllocated(double width, double height)
     {
         SetSafeArea();
+
+        if( width > height)
+        {
+            LeftBar.IsVisible = true;
+            BottomBar.IsVisible = false;
+        }
+        else
+        {
+            LeftBar.IsVisible = false;
+            BottomBar.IsVisible = true;
+        }
     }
 
     private void SetSafeArea()

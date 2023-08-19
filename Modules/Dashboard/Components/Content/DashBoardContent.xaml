@@ -6,8 +6,7 @@
     x:Class="Drrobo.Modules.Dashboard.Components.Content.DashBoardContent"
     x:Name="DashboardPage">
     <Grid
-        RowDefinitions="90,*"
-        x:Name="MainGrid">
+        RowDefinitions="90,*">
         <StackLayout
             Grid.Row="0"
             ZIndex="1">
@@ -95,7 +94,7 @@
                     </ScrollView>
                     <!--banner IsVisible="false"-->
                     <Frame
-                        IsVisible="false"
+                        IsVisible="true"
                         Padding="0"
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="80"

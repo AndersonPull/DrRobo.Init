@@ -21,4 +21,12 @@ public partial class CmdContent : ContentView
             }
         });
     }
+
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        if (width > height)
+            MainGrid.Margin = new Thickness(95, 15, 15, 15);
+        else
+            MainGrid.Margin = new Thickness(0, 35, 15, 15);
+    }
 }

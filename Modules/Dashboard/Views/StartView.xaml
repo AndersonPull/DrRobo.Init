@@ -10,30 +10,27 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="False">
     <ContentPage.Content>
-        <StackLayout
-            Orientation="Horizontal"
+        <Grid
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <StackLayout
+            <ContentView
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
-                <ContentView
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
-                    x:Name="ContentBody">
-                    <content:DashBoardContent/>
-                </ContentView>
-                <StackLayout
-                    BackgroundColor="Red"
-                    Margin="0,-80,0,0"
-                    HorizontalOptions="Center"
-                    IsClippedToBounds="False"
-                    x:Name="BottomBarComponent">
-                    <component:BottomBarComponent
-                        VerticalOptions="End"
-                        HorizontalOptions="Center"/>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+                HorizontalOptions="FillAndExpand"
+                x:Name="ContentBody">
+                <content:DashBoardContent/>
+            </ContentView>
+            <component:BottomBarComponent
+                IsVisible="False"
+                Margin="0,0,0,20"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                x:Name="BottomBar"/>
+            <component:LeftBarComponent
+                IsVisible="False"
+                Margin="50,0,0,0"
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand"
+                x:Name="LeftBar"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
