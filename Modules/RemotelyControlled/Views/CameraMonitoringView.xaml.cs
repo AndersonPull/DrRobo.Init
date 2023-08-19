@@ -38,11 +38,11 @@ public partial class CameraMonitoringView : ContentPage
             case DisplayOrientation.Landscape:
                 StackLayoutCam.IsVisible = true;
                 StackLayoutCamWarning.IsVisible = false;
-                break;
+            break;
             case DisplayOrientation.Portrait:
                 StackLayoutCam.IsVisible = false;
                 StackLayoutCamWarning.IsVisible = true;
-                break;
+            break;
         }
     }
 
