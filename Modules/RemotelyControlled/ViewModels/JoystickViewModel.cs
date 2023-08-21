@@ -107,6 +107,9 @@ namespace Drrobo.Modules.RemotelyControlled.ViewModels
 
         private async Task MovementAsync(string value)
         {
+            if (Model.Bluetooth.ConnectedDevice == null)
+                return;
+
             if (Model.Device.IsBluetooth)
                 await CommunicationBLE(value, Model.Bluetooth.ConnectedDevice, _bluetoothUtil);
             else
