@@ -1,5 +1,4 @@
-﻿using System;
-namespace Drrobo.Modules.Dashboard.Enums
+﻿namespace Drrobo.Modules.Dashboard.Enums
 {
 	public enum LanguagesEnum
 	{
