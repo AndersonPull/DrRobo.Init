@@ -279,7 +279,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 break;
                 case 1:
                     Model.NewDevice = new DevicesModel();
-                    Model.NewDevice.Name = value;
+                    Model.NewDevice.Name = value.ToLower();
                     var deviceTypes = (DeviceTypeEnum[])Enum.GetValues(typeof(DeviceTypeEnum));
                     Model.CommandsList.Add($" {AppResources.DeviceTypes}: {string.Join(", ", deviceTypes)}");
                     Model.DeviceConnectedLabel = $"{AppResources.WhatTypeOfYourDevice} :";

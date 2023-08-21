@@ -7,6 +7,7 @@ using Drrobo.Modules.Shared.Models;
 using Drrobo.Modules.Shared.Services.Data;
 using Drrobo.Utils;
 using Drrobo.Utils.Bluetooth;
+using Drrobo.Utils.Translations;
 using Plugin.BLE.Abstractions.Contracts;
 
 namespace Drrobo.Modules.Shared.ViewModels
@@ -128,19 +129,19 @@ namespace Drrobo.Modules.Shared.ViewModels
             var message = string.Empty;
 
             if (Model.IsCamera && !Util.IsValidUrl(Model.Device.URLCamera))
-                message = "Digite uma URL valida para camera";
+                message = AppResources.EnterCameraURL;
 
             if(Model.Device.HaveCamera && !Util.IsValidUrl(Model.Device.URLCamera))
-                message = "Digite uma URL valida para camera";
+                message = AppResources.EnterCameraURL;
 
             if (!Model.Device.IsBluetooth && !Util.IsValidUrl(Model.Device.URL))
-                message = "Digite uma URL valida para o dispositivo";
+                message = AppResources.EnterDeviceURL;
 
             if (_deviceData.ValidName(Model.Device.Name) && !Model.IsUpdate)
-                message = "Ja existe um dispositivo com este nome";
+                message = AppResources.AlreadyExists;
 
             if (string.IsNullOrEmpty(Model.Device.Name))
-                message = "Digite um nome valido para o dispositivo";
+                message = AppResources.DeviceName;
 
             if (!string.IsNullOrEmpty(message))
             {
