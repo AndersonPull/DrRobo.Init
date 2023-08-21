@@ -65,33 +65,37 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout
-                    Margin="15"
                     Spacing="15">
-                    <Label
-                        SemanticProperties.Description="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
-                        Text="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
-                        Style="{DynamicResource Label14WhiteBold}"
-                        IsVisible="{Binding Model.DevicesOn, Mode=TwoWay}"/>
-                    <ScrollView
-                        Orientation="Horizontal"
-                        VerticalScrollBarVisibility="Never"
-                        HorizontalScrollBarVisibility="Never">
-                        <StackLayout
+                    <StackLayout
+                        Margin="15,0,0,0"
+                        Spacing="15">
+                        <Label
+                            SemanticProperties.Description="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
+                            Text="{Binding LocalizationResourceManager[DevicesConnectedToTheNetwork], Mode=OneWay}"
+                            Style="{DynamicResource Label14WhiteBold}"
+                            IsVisible="{Binding Model.DevicesOn, Mode=TwoWay}"/>
+                        <ScrollView
                             Orientation="Horizontal"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand"
-                            Spacing="15"
-                            x:Name="StackLayoutListItems"
-                            BindableLayout.ItemsSource="{Binding Model.DevicesList, Mode=TwoWay}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <components:DeviceHealthCheckComponent
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Start"/>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </StackLayout>
-                    </ScrollView>
+                            VerticalScrollBarVisibility="Never"
+                            HorizontalScrollBarVisibility="Never">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                Spacing="15"
+                                x:Name="StackLayoutListItems"
+                                BindableLayout.ItemsSource="{Binding Model.DevicesList, Mode=TwoWay}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <components:DeviceHealthCheckComponent
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            BatteryValue="{Binding Battery}"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
                     <!--banner IsVisible="false"-->
                     <Frame
                         IsVisible="false"

@@ -8,20 +8,18 @@ namespace Drrobo.Modules.Shared.Components.DeviceHealthCheck;
 
 public partial class DeviceHealthCheckComponent : ContentView
 {
-    public static readonly BindableProperty BatteryProperty = BindableProperty.Create(nameof(Battery), typeof(int), typeof(DeviceHealthCheckComponent));
+    public static readonly BindableProperty BatteryValueProperty = BindableProperty.Create(nameof(BatteryValue), typeof(int), typeof(DeviceHealthCheckComponent));
     public static readonly BindableProperty BatteryPercentageProperty = BindableProperty.Create(nameof(BatteryPercentage), typeof(IEnumerable<ISeries>), typeof(DeviceHealthCheckComponent));
 
     public DeviceHealthCheckComponent()
     {
         InitializeComponent();
-
-        seting();
     }
 
-    public int Battery
+    public int BatteryValue
     {
-        get => (int)GetValue(BatteryProperty);
-        set => SetValue(BatteryProperty, value);
+        get => (int)GetValue(BatteryValueProperty);
+        set => SetValue(BatteryValueProperty, value);
     }
 
     public IEnumerable<ISeries> BatteryPercentage
@@ -30,14 +28,18 @@ public partial class DeviceHealthCheckComponent : ContentView
         set => SetValue(BatteryPercentageProperty, value);
     }
 
-    private void seting()
+    protected override void OnPropertyChanged(string propertyName = null)
     {
-        BatteryPercentage = new GaugeBuilder()
-            .WithInnerRadius(120)
-            .WithBackgroundInnerRadius(120)
-            .WithBackground(new SolidColorPaint(new SKColor(30, 30, 30)))
-            .WithLabelsPosition(PolarLabelsPosition.ChartCenter)
-            .AddValue(Battery, null, new SKColor(47, 193, 44), SKColors.Transparent)
-            .BuildSeries();
+        base.OnPropertyChanged(propertyName);
+        if (nameof(BatteryValue).Equals(propertyName))
+        {
+            BatteryPercentage = new GaugeBuilder()
+             .WithInnerRadius(120)
+             .WithBackgroundInnerRadius(120)
+             .WithBackground(new SolidColorPaint(new SKColor(30, 30, 30)))
+             .WithLabelsPosition(PolarLabelsPosition.ChartCenter)
+             .AddValue(BatteryValue, null, new SKColor(47, 193, 44), SKColors.Transparent)
+             .BuildSeries();
+        }
     }
 }
