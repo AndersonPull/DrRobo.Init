@@ -85,7 +85,8 @@
                         Style="{DynamicResource LabelTitleWhite}"/>
                     <entry:EntryComponent
                         Style="{DynamicResource Entry14White}"
-                        Text="{Binding Model.Device.Name, Mode=TwoWay}"/>
+                        Text="{Binding Model.Device.Name, Mode=TwoWay}"
+                        IsTextPredictionEnabled="False"/>
                     <Label
                         SemanticProperties.Description="{Binding LocalizationResourceManager[SelectTheTypeOfCommunication]}"
                         Text="{Binding LocalizationResourceManager[SelectTheTypeOfCommunication]}"

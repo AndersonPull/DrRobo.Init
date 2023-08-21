@@ -55,6 +55,7 @@
                             HorizontalOptions="FillAndExpand"
                             Keyboard="Plain"
                             Completed="EntryCMD_Completed"
+                            IsTextPredictionEnabled="False"
                             Text="{Binding Model.CommandText, Mode=TwoWay}"
                             Style="{DynamicResource Entry14Primary}"
                             ReturnCommand="{Binding EnterCommand}"/>

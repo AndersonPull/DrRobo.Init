@@ -96,7 +96,8 @@ namespace Drrobo.Modules.Shared.ViewModels
         private async Task AddAsync()
         {
             if (await ValidateDevice())
-            { 
+            {
+                Model.Device.Name = Model.Device.Name.Replace(" ", "_").ToLower();
                 _deviceData.Save(Model.Device);
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
@@ -144,7 +145,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             if (!string.IsNullOrEmpty(message))
             {
                 response = false;
-                await Application.Current.MainPage.DisplayAlert("Aviso", message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Alert", message, "OK");
             }
 
             return response;
