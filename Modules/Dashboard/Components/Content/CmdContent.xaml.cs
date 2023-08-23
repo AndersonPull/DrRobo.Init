@@ -5,6 +5,8 @@ public partial class CmdContent : ContentView
     public CmdContent()
 	{
 		InitializeComponent();
+        SetDeviceDisplay();
+        DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
     }
 
     void EntryCMD_Completed(object sender, EventArgs e)
@@ -22,11 +24,23 @@ public partial class CmdContent : ContentView
         });
     }
 
-    protected override void OnSizeAllocated(double width, double height)
+    private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+         => SetDeviceDisplay();
+
+    private void SetDeviceDisplay()
     {
-        if (width > height)
-            MainGrid.Margin = new Thickness(95, 25, 15, 15);
-        else
-            MainGrid.Margin = new Thickness(0, 35, 15, 15);
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+            return;
+
+        switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
+        {
+            case DisplayOrientation.Landscape:
+                MainGrid.Margin = new Thickness(95, 25, 15, 15);
+                break;
+            case DisplayOrientation.Portrait:
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    MainGrid.Margin = new Thickness(0, 35, 15, 15);
+                break;
+        }
     }
 }

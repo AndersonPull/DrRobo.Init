@@ -127,11 +127,7 @@ namespace Drrobo.Modules.Dashboard.ViewModels
                 return;
 
             CurrentContent = item;
-
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await MyView.SetContent(ContentType[CurrentContent].Value);
-            });
+            await MyView.SetContent(ContentType[CurrentContent].Value);
             
             IsBusy = false;
         }
