@@ -33,6 +33,8 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	  <MtouchLink>None</MtouchLink>
+	  <CodesignProvision>Automatic</CodesignProvision>
+	  <CodesignKey>iPhone Developer</CodesignKey>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
@@ -304,5 +306,8 @@
 	<ItemGroup>
 	  <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
 	  <EmbeddedResource Remove="Resources\Styles\GreenTheme\Colors.xaml" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+	  <PackageReference Include="Drastic.IQKeyboardManager" Version="1.0.0" />
 	</ItemGroup>
 </Project>

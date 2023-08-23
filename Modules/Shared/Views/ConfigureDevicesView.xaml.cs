@@ -1,4 +1,6 @@
-﻿namespace Drrobo.Modules.Shared.Views;
+﻿using CommunityToolkit.Maui.Core.Platform;
+
+namespace Drrobo.Modules.Shared.Views;
 
 public partial class ConfigureDevicesView : ContentPage
 {
