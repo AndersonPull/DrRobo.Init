@@ -19,7 +19,7 @@ public partial class ProfileContent : ContentView
     private void SetDeviceDisplay()
     {
         if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
-            return;
+            ProfileStackLayout.Margin = new Thickness(120, 15, 55, 15);
 
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {

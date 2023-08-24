@@ -30,7 +30,7 @@ public partial class CmdContent : ContentView
     private void SetDeviceDisplay()
     {
         if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
-            return;
+            MainGrid.Margin = new Thickness(95, 25, 15, 15);
 
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
