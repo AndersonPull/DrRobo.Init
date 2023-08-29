@@ -38,9 +38,9 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
-	  <MtouchLink>None</MtouchLink>
+	  <MtouchLink>SdkOnly</MtouchLink>
 	  <CodesignProvision>Automatic</CodesignProvision>
-	  <CodesignKey>iPhone Distribution</CodesignKey>
+	  <CodesignKey>Apple Distribution: Anderson oliveira Bezerra (QMY3Y257R7)</CodesignKey>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 	  <WarningLevel>4</WarningLevel>
@@ -56,6 +56,11 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <AndroidPackageFormat>aab</AndroidPackageFormat>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignKey>3rd Party Mac Developer Application</CodesignKey>
+	  <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
 	</PropertyGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\power_icon.svg" />
@@ -96,9 +101,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\AppIcon\appicon.svg" />
-	  <None Remove="Resources\AppIcon\appicon.svg" />
-	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\Splash\" />
 	  <None Remove="Modules\" />
 	  <None Remove="Modules\Dashboard\" />
@@ -190,9 +192,11 @@
 	  <None Remove="Resources\Images\terminal_banner_icon.png" />
 	  <None Remove="Resources\Images\logo_ascii_icon.png" />
 	  <None Remove="Resources\Images\banner_principal.png" />
+	  <None Remove="Resources\AppIcon\" />
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\AppIcon\appiconfig.svg" />
 	</ItemGroup>
 	<ItemGroup>
-	  <BundleResource Include="Resources\AppIcon\appiconfg.svg" />
 	  <BundleResource Include="Resources\Styles\Styles.xaml">
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -205,10 +209,11 @@
 	  <BundleResource Include="Resources\ImgsBanners\mockup.png" />
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Images\joystick_banner_icon.png" />
+	  <BundleResource Include="Resources\AppIcon\appiconfig.svg" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	  <MauiIcon Include="Resources\Images\power_icon.svg" />
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Splash\" />
@@ -267,6 +272,7 @@
 	  <Folder Include="Utils\Components\" />
 	  <Folder Include="Modules\Shared\Services\Service\Implementations\" />
 	  <Folder Include="Modules\Shared\Services\Service\Response\" />
+	  <Folder Include="Resources\AppIcon\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Resources\Styles\GreenTheme\Colors.xaml">
