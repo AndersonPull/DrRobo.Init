@@ -30,7 +30,10 @@ public partial class CmdContent : ContentView
     private void SetDeviceDisplay()
     {
         if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+        {
             MainGrid.Margin = new Thickness(95, 25, 15, 15);
+            return;
+        }
 
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
@@ -38,8 +41,7 @@ public partial class CmdContent : ContentView
                 MainGrid.Margin = new Thickness(95, 25, 15, 15);
                 break;
             case DisplayOrientation.Portrait:
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                    MainGrid.Margin = new Thickness(0, 35, 15, 15);
+                MainGrid.Margin = new Thickness(0, 35, 15, 15);
                 break;
         }
     }

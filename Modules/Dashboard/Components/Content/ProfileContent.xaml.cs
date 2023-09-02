@@ -1,7 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-
-namespace Drrobo.Modules.Dashboard.Components.Content;
+﻿namespace Drrobo.Modules.Dashboard.Components.Content;
 
 public partial class ProfileContent : ContentView
 {
@@ -19,7 +16,10 @@ public partial class ProfileContent : ContentView
     private void SetDeviceDisplay()
     {
         if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
+        {
             ProfileStackLayout.Margin = new Thickness(120, 15, 55, 15);
+            return;
+        }
 
         switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
@@ -27,8 +27,7 @@ public partial class ProfileContent : ContentView
                 ProfileStackLayout.Margin = new Thickness(120, 15, 55, 15);
                 break;
             case DisplayOrientation.Portrait:
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                    ProfileStackLayout.Margin = new Thickness(15, 55, 15, 15);
+                ProfileStackLayout.Margin = new Thickness(15, 55, 15, 15);
                 break;
         }
     }

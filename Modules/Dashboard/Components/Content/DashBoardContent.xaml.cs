@@ -8,6 +8,10 @@ public partial class DashBoardContent : ContentView
     public DashBoardContent()
 	{
 		InitializeComponent();
+
+        SetBanner();
+        DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
+
     }
 
     public int NewWidthFrame
@@ -22,17 +26,28 @@ public partial class DashBoardContent : ContentView
         set => SetValue(NewHeightFrameProperty, value);
     }
 
-    protected override void OnSizeAllocated(double width, double height)
+    private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        => SetBanner();
+
+    private void SetBanner()
     {
-        if (width > 500)
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
         {
             NewWidthFrame = 410;
             NewHeightFrame = 250;
+            return;
         }
-        else
+
+        switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
-            NewWidthFrame = 320;
-            NewHeightFrame = 300;
+            case DisplayOrientation.Landscape:
+                NewWidthFrame = 410;
+                NewHeightFrame = 250;
+                break;
+            case DisplayOrientation.Portrait:
+                NewWidthFrame = 320;
+                NewHeightFrame = 300;
+                break;
         }
     }
 }

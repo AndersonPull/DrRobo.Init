@@ -12,6 +12,13 @@ public partial class StartView : ContentPage
     public StartView()
 	{
 		InitializeComponent();
+
+        if (DeviceInfo.Platform == DevicePlatform.Android)
+        {
+            SetSafeArea();
+            SetBar();
+        }
+        DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
     }
 
     protected override void OnAppearing()
@@ -22,6 +29,7 @@ public partial class StartView : ContentPage
             ViewModel.GetDevicesConnectCommand.Execute(null);
     }
 
+
     public ContentView GetContent() => ContentBody.Content as ContentView;
 
     public async Task SetContent(ContentView content)
@@ -29,20 +37,39 @@ public partial class StartView : ContentPage
         await Task.Delay(1);
         ContentBody.Content = content;
     }
-
-    protected override void OnSizeAllocated(double width, double height)
+    private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
     {
         SetSafeArea();
+        SetBar();
+    }
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        if (DeviceInfo.Platform != DevicePlatform.Android)
+        {
+            SetSafeArea();
+            SetBar();
+        }
+    }
 
-        if( width > height)
+    private void SetBar()
+    {
+        if (DeviceInfo.Idiom == DeviceIdiom.Desktop)
         {
             LeftBar.IsVisible = true;
             BottomBar.IsVisible = false;
+            return;
         }
-        else
+
+        switch (DeviceDisplay.Current.MainDisplayInfo.Orientation)
         {
-            LeftBar.IsVisible = false;
-            BottomBar.IsVisible = true;
+            case DisplayOrientation.Landscape:
+                LeftBar.IsVisible = true;
+                BottomBar.IsVisible = false;
+                break;
+            case DisplayOrientation.Portrait:
+                LeftBar.IsVisible = false;
+                BottomBar.IsVisible = true;
+                break;
         }
     }
 
