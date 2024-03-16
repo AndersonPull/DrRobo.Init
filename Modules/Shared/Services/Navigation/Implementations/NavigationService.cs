@@ -4,6 +4,8 @@ using Drrobo.Modules.Shared.ViewModels;
 using Drrobo.Modules.RemotelyControlled.ViewModels;
 using Drrobo.Modules.RemotelyControlled.Views;
 using Drrobo.Modules.Shared.Views;
+using Drrobo.Modules.Robo.Views;
+using Drrobo.Modules.Robo.ViewModels;
 
 namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
 {
@@ -23,7 +25,12 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         }
 
         public Task InitializeAsync()
-            => NavigateToAsync<StartViewModel>();
+        {
+            if(Environment.OSVersion.Platform == PlatformID.Win32NT)
+                return NavigateToAsync<RoboViewModel>();
+
+            return NavigateToAsync<StartViewModel>();
+        }
 
         public Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
             => InternalNavigateToAsync(typeof(TViewModel), null);
@@ -59,6 +66,8 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
             Page page = CreateAndBindPage(viewModelType, parameter);
 
             if (page is StartView)
+                CurrentApplication.MainPage = new NavigationPage(page);
+            else if (page is RoboView)
                 CurrentApplication.MainPage = new NavigationPage(page);
             else
             {
@@ -98,6 +107,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
             DashboardMaps();
             RemotelyMaps();
             SharedMaps();
+            RoboMaps();
         }
 
         private void DashboardMaps()
@@ -115,6 +125,11 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
         {
             _mappings.Add(typeof(ListDevicesViewModel), typeof(ListDevicesView));
             _mappings.Add(typeof(ConfigureDevicesViewModel), typeof(ConfigureDevicesView));
+        }
+
+        private void RoboMaps()
+        {
+            _mappings.Add(typeof(RoboViewModel), typeof(RoboView));
         }
     }
 }

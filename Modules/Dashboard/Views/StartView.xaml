@@ -9,16 +9,13 @@
     NavigationPage.HasBackButton="False"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="False">
-    <ContentPage.Content>
         <Grid
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            <ContentView
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
+            <ContentPage
                 x:Name="ContentBody">
                 <content:DashBoardContent/>
-            </ContentView>
+            </ContentPage>
             <component:BottomBarComponent
                 IsVisible="False"
                 Margin="0,0,0,20"
@@ -32,5 +29,4 @@
                 VerticalOptions="CenterAndExpand"
                 x:Name="LeftBar"/>
         </Grid>
-    </ContentPage.Content>
 </ContentPage>
