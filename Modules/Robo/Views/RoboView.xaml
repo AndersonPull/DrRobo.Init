@@ -3,16 +3,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.Robo.Views.RoboView">
-    <VerticalStackLayout Spacing="10">
-        <Label 
-            Text="{Binding Model.RecognitionText}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
+    <VerticalStackLayout Spacing="15">
+        <Image 
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            WidthRequest="400"
+            Source="animation_face_robo.GIF"></Image>
         <Button
             Text="ouvir"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             Command="{Binding ListenCommand}"/>
+        <Label 
+             Text="{Binding Model.RecognitionText}"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
