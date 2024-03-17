@@ -28,6 +28,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<DefaultLanguage>pt-br</DefaultLanguage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
@@ -101,6 +102,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
 	  <None Remove="Resources\Splash\" />
 	  <None Remove="Modules\" />
 	  <None Remove="Modules\Dashboard\" />
@@ -212,6 +214,7 @@
 	  <BundleResource Include="Resources\AppIcon\appiconfig.svg" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
 	  <MauiIcon Include="Resources\Images\power_icon.svg" />
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
@@ -268,7 +271,6 @@
 	  <Folder Include="Utils\Components\" />
 	  <Folder Include="Modules\Shared\Services\Service\Implementations\" />
 	  <Folder Include="Modules\Shared\Services\Service\Response\" />
-	  <Folder Include="Resources\AppIcon\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Modules\Robo\Views\RoboView.xaml">

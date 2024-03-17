@@ -7,6 +7,8 @@ using Drrobo.Utils.Bluetooth;
 using Drrobo.Utils.Bluetooth.Implementations;
 using Drrobo.Modules.Shared.Services.Service;
 using Drrobo.Modules.Shared.Services.Service.Implementations;
+using Drrobo.Modules.Robo.ViewModels;
+using CommunityToolkit.Maui.Media;
 
 namespace Drrobo.Modules.Shared.ViewModels
 {
@@ -44,6 +46,8 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<INavigationService, NavigationService>();
             _container.RegisterType<IBluetoothUtil, BluetoothUtil>();
             _container.RegisterType<IUniversalService, UniversalService>();
+            _container.RegisterType<ISpeechToText, SpeechToTextImplementation>();
+
         }
 
         private void RegisterViewModels()
@@ -54,6 +58,7 @@ namespace Drrobo.Modules.Shared.ViewModels
             _container.RegisterType<ListDevicesViewModel>();
             _container.RegisterType<ConfigureDevicesViewModel>();
             _container.RegisterType<CameraMonitoringViewModel>();
+            _container.RegisterType<RoboViewModel>();
         }
     }
 }
