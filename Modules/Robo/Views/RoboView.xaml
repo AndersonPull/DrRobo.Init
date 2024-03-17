@@ -8,7 +8,7 @@
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
             WidthRequest="400"
-            Source="animation_face_robo.GIF"></Image>
+            Source="animation_face_robo.GIF"/>
         <Button
             Text="ouvir"
             VerticalOptions="Center" 

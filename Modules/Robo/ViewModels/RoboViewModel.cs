@@ -14,7 +14,6 @@ namespace Drrobo.Modules.Robo.ViewModels
 
         INavigationService _serviceNavigation;
         private readonly ISpeechToText _speechToText;
-        private CancellationTokenSource _tokenSource = new CancellationTokenSource();
         public RoboViewModel(INavigationService serviceNavigation, ISpeechToText speechToText)
         {
             _serviceNavigation = serviceNavigation;
@@ -23,23 +22,23 @@ namespace Drrobo.Modules.Robo.ViewModels
 
         private async Task ListenAsync()
         {
-            var isGranted = await _speechToText.RequestPermissions(_tokenSource.Token);
-            if (!isGranted)
+            var tokenSource = new CancellationTokenSource();
+            if (!await _speechToText.RequestPermissions(tokenSource.Token))
             {
                 await Toast.Make("Permission not granted").Show(CancellationToken.None);
                 return;
             }
+
+            Model.RecognitionText = string.Empty;
             var recognitionResult = await _speechToText.ListenAsync(
                                                 CultureInfo.GetCultureInfo("pt-br"),
                                                 new Progress<string>(partialText =>
                                                 {
                                                     Model.RecognitionText += partialText + " ";
-                                                }), _tokenSource.Token);
+                                                }), tokenSource.Token);
 
             if (recognitionResult.IsSuccessful)
-            {
                 Model.RecognitionText = recognitionResult.Text;
-            }
             else
             {
                 await Toast.Make(recognitionResult.Exception?.Message ?? "Unable to recognize speech").Show(CancellationToken.None);
