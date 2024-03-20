@@ -26,7 +26,7 @@ namespace Drrobo.Modules.Shared.Services.Navigation.Implementations
 
         public Task InitializeAsync()
         {
-            if(Environment.OSVersion.Platform == PlatformID.Win32NT)
+            if(DeviceInfo.Platform == DevicePlatform.WinUI)
                 return NavigateToAsync<RoboViewModel>();
 
             return NavigateToAsync<StartViewModel>();
