@@ -9,14 +9,9 @@
             HorizontalOptions="CenterAndExpand"
             WidthRequest="400"
             Source="animation_face_robo.GIF"/>
-        <Button
-            Text="ouvir"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Command="{Binding ListenCommand}"/>
         <Label 
-             Text="{Binding Model.RecognitionText}"
-             VerticalOptions="Center" 
-             HorizontalOptions="Center" />
+            Text="{Binding Model.RecognitionText}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
