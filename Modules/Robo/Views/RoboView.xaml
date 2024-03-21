@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Drrobo.Modules.Robo.Views.RoboView">
-    <VerticalStackLayout Spacing="15">
-        <Image 
+    <VerticalStackLayout
+        Spacing="15">
+        <Image
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
             WidthRequest="400"
             Source="animation_face_robo.GIF"/>
-        <Label 
+        <Label
             Text="{Binding Model.RecognitionText}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>
